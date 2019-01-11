@@ -1,0 +1,24 @@
+PODS:
+  - SavannaKit (0.9.0)
+  - SourceEditor (1.0.1):
+    - SavannaKit (~> 0.9)
+  - Sparkle (1.21.2)
+
+DEPENDENCIES:
+  - SourceEditor (~> 1.0)
+  - Sparkle
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SavannaKit
+    - SourceEditor
+    - Sparkle
+
+SPEC CHECKSUMS:
+  SavannaKit: 920c240bde011900df8156200a960dad3ee5edfd
+  SourceEditor: 4d590385d642c812d08a91941a4bfc90eccf20af
+  Sparkle: 1678d4707e7665960c7d1b43aca125e6392d11c4
+
+PODFILE CHECKSUM: 94f2bd0582a2988e586da6ac4c7ebbf2993bc621
+
+COCOAPODS: 1.5.3

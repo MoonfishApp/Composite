@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>platform</key>
+		<string>ethereum</string>
+		<key>framework</key>
+		<string>etherlime</string>
+		<key>minVersion</key>
+		<string></string>
+		<key>maxVersion</key>
+		<string></string>
+		<key>run</key>
+		<string></string>
+		<key>compile</key>
+		<string></string>
+		<key>lint</key>
+		<string></string>
+		<key>structuredOutput</key>
+		<dict>
+			<key>path</key>
+			<string></string>
+			<key>version</key>
+			<string></string>
+		</dict>
+		<key>regexOutput</key>
+		<dict>
+			<key>warning</key>
+			<string></string>
+			<key>error</key>
+			<string></string>
+		</dict>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>ethereum</string>
+		<key>framework</key>
+		<string>truffle</string>
+		<key>minVersion</key>
+		<string></string>
+		<key>maxVersion</key>
+		<string></string>
+		<key>run</key>
+		<string></string>
+		<key>compile</key>
+		<string></string>
+		<key>lint</key>
+		<string></string>
+		<key>structuredOutput</key>
+		<dict>
+			<key>path</key>
+			<string></string>
+			<key>version</key>
+			<string></string>
+		</dict>
+		<key>regexOutput</key>
+		<dict>
+			<key>warning</key>
+			<string></string>
+			<key>error</key>
+			<string></string>
+		</dict>
+	</dict>
+</array>
+</plist>

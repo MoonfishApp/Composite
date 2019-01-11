@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>category</key>
+		<string>Tokens</string>
+		<key>command</key>
+		<string>test</string>
+		<key>templates</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>TRC-20 Token</string>
+				<key>templateName</key>
+				<string>token</string>
+				<key>imageName</key>
+				<string></string>
+				<key>standard</key>
+				<string>TRC-20</string>
+				<key>description</key>
+				<string>TRC‌-20 is a technical standard used for smart contracts on the TRON blockchain for implementing tokens with the TRON Virtual Machine (TVM). It is fully compatible to ERC‌-20.</string>
+				<key>moreInfoUrl</key>
+				<string>https://developers.tron.network/docs/trc10-token</string>
+				<key>openFile</key>
+				<string>contracts/$(PROJECT_NAME).sol</string>
+				<key>detailViewType</key>
+				<string>trc-20</string>
+				<key>initType</key>
+				<string>initTemplate</string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string>TRC20.sol</string>
+						<key>destination</key>
+						<string>contracts</string>
+						<key>renameFileToProjectName</key>
+						<true/>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Non-fungible Token</string>
+				<key>templateName</key>
+				<string>nonfungibletoken</string>
+				<key>imageName</key>
+				<string></string>
+				<key>standard</key>
+				<string>TRC-721</string>
+				<key>description</key>
+				<string>A special type of cryptographic token which represents something unique; non-fungible tokens are thus not interchangeable.</string>
+				<key>moreInfoUrl</key>
+				<string>https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md</string>
+				<key>openFile</key>
+				<string>contracts/$(PROJECT_NAME).sol</string>
+				<key>detailViewType</key>
+				<string>trc-721</string>
+				<key>initType</key>
+				<string>initTemplate</string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string>TRC721.sol</string>
+						<key>destination</key>
+						<string>contracts</string>
+						<key>renameFileToProjectName</key>
+						<true/>
+					</dict>
+				</array>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

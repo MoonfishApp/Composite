@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>platform</key>
+		<string>tron</string>
+		<key>framework</key>
+		<string>tronbox</string>
+		<key>minVersion</key>
+		<string></string>
+		<key>maxVersion</key>
+		<string></string>
+		<key>configurationFile</key>
+		<string>tronbox-config.js</string>
+		<key>errorRegex</key>
+		<string>*</string>
+		<key>warningRegex</key>
+		<string>*</string>
+		<key>commands</key>
+		<dict>
+			<key>compile</key>
+			<string>tronbox compile</string>
+			<key>cleanCompile</key>
+			<string>tronbox compile --compile-all</string>
+			<key>deploy</key>
+			<string>tronbox migrate rest</string>
+			<key>cleanDeploy</key>
+			<string>tronbox migrate rest --reset</string>
+			<key>runTests</key>
+			<string>tronbox test $(PATH)</string>
+			<key>cleanRunTests</key>
+			<string>tronbox test $(PATH) --reset</string>
+			<key>console</key>
+			<string>tronbox console</string>
+			<key>lint</key>
+			<string>solium --dir .</string>
+			<key>initEmpty</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>tronbox init</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+			<key>initTemplate</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>tronbox init</string>
+					<string>npm install --save-exact zeppelin-solidity@1.7.0</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>ethereum</string>
+		<key>framework</key>
+		<string>etherlime</string>
+		<key>minVersion</key>
+		<string></string>
+		<key>maxVersion</key>
+		<string></string>
+		<key>configurationFile</key>
+		<string>deployment/deploy.js</string>
+		<key>errorRegex</key>
+		<string>*</string>
+		<key>warningRegex</key>
+		<string>*</string>
+		<key>commands</key>
+		<dict>
+			<key>compile</key>
+			<string>etherlime compile</string>
+			<key>cleanCompile</key>
+			<string></string>
+			<key>deploy</key>
+			<string>etherlime deploy</string>
+			<key>cleanDeploy</key>
+			<string></string>
+			<key>runTests</key>
+			<string>etherlime test $(PATH)</string>
+			<key>cleanRunTests</key>
+			<string></string>
+			<key>testCoverage</key>
+			<string>etherlime coverage</string>
+			<key>console</key>
+			<string></string>
+			<key>lint</key>
+			<string></string>
+			<key>initEmpty</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>etherlime init</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+			<key>initTemplate</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>etherlime init</string>
+					<string>npm init -y</string>
+					<string>npm install --save-exact openzeppelin-solidity</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>ethereum</string>
+		<key>framework</key>
+		<string>truffle</string>
+		<key>minVersion</key>
+		<string></string>
+		<key>maxVersion</key>
+		<string></string>
+		<key>configurationFile</key>
+		<string>truffle.js</string>
+		<key>errorRegex</key>
+		<string>*</string>
+		<key>warningRegex</key>
+		<string>*</string>
+		<key>commands</key>
+		<dict>
+			<key>compile</key>
+			<string>truffle compile</string>
+			<key>cleanCompile</key>
+			<string></string>
+			<key>deploy</key>
+			<string>truffle compile; truffle migrate</string>
+			<key>cleanDeploy</key>
+			<string></string>
+			<key>runTests</key>
+			<string>truffle test $(PATH)</string>
+			<key>cleanRunTests</key>
+			<string></string>
+			<key>testCoverage</key>
+			<string>truffle coverage</string>
+			<key>console</key>
+			<string></string>
+			<key>lint</key>
+			<string></string>
+			<key>initEmpty</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>truffle init</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+			<key>initTemplate</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>truffle init</string>
+					<string>npm init -y</string>
+					<string>npm install --save-exact openzeppelin-solidity</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+			<key>initExample</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>truffle unbox ($TEMPLATE)</string>
+					<string>npm init -y</string>
+					<string>npm install --save-exact openzeppelin-solidity</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TemplateCollectionViewItem" customModule="Composite" customModuleProvider="target"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="275" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzX-nq-CIr">
+                    <rect key="frame" x="12" y="85" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="PS6-uU-8Te"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noL-oS-8jY">
+                    <rect key="frame" x="68" y="93" width="189" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="ERC" id="76H-FJ-8FD">
+                        <font key="font" metaFont="system" size="10"/>
+                        <color key="textColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxe-GC-CEe" userLabel="textField">
+                    <rect key="frame" x="68" y="118" width="189" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Title" id="9fY-w1-o0v">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NfZ-Rn-KLv">
+                    <rect key="frame" x="20" y="34" width="237" height="43"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Description" id="0K6-FR-9Ab">
+                        <font key="font" metaFont="system" size="10"/>
+                        <color key="textColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7j-O5-HiW">
+                    <rect key="frame" x="177" y="9" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="inline" title="More Info" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="8Eq-lT-NB3">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystemBold"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="viewMoreInfoClicked:" target="-1" id="zHY-Ig-Itr"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="214.5" y="168"/>
+        </customView>
+        <collectionViewItem id="djL-m0-W4B" customClass="TemplateCollectionViewItem" customModule="Composite" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionTextField" destination="NfZ-Rn-KLv" id="5Zq-9Z-PiB"/>
+                <outlet property="erc" destination="noL-oS-8jY" id="7IW-VK-0Sg"/>
+                <outlet property="imageView" destination="mzX-nq-CIr" id="ONR-yE-uNy"/>
+                <outlet property="moreInfoButton" destination="n7j-O5-HiW" id="feP-Ur-mdU"/>
+                <outlet property="textField" destination="mxe-GC-CEe" id="Tge-OD-gTc"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="m9o-Zz-kKp"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+</document>

@@ -1,0 +1,223 @@
+[
+  {
+    "category" : "Boxes",
+    "command" : "TruffleInit",
+    "templates" : [
+      {
+        "name" : "Tutorial Token",
+        "templateName" : "tutorialtoken",
+        "imageName" : "Box",
+        "standard" : "ERC-20",
+        "copyFiles" : [
+          {
+            "filename" : "TutorialToken.sol",
+            "destination" : "contracts"
+          },
+          {
+            "filename" : "2_deploy_contracts.js",
+            "destination" : "migrations"
+          }
+        ],
+        "openFile" : "contracts/TutorialToken.sol"
+      },
+      {
+        "name" : "Drizzle",
+        "templateName" : "drizzle",
+        "imageName" : "Box",
+        "standard" : "",
+        "copyFiles" : [],
+        "openFile" : ""
+      },
+      {
+        "name" : "React",
+        "templateName" : "react",
+        "imageName" : "Box",
+        "standard" : "",
+        "copyFiles" : [],
+        "openFile" : ""
+      },
+      {
+        "name" : "React Auth",
+        "templateName" : "react-auth",
+        "imageName" : "Box",
+        "standard" : "",
+        "copyFiles" : [],
+        "openFile" : ""
+      },
+      {
+        "name" : "React Uport",
+        "templateName" : "react-uport",
+        "imageName" : "Box",
+        "standard" : "",
+        "copyFiles" : [],
+        "openFile" : ""
+      },
+      {
+        "name" : "Petshop",
+        "templateName" : "pet-shop",
+        "imageName" : "Box",
+        "standard" : "",
+        "copyFiles" : [],
+        "openFile" : ""
+      },
+      {
+        "name" : "Blueprint",
+        "templateName" : "",
+        "imageName" : "Box",
+        "standard" : "",
+        "copyFiles" : [],
+        "openFile" : ""
+      },
+      {
+        "name" : "Metacoin",
+        "templateName" : "",
+        "imageName" : "Box",
+        "standard" : "ERC-20",
+        "copyFiles" : [],
+        "openFile" : ""
+      },
+      {
+        "name" : "Webpack",
+        "templateName" : "",
+        "imageName" : "Box",
+        "standard" : "",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Token",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "",
+        "templateName" : "",
+        "imageName" : "Doc",
+        "standard" : "",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Games",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "templateName" : "",
+        "imageName" : "Doc",
+        "standard" : "ERC-721",
+        "copyFiles" : [],
+        "openFile" : ""
+      },
+      {
+        "name" : "Crypto Item",
+        "templateName" : "",
+        "imageName" : "Doc",
+        "standard" : "ERC-1155",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "ICO/Crowdsale",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "templateName" : "",
+        "imageName" : "",
+        "standard" : "ERC-721",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Payment",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "templateName" : "",
+        "imageName" : "",
+        "standard" : "ERC-721",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Ownership",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "templateName" : "",
+        "imageName" : "",
+        "standard" : "ERC-721",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Mocks",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "templateName" : "",
+        "imageName" : "",
+        "standard" : "ERC-721",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Lifecycle",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "templateName" : "",
+        "imageName" : "",
+        "standard" : "ERC-721",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Access",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "templateName" : "",
+        "imageName" : "",
+        "standard" : "ERC-721",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Examples",
+    "command" : "",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "templateName" : "",
+        "imageName" : "",
+        "standard" : "ERC-721",
+        "copyFiles" : [],
+        "openFile" : ""
+      }
+    ]
+  }
+]
