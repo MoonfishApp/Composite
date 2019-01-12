@@ -329,9 +329,13 @@
 			path = Preferences;
 			sourceTree = "<group>";
 		};
-		C72FEB8021E7E6C4000EF3C7 /* Editor */ = {
+		C72FEB8021E7E6C4000EF3C7 /* DocumentWindow */ = {
 			isa = PBXGroup;
 			children = (
+				C72FEB8621E9400A000EF3C7 /* Editor */,
+				C72FEB8521E94005000EF3C7 /* Sidebar */,
+				C72FEB8421E93FFC000EF3C7 /* Inspector */,
+				C72FEB8321E93FEF000EF3C7 /* Console */,
 				C7E76436211EC16300867DA4 /* EditWindowController.swift */,
 				C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */,
 				C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */,
@@ -343,7 +347,7 @@
 				C7050A342166FBC9003DDA2B /* LanguageServer.swift */,
 				C7F0B9BD2112C3CA005A8FE2 /* SolidityLexer.swift */,
 			);
-			path = Editor;
+			path = DocumentWindow;
 			sourceTree = "<group>";
 		};
 		C72FEB8121E7E6ED000EF3C7 /* App */ = {
@@ -367,6 +371,34 @@
 				C7A8FDBD212F2030005E20AC /* Frameworks */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C72FEB8321E93FEF000EF3C7 /* Console */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Console;
+			sourceTree = "<group>";
+		};
+		C72FEB8421E93FFC000EF3C7 /* Inspector */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Inspector;
+			sourceTree = "<group>";
+		};
+		C72FEB8521E94005000EF3C7 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		C72FEB8621E9400A000EF3C7 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Editor;
 			sourceTree = "<group>";
 		};
 		C7A8FDBD212F2030005E20AC /* Frameworks */ = {
@@ -414,7 +446,7 @@
 				C72FEB7F21E7E6B7000EF3C7 /* Preferences */,
 				C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */,
 				C72FEB7E21E7E6AB000EF3C7 /* Templates */,
-				C72FEB8021E7E6C4000EF3C7 /* Editor */,
+				C72FEB8021E7E6C4000EF3C7 /* DocumentWindow */,
 				C72FEB8221E7E945000EF3C7 /* Models */,
 				C7DDD751214100C800674942 /* Extensions */,
 				C7E764512124FA0200867DA4 /* unused */,
