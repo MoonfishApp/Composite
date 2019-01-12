@@ -222,7 +222,7 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
-        func setButton(_ cellButton: NSButton, state: DependencyState, name: String) {
+        func setButton(_ cellButton: NSButton, state: DependencyState, name: String, newerVersion: String? = nil) {
             
             switch state {
                 
@@ -236,7 +236,11 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 
                 cellButton.isHidden = false
                 cellButton.isEnabled = true
-                cellButton.title = "Update \(name)"
+                if let newerVersion = newerVersion {
+                    cellButton.title = "Update to \(newerVersion)"
+                } else {
+                    cellButton.title = "Update \(name)"
+                }                
                 
             case .uptodate:
                 
@@ -320,7 +324,7 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 }
                 
                 let cellButton: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
-                setButton(cellButton, state: item.state, name: item.name)
+                setButton(cellButton, state: item.state, name: item.name, newerVersion: item.newerVersionAvailable)
                 return buttonView
                 
             default:
