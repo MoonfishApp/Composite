@@ -1,0 +1,6 @@
+framework module ColorCode {
+  umbrella header "WFColorCode-umbrella.h"
+
+  export *
+  module * { export * }
+}

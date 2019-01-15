@@ -1,24 +1,54 @@
 PODS:
+  - Differ (1.3.0)
+  - LibYAML (0.1.4)
   - SavannaKit (0.9.0)
   - SourceEditor (1.0.1):
     - SavannaKit (~> 0.9)
   - Sparkle (1.21.2)
+  - WFColorCode (2.3.0)
+  - YAML-Framework (0.0.2):
+    - LibYAML (~> 0.1.4)
 
 DEPENDENCIES:
+  - Differ (~> 1.3.0)
   - SourceEditor (~> 1.0)
   - Sparkle
+  - WFColorCode (from `https://github.com/1024jp/WFColorCode.git`, branch `master`)
+  - YAML-Framework (from `https://github.com/coteditor/YAML.framework.git`, branch `coteditor-mod`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Differ
+    - LibYAML
     - SavannaKit
     - SourceEditor
     - Sparkle
 
+EXTERNAL SOURCES:
+  WFColorCode:
+    :branch: master
+    :git: https://github.com/1024jp/WFColorCode.git
+  YAML-Framework:
+    :branch: coteditor-mod
+    :git: https://github.com/coteditor/YAML.framework.git
+
+CHECKOUT OPTIONS:
+  WFColorCode:
+    :commit: 83fefdb4135a5ed81c24987d230fd5bb2c933e8f
+    :git: https://github.com/1024jp/WFColorCode.git
+  YAML-Framework:
+    :commit: 3271df33f182c0c77fece29f8bfe76fcda1a3ca0
+    :git: https://github.com/coteditor/YAML.framework.git
+
 SPEC CHECKSUMS:
+  Differ: 9fcee7602542d7c6484ce05a0faec1c11258ed63
+  LibYAML: 3af2c5adf3a40dff936d087aa6a77edc10036bc5
   SavannaKit: 920c240bde011900df8156200a960dad3ee5edfd
   SourceEditor: 4d590385d642c812d08a91941a4bfc90eccf20af
   Sparkle: 1678d4707e7665960c7d1b43aca125e6392d11c4
+  WFColorCode: 74d00d799586e8881b8f6a1a437439f35d0a60bf
+  YAML-Framework: 114604d626d89d33e3a35abaabdd2567601a02ee
 
-PODFILE CHECKSUM: 94f2bd0582a2988e586da6ac4c7ebbf2993bc621
+PODFILE CHECKSUM: 0ac7d42fdf8f5218ca5473c38d20276d1cf15bdf
 
 COCOAPODS: 1.5.3

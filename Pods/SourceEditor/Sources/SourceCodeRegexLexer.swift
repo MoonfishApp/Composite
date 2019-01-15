@@ -16,7 +16,7 @@ public protocol SourceCodeRegexLexer: RegexLexer {
 
 extension RegexLexer {
 	
-	public func regexGenerator(_ pattern: String, options: NSRegularExpression.Options = [], transformer: @escaping TokenTransformer) -> TokenGenerator? {
+	func regexGenerator(_ pattern: String, options: NSRegularExpression.Options = [], transformer: @escaping TokenTransformer) -> TokenGenerator? {
 		
 		guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else {
 			return nil

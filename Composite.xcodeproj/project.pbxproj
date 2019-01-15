@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		084FBDD1196536CA5F0CD35E /* Pods_Composite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A0B5A92EE307299A3136A6 /* Pods_Composite.framework */; };
-		209F57B1084BBFB40431A7B6 /* Pods_SCE_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9A6A475886FA02C9611640 /* Pods_SCE_Mac.framework */; };
 		572BC5C4D719830BD6FD93C9 /* Pods_CompositeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */; };
 		6F1A3BDD2371DB2730951110 /* Pods_SCE_MacTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4FA972095B5D6274482826 /* Pods_SCE_MacTests.framework */; };
 		C70509D4214D97A8003DDA2B /* DependencyFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D2214D97A8003DDA2B /* DependencyFramework.swift */; };
@@ -183,7 +182,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				209F57B1084BBFB40431A7B6 /* Pods_SCE_Mac.framework in Frameworks */,
 				084FBDD1196536CA5F0CD35E /* Pods_Composite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,17 +610,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Composite/Pods-Composite-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
+				"${BUILT_PRODUCTS_DIR}/LibYAML/LibYAML.framework",
 				"${BUILT_PRODUCTS_DIR}/SavannaKit/SavannaKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SourceEditor/SourceEditor.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/WFColorCode/ColorCode.framework",
+				"${BUILT_PRODUCTS_DIR}/YAML-Framework/YAML_Framework.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LibYAML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SavannaKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SourceEditor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorCode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YAML_Framework.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -879,7 +885,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = QS2K96ZEMY;
-				INFOPLIST_FILE = "SCE-Mac/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -904,7 +910,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = QS2K96ZEMY;
-				INFOPLIST_FILE = "SCE-Mac/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
