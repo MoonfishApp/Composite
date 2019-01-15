@@ -50,5 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let templateController = storyboard.instantiateInitialController() as? NSWindowController
         templateController?.showWindow(sender)
     }
+    
 }
 

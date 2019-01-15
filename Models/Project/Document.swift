@@ -1,5 +1,5 @@
 //
-//  Document.swift
+//  ProjectDocument.swift
 //  SCE-Mac
 //
 //  Created by Ronald "Danger" Mannak on 8/1/18.
@@ -8,6 +8,11 @@
 
 import Foundation
 import Cocoa
+
+/*
+ [NSDocumentController fileExtensionsFromType:] is deprecated, and does not work when passed a uniform type identifier (UTI). If the application didn't invoke it directly then the problem is probably that some other NSDocument or NSDocumentController method is getting confused by a UTI that's not actually declared anywhere. Maybe it should be declared in the UTExportedTypeDeclarations section of this app's Info.plist but is not. The alleged UTI in question is "app.composite.project".
+ 
+ */
 
 class Document: NSDocument {
     

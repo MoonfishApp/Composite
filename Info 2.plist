@@ -13,10 +13,6 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
-			<key>CFBundleTypeMIMETypes</key>
-			<array>
-				<string>application/xml</string>
-			</array>
 			<key>CFBundleTypeName</key>
 			<string>Composite project file</string>
 			<key>CFBundleTypeOSTypes</key>
@@ -27,12 +23,12 @@
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>app.composite.project</string>
+				<string>public.composite.project</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).ProjectDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
@@ -48,7 +44,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -66,7 +62,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -84,7 +80,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -102,7 +98,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -122,7 +118,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -144,7 +140,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -158,7 +154,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -176,7 +172,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeMIMETypes</key>
@@ -194,7 +190,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -208,7 +204,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -223,7 +219,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -246,7 +242,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -268,7 +264,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -286,7 +282,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -308,7 +304,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -330,7 +326,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -345,7 +341,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -363,7 +359,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -411,7 +407,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
+			<string>$(PRODUCT_MODULE_NAME).</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -440,49 +436,5 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>UTExportedTypeDeclarations</key>
-	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.xml</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string></string>
-			<key>UTTypeIdentifier</key>
-			<string></string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array/>
-				<key>public.mime-type</key>
-				<array/>
-			</dict>
-		</dict>
-	</array>
-	<key>UTImportedTypeDeclarations</key>
-	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.xml</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Composite project file</string>
-			<key>UTTypeIdentifier</key>
-			<string>app.composite.project</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>comp</string>
-				</array>
-				<key>public.mime-type</key>
-				<array>
-					<string>application/xml</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
 </dict>
 </plist>

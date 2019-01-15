@@ -26,40 +26,44 @@ class ProjectInitViewController: NSViewController {
                 do {
                     try self.projectInit.initializeProject(output: { output in
                         
-                        // Output in text view
-                        let previousOutput = self.textView.string
-                        let nextOutput = previousOutput + "\n" + output
-                        self.textView.string = nextOutput
-                        let range = NSRange(location:nextOutput.count,length:0)
-                        self.textView.scrollRangeToVisible(range)
-                        self.progressIndicator.increment(by: 1)
-                        self.counter = self.counter + 1
+                        DispatchQueue.main.async {
+                            // Output in text view
+                            let previousOutput = self.textView.string
+                            let nextOutput = previousOutput + "\n" + output
+                            self.textView.string = nextOutput
+                            let range = NSRange(location:nextOutput.count,length:0)
+                            self.textView.scrollRangeToVisible(range)
+                            self.progressIndicator.increment(by: 1)
+                            self.counter = self.counter + 1
+                        }
                         
                     }) { exitStatus in
                         
-                        self.progressIndicator.stopAnimation(self)
-                        
-                        guard exitStatus == 0 else {
-                            let error = CompositeError.bashScriptFailed("Bash error")
-                            let alert = NSAlert(error: error)
-                            alert.runModal()
-                            return
-                        }
-                        
-                        let documentController = NSDocumentController.shared
-                        documentController.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
-
-                            if let error = error {
-                                self.progressIndicator.stopAnimation(self)
+                        DispatchQueue.main.async {
+                            self.progressIndicator.stopAnimation(self)
+                            
+                            guard exitStatus == 0 else {
+                                let error = CompositeError.bashScriptFailed("Bash error")
                                 let alert = NSAlert(error: error)
                                 alert.runModal()
+                                return
                             }
+                            
+                            let documentController = NSDocumentController.shared
+                            documentController.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
 
-                            if let document = document as? Document, let editWindowController = document.editWindowController {
-                                editWindowController.setConsole(self.textView.string)
-                                //                            editWindowController.project = self.projectDirectoryCreator.project
+                                if let error = error {
+                                    self.progressIndicator.stopAnimation(self)
+                                    let alert = NSAlert(error: error)
+                                    alert.runModal()
+                                }
+
+                                if let document = document as? Document, let editWindowController = document.editWindowController {
+                                    editWindowController.setConsole(self.textView.string)
+                                    //                            editWindowController.project = self.projectDirectoryCreator.project
+                                }
+                                self.view.window?.close()
                             }
-                            self.view.window?.close()
                         }
                     }
                 } catch {
