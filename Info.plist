@@ -24,9 +24,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
-			<array>
-				<string>public.projectfile</string>
-			</array>
+			<array/>
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
@@ -444,15 +442,13 @@
 			<key>UTTypeConformsTo</key>
 			<array/>
 			<key>UTTypeDescription</key>
-			<string>Composite project file</string>
+			<string></string>
 			<key>UTTypeIdentifier</key>
-			<string>public.projectfile</string>
+			<string></string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
-				<array>
-					<string>comp</string>
-				</array>
+				<array/>
 				<key>public.mime-type</key>
 				<array/>
 			</dict>
@@ -464,15 +460,13 @@
 			<key>UTTypeConformsTo</key>
 			<array/>
 			<key>UTTypeDescription</key>
-			<string>Composite project file</string>
+			<string></string>
 			<key>UTTypeIdentifier</key>
-			<string>public.projectfile</string>
+			<string></string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
-				<array>
-					<string>comp</string>
-				</array>
+				<array/>
 				<key>public.mime-type</key>
 				<array/>
 			</dict>
