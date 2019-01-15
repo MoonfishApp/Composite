@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="EditWindow" id="jGA-0Y-lOj" customClass="EditWindowController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="ERC20" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
+                <windowController storyboardIdentifier="EditWindow" id="jGA-0Y-lOj" customClass="EditWindowController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="ERC20" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -122,7 +123,7 @@
         <!--Split View Controller-->
         <scene sceneID="kDy-U8-NMt">
             <objects>
-                <splitViewController id="1xm-ZM-p0a" customClass="SplitViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="1xm-ZM-p0a" customClass="SplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="bE7-yh-TUg"/>
                         <splitViewItem id="zsm-C8-pvE"/>
@@ -172,7 +173,7 @@
         <!--File Browser View Controller-->
         <scene sceneID="FX7-GW-NKH">
             <objects>
-                <viewController id="Toz-r1-A2p" customClass="FileBrowserViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Toz-r1-A2p" customClass="FileBrowserViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="UyC-8V-fZV">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -299,7 +300,7 @@
         <scene sceneID="vy9-el-xj2">
             <objects>
                 <viewController id="ja3-lG-MWF" sceneMemberID="viewController">
-                    <customView key="view" id="HcI-xT-YNk" customClass="SyntaxTextView" customModule="SavannaKit">
+                    <customView key="view" id="HcI-xT-YNk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -311,32 +312,33 @@
         <!--Output View Controller-->
         <scene sceneID="6Ke-84-cwJ">
             <objects>
-                <viewController id="3W5-We-f4V" customClass="OutputViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3W5-We-f4V" customClass="OutputViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="sJa-Zx-zL9">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="75"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <clipView key="contentView" id="YCK-6V-qU9">
+                        <clipView key="contentView" drawsBackground="NO" id="YCK-6V-qU9">
                             <rect key="frame" x="1" y="1" width="448" height="73"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="4fV-Zq-oeH">
                                     <rect key="frame" x="0.0" y="0.0" width="448" height="73"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="448" height="73"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="Ready.">
                                             <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" size="12" name="Menlo-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
-                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="zMM-D3-rbU">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>

@@ -7,13 +7,11 @@
 //
 
 import Cocoa
-import SavannaKit
-import SourceEditor
 
 class SplitViewController: NSSplitViewController {
 
-    let lexer = SolidityLexer()
-    var editorView: SyntaxTextView!
+//    let lexer = SolidityLexer()
+//    var editorView: SyntaxTextView!
     var consoleView: NSTextView!
     
     override func viewDidLoad() {
@@ -21,11 +19,11 @@ class SplitViewController: NSSplitViewController {
         
         // Set editor view
         splitViewItems.first!.minimumThickness = 60
-        editorView = (splitViewItems.first!.viewController.view as! SyntaxTextView)
+//        editorView = (splitViewItems.first!.viewController.view as! SyntaxTextView)
 
-        editorView.theme = DefaultSourceCodeTheme()
+//        editorView.theme = DefaultSourceCodeTheme()
 //        SyntaxTextView.tintColor = Color(named: .white)
-        editorView.delegate = self
+//        editorView.delegate = self
         
         consoleView = {
             let scrollView = splitViewItems.last!.viewController.view as! NSScrollView

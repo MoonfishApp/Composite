@@ -1,10 +1,10 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 CODE_SIGN_IDENTITY =
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Sparkle" "${PODS_CONFIGURATION_BUILD_DIR}/Differ" "${PODS_CONFIGURATION_BUILD_DIR}/LibYAML" "${PODS_CONFIGURATION_BUILD_DIR}/SavannaKit" "${PODS_CONFIGURATION_BUILD_DIR}/SourceEditor" "${PODS_CONFIGURATION_BUILD_DIR}/WFColorCode" "${PODS_CONFIGURATION_BUILD_DIR}/YAML-Framework"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Sparkle" "${PODS_CONFIGURATION_BUILD_DIR}/Differ" "${PODS_CONFIGURATION_BUILD_DIR}/LibYAML" "${PODS_CONFIGURATION_BUILD_DIR}/WFColorCode" "${PODS_CONFIGURATION_BUILD_DIR}/YAML-Framework"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = @loader_path/../Frameworks $(inherited) '@executable_path/../Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -DHAVE_CONFIG_H -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Differ/Differ.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/LibYAML/LibYAML.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SavannaKit/SavannaKit.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SourceEditor/SourceEditor.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/WFColorCode/ColorCode.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/YAML-Framework/YAML_Framework.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "ColorCode" -framework "Differ" -framework "LibYAML" -framework "SavannaKit" -framework "SourceEditor" -framework "Sparkle" -framework "YAML_Framework"
+OTHER_CFLAGS = $(inherited) -DHAVE_CONFIG_H -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Differ/Differ.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/LibYAML/LibYAML.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/WFColorCode/ColorCode.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/YAML-Framework/YAML_Framework.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "ColorCode" -framework "Differ" -framework "LibYAML" -framework "Sparkle" -framework "YAML_Framework"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

@@ -145,8 +145,6 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Differ/Differ.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LibYAML/LibYAML.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SavannaKit/SavannaKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SourceEditor/SourceEditor.framework"
   install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
   install_dsym "${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM"
   install_framework "${BUILT_PRODUCTS_DIR}/WFColorCode/ColorCode.framework"
@@ -155,8 +153,6 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Differ/Differ.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LibYAML/LibYAML.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SavannaKit/SavannaKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SourceEditor/SourceEditor.framework"
   install_framework "${PODS_ROOT}/Sparkle/Sparkle.framework"
   install_dsym "${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM"
   install_framework "${BUILT_PRODUCTS_DIR}/WFColorCode/ColorCode.framework"

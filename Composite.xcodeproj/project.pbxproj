@@ -43,6 +43,7 @@
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
+		C79A6A9021ED98B5007FB630 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C79A6A8F21ED98B5007FB630 /* Info.plist */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
@@ -73,9 +74,7 @@
 		C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9A22112945D005A8FE2 /* Document.swift */; };
 		C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A42112945F005A8FE2 /* Assets.xcassets */; };
 		C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A62112945F005A8FE2 /* Edit.storyboard */; settings = {ASSET_TAGS = (EditWindow, ); }; };
-		C7F0B9BF2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9BD2112C3CA005A8FE2 /* SolidityLexer.swift */; };
 		C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */; };
-		C7F0B9C42113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +130,7 @@
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallToolchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
+		C79A6A8F21ED98B5007FB630 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -163,13 +163,10 @@
 		C7F0B9A22112945D005A8FE2 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		C7F0B9A42112945F005A8FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7F0B9A72112945F005A8FE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Edit.storyboard; sourceTree = "<group>"; };
-		C7F0B9A92112945F005A8FE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SCE-Mac/Info.plist"; sourceTree = "<group>"; };
 		C7F0B9AA2112945F005A8FE2 /* SCE_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SCE_Mac.entitlements; sourceTree = "<group>"; };
 		C7F0B9AF2112945F005A8FE2 /* CompositeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompositeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B9B32112945F005A8FE2 /* CompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeTests.swift; sourceTree = "<group>"; };
-		C7F0B9BD2112C3CA005A8FE2 /* SolidityLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidityLexer.swift; sourceTree = "<group>"; };
 		C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
-		C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitViewController+SyntaxTextViewDelegate.swift"; sourceTree = "<group>"; };
 		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Composite.release.xcconfig"; path = "Pods/Target Support Files/Pods-Composite/Pods-Composite.release.xcconfig"; sourceTree = "<group>"; };
 		F81936C3214C6F2F00C3222B /* uninstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = uninstall.command; sourceTree = "<group>"; };
@@ -336,14 +333,12 @@
 				C72FEB8321E93FEF000EF3C7 /* Console */,
 				C7E76436211EC16300867DA4 /* EditWindowController.swift */,
 				C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */,
-				C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */,
 				C7E7645E2128F04800867DA4 /* OutputViewController.swift */,
 				C7E76462212936E300867DA4 /* FileBrowserViewController.swift */,
 				C7E76466212937F100867DA4 /* FileItem.swift */,
 				C7F0B9A62112945F005A8FE2 /* Edit.storyboard */,
 				C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */,
 				C7050A342166FBC9003DDA2B /* LanguageServer.swift */,
-				C7F0B9BD2112C3CA005A8FE2 /* SolidityLexer.swift */,
 			);
 			path = DocumentWindow;
 			sourceTree = "<group>";
@@ -355,7 +350,7 @@
 				C7A8FDBA212E9EBB005E20AC /* Main.storyboard */,
 				C7F0B9A42112945F005A8FE2 /* Assets.xcassets */,
 				C7F0B9AA2112945F005A8FE2 /* SCE_Mac.entitlements */,
-				C7F0B9A92112945F005A8FE2 /* Info.plist */,
+				C79A6A8F21ED98B5007FB630 /* Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -589,6 +584,7 @@
 				C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
 				C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */,
+				C79A6A9021ED98B5007FB630 /* Info.plist in Resources */,
 				C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,8 +608,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Composite/Pods-Composite-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Differ/Differ.framework",
 				"${BUILT_PRODUCTS_DIR}/LibYAML/LibYAML.framework",
-				"${BUILT_PRODUCTS_DIR}/SavannaKit/SavannaKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SourceEditor/SourceEditor.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/WFColorCode/ColorCode.framework",
@@ -623,8 +617,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differ.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LibYAML.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SavannaKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SourceEditor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorCode.framework",
@@ -700,7 +692,6 @@
 				C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */,
 				C7E764422122AC2100867DA4 /* Template.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
-				C7F0B9BF2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
 				C7050A0A215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */,
 				C70509E72155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
 				C7E7643A21214D4600867DA4 /* ChooseTemplateViewController.swift in Sources */,
@@ -714,7 +705,6 @@
 				C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */,
 				C70509EA2155B486003DDA2B /* DependencyState.swift in Sources */,
 				C7E76448212358A900867DA4 /* ProjectInitViewController.swift in Sources */,
-				C7F0B9C42113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift in Sources */,
 				C7050A04215A174E003DDA2B /* UserDefaults.swift in Sources */,
 				C711F5B821DF50EB005EBC5D /* CopyFile.swift in Sources */,
 				C711F5D321E13A45005EBC5D /* BashOperation.swift in Sources */,
