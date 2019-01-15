@@ -58,7 +58,7 @@ class ProjectInitViewController: NSViewController {
                                     alert.runModal()
                                 }
 
-                                if let document = document as? Document, let editWindowController = document.editWindowController {
+                                if let document = document as? ProjectDocument, let editWindowController = document.editWindowController {
                                     editWindowController.setConsole(self.textView.string)
                                     //                            editWindowController.project = self.projectDirectoryCreator.project
                                 }

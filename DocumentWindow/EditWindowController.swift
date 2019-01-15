@@ -20,7 +20,7 @@ class EditWindowController: NSWindowController {
             // Load file browser and open last opened file
             var lastOpenFile: URL? = nil
             if let file = project?.lastOpenFile {
-                lastOpenFile = (document as! Document).workDirectory.appendingPathComponent(file)
+                lastOpenFile = (document as! ProjectDocument).workDirectory.appendingPathComponent(file)
             }
             
             loadBrowser(select: lastOpenFile?.path)
@@ -31,7 +31,7 @@ class EditWindowController: NSWindowController {
     }
     
     var project: Project? {
-        guard let document = self.document as? Document else { return nil }
+        guard let document = self.document as? ProjectDocument else { return nil }
         return document.project
     }
     
@@ -58,7 +58,7 @@ class EditWindowController: NSWindowController {
 //    }
     
     func loadBrowser(select item: String? = nil) {
-        guard let project = project, let document = document as? Document else { return }
+        guard let project = project, let document = document as? ProjectDocument else { return }
         window?.title = project.name        
         do {
             try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)

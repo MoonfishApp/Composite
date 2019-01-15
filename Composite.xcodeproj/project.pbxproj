@@ -44,6 +44,7 @@
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
 		C79A6A9021ED98B5007FB630 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C79A6A8F21ED98B5007FB630 /* Info.plist */; };
+		C79A6A9421EE69B8007FB630 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6A9321EE69B8007FB630 /* Document.swift */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
@@ -71,7 +72,7 @@
 		C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* TRC20.sol */; };
 		C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */; };
 		C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */; };
-		C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9A22112945D005A8FE2 /* Document.swift */; };
+		C7F0B9A32112945D005A8FE2 /* ProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */; };
 		C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A42112945F005A8FE2 /* Assets.xcassets */; };
 		C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A62112945F005A8FE2 /* Edit.storyboard */; settings = {ASSET_TAGS = (EditWindow, ); }; };
 		C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */; };
@@ -131,6 +132,7 @@
 		C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallToolchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
 		C79A6A8F21ED98B5007FB630 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		C79A6A9321EE69B8007FB630 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +162,7 @@
 		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
 		C7F0B99C2112945C005A8FE2 /* Composite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Composite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C7F0B9A22112945D005A8FE2 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDocument.swift; sourceTree = "<group>"; };
 		C7F0B9A42112945F005A8FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7F0B9A72112945F005A8FE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Edit.storyboard; sourceTree = "<group>"; };
 		C7F0B9AA2112945F005A8FE2 /* SCE_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SCE_Mac.entitlements; sourceTree = "<group>"; };
@@ -222,7 +224,8 @@
 		C70509D521541C6F003DDA2B /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				C7F0B9A22112945D005A8FE2 /* Document.swift */,
+				C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */,
+				C79A6A9321EE69B8007FB630 /* Document.swift */,
 				C7E7645A21262D1800867DA4 /* Project.swift */,
 				C7DDD74F2140B68C00674942 /* Platform.swift */,
 				C7E4AFB22175BA4800D5716B /* EditorInterface.swift */,
@@ -678,6 +681,7 @@
 				C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */,
 				C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */,
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
+				C79A6A9421EE69B8007FB630 /* Document.swift in Sources */,
 				C7E4AFB42175BA4800D5716B /* EditorInterface.swift in Sources */,
 				C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */,
 				C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */,
@@ -689,7 +693,7 @@
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
 				C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */,
 				C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */,
-				C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */,
+				C7F0B9A32112945D005A8FE2 /* ProjectDocument.swift in Sources */,
 				C7E764422122AC2100867DA4 /* Template.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
 				C7050A0A215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */,
