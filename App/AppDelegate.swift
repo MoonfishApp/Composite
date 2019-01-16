@@ -40,16 +40,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //    }
     
     func showInstallWizard() {
-        let installToolchainStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "InstallToolchain"), bundle: nil)
+        let installToolchainStoryboard = NSStoryboard(name: NSStoryboard.Name("InstallToolchain"), bundle: nil)
         let installWizard = installToolchainStoryboard.instantiateInitialController() as? NSWindowController
         installWizard?.showWindow(self)
     }
     
     @IBAction func showChooseTemplate(_ sender: Any) {
-        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Template"), bundle: nil)
+        let storyboard = NSStoryboard(name: NSStoryboard.Name("Template"), bundle: nil)
         let templateController = storyboard.instantiateInitialController() as? NSWindowController
         templateController?.showWindow(sender)
     }
     
 }
 
+// CotEditor extension
+extension AppDelegate {
+    
+    /// open a specific page in Help contents
+    @IBAction func openHelpAnchor(_ sender: AnyObject) {
+        
+        guard let identifier = (sender as? NSUserInterfaceItemIdentification)?.identifier else { return assertionFailure() }
+        
+        NSHelpManager.shared.openHelpAnchor(identifier.rawValue, inBook: Bundle.main.helpBookName)
+    }
+    
+    
+}

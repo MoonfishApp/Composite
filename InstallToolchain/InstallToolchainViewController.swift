@@ -132,7 +132,7 @@ class InstallToolchainViewController: NSViewController {
     private func configurePlatformCollectionView() {
         view.wantsLayer = true
         
-        let nib = NSNib(nibNamed: NSNib.Name(rawValue: "PlatformCollectionViewItem"), bundle: nil)
+        let nib = NSNib(nibNamed: NSNib.Name("PlatformCollectionViewItem"), bundle: nil)
         platformCollectionView.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("PlatformCollectionViewItem"))
         
         platformCollectionView.reloadData()
@@ -141,7 +141,7 @@ class InstallToolchainViewController: NSViewController {
     private func showDetailsFor(_ item: DependencyFrameworkViewModel) {
         detailLabel.stringValue = item.name.capitalizedFirstChar()
         detailInfoLabel.stringValue = item.description
-        detailImageView.image = NSImage(named: NSImage.Name(rawValue: item.name))
+        detailImageView.image = NSImage(named: NSImage.Name(item.name))
         detailMoreInfoButton.alternateTitle = item.projectUrl
         detailMoreInfoButton.isHidden = false
         detailDocumentationButton.alternateTitle = item.documentationUrl
@@ -421,7 +421,7 @@ extension InstallToolchainViewController: NSCollectionViewDataSource {
         
         let platform = platforms[indexPath.item]
         cell.platformLabel.stringValue = platform.platform.description
-        cell.logoImageView.image = NSImage(named: NSImage.Name(rawValue: platform.platform.description))
+        cell.logoImageView.image = NSImage(named: NSImage.Name(platform.platform.description))
         return cell
     }
 }

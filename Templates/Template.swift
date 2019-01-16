@@ -47,7 +47,7 @@ struct Template: Codable {
     
     var image: NSImage {
         let name = imageName.isEmpty ? "Doc" : imageName
-        return NSImage(named: NSImage.Name(rawValue: name)) ?? NSImage()
+        return NSImage(named: NSImage.Name(name)) ?? NSImage()
     }
 }
 

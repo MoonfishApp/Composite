@@ -1,0 +1,159 @@
+extensions:
+- keyString: "sol"
+
+filenames: []
+
+metadata:
+  author: "ronaldmannak"
+  distributionURL: "https://coteditor.com"
+  version: "0.5"
+  license: "Same as CotEditor"
+  lastModified: "2019-01-11"
+
+outlineMenu:
+- beginString: "^([\\t ]*)(function)([^{]*)\\{"
+  keyString: "$1$2 : $3"
+  description: "function"
+- beginString: "^([\\t ]*)(constructor)([^{]*)\\{"
+  keyString: "$1$2$3"
+  description: "constructor"
+- beginString: "^([\\t ]*)contract +(\\w+)[\\t ]+(is[\\t ](.+?)(\\{|$))?"
+  bold: true
+  description: "contract"
+  keyString: "Contract $1$2 inherits from $4"
+
+keywords:
+#control
+- beginString: "if"
+- beginString: "else"
+- beginString: "for"
+- beginString: "while"
+- beginString: "do"
+- beginString: "break"
+- beginString: "continue"
+- beginString: "throw"
+- beginString: "returns"
+
+- beginString: "using"
+- beginString: "import"
+- beginString: "pragma"
+
+- beginString: "new"
+- beginString: "delete"
+- beginString: "emit"
+
+- beginString: "contract"
+- beginString: "is"
+- beginString: "interface"
+- beginString: "library"
+
+- beginString: "struct"
+- beginString: "event"
+- beginString: "constructor"
+- beginString: "enum"
+- beginString: "function"
+- beginString: "modifier"
+- beginString: "mapping"
+- beginString: "let"
+- beginString: "return"
+
+commands:
+# generic command match
+- beginString: "\\b([A-Za-z_]\\w*)\\s*(?=\\()"
+  regularExpression: true
+
+- beginString: "\\b(require|assert|revert)\\b"
+  regularExpression: true
+- beginString: "\\b(selfdestruct|suicide)\\b"
+  regularExpression: true
+
+attributes:
+- beginString: "public"
+- beginString: "private"
+
+- beginString: "internal"
+- beginString: "external"
+
+- beginString: "pure"
+- beginString: "constant"
+- beginString: "view"
+- beginString: "payable"
+- beginString: "nonpayable"
+- beginString: "inherited"
+- beginString: "indexed"
+- beginString: "storage"
+- beginString: "memory"
+
+types:
+- beginString: "address"
+- beginString: "string"
+- beginString: "bool"
+- beginString: "bytes([1-9]|[12][0-9]|3[012])?\\b"
+  regularExpression: true
+- beginString: "int\\d*"
+  regularExpression: true
+- beginString: "uint\\d*"
+  regularExpression: true
+- beginString: "assembly"
+
+variables:
+- beginString: "this"
+- beginString: "super"
+- beginString: "msg"
+- beginString: "block"
+- beginString: "tx"
+- beginString: "abi"
+- beginString: "0x[a-fA-F0-9]{40}$"
+  ignoreCase: true
+  regularExpression: true
+
+values:
+- beginString: "true"
+- beginString: "false"
+- beginString: "ether"
+- beginString: "wei"
+- beginString: "finney"
+- beginString: "szabo"
+- beginString: "seconds"
+- beginString: "minutes"
+- beginString: "hours"
+- beginString: "days"
+- beginString: "weeks"
+- beginString: "years"
+
+characters:
+- beginString: ";"
+- beginString: "."
+- beginString: ","
+- beginString: "=>"
+
+comments:
+- beginString: "^#\\!/.*"
+  regularExpression: true
+
+commentDelimiters:
+endDelimiter: "*/"
+beginDelimiter: "/*"
+inlineDelimiter: "//"
+
+strings:
+- beginString: "\""
+  endString: "\""
+- beginString: "'"
+  endString: "'"
+- beginString: "`"
+  endString: "`"
+
+numbers:
+# decimal
+- beginString: "\\b(\\d+(\\.\\d+)?)\\b"
+  regularExpression: true
+
+# hex
+- beginString: "\\b0x[0-9a-f]+\\b"
+  ignoreCase: true
+  regularExpression: true
+
+completions:
+- keyString: "contract"
+- keyString: "struct"

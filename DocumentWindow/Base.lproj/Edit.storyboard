@@ -120,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Composite Split View Controller-->
         <scene sceneID="kDy-U8-NMt">
             <objects>
-                <splitViewController id="1xm-ZM-p0a" customClass="SplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="1xm-ZM-p0a" customClass="CompositeSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="bE7-yh-TUg"/>
                         <splitViewItem id="zsm-C8-pvE"/>

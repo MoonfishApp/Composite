@@ -207,7 +207,7 @@ class ChooseTemplateViewController: NSViewController {
                 alert.runModal()
             }
             
-            let id = NSStoryboardSegue.Identifier(rawValue: "ProjectInitSegue")
+            let id = NSStoryboardSegue.Identifier("ProjectInitSegue")
             self.performSegue(withIdentifier: id, sender: self)
         }
     }
@@ -246,7 +246,7 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     
     fileprivate func configureTemplateView() {
         view.wantsLayer = true
-        let nib = NSNib(nibNamed: NSNib.Name(rawValue: "TemplateCollectionViewItem"), bundle: nil)
+        let nib = NSNib(nibNamed: NSNib.Name("TemplateCollectionViewItem"), bundle: nil)
         templateCollectionView.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
     }
     

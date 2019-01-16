@@ -36,15 +36,15 @@ class EditWindowController: NSWindowController {
     }
     
     var consoleTextView: NSTextView {
-        return (self.window?.contentViewController?.childViewControllers[1] as! SplitViewController).consoleView
+        return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
     }
     
     var fileBrowserViewController: FileBrowserViewController {
-        return (self.window?.contentViewController! as! NSSplitViewController).childViewControllers[0] as! FileBrowserViewController
+        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileBrowserViewController
     }
     
 //    private var editView: SyntaxTextView {
-//        return (self.window?.contentViewController?.childViewControllers[1] as! SplitViewController).editorView
+//        return (self.window?.contentViewController?.childViewControllers[1] as! CompositeSplitViewController).editorView
 //    }
 
     override func windowDidLoad() {
