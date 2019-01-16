@@ -47,7 +47,7 @@ end
 
 map = {}
 
-Find.find('Syntaxes') do |path|
+Find.find('cotEditor/Resources/Syntaxes') do |path|
     next unless (File.extname(path) == '.yaml')  # skip if not YAML
     
     style = YAML.load_file(path)
@@ -60,4 +60,4 @@ Find.find('Syntaxes') do |path|
     }
 end
 
-File.write('SyntaxMap.json', JSON.pretty_generate(map))
+File.write('cotEditor/Resources/SyntaxMap.json', JSON.pretty_generate(map))

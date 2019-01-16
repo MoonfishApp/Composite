@@ -51,6 +51,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         templateController?.showWindow(sender)
     }
     
+    
+    override init() {
+        
+        // register default setting values
+        let defaults = DefaultSettings.defaults.mapKeys { $0.rawValue }
+        UserDefaults.standard.register(defaults: defaults)
+        NSUserDefaultsController.shared.initialValues = defaults
+        
+        // instantiate DocumentController
+        _ = DocumentController.shared
+        
+        // wake text finder up
+        _ = TextFinder.shared
+        
+        // register transformers
+        ValueTransformer.setValueTransformer(HexColorTransformer(), forName: HexColorTransformer.name)
+        
+        super.init()
+    }
+    
 }
 
 // CotEditor extension
@@ -63,6 +83,7 @@ extension AppDelegate {
         
         NSHelpManager.shared.openHelpAnchor(identifier.rawValue, inBook: Bundle.main.helpBookName)
     }
+
     
     
 }

@@ -315,7 +315,7 @@
 		C79A75E121EEF0AF007FB630 /* MultipleReplacementPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75DD21EEF0AF007FB630 /* MultipleReplacementPanelController.swift */; };
 		C79A75E221EEF230007FB630 /* PrintPanelAccessoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BEC21EE9AA8007FB630 /* PrintPanelAccessoryController.swift */; };
 		C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E321EEF5C1007FB630 /* MainMenu.swift */; };
-		C79A75E621EEF706007FB630 /* SyntaxMap.json in Resources */ = {isa = PBXBuildFile; fileRef = C79A75E521EEF706007FB630 /* SyntaxMap.json */; };
+		C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */ = {isa = PBXBuildFile; fileRef = C79A75E721EEF943007FB630 /* SyntaxMap.json */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
@@ -675,7 +675,7 @@
 		C79A75DC21EEF0AF007FB630 /* MultipleReplacementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleReplacementViewController.swift; sourceTree = "<group>"; };
 		C79A75DD21EEF0AF007FB630 /* MultipleReplacementPanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleReplacementPanelController.swift; sourceTree = "<group>"; };
 		C79A75E321EEF5C1007FB630 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		C79A75E521EEF706007FB630 /* SyntaxMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SyntaxMap.json; sourceTree = SOURCE_ROOT; };
+		C79A75E721EEF943007FB630 /* SyntaxMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SyntaxMap.json; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -1415,7 +1415,7 @@
 		C79A6D2521EE9C89007FB630 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C79A75E521EEF706007FB630 /* SyntaxMap.json */,
+				C79A75E721EEF943007FB630 /* SyntaxMap.json */,
 				C79A6D2921EE9CBA007FB630 /* Storyboards */,
 				C79A759B21EEE4E9007FB630 /* Syntaxes */,
 				C79A6D2721EE9CB7007FB630 /* Themes */,
@@ -1824,7 +1824,7 @@
 				C79A6D4C21EE9DEC007FB630 /* PatternSortView.storyboard in Resources */,
 				C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */,
 				C711F5CF21E0887A005EBC5D /* TRC721.sol in Resources */,
-				C79A75E621EEF706007FB630 /* SyntaxMap.json in Resources */,
+				C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */,
 				C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */,
 				C79A6D4021EE9DAC007FB630 /* EditorView.storyboard in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,

@@ -763,7 +763,7 @@ final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
         // [caution] This method may be called from a background thread due to concurrent-opening.
         // This method won't be invoked on Resume. (2015-01-26)
         
-        ScriptManager.shared.dispatchEvent(documentOpened: self)
+//        ScriptManager.shared.dispatchEvent(documentOpened: self)
     }
     
     
