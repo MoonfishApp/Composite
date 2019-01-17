@@ -43,7 +43,6 @@
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
-		C79A6A9021ED98B5007FB630 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C79A6A8F21ED98B5007FB630 /* Info.plist */; };
 		C79A6B6221EE9865007FB630 /* SettingFileManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6021EE9865007FB630 /* SettingFileManaging.swift */; };
 		C79A6B6321EE9865007FB630 /* SettingManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6121EE9865007FB630 /* SettingManaging.swift */; };
 		C79A6B6821EE986E007FB630 /* ReplacementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6421EE986D007FB630 /* ReplacementManager.swift */; };
@@ -1745,7 +1744,7 @@
 					EditWindow,
 				);
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "A Puzzle A Day";
 				TargetAttributes = {
 					C7F0B99B2112945C005A8FE2 = {
@@ -1854,7 +1853,6 @@
 				C79A758721EEDDAF007FB630 /* Pulse.cottheme in Resources */,
 				C79A759021EEDDAF007FB630 /* Note.cottheme in Resources */,
 				C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */,
-				C79A6A9021ED98B5007FB630 /* Info.plist in Resources */,
 				C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */,
 				C79A758E21EEDDAF007FB630 /* Printen.cottheme in Resources */,
 			);
@@ -2296,6 +2294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2356,6 +2355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
