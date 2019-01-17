@@ -317,6 +317,7 @@
 		C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E321EEF5C1007FB630 /* MainMenu.swift */; };
 		C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */ = {isa = PBXBuildFile; fileRef = C79A75E721EEF943007FB630 /* SyntaxMap.json */; };
 		C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E921F01517007FB630 /* ProjectToolbarController.swift */; };
+		C79A75EC21F06413007FB630 /* ProjectWindowContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75EB21F06413007FB630 /* ProjectWindowContentViewController.swift */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
@@ -678,6 +679,7 @@
 		C79A75E321EEF5C1007FB630 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C79A75E721EEF943007FB630 /* SyntaxMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SyntaxMap.json; sourceTree = "<group>"; };
 		C79A75E921F01517007FB630 /* ProjectToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectToolbarController.swift; sourceTree = "<group>"; };
+		C79A75EB21F06413007FB630 /* ProjectWindowContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindowContentViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -766,16 +768,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C70509D521541C6F003DDA2B /* Project Document */ = {
+		C70509D521541C6F003DDA2B /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */,
-				C7E7645A21262D1800867DA4 /* Project.swift */,
-				C7DDD74F2140B68C00674942 /* Platform.swift */,
-				C7E4AFB22175BA4800D5716B /* EditorInterface.swift */,
-				C7050A312166E4F8003DDA2B /* EditorInterface.plist */,
+				C79A6B8F21EE9961007FB630 /* DocumentController.swift */,
+				C79A75ED21F066AC007FB630 /* Project Document */,
+				C79A75EE21F066D2007FB630 /* Text Document */,
 			);
-			path = "Project Document";
+			path = Documents;
 			sourceTree = "<group>";
 		};
 		C7050A892169388D003DDA2B /* Celer */ = {
@@ -879,6 +879,7 @@
 				C72FEB8421E93FFC000EF3C7 /* Inspectors */,
 				C72FEB8321E93FEF000EF3C7 /* Console */,
 				C7E76436211EC16300867DA4 /* ProjectWindowController.swift */,
+				C79A75EB21F06413007FB630 /* ProjectWindowContentViewController.swift */,
 				C79A75E921F01517007FB630 /* ProjectToolbarController.swift */,
 				C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */,
 				C7E7645E2128F04800867DA4 /* OutputViewController.swift */,
@@ -905,8 +906,10 @@
 		C72FEB8221E7E945000EF3C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C7DDD74F2140B68C00674942 /* Platform.swift */,
 				C7E7645C212675AF00867DA4 /* Error.swift */,
-				C70509D521541C6F003DDA2B /* Project Document */,
+				C7E4AFB22175BA4800D5716B /* EditorInterface.swift */,
+				C7050A312166E4F8003DDA2B /* EditorInterface.plist */,
 				C7A8FDBD212F2030005E20AC /* Frameworks */,
 			);
 			path = Models;
@@ -949,7 +952,6 @@
 				C79A6B5D21EE9836007FB630 /* Managers */,
 				C79A6B0B21EE9467007FB630 /* Preferences */,
 				C79A6B8221EE98F9007FB630 /* Text Finder */,
-				C79A6B8821EE993D007FB630 /* Document */,
 				C79A6B8421EE992C007FB630 /* Document Window */,
 				C79A6B8721EE993B007FB630 /* Text View */,
 				C79A6B8621EE993A007FB630 /* Views */,
@@ -1153,26 +1155,6 @@
 				C79A6C0321EE9AC1007FB630 /* TextSizeTouchBar.swift */,
 			);
 			path = "Text View";
-			sourceTree = "<group>";
-		};
-		C79A6B8821EE993D007FB630 /* Document */ = {
-			isa = PBXGroup;
-			children = (
-				C79A6B9121EE9962007FB630 /* Document.swift */,
-				C79A6B9321EE9962007FB630 /* Document+ScriptingSupport.swift */,
-				C79A6B8C21EE9961007FB630 /* DocumentAnalyzer.swift */,
-				C79A6B8F21EE9961007FB630 /* DocumentController.swift */,
-				C79A6B9421EE9962007FB630 /* DocumentFile.swift */,
-				C79A6B8921EE9961007FB630 /* Editable.swift */,
-				C79A6B8E21EE9961007FB630 /* EditorInfoCountOperation.swift */,
-				C79A6B9221EE9962007FB630 /* IncompatibleCharacter.swift */,
-				C79A6B9021EE9961007FB630 /* IncompatibleCharacterScanner.swift */,
-				C79A6B9521EE9962007FB630 /* NSDocument+SharingService.swift */,
-				C79A6B8B21EE9961007FB630 /* OpenPanelAccessoryController.swift */,
-				C79A6B8A21EE9961007FB630 /* ShareMenuItem.swift */,
-				C79A6B8D21EE9961007FB630 /* TextSelection.swift */,
-			);
-			path = Document;
 			sourceTree = "<group>";
 		};
 		C79A6BA721EE9981007FB630 /* Print */ = {
@@ -1606,6 +1588,34 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
+		C79A75ED21F066AC007FB630 /* Project Document */ = {
+			isa = PBXGroup;
+			children = (
+				C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */,
+				C7E7645A21262D1800867DA4 /* Project.swift */,
+			);
+			path = "Project Document";
+			sourceTree = "<group>";
+		};
+		C79A75EE21F066D2007FB630 /* Text Document */ = {
+			isa = PBXGroup;
+			children = (
+				C79A6B9121EE9962007FB630 /* Document.swift */,
+				C79A6B9321EE9962007FB630 /* Document+ScriptingSupport.swift */,
+				C79A6B8C21EE9961007FB630 /* DocumentAnalyzer.swift */,
+				C79A6B9421EE9962007FB630 /* DocumentFile.swift */,
+				C79A6B8921EE9961007FB630 /* Editable.swift */,
+				C79A6B8E21EE9961007FB630 /* EditorInfoCountOperation.swift */,
+				C79A6B9221EE9962007FB630 /* IncompatibleCharacter.swift */,
+				C79A6B9021EE9961007FB630 /* IncompatibleCharacterScanner.swift */,
+				C79A6B9521EE9962007FB630 /* NSDocument+SharingService.swift */,
+				C79A6B8B21EE9961007FB630 /* OpenPanelAccessoryController.swift */,
+				C79A6B8A21EE9961007FB630 /* ShareMenuItem.swift */,
+				C79A6B8D21EE9961007FB630 /* TextSelection.swift */,
+			);
+			path = "Text Document";
+			sourceTree = "<group>";
+		};
 		C7A8FDBD212F2030005E20AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1653,6 +1663,7 @@
 				C72FEB7E21E7E6AB000EF3C7 /* Templates */,
 				C72FEB8021E7E6C4000EF3C7 /* DocumentWindow */,
 				C79A6ACF21EE75A3007FB630 /* cotEditor */,
+				C70509D521541C6F003DDA2B /* Documents */,
 				C72FEB8221E7E945000EF3C7 /* Models */,
 				C7DDD751214100C800674942 /* Extensions */,
 				C7E764512124FA0200867DA4 /* unused */,
@@ -1988,6 +1999,7 @@
 				C79A6C1221EE9AC1007FB630 /* EditorTextView+Scaling.swift in Sources */,
 				C79A6B9721EE9962007FB630 /* ShareMenuItem.swift in Sources */,
 				C79A6BA221EE9962007FB630 /* NSDocument+SharingService.swift in Sources */,
+				C79A75EC21F06413007FB630 /* ProjectWindowContentViewController.swift in Sources */,
 				C72FEA9E21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */,
 				C79A6BC421EE9A64007FB630 /* OutlineViewController.swift in Sources */,
 				C79A75D721EEF0A6007FB630 /* MultipleReplacement.swift in Sources */,

@@ -14,6 +14,15 @@ class CompositeSplitViewController: NSSplitViewController {
 //    var editorView: SyntaxTextView!
     var consoleView: NSTextView!
     
+    override var representedObject: Any? {
+        
+        didSet {
+            for viewController in self.children {
+                viewController.representedObject = representedObject
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
