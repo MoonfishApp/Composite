@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		084FBDD1196536CA5F0CD35E /* Pods_Composite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A0B5A92EE307299A3136A6 /* Pods_Composite.framework */; };
 		572BC5C4D719830BD6FD93C9 /* Pods_CompositeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */; };
-		6F1A3BDD2371DB2730951110 /* Pods_SCE_MacTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4FA972095B5D6274482826 /* Pods_SCE_MacTests.framework */; };
 		C70509D4214D97A8003DDA2B /* DependencyFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D2214D97A8003DDA2B /* DependencyFramework.swift */; };
 		C70509E72155B47B003DDA2B /* DependencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509E52155B47B003DDA2B /* DependencyViewModel.swift */; };
 		C70509EA2155B486003DDA2B /* DependencyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509E82155B486003DDA2B /* DependencyState.swift */; };
@@ -316,7 +315,13 @@
 		C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E321EEF5C1007FB630 /* MainMenu.swift */; };
 		C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */ = {isa = PBXBuildFile; fileRef = C79A75E721EEF943007FB630 /* SyntaxMap.json */; };
 		C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E921F01517007FB630 /* ProjectToolbarController.swift */; };
-		C79A75EC21F06413007FB630 /* ProjectWindowContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75EB21F06413007FB630 /* ProjectWindowContentViewController.swift */; };
+		C79A75EC21F06413007FB630 /* ProjectContentSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */; };
+		C7A584E621F0F8E50097B761 /* NavigatorTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A584E521F0F8E50097B761 /* NavigatorTabViewController.swift */; };
+		C7A584E821F0F8FC0097B761 /* InspectorTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A584E721F0F8FC0097B761 /* InspectorTabViewController.swift */; };
+		C7A584EA21F0F9E90097B761 /* CompositeEditorSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A584E921F0F9E90097B761 /* CompositeEditorSplitViewController.swift */; };
+		C7A584EC21F0FADC0097B761 /* CompositeEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584EB21F0FADC0097B761 /* CompositeEditor.storyboard */; };
+		C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584ED21F0FAE70097B761 /* Navigators.storyboard */; };
+		C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
@@ -346,7 +351,7 @@
 		C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */; };
 		C7F0B9A32112945D005A8FE2 /* ProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */; };
 		C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A42112945F005A8FE2 /* Assets.xcassets */; };
-		C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A62112945F005A8FE2 /* Edit.storyboard */; settings = {ASSET_TAGS = (EditWindow, ); }; };
+		C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */; settings = {ASSET_TAGS = (EditWindow, ); }; };
 		C7F0B9C22113CF7E005A8FE2 /* CompositeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
@@ -678,7 +683,13 @@
 		C79A75E321EEF5C1007FB630 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C79A75E721EEF943007FB630 /* SyntaxMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SyntaxMap.json; sourceTree = "<group>"; };
 		C79A75E921F01517007FB630 /* ProjectToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectToolbarController.swift; sourceTree = "<group>"; };
-		C79A75EB21F06413007FB630 /* ProjectWindowContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindowContentViewController.swift; sourceTree = "<group>"; };
+		C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectContentSplitViewController.swift; sourceTree = "<group>"; };
+		C7A584E521F0F8E50097B761 /* NavigatorTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorTabViewController.swift; sourceTree = "<group>"; };
+		C7A584E721F0F8FC0097B761 /* InspectorTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorTabViewController.swift; sourceTree = "<group>"; };
+		C7A584E921F0F9E90097B761 /* CompositeEditorSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeEditorSplitViewController.swift; sourceTree = "<group>"; };
+		C7A584EB21F0FADC0097B761 /* CompositeEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompositeEditor.storyboard; sourceTree = "<group>"; };
+		C7A584ED21F0FAE70097B761 /* Navigators.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Navigators.storyboard; sourceTree = "<group>"; };
+		C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inspectors.storyboard; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -710,7 +721,7 @@
 		C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDocument.swift; sourceTree = "<group>"; };
 		C7F0B9A42112945F005A8FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C7F0B9A72112945F005A8FE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Edit.storyboard; sourceTree = "<group>"; };
+		C7F0B9A72112945F005A8FE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ProjectWindow.storyboard; sourceTree = "<group>"; };
 		C7F0B9AA2112945F005A8FE2 /* SCE_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SCE_Mac.entitlements; sourceTree = "<group>"; };
 		C7F0B9AF2112945F005A8FE2 /* CompositeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompositeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B9B32112945F005A8FE2 /* CompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeTests.swift; sourceTree = "<group>"; };
@@ -735,7 +746,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F1A3BDD2371DB2730951110 /* Pods_SCE_MacTests.framework in Frameworks */,
 				572BC5C4D719830BD6FD93C9 /* Pods_CompositeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -870,23 +880,23 @@
 			path = Preferences;
 			sourceTree = "<group>";
 		};
-		C72FEB8021E7E6C4000EF3C7 /* DocumentWindow */ = {
+		C72FEB8021E7E6C4000EF3C7 /* ProjectWindow */ = {
 			isa = PBXGroup;
 			children = (
+				C7E76436211EC16300867DA4 /* ProjectWindowController.swift */,
+				C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */,
 				C72FEB8621E9400A000EF3C7 /* Editor */,
 				C72FEB8521E94005000EF3C7 /* Navigators */,
 				C72FEB8421E93FFC000EF3C7 /* Inspectors */,
 				C72FEB8321E93FEF000EF3C7 /* Console */,
-				C7E76436211EC16300867DA4 /* ProjectWindowController.swift */,
-				C79A75EB21F06413007FB630 /* ProjectWindowContentViewController.swift */,
 				C79A75E921F01517007FB630 /* ProjectToolbarController.swift */,
 				C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */,
 				C7E7645E2128F04800867DA4 /* OutputViewController.swift */,
-				C7F0B9A62112945F005A8FE2 /* Edit.storyboard */,
+				C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */,
 				C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */,
 				C7050A342166FBC9003DDA2B /* LanguageServer.swift */,
 			);
-			path = DocumentWindow;
+			path = ProjectWindow;
 			sourceTree = "<group>";
 		};
 		C72FEB8121E7E6ED000EF3C7 /* App */ = {
@@ -924,6 +934,8 @@
 		C72FEB8421E93FFC000EF3C7 /* Inspectors */ = {
 			isa = PBXGroup;
 			children = (
+				C7A584E721F0F8FC0097B761 /* InspectorTabViewController.swift */,
+				C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */,
 			);
 			path = Inspectors;
 			sourceTree = "<group>";
@@ -931,8 +943,10 @@
 		C72FEB8521E94005000EF3C7 /* Navigators */ = {
 			isa = PBXGroup;
 			children = (
+				C7A584E521F0F8E50097B761 /* NavigatorTabViewController.swift */,
 				C7E76462212936E300867DA4 /* FileNavigatorViewController.swift */,
 				C7E76466212937F100867DA4 /* FileItem.swift */,
+				C7A584ED21F0FAE70097B761 /* Navigators.storyboard */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -940,6 +954,11 @@
 		C72FEB8621E9400A000EF3C7 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				C7A584E921F0F9E90097B761 /* CompositeEditorSplitViewController.swift */,
+				C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */,
+				C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */,
+				C79A6BD221EE9A8B007FB630 /* LineNumberView.swift */,
+				C7A584EB21F0FADC0097B761 /* CompositeEditor.storyboard */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -1169,9 +1188,6 @@
 			isa = PBXGroup;
 			children = (
 				C79A6BCF21EE9A8B007FB630 /* EditorViewController.swift */,
-				C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */,
-				C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */,
-				C79A6BD221EE9A8B007FB630 /* LineNumberView.swift */,
 			);
 			path = "Editor Controller";
 			sourceTree = "<group>";
@@ -1660,9 +1676,9 @@
 				C72FEB7F21E7E6B7000EF3C7 /* Preferences */,
 				C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */,
 				C72FEB7E21E7E6AB000EF3C7 /* Templates */,
-				C72FEB8021E7E6C4000EF3C7 /* DocumentWindow */,
-				C79A6ACF21EE75A3007FB630 /* cotEditor */,
+				C72FEB8021E7E6C4000EF3C7 /* ProjectWindow */,
 				C70509D521541C6F003DDA2B /* Documents */,
+				C79A6ACF21EE75A3007FB630 /* cotEditor */,
 				C72FEB8221E7E945000EF3C7 /* Models */,
 				C7DDD751214100C800674942 /* Extensions */,
 				C7E764512124FA0200867DA4 /* unused */,
@@ -1801,10 +1817,12 @@
 				C79A758A21EEDDAF007FB630 /* Dendrobates (Dark).cottheme in Resources */,
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
+				C7A584EC21F0FADC0097B761 /* CompositeEditor.storyboard in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C79A6D4621EE9DD3007FB630 /* PrintPanelAccessory.storyboard in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
 				C7050A8C216938B1003DDA2B /* celer.sol in Resources */,
+				C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */,
 				C79A6D3C21EE9D9A007FB630 /* OutlineView.storyboard in Resources */,
 				C79A758D21EEDDAF007FB630 /* Lakritz.cottheme in Resources */,
 				C79A759321EEDDAF007FB630 /* Resinifictrix.cottheme in Resources */,
@@ -1814,6 +1832,7 @@
 				C79A74FC21EEDC8D007FB630 /* CharacterPopover.storyboard in Resources */,
 				C79A6D4421EE9DC9007FB630 /* SaveDocumentAccessory.storyboard in Resources */,
 				C79A759E21EEE532007FB630 /* makeSyntaxMap.rb in Resources */,
+				C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */,
 				C79A6D4221EE9DC0007FB630 /* OpenDocumentAccessory.storyboard in Resources */,
 				C79A758B21EEDDAF007FB630 /* _Plain.cottheme in Resources */,
 				C79A758F21EEDDAF007FB630 /* Kawazu.cottheme in Resources */,
@@ -1844,7 +1863,7 @@
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
 				C79A759121EEDDAF007FB630 /* Solarized (Dark).cottheme in Resources */,
-				C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */,
+				C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */,
 				C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */,
 				C79A6D3421EE9D73007FB630 /* FindPreferencesView.storyboard in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
@@ -1997,7 +2016,7 @@
 				C79A6C1221EE9AC1007FB630 /* EditorTextView+Scaling.swift in Sources */,
 				C79A6B9721EE9962007FB630 /* ShareMenuItem.swift in Sources */,
 				C79A6BA221EE9962007FB630 /* NSDocument+SharingService.swift in Sources */,
-				C79A75EC21F06413007FB630 /* ProjectWindowContentViewController.swift in Sources */,
+				C79A75EC21F06413007FB630 /* ProjectContentSplitViewController.swift in Sources */,
 				C72FEA9E21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */,
 				C79A6BC421EE9A64007FB630 /* OutlineViewController.swift in Sources */,
 				C79A75D721EEF0A6007FB630 /* MultipleReplacement.swift in Sources */,
@@ -2013,6 +2032,7 @@
 				C79A6C8C21EE9BD6007FB630 /* Tokenizer.swift in Sources */,
 				C79A6CFA21EE9C52007FB630 /* String+Indentation.swift in Sources */,
 				C79A6C2021EE9AF1007FB630 /* SwitcherSegmentedCell.swift in Sources */,
+				C7A584EA21F0F9E90097B761 /* CompositeEditorSplitViewController.swift in Sources */,
 				C79A6CE521EE9C52007FB630 /* Collection.swift in Sources */,
 				C79A6C1321EE9AC1007FB630 /* EditorTextView+CursorMovement.swift in Sources */,
 				C79A6CB521EE9C10007FB630 /* Debug.swift in Sources */,
@@ -2075,6 +2095,7 @@
 				C79A6CDE21EE9C52007FB630 /* Comparable.swift in Sources */,
 				C79A6C9421EE9BD6007FB630 /* LineEnding.swift in Sources */,
 				C79A6CE921EE9C52007FB630 /* Collection+Diff.swift in Sources */,
+				C7A584E821F0F8FC0097B761 /* InspectorTabViewController.swift in Sources */,
 				C79A6C0821EE9AC1007FB630 /* NSTextView+LineNumber.swift in Sources */,
 				C79A6D1421EE9C64007FB630 /* NSLayoutManager+Range.swift in Sources */,
 				C79A6C9621EE9BD6007FB630 /* FilePermissions.swift in Sources */,
@@ -2099,6 +2120,7 @@
 				C79A75C121EEF070007FB630 /* FindPanelResultViewController.swift in Sources */,
 				C79A6C3621EE9AFB007FB630 /* EncodingTableCellView.swift in Sources */,
 				C70509D4214D97A8003DDA2B /* DependencyFramework.swift in Sources */,
+				C7A584E621F0F8E50097B761 /* NavigatorTabViewController.swift in Sources */,
 				C79A75E221EEF230007FB630 /* PrintPanelAccessoryController.swift in Sources */,
 				C79A6B9F21EE9962007FB630 /* IncompatibleCharacter.swift in Sources */,
 				C79A6C1121EE9AC1007FB630 /* NSTextView+TextReplacement.swift in Sources */,
@@ -2279,12 +2301,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		C7F0B9A62112945F005A8FE2 /* Edit.storyboard */ = {
+		C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C7F0B9A72112945F005A8FE2 /* Base */,
 			);
-			name = Edit.storyboard;
+			name = ProjectWindow.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2465,14 +2487,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = QS2K96ZEMY;
-				INFOPLIST_FILE = "SCE-MacTests/Info.plist";
+				INFOPLIST_FILE = CompositeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "co.apuzzleaday.SCE-MacTests";
+				PRODUCT_BUNDLE_IDENTIFIER = app.composite.composite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
@@ -2490,14 +2512,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = QS2K96ZEMY;
-				INFOPLIST_FILE = "SCE-MacTests/Info.plist";
+				INFOPLIST_FILE = CompositeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = "co.apuzzleaday.SCE-MacTests";
+				PRODUCT_BUNDLE_IDENTIFIER = app.composite.composite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;

@@ -67,7 +67,10 @@ class ProjectDocument: NSDocument {
     
     override func makeWindowControllers() {
         // Returns the Storyboard that contains your Document window.
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Edit"), bundle: nil)
+        let storyboard = NSStoryboard(name: NSStoryboard.Name("ProjectWindow"), bundle: nil)
+        // Note: Changing the storyboard ID "EditWindow" in the storyboard to "ProjectWindow"
+        // somehow always get magically rolled back to "EditWindow" by Xcode. So "EditWindow"
+        // it is then for now
         let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditWindow")) as! ProjectWindowController
         self.addWindowController(windowController)
         

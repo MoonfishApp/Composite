@@ -1,5 +1,5 @@
 //
-//  ProjectWindowContentViewController.swift
+//  ProjectContentViewController.swift
 //  Composite
 //
 //  Created by Ronald "Danger" Mannak on 1/16/19.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ProjectWindowContentViewController: NSSplitViewController {
+class ProjectContentSplitViewController: NSSplitViewController {
 
     override var representedObject: Any? {
         
