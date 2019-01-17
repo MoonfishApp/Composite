@@ -316,6 +316,7 @@
 		C79A75E221EEF230007FB630 /* PrintPanelAccessoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BEC21EE9AA8007FB630 /* PrintPanelAccessoryController.swift */; };
 		C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E321EEF5C1007FB630 /* MainMenu.swift */; };
 		C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */ = {isa = PBXBuildFile; fileRef = C79A75E721EEF943007FB630 /* SyntaxMap.json */; };
+		C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E921F01517007FB630 /* ProjectToolbarController.swift */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
@@ -328,7 +329,7 @@
 		C7DDD75A2141E02800674942 /* InstallToolchain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallToolchain.storyboard */; };
 		C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
 		C7E4AFB42175BA4800D5716B /* EditorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFB22175BA4800D5716B /* EditorInterface.swift */; };
-		C7E76437211EC16300867DA4 /* EditWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76436211EC16300867DA4 /* EditWindowController.swift */; };
+		C7E76437211EC16300867DA4 /* ProjectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76436211EC16300867DA4 /* ProjectWindowController.swift */; };
 		C7E7643A21214D4600867DA4 /* ChooseTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */; };
 		C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */; };
 		C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E7643E2122A2CF00867DA4 /* TemplateCollectionViewItem.xib */; };
@@ -338,7 +339,7 @@
 		C7E7645B21262D1800867DA4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
 		C7E7645D212675AF00867DA4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645C212675AF00867DA4 /* Error.swift */; };
 		C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645E2128F04800867DA4 /* OutputViewController.swift */; };
-		C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76462212936E300867DA4 /* FileBrowserViewController.swift */; };
+		C7E76463212936E300867DA4 /* FileNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76462212936E300867DA4 /* FileNavigatorViewController.swift */; };
 		C7E76467212937F100867DA4 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76466212937F100867DA4 /* FileItem.swift */; };
 		C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* TRC20.sol */; };
 		C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */; };
@@ -676,6 +677,7 @@
 		C79A75DD21EEF0AF007FB630 /* MultipleReplacementPanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleReplacementPanelController.swift; sourceTree = "<group>"; };
 		C79A75E321EEF5C1007FB630 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C79A75E721EEF943007FB630 /* SyntaxMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SyntaxMap.json; sourceTree = "<group>"; };
+		C79A75E921F01517007FB630 /* ProjectToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectToolbarController.swift; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -689,7 +691,7 @@
 		C7DDD7592141E02800674942 /* InstallToolchain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallToolchain.storyboard; sourceTree = "<group>"; };
 		C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowRestoration.swift; sourceTree = "<group>"; };
 		C7E4AFB22175BA4800D5716B /* EditorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorInterface.swift; sourceTree = "<group>"; };
-		C7E76436211EC16300867DA4 /* EditWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowController.swift; sourceTree = "<group>"; };
+		C7E76436211EC16300867DA4 /* ProjectWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindowController.swift; sourceTree = "<group>"; };
 		C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTemplateViewController.swift; sourceTree = "<group>"; };
 		C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCollectionViewItem.swift; sourceTree = "<group>"; };
 		C7E7643E2122A2CF00867DA4 /* TemplateCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -699,7 +701,7 @@
 		C7E7645A21262D1800867DA4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C7E7645C212675AF00867DA4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C7E7645E2128F04800867DA4 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
-		C7E76462212936E300867DA4 /* FileBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserViewController.swift; sourceTree = "<group>"; };
+		C7E76462212936E300867DA4 /* FileNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNavigatorViewController.swift; sourceTree = "<group>"; };
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		C7E76468212D3D0400867DA4 /* TRC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TRC20.sol; sourceTree = "<group>"; };
 		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
@@ -873,14 +875,13 @@
 			isa = PBXGroup;
 			children = (
 				C72FEB8621E9400A000EF3C7 /* Editor */,
-				C72FEB8521E94005000EF3C7 /* Sidebar */,
-				C72FEB8421E93FFC000EF3C7 /* Inspector */,
+				C72FEB8521E94005000EF3C7 /* Navigators */,
+				C72FEB8421E93FFC000EF3C7 /* Inspectors */,
 				C72FEB8321E93FEF000EF3C7 /* Console */,
-				C7E76436211EC16300867DA4 /* EditWindowController.swift */,
+				C7E76436211EC16300867DA4 /* ProjectWindowController.swift */,
+				C79A75E921F01517007FB630 /* ProjectToolbarController.swift */,
 				C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */,
 				C7E7645E2128F04800867DA4 /* OutputViewController.swift */,
-				C7E76462212936E300867DA4 /* FileBrowserViewController.swift */,
-				C7E76466212937F100867DA4 /* FileItem.swift */,
 				C7F0B9A62112945F005A8FE2 /* Edit.storyboard */,
 				C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */,
 				C7050A342166FBC9003DDA2B /* LanguageServer.swift */,
@@ -918,18 +919,20 @@
 			path = Console;
 			sourceTree = "<group>";
 		};
-		C72FEB8421E93FFC000EF3C7 /* Inspector */ = {
+		C72FEB8421E93FFC000EF3C7 /* Inspectors */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Inspector;
+			path = Inspectors;
 			sourceTree = "<group>";
 		};
-		C72FEB8521E94005000EF3C7 /* Sidebar */ = {
+		C72FEB8521E94005000EF3C7 /* Navigators */ = {
 			isa = PBXGroup;
 			children = (
+				C7E76462212936E300867DA4 /* FileNavigatorViewController.swift */,
+				C7E76466212937F100867DA4 /* FileItem.swift */,
 			);
-			path = Sidebar;
+			path = Navigators;
 			sourceTree = "<group>";
 		};
 		C72FEB8621E9400A000EF3C7 /* Editor */ = {
@@ -2121,6 +2124,7 @@
 				C79A6C1821EE9AC1007FB630 /* NSTextView+Snippet.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
 				C79A6C8F21EE9BD6007FB630 /* Pair.swift in Sources */,
+				C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */,
 				C79A75AC21EEEE46007FB630 /* AppInfo.swift in Sources */,
 				C79A6CB021EE9C10007FB630 /* OrderedSet.swift in Sources */,
 				C79A75AD21EEEE46007FB630 /* WriteToConsoleCommand.swift in Sources */,
@@ -2182,7 +2186,7 @@
 				C79A6CF421EE9C52007FB630 /* String+Sandboxing.swift in Sources */,
 				C72FEA9621E433BA000EF3C7 /* PlatformCollectionViewItem.swift in Sources */,
 				C79A6BB921EE9A5A007FB630 /* DocumentToolbar.swift in Sources */,
-				C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */,
+				C7E76463212936E300867DA4 /* FileNavigatorViewController.swift in Sources */,
 				C79A6CB121EE9C10007FB630 /* DefaultKey.swift in Sources */,
 				C79A6BBB21EE9A5A007FB630 /* PopUpToolbarItem.swift in Sources */,
 				C79A6D2121EE9C64007FB630 /* NSTouchBar+Validation.swift in Sources */,
@@ -2215,7 +2219,7 @@
 				C79A6C1521EE9AC1007FB630 /* NSTextView+MultiCursor.swift in Sources */,
 				C79A6D1B21EE9C64007FB630 /* NSValidatedUserInterfaceItem.swift in Sources */,
 				C79A75BE21EEF070007FB630 /* FindPanelFieldViewController.swift in Sources */,
-				C7E76437211EC16300867DA4 /* EditWindowController.swift in Sources */,
+				C7E76437211EC16300867DA4 /* ProjectWindowController.swift in Sources */,
 				C79A75B321EEF05C007FB630 /* TextFindProgress.swift in Sources */,
 				C79A6D2321EE9C64007FB630 /* NSColor+NamedColors.swift in Sources */,
 				C79A6C7721EE9B82007FB630 /* SyntaxParser.swift in Sources */,

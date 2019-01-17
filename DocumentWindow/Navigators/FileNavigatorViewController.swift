@@ -9,10 +9,19 @@
 import Cocoa
 
 /// TODO: key bindings https://www.raywenderlich.com/1201-nsoutlineview-on-macos-tutorial
-class FileBrowserViewController: NSViewController {
+class FileNavigatorViewController: NSViewController {
     
     @IBOutlet weak var fileView: NSOutlineView!
+
     private var root: FileItem?
+
+//    override var representedObject: Any? {
+//        didSet {
+//            if let representedObject = representedObject as? ProjectDocument {
+//
+//            }
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +61,7 @@ class FileBrowserViewController: NSViewController {
     }
 }
 
-extension FileBrowserViewController: NSOutlineViewDelegate {
+extension FileNavigatorViewController: NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         guard let item = item as? FileItem else { return nil }
@@ -71,12 +80,12 @@ extension FileBrowserViewController: NSOutlineViewDelegate {
         let selectedIndex = outlineView.selectedRow
         guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, supportedPathExtensions.contains(item.url.pathExtension) else { return }
 
-        let editWindowController = (view.window?.windowController as! EditWindowController)
+        let editWindowController = (view.window?.windowController as! ProjectWindowController)
         editWindowController.setEditor(url: item.url)
     }
 }
 
-extension FileBrowserViewController: NSOutlineViewDataSource {
+extension FileNavigatorViewController: NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         

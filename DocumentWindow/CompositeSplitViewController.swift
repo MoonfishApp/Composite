@@ -26,8 +26,9 @@ class CompositeSplitViewController: NSSplitViewController {
 //        editorView.delegate = self
         
         consoleView = {
-            let scrollView = splitViewItems.last!.viewController.view as! NSScrollView
-            return (scrollView.documentView as! NSTextView)
+            return NSTextView(frame: NSRect.zero)
+//            let scrollView = splitViewItems.last!.viewController.view as! NSScrollView
+//            return (scrollView.documentView as! NSTextView)
         }()
         
         

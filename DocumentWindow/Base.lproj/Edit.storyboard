@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="EditWindow" id="jGA-0Y-lOj" customClass="EditWindowController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="EditWindow" id="jGA-0Y-lOj" customClass="ProjectWindowController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Document Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -125,8 +125,8 @@
             <objects>
                 <splitViewController id="1xm-ZM-p0a" customClass="CompositeSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="bE7-yh-TUg"/>
                         <splitViewItem id="zsm-C8-pvE"/>
+                        <splitViewItem id="bI8-eu-LAg"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="za8-qd-Z7U">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -137,13 +137,21 @@
                     </splitView>
                     <connections>
                         <outlet property="splitView" destination="za8-qd-Z7U" id="jfB-Xd-WBH"/>
-                        <segue destination="ja3-lG-MWF" kind="relationship" relationship="splitItems" id="oiG-Sr-jaG"/>
                         <segue destination="3W5-We-f4V" kind="relationship" relationship="splitItems" id="Z1E-2X-YL4"/>
+                        <segue destination="YLX-sB-rqA" kind="relationship" relationship="splitItems" id="KK9-Pl-bVV"/>
                     </connections>
                 </splitViewController>
                 <customObject id="vIz-R1-GfO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1444" y="506"/>
+        </scene>
+        <!--EditorView-->
+        <scene sceneID="deK-J2-Jmg">
+            <objects>
+                <controllerPlaceholder storyboardName="EditorView" id="YLX-sB-rqA" sceneMemberID="viewController"/>
+                <customObject id="4ip-G1-XaK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878" y="267"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="h8u-MF-cT6">
@@ -170,10 +178,10 @@
             </objects>
             <point key="canvasLocation" x="774" y="227"/>
         </scene>
-        <!--File Browser View Controller-->
+        <!--File Navigator View Controller-->
         <scene sceneID="FX7-GW-NKH">
             <objects>
-                <viewController id="Toz-r1-A2p" customClass="FileBrowserViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Toz-r1-A2p" customClass="FileNavigatorViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="UyC-8V-fZV">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -296,10 +304,10 @@
             </objects>
             <point key="canvasLocation" x="1282" y="42"/>
         </scene>
-        <!--View Controller-->
+        <!--Editor View Controller-->
         <scene sceneID="vy9-el-xj2">
             <objects>
-                <viewController id="ja3-lG-MWF" sceneMemberID="viewController">
+                <viewController id="ja3-lG-MWF" customClass="EditorViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <customView key="view" id="HcI-xT-YNk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

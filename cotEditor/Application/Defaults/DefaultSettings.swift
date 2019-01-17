@@ -36,7 +36,7 @@ struct DefaultSettings {
         .trimsWhitespaceOnlyLines: false,
         .documentConflictOption: DocumentConflictOption.revert.rawValue,
         .countLineEndingAsChar: true,
-        .autoLinkDetection: false,
+        .autoLinkDetection: true,
         .checkSpellingAsType: false,
         .highlightBraces: true,
         .highlightLtGt: false,
@@ -64,8 +64,8 @@ struct DefaultSettings {
         .windowAlpha: 1.0,
         
 //        .fontName: (NSFont.userFont(ofSize: 0) ?? NSFont.systemFont(ofSize: 0)).fontName,
-        .fontName: "Menlo",
-        .fontSize: NSFont.systemFontSize,
+        .fontName: "Menlo", //"SFMono-Regular",
+        .fontSize: 12.0,
         .shouldAntialias: true,
         .lineHeight: 1.2,
         .highlightCurrentLine: false,
@@ -109,7 +109,7 @@ struct DefaultSettings {
         .saveUTF8BOM: false,
         .referToEncodingTag: true,
         .enableSyntaxHighlight: true,
-        .syntaxStyle: "Plain Text",
+        .syntaxStyle: "Solidity",
         
         .fileDropArray: [
             [FileDropComposer.SettingKey.extensions: "jpg, jpeg, gif, png",

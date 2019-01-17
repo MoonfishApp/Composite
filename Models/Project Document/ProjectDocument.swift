@@ -38,9 +38,9 @@ class ProjectDocument: NSDocument {
     }
     
     
-    var editWindowController: EditWindowController? {
+    var editWindowController: ProjectWindowController? {
         for window in windowControllers {
-            if let window = window as? EditWindowController, let doc = window.document as? ProjectDocument, doc == self {
+            if let window = window as? ProjectWindowController, let doc = window.document as? ProjectDocument, doc == self {
                 return window
             }
         }
@@ -68,7 +68,7 @@ class ProjectDocument: NSDocument {
     override func makeWindowControllers() {
         // Returns the Storyboard that contains your Document window.
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Edit"), bundle: nil)
-        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditWindow")) as! EditWindowController
+        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditWindow")) as! ProjectWindowController
         self.addWindowController(windowController)
         
 //        windowController.project = self.project 

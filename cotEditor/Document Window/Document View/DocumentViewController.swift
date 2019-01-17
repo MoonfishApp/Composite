@@ -445,7 +445,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
         }
         
         set {
-            assert(self.statusBarItem != nil)
+            //assert(self.statusBarItem != nil)
             self.statusBarItem?.isCollapsed = !newValue
         }
     }

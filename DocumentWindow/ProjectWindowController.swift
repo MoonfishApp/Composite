@@ -1,5 +1,5 @@
 //
-//  EditWindowController.swift
+//  ProjectWindowController.swift
 //  SCE-Mac
 //
 //  Created by Ronald "Danger" Mannak on 8/11/18.
@@ -8,24 +8,36 @@
 
 import Cocoa
 
-class EditWindowController: NSWindowController {
+class ProjectWindowController: NSWindowController {
     
     @IBOutlet weak var runButton: NSToolbarItem!
     
     var editorURL: URL? = nil
     
     override var document: AnyObject? {
+        
         didSet {
             
-            // Load file browser and open last opened file
-            var lastOpenFile: URL? = nil
-            if let file = project?.lastOpenFile {
-                lastOpenFile = (document as! ProjectDocument).workDirectory.appendingPathComponent(file)
-            }
-            
-            loadBrowser(select: lastOpenFile?.path)
-            if let lastOpenFile = lastOpenFile {
-                setEditor(url: lastOpenFile)
+            if let document = document as? Document {
+                
+                // TODO:
+                // - Find project root directory
+                // - Open file
+                // - Determine blockchain / toolchain used
+                assertionFailure()
+                
+            } else if let document =  document as? ProjectDocument {
+                
+                // Load file browser and open last opened file
+                var lastOpenFile: URL? = nil
+                if let file = project?.lastOpenFile {
+                    lastOpenFile = document.workDirectory.appendingPathComponent(file)
+                }
+                
+                loadBrowser(select: lastOpenFile?.path)
+                if let lastOpenFile = lastOpenFile {
+                    setEditor(url: lastOpenFile)
+                }
             }
         }
     }
@@ -39,8 +51,8 @@ class EditWindowController: NSWindowController {
         return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
     }
     
-    var fileBrowserViewController: FileBrowserViewController {
-        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileBrowserViewController
+    var fileBrowserViewController: FileNavigatorViewController {
+        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
     }
     
 //    private var editView: SyntaxTextView {

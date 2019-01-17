@@ -8,6 +8,7 @@
 
 import Cocoa
 
+// TODO: Can we simplify this by using representedObject?
 class ChooseTemplateViewController: NSViewController {
 
     @IBOutlet weak var platformPopup: NSPopUpButton!
