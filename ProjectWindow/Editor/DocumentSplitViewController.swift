@@ -1,5 +1,5 @@
 //
-//  InspectorTabViewController.swift
+//  DocumentSplitViewController.swift
 //  Composite
 //
 //  Created by Ronald "Danger" Mannak on 1/17/19.
@@ -8,6 +8,6 @@
 
 import Cocoa
 
-final class InspectorTabViewController: NSTabViewController {
+class DocumentSplitViewController: NSSplitViewController {
 
 }

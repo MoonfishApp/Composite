@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ProjectContentSplitViewController: NSSplitViewController {
+final class ProjectContentSplitViewController: NSSplitViewController {
 
     override var representedObject: Any? {
         
@@ -24,4 +24,13 @@ class ProjectContentSplitViewController: NSSplitViewController {
         // Do view setup here.
     }
     
+
+}
+
+/// Handle tabview changes of Nagivator and Inspector side panes
+extension ProjectContentSplitViewController: TabViewControllerDelegate {
+    
+    func tabViewController(_ viewController: NSTabViewController, didSelect tabViewIndex: Int) {
+        
+    }
 }

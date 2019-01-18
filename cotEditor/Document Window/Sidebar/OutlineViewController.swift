@@ -141,9 +141,9 @@ final class OutlineViewController: NSViewController {
     
     
     /// current outline items
-    private var document: Document? {
+    private var document: TextDocument? {
         
-        return self.representedObject as? Document
+        return self.representedObject as? TextDocument
     }
     
     
@@ -189,7 +189,7 @@ final class OutlineViewController: NSViewController {
         
         guard let document = self.document else { return assertionFailure() }
         
-        self.documentObserver = NotificationCenter.default.addObserver(forName: Document.didChangeSyntaxStyleNotification, object: document, queue: .main) { [unowned self] _ in
+        self.documentObserver = NotificationCenter.default.addObserver(forName: TextDocument.didChangeSyntaxStyleNotification, object: document, queue: .main) { [unowned self] _ in
             self.observeSyntaxStyle()
             self.outlineView?.reloadData()
             

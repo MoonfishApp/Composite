@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class CompositeSplitViewController: NSSplitViewController {
+final class CompositeSplitViewController: NSSplitViewController {
 
 //    let lexer = SolidityLexer()
 //    var editorView: SyntaxTextView!

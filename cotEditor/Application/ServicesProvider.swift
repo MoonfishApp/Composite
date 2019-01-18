@@ -43,7 +43,7 @@ final class ServicesProvider: NSObject {
             return
         }
         
-        if let document = document as? Document {
+        if let document = document as? TextDocument {
             document.textStorage.replaceCharacters(in: NSRange(location: 0, length: 0), with: selection)
             document.makeWindowControllers()
             document.showWindows()

@@ -88,7 +88,7 @@ final class UnixScript: Script {
         }
         
         // fetch target document
-        weak var document = NSDocumentController.shared.currentDocument as? Document
+        weak var document = NSDocumentController.shared.currentDocument as? TextDocument
         
         // read input
         let input: String?
@@ -229,7 +229,7 @@ final class UnixScript: Script {
         }
         
         if type == .newDocument {
-            let document = try NSDocumentController.shared.openUntitledDocumentAndDisplay(true) as! Document
+            let document = try NSDocumentController.shared.openUntitledDocumentAndDisplay(true) as! TextDocument
             document.insert(string: output)
             document.selectedRange = NSRange(location: 0, length: 0)
             return

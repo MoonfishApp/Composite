@@ -22,7 +22,7 @@ struct Project: Codable {
     // E.g. 0.9.5
     let frameworkVersion: String?
     
-    // TODO: add
+    // TODO: Let window restoration handle this?
     var lastOpenFile: String?
     
     

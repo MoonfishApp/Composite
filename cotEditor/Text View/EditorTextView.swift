@@ -1211,9 +1211,9 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
     // MARK: Private Methods
     
     /// document object representing the text view contents
-    private var document: Document? {
+    private var document: TextDocument? {
         
-        return self.window?.windowController?.document as? Document
+        return self.window?.windowController?.document as? TextDocument
     }
     
     

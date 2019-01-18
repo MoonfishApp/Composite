@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ProjectWindowController: NSWindowController {
+final class ProjectWindowController: NSWindowController {
     
     @IBOutlet weak var runButton: NSToolbarItem!
     
@@ -18,7 +18,7 @@ class ProjectWindowController: NSWindowController {
         
         didSet {
             
-            if let document = document as? Document {
+            if let document = document as? TextDocument {
                 
                 // TODO:
                 // - Find project root directory
@@ -47,13 +47,13 @@ class ProjectWindowController: NSWindowController {
         return document.project
     }
     
-    var consoleTextView: NSTextView {
-        return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
-    }
-    
-    var fileBrowserViewController: FileNavigatorViewController {
-        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
-    }
+//    var consoleTextView: NSTextView {
+//        return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
+//    }
+//
+//    var fileBrowserViewController: FileNavigatorViewController {
+//        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
+//    }
     
 //    private var editView: SyntaxTextView {
 //        return (self.window?.contentViewController?.childViewControllers[1] as! CompositeSplitViewController).editorView
@@ -70,25 +70,25 @@ class ProjectWindowController: NSWindowController {
 //    }
     
     func loadBrowser(select item: String? = nil) {
-        guard let project = project, let document = document as? ProjectDocument else { return }
-        window?.title = project.name        
-        do {
-            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
+//        guard let project = project, let document = document as? ProjectDocument else { return }
+//        window?.title = project.name
+//        do {
+//            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
+//        } catch {
+//            let alert = NSAlert(error: error)
+//            alert.runModal()
+//        }
     }
 
     
     /// Sets console vc text. Called by PreparingViewController
     func setConsole(_ string: String) {
-        consoleTextView.string = consoleTextView.string + "\n" + string
-        
-        let range = NSRange(location:consoleTextView.string.count,length:0)
-        consoleTextView.scrollRangeToVisible(range)
+//        consoleTextView.string = consoleTextView.string + "\n" + string
+//
+//        let range = NSRange(location:consoleTextView.string.count,length:0)
+//        consoleTextView.scrollRangeToVisible(range)
     }
-    
+
     func setEditor(url: URL) {
 //        do {
 //            let text = try String(contentsOf: url)

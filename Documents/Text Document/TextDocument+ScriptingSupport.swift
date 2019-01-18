@@ -35,7 +35,7 @@ private extension OSALineEnding {
 }
 
 
-extension Document {
+extension TextDocument {
     
     // MARK: AppleScript Accessors
     

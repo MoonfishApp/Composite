@@ -160,7 +160,7 @@ final class ScriptManager: NSObject, NSFilePresenter {
     /// Dispatch an Apple event that notifies the given document was opened
     ///
     /// - Parameter document: The document that was opened.
-    func dispatchEvent(documentOpened document: Document) {
+    func dispatchEvent(documentOpened document: TextDocument) {
         
         let eventType = ScriptingEventType.documentOpened
         
@@ -175,7 +175,7 @@ final class ScriptManager: NSObject, NSFilePresenter {
     /// Dispatch an Apple event that notifies the given document was opened
     ///
     /// - Parameter document: The document that was opened.
-    func dispatchEvent(documentSaved document: Document) {
+    func dispatchEvent(documentSaved document: TextDocument) {
         
         let eventType = ScriptingEventType.documentSaved
         
@@ -246,7 +246,7 @@ final class ScriptManager: NSObject, NSFilePresenter {
     ///   - document: The document to dispatch an Apple event.
     ///   - eventID: The event ID to be set in the returned event.
     /// - Returns: A descriptor for an Apple event by the `Document`.
-    private func createEvent(by document: Document, eventID: AEEventID) -> NSAppleEventDescriptor {
+    private func createEvent(by document: TextDocument, eventID: AEEventID) -> NSAppleEventDescriptor {
         
         let event = NSAppleEventDescriptor(eventClass: AEEventClass(code: "cEd1"), eventID: eventID, targetDescriptor: nil, returnID: AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
         let documentDescriptor = document.objectSpecifier.descriptor ?? NSAppleEventDescriptor(string: "BUG: document.objectSpecifier.descriptor was nil")

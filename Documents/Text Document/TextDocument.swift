@@ -42,7 +42,7 @@ private let uniqueFileIDLength = 13
 
 // MARK: -
 
-final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
+final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
     
     // MARK: Notification Names
     
@@ -289,7 +289,7 @@ final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
     /// setup duplicated document
     override func duplicate() throws -> NSDocument {
         
-        let document = try super.duplicate() as! Document
+        let document = try super.duplicate() as! TextDocument
         
         document.setSyntaxStyle(name: self.syntaxParser.style.name)
         document.lineEnding = self.lineEnding
@@ -337,8 +337,8 @@ final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
         
         // notify
         DispatchQueue.main.async { [weak self] in
-            NotificationCenter.default.post(name: Document.didChangeEncodingNotification, object: self)
-            NotificationCenter.default.post(name: Document.didChangeLineEndingNotification, object: self)
+            NotificationCenter.default.post(name: TextDocument.didChangeEncodingNotification, object: self)
+            NotificationCenter.default.post(name: TextDocument.didChangeLineEndingNotification, object: self)
         }
         
         // standardize line endings to LF
@@ -859,7 +859,7 @@ final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
         self.hasUTF8BOM = withUTF8BOM
         
         // notify
-        NotificationCenter.default.post(name: Document.didChangeEncodingNotification, object: self)
+        NotificationCenter.default.post(name: TextDocument.didChangeEncodingNotification, object: self)
         
         // update UI
         self.incompatibleCharacterScanner.scan()
@@ -886,7 +886,7 @@ final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
         self.lineEnding = lineEnding
         
         // notify
-        NotificationCenter.default.post(name: Document.didChangeLineEndingNotification, object: self)
+        NotificationCenter.default.post(name: TextDocument.didChangeLineEndingNotification, object: self)
         
         // update UI
         self.analyzer.invalidateModeInfo()
@@ -912,7 +912,7 @@ final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            NotificationCenter.default.post(name: Document.didChangeSyntaxStyleNotification, object: self)
+            NotificationCenter.default.post(name: TextDocument.didChangeSyntaxStyleNotification, object: self)
         }
     }
     
@@ -965,7 +965,7 @@ final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
             let completionHandler = { (didChange: Bool) in
                 if !didChange {
                     // reset toolbar selection for in case if the operation was invoked from the toolbar popup
-                    NotificationCenter.default.post(name: Document.didChangeEncodingNotification, object: self)
+                    NotificationCenter.default.post(name: TextDocument.didChangeEncodingNotification, object: self)
                 }
                 activityCompletionHandler()
             }
@@ -1169,7 +1169,7 @@ final class Document: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
 
 // MARK: - Protocol
 
-extension Document: Editable {
+extension TextDocument: Editable {
     
     var textView: NSTextView? {
         
@@ -1232,7 +1232,7 @@ private struct EncodingError: LocalizedError, RecoverableError {
     let kind: ErrorKind
     let encoding: String.Encoding
     let withUTF8BOM: Bool
-    let attempter: Document
+    let attempter: TextDocument
     
     
     

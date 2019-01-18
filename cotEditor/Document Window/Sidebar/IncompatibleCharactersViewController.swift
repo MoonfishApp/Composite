@@ -99,14 +99,14 @@ final class IncompatibleCharactersViewController: NSViewController, Incompatible
     // MARK: Scanner Delegate
     
     /// update list constantly only if the table is visible
-    func needsUpdateIncompatibleCharacter(_ document: Document) -> Bool {
+    func needsUpdateIncompatibleCharacter(_ document: TextDocument) -> Bool {
         
         return self.isVisible
     }
     
     
     /// incompatible characters list was updated
-    func document(_ document: Document, didUpdateIncompatibleCharacters incompatibleCharacters: [IncompatibleCharacter]) {
+    func document(_ document: TextDocument, didUpdateIncompatibleCharacters incompatibleCharacters: [IncompatibleCharacter]) {
         
         self.incompatibleCharacters = incompatibleCharacters
         self.characterAvailable = !incompatibleCharacters.isEmpty

@@ -9,7 +9,7 @@
 import Cocoa
 
 /// TODO: key bindings https://www.raywenderlich.com/1201-nsoutlineview-on-macos-tutorial
-class FileNavigatorViewController: NSViewController {
+final class FileNavigatorViewController: NSViewController {
     
     @IBOutlet weak var fileView: NSOutlineView!
 

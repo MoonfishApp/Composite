@@ -69,14 +69,14 @@ private extension OSAUnicodeNormalizationType {
 
 final class TextSelection: NSObject {
     
-    private weak var document: Document?  // weak to avoid cycle retain
+    private weak var document: TextDocument?  // weak to avoid cycle retain
     
     
     
     // MARK: -
     // MARK: Lifecycle
     
-    required init(document: Document) {
+    required init(document: TextDocument) {
         
         self.document = document
         

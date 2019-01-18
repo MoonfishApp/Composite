@@ -72,7 +72,7 @@ final class DocumentWindowController: NSWindowController {
     override var document: AnyObject? {
         
         didSet {
-            guard let document = document as? Document else { return }
+            guard let document = document as? TextDocument else { return }
             
             self.toolbarController!.document = document
             self.contentViewController!.representedObject = document

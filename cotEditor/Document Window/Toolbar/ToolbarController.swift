@@ -65,14 +65,14 @@ final class ToolbarController: NSObject {
     
     // MARK: Public Properties
     
-    weak var document: Document? {
+    weak var document: TextDocument? {
         
         willSet {
             guard let document = document else { return }
             
-            NotificationCenter.default.removeObserver(self, name: Document.didChangeEncodingNotification, object: document)
-            NotificationCenter.default.removeObserver(self, name: Document.didChangeLineEndingNotification, object: document)
-            NotificationCenter.default.removeObserver(self, name: Document.didChangeSyntaxStyleNotification, object: document)
+            NotificationCenter.default.removeObserver(self, name: TextDocument.didChangeEncodingNotification, object: document)
+            NotificationCenter.default.removeObserver(self, name: TextDocument.didChangeLineEndingNotification, object: document)
+            NotificationCenter.default.removeObserver(self, name: TextDocument.didChangeSyntaxStyleNotification, object: document)
         }
         
         didSet {
@@ -84,9 +84,9 @@ final class ToolbarController: NSObject {
             self.toolbar?.validateVisibleItems()
             
             // observe document status change
-            NotificationCenter.default.addObserver(self, selector: #selector(invalidateEncodingSelection), name: Document.didChangeEncodingNotification, object: document)
-            NotificationCenter.default.addObserver(self, selector: #selector(invalidateLineEndingSelection), name: Document.didChangeLineEndingNotification, object: document)
-            NotificationCenter.default.addObserver(self, selector: #selector(invalidateSyntaxStyleSelection), name: Document.didChangeSyntaxStyleNotification, object: document)
+            NotificationCenter.default.addObserver(self, selector: #selector(invalidateEncodingSelection), name: TextDocument.didChangeEncodingNotification, object: document)
+            NotificationCenter.default.addObserver(self, selector: #selector(invalidateLineEndingSelection), name: TextDocument.didChangeLineEndingNotification, object: document)
+            NotificationCenter.default.addObserver(self, selector: #selector(invalidateSyntaxStyleSelection), name: TextDocument.didChangeSyntaxStyleNotification, object: document)
         }
     }
     
@@ -200,7 +200,7 @@ final class ToolbarController: NSObject {
         
         let styleNames = SyntaxManager.shared.settingNames
         let recentStyleNames = UserDefaults.standard[.recentStyleNames]!
-        let action = #selector(Document.changeSyntaxStyle)
+        let action = #selector(TextDocument.changeSyntaxStyle)
         
         menu.removeAllItems()
         

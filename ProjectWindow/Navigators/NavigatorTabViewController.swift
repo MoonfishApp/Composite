@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class NavigatorTabViewController: NSTabViewController {
+final class NavigatorTabViewController: NSTabViewController {
 
 }

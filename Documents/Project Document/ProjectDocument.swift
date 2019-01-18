@@ -14,7 +14,7 @@ import Cocoa
  
  */
 
-class ProjectDocument: NSDocument {
+final class ProjectDocument: NSDocument {
     
     ///
     private (set) var project: Project?

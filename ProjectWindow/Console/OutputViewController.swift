@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class OutputViewController: NSViewController {
+final class OutputViewController: NSViewController {
 
     @IBOutlet var textView: NSTextView!
     

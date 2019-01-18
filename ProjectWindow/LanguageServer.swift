@@ -8,6 +8,6 @@
 
 import Foundation
 
-class LanguageServer {
+final class LanguageServer {
     
 }

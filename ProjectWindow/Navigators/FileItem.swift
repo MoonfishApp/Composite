@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class FileItem: NSObject {
+final class FileItem: NSObject {
     let url: URL
     let projectName: String?
     

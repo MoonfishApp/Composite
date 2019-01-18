@@ -91,7 +91,7 @@ final class SidebarViewController: NSTabViewController {
     override var representedObject: Any? {
         
         didSet {
-            guard let document = representedObject as? Document else { return }
+            guard let document = representedObject as? TextDocument else { return }
             
             self.documentInspectorTabViewItem?.viewController?.representedObject = document.analyzer
             self.outlineTabViewItem?.viewController?.representedObject = document

@@ -156,7 +156,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
     override var representedObject: Any? {
         
         didSet {
-            guard let document = representedObject as? Document else { return }
+            guard let document = representedObject as? TextDocument else { return }
             
             (self.statusBarItem?.viewController as? StatusBarController)?.documentAnalyzer = document.analyzer
             
@@ -189,7 +189,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
             
             // observe syntax change
             NotificationCenter.default.addObserver(self, selector: #selector(didChangeSyntaxStyle),
-                                                   name: Document.didChangeSyntaxStyleNotification,
+                                                   name: TextDocument.didChangeSyntaxStyleNotification,
                                                    object: document)
         }
     }
@@ -410,9 +410,9 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
     // MARK: Public Methods
     
     /// setup document
-    var document: Document? {
+    var document: TextDocument? {
         
-        return self.representedObject as? Document
+        return self.representedObject as? TextDocument
     }
     
     

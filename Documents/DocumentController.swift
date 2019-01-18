@@ -94,7 +94,7 @@ final class DocumentController: NSDocumentController {
             // invalidate encoding that was set in the open panel
             self.accessorySelectedEncoding = nil
             
-            if let transientDocument = transientDocument, let document = document as? Document {
+            if let transientDocument = transientDocument, let document = document as? TextDocument {
                 self.replaceTransientDocument(transientDocument, with: document)
                 if displayDocument {
                     document.makeWindowControllers()
@@ -131,7 +131,7 @@ final class DocumentController: NSDocumentController {
         
         // make document transient when it is an open or reopen event
         if self.documents.count == 1, NSAppleEventManager.shared().isOpenEvent {
-            (document as? Document)?.isTransient = true
+            (document as? TextDocument)?.isTransient = true
         }
         
         return document
@@ -168,7 +168,7 @@ final class DocumentController: NSDocumentController {
         // clear the first document's transient status when a second document is added
         // -> This happens when the user selects "New" when a transient document already exists.
         if self.documents.count == 1,
-            let firstDocument = self.documents.first as? Document,
+            let firstDocument = self.documents.first as? TextDocument,
             firstDocument.isTransient {
             firstDocument.isTransient = false
         }
@@ -280,11 +280,11 @@ final class DocumentController: NSDocumentController {
     // MARK: Private Methods
     
     /// transient document to be replaced or nil
-    private var transientDocumentToReplace: Document? {
+    private var transientDocumentToReplace: TextDocument? {
         
         guard
             self.documents.count == 1,
-            let document = self.documents.first as? Document,
+            let document = self.documents.first as? TextDocument,
             document.isTransient,
             document.windowForSheet?.attachedSheet == nil
             else { return nil }
@@ -294,7 +294,7 @@ final class DocumentController: NSDocumentController {
     
     
     /// replace window controllers in documents
-    private func replaceTransientDocument(_ transientDocument: Document, with document: Document) {
+    private func replaceTransientDocument(_ transientDocument: TextDocument, with document: TextDocument) {
         
         assert(Thread.isMainThread)
         

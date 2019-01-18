@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class CompositeEditorSplitViewController: NSSplitViewController {
+final class CompositeEditorSplitViewController: NSSplitViewController {
 
 }
