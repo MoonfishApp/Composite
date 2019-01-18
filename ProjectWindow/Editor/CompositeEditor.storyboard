@@ -11,8 +11,8 @@
             <objects>
                 <splitViewController id="1AL-EU-3KP" customClass="EditorViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem holdingPriority="1000" id="Dqg-Rt-Bpf" userLabel="Navigation Bar"/>
-                        <splitViewItem id="ehg-ma-eM4" userLabel="Editor View"/>
+                        <splitViewItem id="zY8-S7-CJa" userLabel="Navigation Bar"/>
+                        <splitViewItem id="VK5-No-Joo" userLabel="Editor View"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="CZy-02-xzP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -23,8 +23,8 @@
                     </splitView>
                     <connections>
                         <outlet property="splitView" destination="CZy-02-xzP" id="1CS-Ns-WFG"/>
-                        <segue destination="PcC-wM-kNs" kind="relationship" relationship="splitItems" id="eyP-TB-gyR"/>
-                        <segue destination="yxx-CS-vXO" kind="relationship" relationship="splitItems" id="4Uc-dA-Wa2"/>
+                        <segue destination="PcC-wM-kNs" kind="relationship" relationship="splitItems" id="tiu-na-Y3d"/>
+                        <segue destination="yxx-CS-vXO" kind="relationship" relationship="splitItems" id="vsh-pR-NXR"/>
                     </connections>
                 </splitViewController>
                 <customObject id="dsb-H1-FIi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

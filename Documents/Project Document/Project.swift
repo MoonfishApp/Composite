@@ -25,6 +25,7 @@ struct Project: Codable {
     // TODO: Let window restoration handle this?
     var lastOpenFile: String?
     
+//    var openDocuments: [TextDocument]?
     
     init(name: String, platformName: String, frameworkName: String, frameworkVersion: String? = nil, lastOpenFile: String?) {
         self.name = name

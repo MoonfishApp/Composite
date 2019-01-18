@@ -9,12 +9,12 @@
         <!--Inspector Tab View Controller-->
         <scene sceneID="SEA-Kc-LgA">
             <objects>
-                <tabViewController id="Sl9-6t-fag" customClass="InspectorTabViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="Sl9-6t-fag" customClass="InspectorTabViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem identifier="" id="lNS-TV-PCL"/>
-                        <tabViewItem id="spJ-4G-6Uf"/>
+                        <tabViewItem label="1" identifier="" id="lNS-TV-PCL"/>
+                        <tabViewItem label="2" id="spJ-4G-6Uf"/>
                     </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="oZA-KG-YDk">
+                    <tabView key="tabView" id="oZA-KG-YDk">
                         <rect key="frame" x="0.0" y="0.0" width="148" height="363"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
