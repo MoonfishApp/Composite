@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Sl9-6t-fag">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XbM-v8-GFD">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
@@ -12,7 +12,7 @@
                 <tabViewController id="Sl9-6t-fag" customClass="InspectorTabViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="lNS-TV-PCL"/>
-                        <tabViewItem identifier="" id="uT3-4Q-fzF"/>
+                        <tabViewItem id="spJ-4G-6Uf"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="oZA-KG-YDk">
                         <rect key="frame" x="0.0" y="0.0" width="148" height="363"/>
@@ -25,7 +25,7 @@
                     <connections>
                         <outlet property="tabView" destination="oZA-KG-YDk" id="paa-FR-vFP"/>
                         <segue destination="XbM-v8-GFD" kind="relationship" relationship="tabItems" id="bQ8-fV-tUa"/>
-                        <segue destination="nBc-qg-H3Y" kind="relationship" relationship="tabItems" id="bKf-oV-dPz"/>
+                        <segue destination="beh-Dy-KNj" kind="relationship" relationship="tabItems" id="Hzk-Rn-B25"/>
                     </connections>
                 </tabViewController>
                 <customObject id="CiA-Th-RTJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -37,26 +37,48 @@
             <objects>
                 <viewController id="XbM-v8-GFD" sceneMemberID="viewController">
                     <view key="view" id="icp-0J-tTB">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="431"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pb-dZ-eqy">
+                                <rect key="frame" x="57" y="366" width="86" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="ABI Inspector" id="6G6-HJ-qgC">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="pZP-2J-URy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="-123"/>
+            <point key="canvasLocation" x="247" y="-58"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="rnp-NQ-P8o">
+        <scene sceneID="Gei-UR-B3K">
             <objects>
-                <viewController id="nBc-qg-H3Y" sceneMemberID="viewController">
-                    <view key="view" id="i7V-ca-9Ro">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                <viewController id="beh-Dy-KNj" sceneMemberID="viewController">
+                    <view key="view" id="wLf-l4-gUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="431"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JwD-8j-9mO">
+                                <rect key="frame" x="82" y="141" width="73" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Inspector 2" id="dL7-Bd-Ct2">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
                     </view>
                 </viewController>
-                <customObject id="TBR-HJ-r0v" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="dID-cq-6aF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="249"/>
+            <point key="canvasLocation" x="247" y="471"/>
         </scene>
     </scenes>
 </document>

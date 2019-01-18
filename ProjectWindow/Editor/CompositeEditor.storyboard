@@ -11,8 +11,8 @@
             <objects>
                 <splitViewController id="1AL-EU-3KP" customClass="EditorViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="Dqg-Rt-Bpf"/>
-                        <splitViewItem id="ehg-ma-eM4"/>
+                        <splitViewItem holdingPriority="1000" id="Dqg-Rt-Bpf" userLabel="Navigation Bar"/>
+                        <splitViewItem id="ehg-ma-eM4" userLabel="Editor View"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="CZy-02-xzP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -84,12 +84,12 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="ZLP-OE-mvw"/>
                                 </constraints>
-                                <popUpButtonCell key="cell" type="smallSquare" title="&lt;Outline Item&gt;" bezelStyle="smallSquare" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="53N-7X-ZWu" customClass="OutlineMenuButtonCell" customModule="Composite" customModuleProvider="target">
+                                <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="53N-7X-ZWu" customClass="OutlineMenuButtonCell" customModule="Composite" customModuleProvider="target">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                     <menu key="menu" id="WVP-RC-ewh">
                                         <items>
-                                            <menuItem title="&lt;Outline Item&gt;" state="on" id="pVb-ol-s4C"/>
+                                            <menuItem title="&lt;Outline Item&gt;" id="pVb-ol-s4C"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>

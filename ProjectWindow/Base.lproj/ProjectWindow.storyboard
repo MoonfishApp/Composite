@@ -126,9 +126,9 @@
             <objects>
                 <splitViewController id="SSn-7J-yjq" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="2nx-D6-Fks"/>
-                        <splitViewItem id="eCy-eD-muZ"/>
-                        <splitViewItem id="x1A-Jg-CQO"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="260" id="2nx-D6-Fks" userLabel="Navigator"/>
+                        <splitViewItem id="eCy-eD-muZ" userLabel="Editor and Debugger"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="260" id="x1A-Jg-CQO" userLabel="Inspector"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="eB3-ko-loa">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -201,7 +201,7 @@
                 <controllerPlaceholder storyboardName="Inspectors" id="1Lh-Ew-VIp" sceneMemberID="viewController"/>
                 <customObject id="Gah-Gl-MAQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1269" y="535"/>
+            <point key="canvasLocation" x="1269" y="597"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="i0N-0J-WEs">
