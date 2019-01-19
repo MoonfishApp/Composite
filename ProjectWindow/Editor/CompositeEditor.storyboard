@@ -12,7 +12,8 @@
                 <splitViewController id="1AL-EU-3KP" customClass="EditorViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="zY8-S7-CJa" userLabel="Navigation Bar"/>
-                        <splitViewItem id="VK5-No-Joo" userLabel="Editor View"/>
+                        <splitViewItem holdingPriority="240" id="VK5-No-Joo" userLabel="Editor View"/>
+                        <splitViewItem canCollapse="YES" id="8h6-bq-muw" userLabel="Console"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="CZy-02-xzP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -25,6 +26,7 @@
                         <outlet property="splitView" destination="CZy-02-xzP" id="1CS-Ns-WFG"/>
                         <segue destination="PcC-wM-kNs" kind="relationship" relationship="splitItems" id="tiu-na-Y3d"/>
                         <segue destination="yxx-CS-vXO" kind="relationship" relationship="splitItems" id="vsh-pR-NXR"/>
+                        <segue destination="FI0-ZY-btk" kind="relationship" relationship="splitItems" id="oWt-Oa-sk3"/>
                     </connections>
                 </splitViewController>
                 <customObject id="dsb-H1-FIi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -97,7 +99,7 @@
                                     <action selector="selectOutlineMenuItem:" target="PcC-wM-kNs" id="Znq-yT-c0i"/>
                                 </connections>
                             </popUpButton>
-                            <button hidden="YES" toolTip="Close split editor" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-mY-ELT">
+                            <button toolTip="Close split editor" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-mY-ELT">
                                 <rect key="frame" x="568" y="-2" width="17" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y8e-mY-ELT" secondAttribute="height" multiplier="1:1" id="u8E-rd-xIG"/>
@@ -113,7 +115,7 @@
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="1" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0B9-Ll-Dhf">
                                 <rect key="frame" x="60" y="0.0" width="16" height="16"/>
                             </progressIndicator>
-                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDM-yc-mug">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDM-yc-mug">
                                 <rect key="frame" x="82" y="1" width="107" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Extracting Outline…" id="OEg-mU-TFJ">
                                     <font key="font" metaFont="smallSystem"/>
@@ -223,11 +225,19 @@
             </objects>
             <point key="canvasLocation" x="1225" y="477"/>
         </scene>
+        <!--Console-->
+        <scene sceneID="a6h-K5-49T">
+            <objects>
+                <controllerPlaceholder storyboardName="Console" id="FI0-ZY-btk" sceneMemberID="viewController"/>
+                <customObject id="aOf-iZ-x5S" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="871"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="CloseSplitTemplate" width="128" height="128"/>
-        <image name="DownArrowTemplate" width="128" height="128"/>
-        <image name="OpenSplitTemplate" width="128" height="128"/>
-        <image name="UpArrowTemplate" width="128" height="128"/>
+        <image name="CloseSplitTemplate" width="9" height="9"/>
+        <image name="DownArrowTemplate" width="8" height="8"/>
+        <image name="OpenSplitTemplate" width="9" height="9"/>
+        <image name="UpArrowTemplate" width="8" height="8"/>
     </resources>
 </document>

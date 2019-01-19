@@ -127,8 +127,8 @@
                 <splitViewController id="SSn-7J-yjq" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" id="2nx-D6-Fks" userLabel="Navigator"/>
-                        <splitViewItem id="eCy-eD-muZ" userLabel="Editor and Debugger"/>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" id="x1A-Jg-CQO" userLabel="Inspector"/>
+                        <splitViewItem id="4Ks-ct-VyO"/>
+                        <splitViewItem id="dVn-xe-UNb"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="eB3-ko-loa">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -140,8 +140,8 @@
                     <connections>
                         <outlet property="splitView" destination="eB3-ko-loa" id="4m6-iC-aAB"/>
                         <segue destination="IW5-Ch-IEj" kind="relationship" relationship="splitItems" id="ekw-VW-6yx"/>
-                        <segue destination="Kql-Hd-5vo" kind="relationship" relationship="splitItems" id="ef5-Xf-v4x"/>
-                        <segue destination="1Lh-Ew-VIp" kind="relationship" relationship="splitItems" id="CDr-zO-a6F"/>
+                        <segue destination="Mi8-Rn-AK6" kind="relationship" relationship="splitItems" id="hFy-96-SO7"/>
+                        <segue destination="1Lh-Ew-VIp" kind="relationship" relationship="splitItems" id="m3H-JA-e4b"/>
                     </connections>
                 </splitViewController>
                 <customObject id="xFU-aV-kIW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -177,15 +177,7 @@
                 </splitViewController>
                 <customObject id="Xwz-vJ-ACP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="272"/>
-        </scene>
-        <!--Console-->
-        <scene sceneID="tLI-UA-jUL">
-            <objects>
-                <controllerPlaceholder storyboardName="Console" id="Hpt-Jk-oVz" sceneMemberID="viewController"/>
-                <customObject id="Nha-Uh-dwu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2006" y="578"/>
+            <point key="canvasLocation" x="1527" y="272"/>
         </scene>
         <!--CompositeEditor-->
         <scene sceneID="RPK-Va-rWl">
@@ -193,7 +185,7 @@
                 <controllerPlaceholder storyboardName="CompositeEditor" id="Y7z-RN-VBm" sceneMemberID="viewController"/>
                 <customObject id="4rm-7A-0JF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2582" y="272"/>
+            <point key="canvasLocation" x="1919" y="272"/>
         </scene>
         <!--Inspectors-->
         <scene sceneID="Ndw-VT-Sns">
@@ -202,31 +194,6 @@
                 <customObject id="Gah-Gl-MAQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1269" y="597"/>
-        </scene>
-        <!--Split View Controller-->
-        <scene sceneID="i0N-0J-WEs">
-            <objects>
-                <splitViewController id="Kql-Hd-5vo" sceneMemberID="viewController">
-                    <splitViewItems>
-                        <splitViewItem id="A4g-QZ-bmn"/>
-                        <splitViewItem id="AVO-Kr-E8E"/>
-                    </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" id="0Ms-Ln-ILN">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <outlet property="delegate" destination="Kql-Hd-5vo" id="9Mq-38-Yen"/>
-                        </connections>
-                    </splitView>
-                    <connections>
-                        <outlet property="splitView" destination="0Ms-Ln-ILN" id="Dlw-cc-iQU"/>
-                        <segue destination="Mi8-Rn-AK6" kind="relationship" relationship="splitItems" id="dev-sM-A1N"/>
-                        <segue destination="Hpt-Jk-oVz" kind="relationship" relationship="splitItems" id="hZY-N9-aAI"/>
-                    </connections>
-                </splitViewController>
-                <customObject id="O5U-vD-Ky6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1445" y="272"/>
         </scene>
     </scenes>
     <resources>
