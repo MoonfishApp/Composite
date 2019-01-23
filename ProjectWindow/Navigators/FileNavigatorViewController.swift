@@ -39,7 +39,7 @@ final class FileNavigatorViewController: NSViewController {
     }
     
     
-    /// Called from EditWindowController
+    /// Called from ProjectWindowController
     func load(url: URL, projectName: String, openFile: String? = nil) throws {
         
         root = try FileItem(url: url, projectName: projectName)

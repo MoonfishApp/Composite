@@ -68,7 +68,7 @@ struct DefaultSettings {
         .fontSize: 12.0,
         .shouldAntialias: true,
         .lineHeight: 1.2,
-        .highlightCurrentLine: false,
+        .highlightCurrentLine: true,
         .cursorType: CursorType.bar.rawValue,
         .showInvisibles: false,
         .showInvisibleSpace: false,

@@ -51,9 +51,9 @@ final class ProjectWindowController: NSWindowController {
 //        return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
 //    }
 //
-//    var fileBrowserViewController: FileNavigatorViewController {
-//        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
-//    }
+    var fileBrowserViewController: FileNavigatorViewController {
+        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
+    }
     
 //    private var editView: SyntaxTextView {
 //        return (self.window?.contentViewController?.childViewControllers[1] as! CompositeSplitViewController).editorView
@@ -71,13 +71,17 @@ final class ProjectWindowController: NSWindowController {
     
     func loadBrowser(select item: String? = nil) {
 //        guard let project = project, let document = document as? ProjectDocument else { return }
-//        window?.title = project.name
-//        do {
+        window?.title = project?.name ?? "Demo Project"
+        do {
+//            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875/")
+            
+            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875")
+            try fileBrowserViewController.load(url: url, projectName: "Demo Project", openFile: "contracts/Untitled9875.sol")
 //            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
     }
 
     
