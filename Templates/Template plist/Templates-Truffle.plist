@@ -23,7 +23,7 @@
 				<key>moreInfoUrl</key>
 				<string>https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin</string>
 				<key>openFile</key>
-				<string>contracts/TutorialToken.sol</string>
+				<string>contracts/$(PROJECT_NAME).sol</string>
 				<key>detailViewType</key>
 				<string>erc-20</string>
 				<key>initType</key>
@@ -71,7 +71,7 @@
 				<key>moreInfoUrl</key>
 				<string>http://get.celer.app</string>
 				<key>openFile</key>
-				<string>contracts/&lt;#__project_name#&gt;.sol</string>
+				<string>contracts/$(PROJECT_NAME).sol</string>
 				<key>detailViewType</key>
 				<string></string>
 				<key>initType</key>
@@ -110,7 +110,7 @@
 				<key>moreInfoUrl</key>
 				<string>https://github.com/celer-network/cApps-eth/tree/master/Gomoku</string>
 				<key>openFile</key>
-				<string>contracts/&lt;#__project_name#&gt;.sol</string>
+				<string>contracts/$(PROJECT_NAME).sol</string>
 				<key>detailViewType</key>
 				<string></string>
 				<key>initType</key>

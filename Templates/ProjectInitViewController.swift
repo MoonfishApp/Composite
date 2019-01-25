@@ -58,10 +58,10 @@ class ProjectInitViewController: NSViewController {
                                     alert.runModal()
                                 }
 
-                                if let document = document as? ProjectDocument, let editWindowController = document.editWindowController {
-                                    editWindowController.setConsole(self.textView.string)
-                                    //                            editWindowController.project = self.projectDirectoryCreator.project
-                                }
+//                                if let document = document as? ProjectDocument, let editWindowController = document.editWindowController {
+//                                    editWindowController.setConsole(self.textView.string)
+//                                    //                            editWindowController.project = self.projectDirectoryCreator.project
+//                                }
                                 self.view.window?.close()
                             }
                         }
@@ -84,3 +84,17 @@ class ProjectInitViewController: NSViewController {
         view.window?.close()
     }    
 }
+
+/*
+ 
+ 
+ How can I create new documents other than through user-action methods?
+ You can use NSDocumentController’s open... methods, which create a document and, if shouldCreateUI is TRUE, also create the document’s window controller(s) and add the document to the list of open documents. These methods also check file paths and return an existing document for the file path if one exists.
+ 
+ You can also use NSDocumentController's make... methods, which just create the document. Usually, you will want to call addDocument: to add the new document to the NSDocumentController.
+ 
+ Finally, you can simply create a document yourself with any initializer the subclass supports. Usually, you will want to add the document to the NSDocumentController with NSDocumentController's addDocument: method.
+ 
+ NSDocumentController's newDocument: action method creates a new document of the first type listed in the application’s array of document types (as configured in Xcode). But this isn't really enough for applications that want to support several distinct types of document.
+ 
+ */

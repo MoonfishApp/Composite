@@ -38,7 +38,7 @@ class ProjectInit {
         self.baseDirectory = baseDirectory
         self.template = template
         
-        projectFileURL = URL(fileURLWithPath: baseDirectory).appendingPathComponent(projectName).appendingPathComponent("\(projectName).comp")
+        projectFileURL = URL(fileURLWithPath: baseDirectory).appendingPathComponent(projectName).appendingPathComponent("\(projectName).composite")
         
         frameworkCommands = try FrameworkCommands.loadCommands(for: frameworkName)
         
@@ -105,7 +105,7 @@ class ProjectInit {
         encoder.outputFormat = .xml
         do {
             let data = try encoder.encode(project)
-            FileManager.default.createFile(atPath: projectDirectory.appendingPathComponent("\(projectName).comp").path, contents: data, attributes: nil)
+            FileManager.default.createFile(atPath: projectDirectory.appendingPathComponent("\(projectName).composite").path, contents: data, attributes: nil)
         } catch {
             print(error)
             assertionFailure()

@@ -12,6 +12,11 @@ struct Project: Codable {
     
     /// Name of the project, e.g. ProjectName
     let name: String
+    
+    
+    // How to store dependencies?
+    // array of
+    // tool, (optional) version
 
     /// Interface
     let platformName: String
@@ -25,7 +30,7 @@ struct Project: Codable {
     // TODO: Let window restoration handle this?
     var lastOpenFile: String?
     
-//    var openDocuments: [TextDocument]?
+//    var openDocuments: [TextDocument]?    
     
     init(name: String, platformName: String, frameworkName: String, frameworkVersion: String? = nil, lastOpenFile: String?) {
         self.name = name
@@ -34,6 +39,7 @@ struct Project: Codable {
         self.frameworkVersion = frameworkVersion // If nil, find latest version
         self.lastOpenFile = lastOpenFile?.replaceOccurrencesOfProjectName(with: name)
     }
+    
 }
 
 

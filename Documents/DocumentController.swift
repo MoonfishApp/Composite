@@ -1,52 +1,18 @@
 //
 //  DocumentController.swift
+//  Composite
 //
-//  CotEditor
-//  https://coteditor.com
-//
-//  Created by nakamuxu on 2004-12-14.
-//
-//  ---------------------------------------------------------------------------
-//
-//  © 2004-2007 nakamuxu
-//  © 2014-2018 1024jp
-//
-//  Licensed under the Apache License, Version 2.0 (the "License");
-//  you may not use this file except in compliance with the License.
-//  You may obtain a copy of the License at
-//
-//  https://www.apache.org/licenses/LICENSE-2.0
-//
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS,
-//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  See the License for the specific language governing permissions and
-//  limitations under the License.
+//  Created by Ronald "Danger" Mannak on 1/23/19.
+//  Copyright © 2019 A Puzzle A Day. All rights reserved.
 //
 
 import Cocoa
 
-protocol AdditionalDocumentPreparing: AnyObject {
-    
-    func didMakeDocumentForExisitingFile(url: URL)
-}
+class DocumentController: NSDocumentController {
 
-
-final class DocumentController: NSDocumentController {
+//    var projects = [ProjectDocument]()
     
-    private(set) lazy var autosaveDirectoryURL: URL =  try! FileManager.default.url(for: .autosavedInformationDirectory,
-                                                                                    in: .userDomainMask,
-                                                                                    appropriateFor: nil,
-                                                                                    create: true)
-    private(set) var accessorySelectedEncoding: String.Encoding?
-    
-    
-    // MARK: Private Properties
-    
-    private let transientDocumentLock = NSLock()
-    private var deferredDocuments = [NSDocument]()
-    
-    
+    private(set) lazy var autosaveDirectoryURL: URL =  try! FileManager.default.url(for: .autosavedInformationDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     
     // MARK: -
     // MARK: Lifecycle
@@ -64,32 +30,89 @@ final class DocumentController: NSDocumentController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     // MARK: Document Controller Methods
     
     /// automatically insert Shre menu (on macOS 10.13 and later)
     override var allowsAutomaticShareMenu: Bool {
-
+        
         return true
     }
-    
     
     /// open document
     override func openDocument(withContentsOf url: URL, display displayDocument: Bool, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
         
-        // obtain transient document if exists
-        self.transientDocumentLock.lock()
-        let transientDocument = self.transientDocumentToReplace
-        if let transientDocument = transientDocument {
-            transientDocument.isTransient = false
-            self.deferredDocuments = []
-        }
-        self.transientDocumentLock.unlock()
-        
+        print("Open document for \(url.path)")
         super.openDocument(withContentsOf: url, display: false) { (document, documentWasAlreadyOpen, error) in
+        
+            guard error == nil else {
+                assertionFailure(error!.localizedDescription)
+                return
+            }
             
+            print("Document: \(document?.fileURL?.path ?? "none")")
             assert(Thread.isMainThread)
+            assert(document != nil)
+            
+            if let document = document as? TextDocument {
+                
+                // We probably need to add project to the file?
+                
+                completionHandler(document, documentWasAlreadyOpen, error)
+                return
+                
+            } else if let project = document as? ProjectDocument {
+                
+                //if canBeRestored == ... {
+                    
+                    // The editor window of this project can be restored
+                    
+                    // Restore window..
+                //} else
+                if let defaultDocument = project.project?.lastOpenFile {
+                    
+                    // Create a new editor window with the default file in the editor viewcontroller
+                    
+                    let defaultDocumentURL = project.workDirectory.appendingPathComponent(defaultDocument)
+                    
+                    print("defaultDoc: \(defaultDocument)")
+                    print("URL: \(defaultDocumentURL.path)")
+                    
+                    guard FileManager.default.fileExists(atPath: defaultDocumentURL.path) == true else {
+                        project.makeWindowControllers()
+                        project.showWindows()
+                        return
+                    }
+                    
+                    self.openDocument(withContentsOf: defaultDocumentURL, display: false) { (document, documentWasAlreadyOpen, error) in
+                        
+                        if let textDocument = document as? TextDocument {
+                            textDocument.partOf = project
+                            textDocument.makeWindowControllers()
+                            textDocument.showWindows()
+                        }
+                    }
+                } else {
+                    
+                    // Project does not have default file
+                    // Open editor window with project file
+                    project.makeWindowControllers()
+                    project.showWindows()
+                }
+                
+            } else {
+                assertionFailure()
+            }
+            /*
+            //See if default text document can be opened
+            // OR see if windows need to be restored
+            
+            // if default text Doc, run self.openDocument(textdocument, displayDocument: false)
+            
+            // How do we get the created document here?
+            
+            textDocument.makeWindowControllers()
+            textDocument.showWindows()
+            
             
             // invalidate encoding that was set in the open panel
             self.accessorySelectedEncoding = nil
@@ -100,13 +123,6 @@ final class DocumentController: NSDocumentController {
                     document.makeWindowControllers()
                     document.showWindows()
                 }
-                
-                // display all deferred documents since the transient document has been replaced
-                for deferredDocument in self.deferredDocuments {
-                    deferredDocument.makeWindowControllers()
-                    deferredDocument.showWindows()
-                }
-                self.deferredDocuments = []
                 
             } else if displayDocument, let document = document {
                 if self.deferredDocuments.isEmpty {
@@ -119,66 +135,29 @@ final class DocumentController: NSDocumentController {
                 }
             }
             
-            completionHandler(document, documentWasAlreadyOpen, error)
+            completionHandler(document, documentWasAlreadyOpen, error) */
         }
     }
-    
     
     /// open untitled document
+    /// Not supported
     override func openUntitledDocumentAndDisplay(_ displayDocument: Bool) throws -> NSDocument {
-        
-        let document = try super.openUntitledDocumentAndDisplay(displayDocument)
-        
-        // make document transient when it is an open or reopen event
-        if self.documents.count == 1, NSAppleEventManager.shared().isOpenEvent {
-            (document as? TextDocument)?.isTransient = true
-        }
-        
-        return document
+        assertionFailure()
+        return NSDocument()
     }
-    
     
     /// instantiates a document located by a URL, of a specified type, and returns it if successful
     override func makeDocument(withContentsOf url: URL, ofType typeName: String) throws -> NSDocument {
         
-        // [caution] This method may be called from a background thread due to concurrent-opening.
-        
-        do {
-            try self.checkOpeningSafetyOfDocument(at: url, typeName: typeName)
-            
-        } catch {
-            // ask user for opening file
-            try DispatchQueue.syncOnMain {
-                guard self.presentError(error) else { throw CocoaError(.userCancelled) }
-            }
-        }
-        
         // make document
         let document = try super.makeDocument(withContentsOf: url, ofType: typeName)
         
-        (document as? AdditionalDocumentPreparing)?.didMakeDocumentForExisitingFile(url: url)
-        
         return document
     }
-    
-    
-    /// add document to documentController's list
-    override func addDocument(_ document: NSDocument) {
-        
-        // clear the first document's transient status when a second document is added
-        // -> This happens when the user selects "New" when a transient document already exists.
-        if self.documents.count == 1,
-            let firstDocument = self.documents.first as? TextDocument,
-            firstDocument.isTransient {
-            firstDocument.isTransient = false
-        }
-        
-        super.addDocument(document)
-    }
-    
+
     
     /// add encoding menu to open panel
-    override func beginOpenPanel(_ openPanel: NSOpenPanel, forTypes inTypes: [String]?, completionHandler: @escaping (Int) -> Void) {
+    /*override func beginOpenPanel(_ openPanel: NSOpenPanel, forTypes inTypes: [String]?, completionHandler: @escaping (Int) -> Void) {
         
         let accessoryController = OpenPanelAccessoryController.instantiate(storyboard: "OpenDocumentAccessory")
         
@@ -198,51 +177,29 @@ final class DocumentController: NSDocumentController {
             
             completionHandler(result)
         }
-    }
-    
+    }*/
     
     /// return enability of actions
     override func validateUserInterfaceItem(_ item: NSValidatedUserInterfaceItem) -> Bool {
         
-        if item.action == #selector(newDocumentAsTab) {
+        if item.action == #selector(newTab) {
             return self.currentDocument != nil
         }
         
         return super.validateUserInterfaceItem(item)
     }
     
-    
-    
-    // MARK: Public Methods
-    
-    /// insert hand-made Share menu to the File menu
-    func insertLegacyShareMenu() {
-        
-        let fileMenu = MainMenu.file.menu!
-        
-        // insert at the end of the group of Save/Close
-        var inSaveGroup = false
-        let index = fileMenu.items.enumerated().first { (_, item) in
-            if item.action == #selector(NSWindow.performClose) {
-                inSaveGroup = true
-            }
-            
-            return inSaveGroup && item.isSeparatorItem
-        }?.offset ?? fileMenu.numberOfItems
-        
-        let item = ShareMenuItem()
-        item.tag = MainMenu.MenuItemTag.sharingService.rawValue
-        
-        fileMenu.insertItem(item, at: index)
-        fileMenu.insertItem(NSMenuItem.separator(), at: index)
+    override func newDocument(_ sender: Any?) {
+        assertionFailure()
+        // Show new file template here
     }
-    
     
     
     // MARK: Action Messages
     
-    /// open a new document as new window
-    @IBAction func newDocumentAsWindow(_ sender: Any?) {
+    @IBAction func newProject(_ sender: Any?) {
+        
+        // Show template here?
         
         let document: NSDocument
         do {
@@ -260,144 +217,22 @@ final class DocumentController: NSDocumentController {
     
     
     /// open a new document as tab in the existing frontmost window
-    @IBAction func newDocumentAsTab(_ sender: Any?) {
-        
-        let document: NSDocument
-        do {
-            document = try self.openUntitledDocumentAndDisplay(false)
-        } catch {
-            self.presentError(error)
-            return
-        }
-        
-        document.makeWindowControllers()
-        document.windowControllers.first?.window?.tabbingMode = .preferred
-        document.showWindows()
-    }
-    
-    
-    
-    // MARK: Private Methods
-    
-    /// transient document to be replaced or nil
-    private var transientDocumentToReplace: TextDocument? {
-        
-        guard
-            self.documents.count == 1,
-            let document = self.documents.first as? TextDocument,
-            document.isTransient,
-            document.windowForSheet?.attachedSheet == nil
-            else { return nil }
-        
-        return document
-    }
-    
-    
-    /// replace window controllers in documents
-    private func replaceTransientDocument(_ transientDocument: TextDocument, with document: TextDocument) {
-        
-        assert(Thread.isMainThread)
-        
-        for controller in transientDocument.windowControllers {
-            document.addWindowController(controller)
-            transientDocument.removeWindowController(controller)
-        }
-        transientDocument.close()
-        
-        // notify accessibility clients about the value replacement of the transient document with opened document
-        document.textStorage.layoutManagers
-            .flatMap { $0.textContainers }
-            .compactMap { $0.textView }
-            .forEach { NSAccessibility.post(element: $0, notification: .valueChanged) }
-    }
-    
-    
-    /// Check file before creating a new document instance.
-    ///
-    /// - Parameters:
-    ///   - url: The location of the new document object.
-    ///   - typeName: The type of the document.
-    /// - Throws: `DocumentReadError`
-    private func checkOpeningSafetyOfDocument(at url: URL, typeName: String) throws {
-        
-        // check if the file is possible binary
-        let cfTypeName = typeName as CFString
-        let binaryTypes = [kUTTypeImage,
-                           kUTTypeAudiovisualContent,
-                           kUTTypeGNUZipArchive,
-                           kUTTypeZipArchive,
-                           kUTTypeBzip2Archive]
-        if binaryTypes.contains(where: { UTTypeConformsTo(cfTypeName, $0) }),
-            !UTTypeEqual(cfTypeName, kUTTypeScalableVectorGraphics)  // SVG is plain-text (except SVGZ)
-        {
-            throw DocumentReadError(kind: .binaryFile(type: typeName), url: url)
-        }
-        
-        // check if the file is enorm large
-        let fileSizeThreshold = UserDefaults.standard[.largeFileAlertThreshold]
-        if fileSizeThreshold > 0,
-            let fileSize = (try? url.resourceValues(forKeys: [.fileSizeKey]))?.fileSize,
-            fileSize > fileSizeThreshold
-        {
-            throw DocumentReadError(kind: .tooLarge(size: fileSize), url: url)
-        }
-    }
-    
-}
+    @IBAction func newTab(_ sender: Any?) {
 
+        // Show current file in new tab
+        
+//        let document: NSDocument
+//        do {
+//            document = try self.openUntitledDocumentAndDisplay(false)
+//        } catch {
+//            self.presentError(error)
+//            return
+//        }
+//
+//        document.makeWindowControllers()
+//        document.windowControllers.first?.window?.tabbingMode = .preferred
+//        document.showWindows()
+    }
+    
 
-
-// MARK: - Error
-
-private struct DocumentReadError: LocalizedError, RecoverableError {
-    
-    enum ErrorKind {
-        case binaryFile(type: String)
-        case tooLarge(size: Int)
-    }
-    
-    let kind: ErrorKind
-    let url: URL
-    
-    
-    var errorDescription: String? {
-        
-        switch self.kind {
-        case .binaryFile:
-            return String(format: "The file “%@” doesn’t appear to be text data.".localized,
-                          self.url.lastPathComponent)
-            
-        case .tooLarge(let size):
-            return String(format: "The file “%@” has a size of %@.".localized,
-                          self.url.lastPathComponent,
-                          ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file))
-        }
-    }
-    
-    
-    var recoverySuggestion: String? {
-        
-        switch self.kind {
-        case .binaryFile(let type):
-            let localizedTypeName = (UTTypeCopyDescription(type as CFString)?.takeRetainedValue() as String?) ?? "unknown file type"
-            return String(format: "The file is %@.\n\nDo you really want to open the file?".localized, localizedTypeName)
-            
-        case .tooLarge:
-            return "Opening such a large file can make the application slow or unresponsive.\n\nDo you really want to open the file?".localized
-        }
-    }
-    
-    
-    var recoveryOptions: [String] {
-        
-        return ["Open".localized,
-                "Cancel".localized]
-    }
-    
-    
-    func attemptRecovery(optionIndex recoveryOptionIndex: Int) -> Bool {
-        
-        return (recoveryOptionIndex == 0)
-    }
-    
 }

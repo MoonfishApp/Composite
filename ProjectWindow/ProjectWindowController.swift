@@ -18,27 +18,34 @@ final class ProjectWindowController: NSWindowController {
         
         didSet {
             
+            let project: ProjectDocument?
+            
             if let document = document as? TextDocument {
                 
                 // TODO:
                 // - Find project root directory
                 // - Open file
                 // - Determine blockchain / toolchain used
-                assertionFailure()
+                project = document.partOf
                 
             } else if let document =  document as? ProjectDocument {
                 
-                // Load file browser and open last opened file
-                var lastOpenFile: URL? = nil
-                if let file = project?.lastOpenFile {
-                    lastOpenFile = document.workDirectory.appendingPathComponent(file)
-                }
-                
-                loadBrowser(select: lastOpenFile?.path)
-                if let lastOpenFile = lastOpenFile {
-                    setEditor(url: lastOpenFile)
-                }
+                project = document
+            } else {
+                project = nil
             }
+            
+            // Load file browser and open last opened file
+            var lastOpenFile: URL? = nil
+            if let file = project?.project?.lastOpenFile {
+                lastOpenFile = project?.workDirectory.appendingPathComponent(file)
+            }
+            
+            loadBrowser(select: lastOpenFile?.path)
+            if let lastOpenFile = lastOpenFile {
+                setEditor(url: lastOpenFile)
+            }
+
         }
     }
     
@@ -202,4 +209,8 @@ final class ProjectWindowController: NSWindowController {
 //            }
 //        }
     }
+    
+    //    override func windowTitle(forDocumentDisplayName displayName: String) -> String {
+    //        <#code#>
+    //    }
 }

@@ -42,6 +42,9 @@
 		C72FEA9E21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */; };
 		C72FEB7C21E7E5BC000EF3C7 /* EditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEB7B21E7E5BC000EF3C7 /* EditorTests.swift */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
+		C7351C0521F91999000A3A5B /* ProjectEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7351C0421F91999000A3A5B /* ProjectEditor.storyboard */; };
+		C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7351C0821F91CAF000A3A5B /* NoEditor.storyboard */; };
+		C7351C0B21F94EA8000A3A5B /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7351C0A21F94EA8000A3A5B /* DocumentController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
 		C79A6B6221EE9865007FB630 /* SettingFileManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6021EE9865007FB630 /* SettingFileManaging.swift */; };
@@ -63,7 +66,6 @@
 		C79A6B9921EE9962007FB630 /* TextDocumentAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B8C21EE9961007FB630 /* TextDocumentAnalyzer.swift */; };
 		C79A6B9A21EE9962007FB630 /* TextSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B8D21EE9961007FB630 /* TextSelection.swift */; };
 		C79A6B9B21EE9962007FB630 /* EditorInfoCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B8E21EE9961007FB630 /* EditorInfoCountOperation.swift */; };
-		C79A6B9C21EE9962007FB630 /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B8F21EE9961007FB630 /* DocumentController.swift */; };
 		C79A6B9D21EE9962007FB630 /* IncompatibleCharacterScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B9021EE9961007FB630 /* IncompatibleCharacterScanner.swift */; };
 		C79A6B9E21EE9962007FB630 /* TextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B9121EE9962007FB630 /* TextDocument.swift */; };
 		C79A6B9F21EE9962007FB630 /* IncompatibleCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B9221EE9962007FB630 /* IncompatibleCharacter.swift */; };
@@ -410,6 +412,9 @@
 		C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyPlatformViewModel.swift; sourceTree = "<group>"; };
 		C72FEB7B21E7E5BC000EF3C7 /* EditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTests.swift; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		C7351C0421F91999000A3A5B /* ProjectEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectEditor.storyboard; sourceTree = "<group>"; };
+		C7351C0821F91CAF000A3A5B /* NoEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoEditor.storyboard; sourceTree = "<group>"; };
+		C7351C0A21F94EA8000A3A5B /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallToolchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
 		C79A6A8F21ED98B5007FB630 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -433,7 +438,6 @@
 		C79A6B8C21EE9961007FB630 /* TextDocumentAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDocumentAnalyzer.swift; sourceTree = "<group>"; };
 		C79A6B8D21EE9961007FB630 /* TextSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSelection.swift; sourceTree = "<group>"; };
 		C79A6B8E21EE9961007FB630 /* EditorInfoCountOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorInfoCountOperation.swift; sourceTree = "<group>"; };
-		C79A6B8F21EE9961007FB630 /* DocumentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
 		C79A6B9021EE9961007FB630 /* IncompatibleCharacterScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncompatibleCharacterScanner.swift; sourceTree = "<group>"; };
 		C79A6B9121EE9962007FB630 /* TextDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDocument.swift; sourceTree = "<group>"; };
 		C79A6B9221EE9962007FB630 /* IncompatibleCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncompatibleCharacter.swift; sourceTree = "<group>"; };
@@ -784,7 +788,7 @@
 		C70509D521541C6F003DDA2B /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				C79A6B8F21EE9961007FB630 /* DocumentController.swift */,
+				C7351C0A21F94EA8000A3A5B /* DocumentController.swift */,
 				C79A75ED21F066AC007FB630 /* Project Document */,
 				C79A75EE21F066D2007FB630 /* Text Document */,
 			);
@@ -899,7 +903,7 @@
 				C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */,
 				C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */,
 				C715712B21F14F5800A1A6B4 /* Toolbar */,
-				C72FEB8621E9400A000EF3C7 /* Editor */,
+				C72FEB8621E9400A000EF3C7 /* Editors */,
 				C72FEB8521E94005000EF3C7 /* Navigators */,
 				C72FEB8421E93FFC000EF3C7 /* Inspectors */,
 				C72FEB8321E93FEF000EF3C7 /* Console */,
@@ -964,7 +968,25 @@
 			path = Navigators;
 			sourceTree = "<group>";
 		};
-		C72FEB8621E9400A000EF3C7 /* Editor */ = {
+		C72FEB8621E9400A000EF3C7 /* Editors */ = {
+			isa = PBXGroup;
+			children = (
+				C7351C0321F9197F000A3A5B /* ProjectEditor */,
+				C7351C0621F91C86000A3A5B /* TextEditor */,
+				C7351C0721F91C9D000A3A5B /* NoEditor */,
+			);
+			path = Editors;
+			sourceTree = "<group>";
+		};
+		C7351C0321F9197F000A3A5B /* ProjectEditor */ = {
+			isa = PBXGroup;
+			children = (
+				C7351C0421F91999000A3A5B /* ProjectEditor.storyboard */,
+			);
+			path = ProjectEditor;
+			sourceTree = "<group>";
+		};
+		C7351C0621F91C86000A3A5B /* TextEditor */ = {
 			isa = PBXGroup;
 			children = (
 				C715712C21F15BAE00A1A6B4 /* DocumentSplitViewController.swift */,
@@ -974,7 +996,15 @@
 				C79A6BD221EE9A8B007FB630 /* LineNumberView.swift */,
 				C7A584EB21F0FADC0097B761 /* CompositeEditor.storyboard */,
 			);
-			path = Editor;
+			path = TextEditor;
+			sourceTree = "<group>";
+		};
+		C7351C0721F91C9D000A3A5B /* NoEditor */ = {
+			isa = PBXGroup;
+			children = (
+				C7351C0821F91CAF000A3A5B /* NoEditor.storyboard */,
+			);
+			path = NoEditor;
 			sourceTree = "<group>";
 		};
 		C79A6ACF21EE75A3007FB630 /* cotEditor */ = {
@@ -1825,6 +1855,7 @@
 				C79A6D4821EE9DDC007FB630 /* ProgressView.storyboard in Resources */,
 				C79A759221EEDDAF007FB630 /* Mono.cottheme in Resources */,
 				C79A6D3A21EE9D93007FB630 /* DocumentInspectorView.storyboard in Resources */,
+				C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */,
 				C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */,
 				C79A759421EEDDAF007FB630 /* Classic.cottheme in Resources */,
 				C79A6D3221EE9D64007FB630 /* RegexReferenceView.storyboard in Resources */,
@@ -1840,6 +1871,7 @@
 				C79A6D3C21EE9D9A007FB630 /* OutlineView.storyboard in Resources */,
 				C79A758D21EEDDAF007FB630 /* Lakritz.cottheme in Resources */,
 				C79A759321EEDDAF007FB630 /* Resinifictrix.cottheme in Resources */,
+				C7351C0521F91999000A3A5B /* ProjectEditor.storyboard in Resources */,
 				C79A750021EEDD04007FB630 /* ConsolePanel.storyboard in Resources */,
 				C79A6D5021EE9E03007FB630 /* CustomTabWidthView.storyboard in Resources */,
 				C7DDD75A2141E02800674942 /* InstallToolchain.storyboard in Resources */,
@@ -2080,6 +2112,7 @@
 				C79A6C7F21EE9BC9007FB630 /* RegularExpressionSyntaxType+Color.swift in Sources */,
 				C79A6BCC21EE9A6E007FB630 /* DocumentViewController+TouchBar.swift in Sources */,
 				C79A75DE21EEF0AF007FB630 /* MultipleReplacementListViewController.swift in Sources */,
+				C7351C0B21F94EA8000A3A5B /* DocumentController.swift in Sources */,
 				C79A6C0E21EE9AC1007FB630 /* NSTextView+Selection.swift in Sources */,
 				C79A6C1021EE9AC1007FB630 /* EditorTextView+Accessories.swift in Sources */,
 				C7E7645D212675AF00867DA4 /* Error.swift in Sources */,
@@ -2150,7 +2183,6 @@
 				C79A6CE321EE9C52007FB630 /* NSString.swift in Sources */,
 				C79A6C9F21EE9BEC007FB630 /* UnicodeScalar+ControlCharacter.swift in Sources */,
 				C79A6BC321EE9A64007FB630 /* SidebarViewController.swift in Sources */,
-				C79A6B9C21EE9962007FB630 /* DocumentController.swift in Sources */,
 				C79A6C7E21EE9BC9007FB630 /* NSTextView+RegexParse.swift in Sources */,
 				C79A6C3A21EE9AFB007FB630 /* OutlineMenuButtonCell.swift in Sources */,
 				C79A6CED21EE9C52007FB630 /* Bundle+AppInfo.swift in Sources */,

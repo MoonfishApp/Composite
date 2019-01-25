@@ -32,7 +32,6 @@ private struct SerializationKey {
     static let syntaxStyle = "syntaxStyle"
     static let autosaveIdentifier = "autosaveIdentifier"
     static let isVerticalText = "isVerticalText"
-    static let isTransient = "isTransient"
 }
 
 
@@ -42,7 +41,7 @@ private let uniqueFileIDLength = 13
 
 // MARK: -
 
-final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
+final class TextDocument: NSDocument, EncodingHolder {
     
     // MARK: Notification Names
     
@@ -55,8 +54,7 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
     // MARK: Public Properties
     
     var isVerticalText = false
-    var isTransient = false  // untitled & empty document that was created automatically
-    
+    var partOf: ProjectDocument? = nil
     
     // MARK: Readonly Properties
     
@@ -108,11 +106,11 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
         self.syntaxParser.style = SyntaxManager.shared.setting(name: UserDefaults.standard[.syntaxStyle]!) ?? SyntaxStyle()
         
         // use the encoding user selected in open panel, if exists
-        if let accessorySelectedEncoding = (DocumentController.shared as! DocumentController).accessorySelectedEncoding {
-            self.readingEncoding = accessorySelectedEncoding
-        } else {
+//        if let accessorySelectedEncoding = (DocumentController.shared as! DocumentController).accessorySelectedEncoding {
+//            self.readingEncoding = accessorySelectedEncoding
+//        } else {
             self.readingEncoding = String.Encoding(rawValue: UserDefaults.standard[.encodingInOpen])
-        }
+//        }
         
         super.init()
         
@@ -130,7 +128,6 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
         coder.encode(self.autosaveIdentifier, forKey: SerializationKey.autosaveIdentifier)
         coder.encode(self.syntaxParser.style.name, forKey: SerializationKey.syntaxStyle)
         coder.encode(self.isVerticalText, forKey: SerializationKey.isVerticalText)
-        coder.encode(self.isTransient, forKey: SerializationKey.isTransient)
         
         super.encodeRestorableState(with: coder)
     }
@@ -157,9 +154,6 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
         }
         if coder.containsValue(forKey: SerializationKey.isVerticalText) {
             self.isVerticalText = coder.decodeBool(forKey: SerializationKey.isVerticalText)
-        }
-        if coder.containsValue(forKey: SerializationKey.isTransient) {
-            self.isTransient = coder.decodeBool(forKey: SerializationKey.isTransient)
         }
     }
     
@@ -211,13 +205,21 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
             self.applyContentToWindow()
         }
         
-        // a transient document has already one
         guard self.windowControllers.isEmpty else { return }
         
-        let windowController = NSWindowController.instantiate(storyboard: "DocumentWindow")
+//        let windowController = NSWindowController.instantiate(storyboard: "DocumentWindow")
+//
+//        self.addWindowController(windowController)
         
+        // Returns the Storyboard that contains your Document window.
+        let storyboard = NSStoryboard(name: NSStoryboard.Name("ProjectWindow"), bundle: nil)
+        // Note: Changing the storyboard ID "EditWindow" in the storyboard to "ProjectWindow"
+        // somehow always get magically rolled back to "EditWindow" by Xcode. So "EditWindow"
+        // it is then for now
+        let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditWindow")) as! ProjectWindowController
         self.addWindowController(windowController)
     }
+    
     
     
     /// URL of document file
@@ -664,17 +666,7 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
             super.printInfo = newValue
         }
     }
-    
-    
-    /// document was updated
-    override func updateChangeCount(_ change: NSDocument.ChangeType) {
-        
-        self.isTransient = false
-        
-        super.updateChangeCount(change)
-    }
-    
-    
+
     
     // MARK: Protocols
     
@@ -758,13 +750,13 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
     
     
     /// open existing document file (alternative methods for `init(contentsOf:ofType:)`)
-    func didMakeDocumentForExisitingFile(url: URL) {
-        
+//    func didMakeDocumentForExisitingFile(url: URL) {
+    
         // [caution] This method may be called from a background thread due to concurrent-opening.
         // This method won't be invoked on Resume. (2015-01-26)
         
 //        ScriptManager.shared.dispatchEvent(documentOpened: self)
-    }
+//    }
     
     
     

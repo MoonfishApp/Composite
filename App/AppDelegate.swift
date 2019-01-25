@@ -71,6 +71,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         super.init()
     }
     
+    // Prevent showing empty untitled project window at startup
+    func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
+        return false
+    }
+    
 }
 
 // CotEditor extension
@@ -78,9 +83,9 @@ extension AppDelegate {
     
     /// open a specific page in Help contents
     @IBAction func openHelpAnchor(_ sender: AnyObject) {
-        
+
         guard let identifier = (sender as? NSUserInterfaceItemIdentification)?.identifier else { return assertionFailure() }
-        
+
         NSHelpManager.shared.openHelpAnchor(identifier.rawValue, inBook: Bundle.main.helpBookName)
     }
 
