@@ -11,14 +11,14 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-//    var preferencesController: PreferencesWindowController? = nil
+    private lazy var preferencesWindowController = NSWindowController.instantiate(storyboard: "Preferences")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         if UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false {
             showInstallWizard()
         } else {
-            showChooseTemplate(self)
+            (DocumentController.shared as! DocumentController).newProject(self)
         }
     }
 
@@ -45,13 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         installWizard?.showWindow(self)
     }
     
-    @IBAction func showChooseTemplate(_ sender: Any) {
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Template"), bundle: nil)
-        let templateController = storyboard.instantiateInitialController() as? NSWindowController
-        templateController?.showWindow(sender)
-    }
-    
-    
     override init() {
         
         // register default setting values
@@ -74,6 +67,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Prevent showing empty untitled project window at startup
     func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
         return false
+    }
+    
+    /// show preferences window
+    @IBAction func showPreferences(_ sender: Any?) {
+        
+        self.preferencesWindowController.showWindow(sender)
     }
     
 }

@@ -194,45 +194,4 @@ class DocumentController: NSDocumentController {
         // Show new file template here
     }
     
-    
-    // MARK: Action Messages
-    
-    @IBAction func newProject(_ sender: Any?) {
-        
-        // Show template here?
-        
-        let document: NSDocument
-        do {
-            document = try self.openUntitledDocumentAndDisplay(false)
-        } catch {
-            self.presentError(error)
-            return
-        }
-        
-        DocumentWindow.tabbingPreference = .manual
-        document.makeWindowControllers()
-        document.showWindows()
-        DocumentWindow.tabbingPreference = nil
-    }
-    
-    
-    /// open a new document as tab in the existing frontmost window
-    @IBAction func newTab(_ sender: Any?) {
-
-        // Show current file in new tab
-        
-//        let document: NSDocument
-//        do {
-//            document = try self.openUntitledDocumentAndDisplay(false)
-//        } catch {
-//            self.presentError(error)
-//            return
-//        }
-//
-//        document.makeWindowControllers()
-//        document.windowControllers.first?.window?.tabbingMode = .preferred
-//        document.showWindows()
-    }
-    
-
 }

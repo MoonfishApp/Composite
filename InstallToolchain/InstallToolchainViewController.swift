@@ -151,8 +151,7 @@ class InstallToolchainViewController: NSViewController {
     @IBAction func done(_ sender: Any) {
         fetchVersionQueue.cancelAllOperations()
         view.window?.close()
-        guard let delegate = NSApplication.shared.delegate as? AppDelegate else { return }
-        delegate.showChooseTemplate(self)
+        (DocumentController.shared as! DocumentController).newProject(self)
     }
     
     

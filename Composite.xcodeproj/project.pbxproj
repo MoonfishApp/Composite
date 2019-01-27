@@ -45,6 +45,7 @@
 		C7351C0521F91999000A3A5B /* ProjectEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7351C0421F91999000A3A5B /* ProjectEditor.storyboard */; };
 		C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7351C0821F91CAF000A3A5B /* NoEditor.storyboard */; };
 		C7351C0B21F94EA8000A3A5B /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7351C0A21F94EA8000A3A5B /* DocumentController.swift */; };
+		C7351C0D21FD4ED7000A3A5B /* DocumentController+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7351C0C21FD4ED7000A3A5B /* DocumentController+Action.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
 		C79A6B6221EE9865007FB630 /* SettingFileManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6021EE9865007FB630 /* SettingFileManaging.swift */; };
@@ -415,6 +416,7 @@
 		C7351C0421F91999000A3A5B /* ProjectEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectEditor.storyboard; sourceTree = "<group>"; };
 		C7351C0821F91CAF000A3A5B /* NoEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoEditor.storyboard; sourceTree = "<group>"; };
 		C7351C0A21F94EA8000A3A5B /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
+		C7351C0C21FD4ED7000A3A5B /* DocumentController+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentController+Action.swift"; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallToolchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
 		C79A6A8F21ED98B5007FB630 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -789,6 +791,7 @@
 			isa = PBXGroup;
 			children = (
 				C7351C0A21F94EA8000A3A5B /* DocumentController.swift */,
+				C7351C0C21FD4ED7000A3A5B /* DocumentController+Action.swift */,
 				C79A75ED21F066AC007FB630 /* Project Document */,
 				C79A75EE21F066D2007FB630 /* Text Document */,
 			);
@@ -2106,6 +2109,7 @@
 				C79A6BDE21EE9A95007FB630 /* CustomTabWidthViewController.swift in Sources */,
 				C79A6B6921EE986E007FB630 /* EncodingManager.swift in Sources */,
 				C79A6C3721EE9AFB007FB630 /* EditorSplitView.swift in Sources */,
+				C7351C0D21FD4ED7000A3A5B /* DocumentController+Action.swift in Sources */,
 				C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */,
 				C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */,
 				C79A6D1221EE9C64007FB630 /* NSCursor+Dark.swift in Sources */,
