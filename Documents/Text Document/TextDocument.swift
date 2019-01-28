@@ -205,7 +205,7 @@ final class TextDocument: NSDocument, EncodingHolder {
             self.applyContentToWindow()
         }
         
-        guard self.windowControllers.isEmpty else { return }
+//        guard self.windowControllers.isEmpty else { return }
         
 //        let windowController = NSWindowController.instantiate(storyboard: "DocumentWindow")
 //
@@ -794,6 +794,10 @@ final class TextDocument: NSDocument, EncodingHolder {
     
     
     /// return document window's editor wrapper
+//    var viewController: NSViewController? {
+//
+//        return self.windowControllers.first?.contentViewController
+//    }
     var viewController: DocumentViewController? {
         
         return (self.windowControllers.first?.contentViewController as? WindowContentViewController)?.documentViewController
@@ -1058,19 +1062,21 @@ final class TextDocument: NSDocument, EncodingHolder {
         
         guard let viewController = self.viewController else { return }
         
-        // update status bar and document inspector
-        self.analyzer.invalidateFileInfo()
-        self.analyzer.invalidateModeInfo()
-        self.analyzer.invalidateEditorInfo()
+        viewController.representedObject = self
         
-        // update incompatible characters if pane is visible
-        self.incompatibleCharacterScanner.invalidate()
-        
-        // update view
-        viewController.invalidateStyleInTextStorage()
-        if self.isVerticalText {
-            viewController.verticalLayoutOrientation = true
-        }
+//        // update status bar and document inspector
+//        self.analyzer.invalidateFileInfo()
+//        self.analyzer.invalidateModeInfo()
+//        self.analyzer.invalidateEditorInfo()
+//        
+//        // update incompatible characters if pane is visible
+//        self.incompatibleCharacterScanner.invalidate()
+//        
+//        // update view
+//        viewController.invalidateStyleInTextStorage()
+//        if self.isVerticalText {
+//            viewController.verticalLayoutOrientation = true
+//        }
     }
     
     

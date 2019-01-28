@@ -39,6 +39,12 @@ final class ProjectDocument: NSDocument {
         return projectFileURL.deletingLastPathComponent()
     }
     
+    /// return document window's editor wrapper
+    var viewController: NSViewController? {
+        
+        return self.windowControllers.first?.contentViewController
+    }
+    
 //    var editWindowController: ProjectWindowController? {
 //        for window in windowControllers {
 //            if let window = window as? ProjectWindowController, let doc = window.document as? ProjectDocument, doc == self {
@@ -83,10 +89,9 @@ final class ProjectDocument: NSDocument {
         // somehow always get magically rolled back to "EditWindow" by Xcode. So "EditWindow"
         // it is then for now
         let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditWindow")) as! ProjectWindowController
-        self.addWindowController(windowController)
-//        windowController.
+        addWindowController(windowController)
         
-//        windowController.project = self.project 
+        applyContentToWindow()
     }
 
     
@@ -194,6 +199,12 @@ final class ProjectDocument: NSDocument {
 
     override func canAsynchronouslyWrite(to url: URL, ofType typeName: String, for saveOperation: NSDocument.SaveOperationType) -> Bool {
         return true
+    }
+    
+    private func applyContentToWindow() {
+        if let viewController = self.viewController {
+            viewController.representedObject = self
+        }
     }
     
 }

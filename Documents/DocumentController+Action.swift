@@ -13,9 +13,27 @@ import Cocoa
 extension DocumentController {
     
     /// open a new document as tab in the existing frontmost window
-    @IBAction func newTab(_ sender: Any?) {
+//    @IBAction override func newWindowForTab(_ sender: Any?) {
+//    @IBAction func newTab(_ sender: Any?) {
         
-        print("New Tab action")
+//        print("New Tab action")
+//
+//        guard let document = currentDocument, let window = document.windowForSheet else {
+//            assertionFailure()
+//            return
+//        }
+//        let newTab = window.copy() as! NSWindow
+//        window.addTabbedWindow(newTab, ordered: .above)
+        
+//        document.addWindowController(newTab)
+        
+        // Get active document
+        // Copy current NSWindow belonging to active document
+        // document.addWindowController(newWindowController)
+        // Add NSWindow as tab to active NSWindowController
+        
+        
+        
         // Show current file in new tab
         
         //        let document: NSDocument
@@ -29,7 +47,7 @@ extension DocumentController {
         //        document.makeWindowControllers()
         //        document.windowControllers.first?.window?.tabbingMode = .preferred
         //        document.showWindows()
-    }
+//    }
     
     
     

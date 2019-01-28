@@ -68,7 +68,7 @@
                                                 <items>
                                                     <menuItem title="Tab" keyEquivalent="t" id="Z5X-YS-EXE">
                                                         <connections>
-                                                            <action selector="newTab:" target="Ady-hI-5gd" id="vVv-Uv-hap"/>
+                                                            <action selector="newWindowForTab:" target="Ady-hI-5gd" id="8mk-G5-7p9"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Window" keyEquivalent="t" id="OQa-2s-kH3">

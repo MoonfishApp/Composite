@@ -12,48 +12,6 @@ final class ProjectWindowController: NSWindowController {
     
     @IBOutlet weak var runButton: NSToolbarItem!
     
-    var editorURL: URL? = nil
-    
-    override var document: AnyObject? {
-        
-        didSet {
-            
-            let project: ProjectDocument?
-            
-            if let document = document as? TextDocument {
-                
-                // TODO:
-                // - Find project root directory
-                // - Open file
-                // - Determine blockchain / toolchain used
-                project = document.partOf
-                
-            } else if let document =  document as? ProjectDocument {
-                
-                project = document
-            } else {
-                project = nil
-            }
-            
-            // Load file browser and open last opened file
-            var lastOpenFile: URL? = nil
-            if let file = project?.project?.lastOpenFile {
-                lastOpenFile = project?.workDirectory.appendingPathComponent(file)
-            }
-            
-            loadBrowser(select: lastOpenFile?.path)
-            if let lastOpenFile = lastOpenFile {
-                setEditor(url: lastOpenFile)
-            }
-
-        }
-    }
-    
-    var project: Project? {
-        guard let document = self.document as? ProjectDocument else { return nil }
-        return document.project
-    }
-    
 //    var consoleTextView: NSTextView {
 //        return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
 //    }
@@ -76,20 +34,20 @@ final class ProjectWindowController: NSWindowController {
 //        loadBrowser()
 //    }
     
-    func loadBrowser(select item: String? = nil) {
-//        guard let project = project, let document = document as? ProjectDocument else { return }
-        window?.title = project?.name ?? "Demo Project"
-        do {
-//            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875/")
-            
-            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875")
-            try fileBrowserViewController.load(url: url, projectName: "Demo Project", openFile: "contracts/Untitled9875.sol")
-//            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
-    }
+//    func loadBrowser(select item: String? = nil) {
+////        guard let project = project, let document = document as? ProjectDocument else { return }
+//        window?.title = project?.name ?? "Demo Project"
+//        do {
+////            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875/")
+//
+//            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875")
+//            try fileBrowserViewController.load(url: url, projectName: "Demo Project", openFile: "contracts/Untitled9875.sol")
+////            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
+//        } catch {
+//            let alert = NSAlert(error: error)
+//            alert.runModal()
+//        }
+//    }
 
     
     /// Sets console vc text. Called by PreparingViewController
@@ -213,4 +171,6 @@ final class ProjectWindowController: NSWindowController {
     //    override func windowTitle(forDocumentDisplayName displayName: String) -> String {
     //        <#code#>
     //    }
+    
+    
 }

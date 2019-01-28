@@ -15,13 +15,18 @@ final class FileNavigatorViewController: NSViewController {
 
     private var root: FileItem?
 
-//    override var representedObject: Any? {
-//        didSet {
-//            if let representedObject = representedObject as? ProjectDocument {
-//
-//            }
-//        }
-//    }
+    override var representedObject: Any? {
+        didSet {
+            if let object = representedObject as? ProjectDocument {
+                print("filebrowser: set projectdocument")
+            } else if let object = representedObject as? TextDocument {
+                print("filebrowser: set filedocument")
+            } else {
+                assertionFailure()
+                // Show
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,3 +118,19 @@ extension FileNavigatorViewController: NSOutlineViewDataSource {
         return item.children[index]
     }
 }
+
+
+//    func loadBrowser(select item: String? = nil) {
+////        guard let project = project, let document = document as? ProjectDocument else { return }
+//        window?.title = project?.name ?? "Demo Project"
+//        do {
+////            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875/")
+//
+//            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875")
+//            try fileBrowserViewController.load(url: url, projectName: "Demo Project", openFile: "contracts/Untitled9875.sol")
+////            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
+//        } catch {
+//            let alert = NSAlert(error: error)
+//            alert.runModal()
+//        }
+//    }

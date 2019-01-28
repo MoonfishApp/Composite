@@ -974,6 +974,7 @@
 		C72FEB8621E9400A000EF3C7 /* Editors */ = {
 			isa = PBXGroup;
 			children = (
+				C7A584E921F0F9E90097B761 /* CompositeEditorSplitViewController.swift */,
 				C7351C0321F9197F000A3A5B /* ProjectEditor */,
 				C7351C0621F91C86000A3A5B /* TextEditor */,
 				C7351C0721F91C9D000A3A5B /* NoEditor */,
@@ -993,7 +994,6 @@
 			isa = PBXGroup;
 			children = (
 				C715712C21F15BAE00A1A6B4 /* DocumentSplitViewController.swift */,
-				C7A584E921F0F9E90097B761 /* CompositeEditorSplitViewController.swift */,
 				C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */,
 				C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */,
 				C79A6BD221EE9A8B007FB630 /* LineNumberView.swift */,

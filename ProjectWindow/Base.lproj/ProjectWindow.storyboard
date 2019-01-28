@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="268.5"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Project Content Split View Controller-->
         <scene sceneID="h8u-MF-cT6">
             <objects>
-                <splitViewController id="SSn-7J-yjq" sceneMemberID="viewController">
+                <splitViewController id="SSn-7J-yjq" customClass="ProjectContentSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" id="2nx-D6-Fks" userLabel="Navigator"/>
                         <splitViewItem id="4Ks-ct-VyO"/>

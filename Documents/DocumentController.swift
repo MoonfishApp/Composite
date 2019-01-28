@@ -9,10 +9,9 @@
 import Cocoa
 
 class DocumentController: NSDocumentController {
-
-//    var projects = [ProjectDocument]()
     
     private(set) lazy var autosaveDirectoryURL: URL =  try! FileManager.default.url(for: .autosavedInformationDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    
     
     // MARK: -
     // MARK: Lifecycle
@@ -182,7 +181,7 @@ class DocumentController: NSDocumentController {
     /// return enability of actions
     override func validateUserInterfaceItem(_ item: NSValidatedUserInterfaceItem) -> Bool {
         
-        if item.action == #selector(newTab) {
+        if item.action == #selector(newWindowForTab) {
             return self.currentDocument != nil
         }
         
@@ -192,6 +191,15 @@ class DocumentController: NSDocumentController {
     override func newDocument(_ sender: Any?) {
         assertionFailure()
         // Show new file template here
+    }
+    
+    @IBAction func newWindowForTab(_ sender: Any?) {
+        
+        guard let document = currentDocument else { return }
+        
+        document.makeWindowControllers()
+        guard let newTab = document.windowControllers.last?.window else { return }
+        document.windowControllers.first?.window?.addTabbedWindow(newTab, ordered: .below)
     }
     
 }

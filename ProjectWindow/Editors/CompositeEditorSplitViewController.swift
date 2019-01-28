@@ -10,4 +10,12 @@ import Cocoa
 
 final class CompositeEditorSplitViewController: NSSplitViewController {
 
+    override var representedObject: Any? {
+        
+        didSet {
+            for viewController in self.children {
+                viewController.representedObject = representedObject
+            }
+        }
+    }
 }
