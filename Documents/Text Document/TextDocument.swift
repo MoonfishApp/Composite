@@ -205,12 +205,6 @@ final class TextDocument: NSDocument, EncodingHolder {
             self.applyContentToWindow()
         }
         
-//        guard self.windowControllers.isEmpty else { return }
-        
-//        let windowController = NSWindowController.instantiate(storyboard: "DocumentWindow")
-//
-//        self.addWindowController(windowController)
-        
         // Returns the Storyboard that contains your Document window.
         let storyboard = NSStoryboard(name: NSStoryboard.Name("ProjectWindow"), bundle: nil)
         // Note: Changing the storyboard ID "EditWindow" in the storyboard to "ProjectWindow"
