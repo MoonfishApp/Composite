@@ -48,13 +48,11 @@ final class TextDocument: NSDocument, EncodingHolder {
     static let didChangeEncodingNotification = Notification.Name("DocumentDidChangeEncoding")
     static let didChangeLineEndingNotification = Notification.Name("DocumentDidChangeLineEnding")
     static let didChangeSyntaxStyleNotification = Notification.Name("DocumentDidChangeSyntaxStyle")
-
-    
     
     // MARK: Public Properties
     
     var isVerticalText = false
-    var partOf: ProjectDocument? = nil
+    @objc dynamic var project: ProjectDocument? = nil
     
     // MARK: Readonly Properties
     
@@ -213,7 +211,6 @@ final class TextDocument: NSDocument, EncodingHolder {
         let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditWindow")) as! ProjectWindowController
         self.addWindowController(windowController)
     }
-    
     
     
     /// URL of document file
@@ -1054,23 +1051,16 @@ final class TextDocument: NSDocument, EncodingHolder {
     /// transfer file information to UI
     private func applyContentToWindow() {
         
-        guard let viewController = self.viewController else { return }
+        guard let windowController = windowControllers.last else { return }
+        windowController.document = self
         
-        viewController.representedObject = self
-        
-//        // update status bar and document inspector
-//        self.analyzer.invalidateFileInfo()
-//        self.analyzer.invalidateModeInfo()
-//        self.analyzer.invalidateEditorInfo()
-//        
-//        // update incompatible characters if pane is visible
-//        self.incompatibleCharacterScanner.invalidate()
-//        
-//        // update view
-//        viewController.invalidateStyleInTextStorage()
-//        if self.isVerticalText {
-//            viewController.verticalLayoutOrientation = true
-//        }
+        // update status bar and document inspector
+        self.analyzer.invalidateFileInfo()
+        self.analyzer.invalidateModeInfo()
+        self.analyzer.invalidateEditorInfo()
+
+        // update incompatible characters if pane is visible
+        self.incompatibleCharacterScanner.invalidate()
     }
     
     

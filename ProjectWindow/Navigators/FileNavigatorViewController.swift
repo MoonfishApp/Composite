@@ -14,23 +14,48 @@ final class FileNavigatorViewController: NSViewController {
     @IBOutlet weak var fileView: NSOutlineView!
 
     private var root: FileItem?
-
+    private var projectObserver: NSKeyValueObservation?
+    private var fileURLObserver: NSKeyValueObservation?
+    
     override var representedObject: Any? {
         didSet {
-            if let object = representedObject as? ProjectDocument {
-                print("filebrowser: set projectdocument")
-            } else if let object = representedObject as? TextDocument {
-                print("filebrowser: set filedocument")
-            } else {
-                assertionFailure()
-                // Show
+            guard let representedObject = representedObject as? NSDocument else { return }
+            
+            if let project = representedObject as? ProjectDocument {
+                
+                fileURLObserver?.invalidate()
+                fileURLObserver = project.observe(\ProjectDocument.fileURL, options: .new) { document, change in
+                    
+                    try? self.load(url: project.workDirectory, projectName: "Project Name", openFile: project.fileURL?.path)
+                }
+                
+            } else if let textDocument = representedObject as? TextDocument {
+                
+                if let project = textDocument.project, let url = textDocument.project?.workDirectory {
+                    try? self.load(url: url, projectName: "Project Name", openFile: textDocument.fileURL?.path)
+                } else {
+                
+                    fileURLObserver?.invalidate()
+                    fileURLObserver = textDocument.observe(\TextDocument.project, options: .new) { textDocument, change in
+                        
+                        guard let url = textDocument.project?.workDirectory else { return }
+
+                        try? self.load(url: url, projectName: "Project Name", openFile: textDocument.fileURL?.path)
+                    }
+                }
             }
+
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+    }
+    
+    deinit {
+        projectObserver?.invalidate()
+        fileURLObserver?.invalidate()
     }
     
     @IBAction func fileViewDoubleClick(_ sender: NSOutlineView) {

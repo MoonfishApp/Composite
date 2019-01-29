@@ -12,13 +12,19 @@ final class ProjectWindowController: NSWindowController {
     
     @IBOutlet weak var runButton: NSToolbarItem!
     
+    override var document: AnyObject? {
+        didSet {
+            window?.contentViewController?.representedObject = document
+        }
+    }
+    
 //    var consoleTextView: NSTextView {
 //        return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
 //    }
 //
-    var fileBrowserViewController: FileNavigatorViewController {
-        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
-    }
+//    var fileBrowserViewController: FileNavigatorViewController {
+//        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
+//    }
     
 //    private var editView: SyntaxTextView {
 //        return (self.window?.contentViewController?.childViewControllers[1] as! CompositeSplitViewController).editorView

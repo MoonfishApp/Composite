@@ -92,6 +92,7 @@ class InstallToolchainViewController: NSViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: nil)
+        installCountObserver?.invalidate()
     }
     
     func loadPlatforms() {

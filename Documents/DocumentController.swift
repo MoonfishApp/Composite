@@ -85,7 +85,7 @@ class DocumentController: NSDocumentController {
                     self.openDocument(withContentsOf: defaultDocumentURL, display: false) { (document, documentWasAlreadyOpen, error) in
                         
                         if let textDocument = document as? TextDocument {
-                            textDocument.partOf = project
+                            textDocument.project = project
                             textDocument.makeWindowControllers()
                             textDocument.showWindows()
                         }
