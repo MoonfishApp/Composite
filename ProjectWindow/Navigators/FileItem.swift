@@ -10,13 +10,12 @@ import Cocoa
 
 final class FileItem: NSObject {
     let url: URL
-    let projectName: String?
     
     let localizedName: String
     var icon: NSImage? { return NSWorkspace.shared.icon(forFile: url.path) }
     let isDirectory: Bool
 
-    init(url: URL, projectName: String? = nil) throws {
+    init(url: URL) throws {
         
         let filemanager = FileManager.default
         var isDirectory: ObjCBool = false
@@ -25,10 +24,9 @@ final class FileItem: NSObject {
         }
         
         self.url = url
-        self.projectName = projectName
         
         let fileResource = try url.resourceValues(forKeys: [URLResourceKey.nameKey])
-        localizedName = fileResource.localizedName ?? fileResource.name ?? projectName ?? "<UNKNOWN>"
+        localizedName = fileResource.localizedName ?? fileResource.name ?? "<UNKNOWN>"
         self.isDirectory = isDirectory.boolValue
     }
     

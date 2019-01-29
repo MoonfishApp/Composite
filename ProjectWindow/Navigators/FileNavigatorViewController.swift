@@ -26,13 +26,13 @@ final class FileNavigatorViewController: NSViewController {
                 fileURLObserver?.invalidate()
                 fileURLObserver = project.observe(\ProjectDocument.fileURL, options: .new) { document, change in
                     
-                    try? self.load(url: project.workDirectory, projectName: "Project Name", openFile: project.fileURL?.path)
+                    try? self.load(url: project.workDirectory, openFile: project.fileURL?.path)
                 }
                 
             } else if let textDocument = representedObject as? TextDocument {
                 
                 if let project = textDocument.project, let url = textDocument.project?.workDirectory {
-                    try? self.load(url: url, projectName: "Project Name", openFile: textDocument.fileURL?.path)
+                    try? self.load(url: url, openFile: textDocument.fileURL?.path)
                 } else {
                 
                     fileURLObserver?.invalidate()
@@ -40,7 +40,7 @@ final class FileNavigatorViewController: NSViewController {
                         
                         guard let url = textDocument.project?.workDirectory else { return }
 
-                        try? self.load(url: url, projectName: "Project Name", openFile: textDocument.fileURL?.path)
+                        try? self.load(url: url, openFile: textDocument.fileURL?.path)
                     }
                 }
             }
@@ -70,9 +70,9 @@ final class FileNavigatorViewController: NSViewController {
     
     
     /// Called from ProjectWindowController
-    func load(url: URL, projectName: String, openFile: String? = nil) throws {
+    func load(url: URL, openFile: String? = nil) throws {
         
-        root = try FileItem(url: url, projectName: projectName)
+        root = try FileItem(url: url)
         fileView.reloadData()
         
         // Open last open file from project (or default file in a new project)
