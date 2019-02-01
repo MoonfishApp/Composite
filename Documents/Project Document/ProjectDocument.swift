@@ -14,6 +14,15 @@ import Cocoa
  
  */
 
+private struct SerializationKey {
+    
+    static let projectName = "projectName"
+    static let platformName = "platformName"
+    static let frameworkName = "frameworkName"
+    static let frameworkVersion = "frameworkVersion"
+    static let lastOpenFile = "lastOpenfile"
+}
+
 final class ProjectDocument: NSDocument {
     
     static let fileExtension = "composite"
@@ -44,15 +53,6 @@ final class ProjectDocument: NSDocument {
         
         return self.windowControllers.first?.contentViewController
     }
-    
-//    var editWindowController: ProjectWindowController? {
-//        for window in windowControllers {
-//            if let window = window as? ProjectWindowController, let doc = window.document as? ProjectDocument, doc == self {
-//                return window
-//            }
-//        }
-//        return nil
-//    }
 
     override class var autosavesInPlace: Bool {
         return true
@@ -78,6 +78,41 @@ final class ProjectDocument: NSDocument {
     /// return preferred file extension corresponding to the current syntax style
     override func fileNameExtension(forType typeName: String, saveOperation: NSDocument.SaveOperationType) -> String? {
         return ProjectDocument.fileExtension
+    }
+    
+    
+    
+    
+    /// store internal document state
+    /// TODO: We're storing the project struct in ProjectDocument. Might want to
+    /// extract that into the Project struct (or NSObject dirived object)
+    override func encodeRestorableState(with coder: NSCoder) {
+        
+        if let project = project {
+            coder.encode(project.name, forKey: SerializationKey.projectName)
+            coder.encode(project.platformName, forKey: SerializationKey.platformName)
+            coder.encode(project.frameworkName, forKey: SerializationKey.frameworkName)
+            coder.encode(project.frameworkVersion, forKey: SerializationKey.frameworkVersion)
+            coder.encode(project.lastOpenFile, forKey: SerializationKey.lastOpenFile)
+        }
+
+        super.encodeRestorableState(with: coder)
+    }
+    
+    /// resume UI state
+    override func restoreState(with coder: NSCoder) {
+        
+        super.restoreState(with: coder)
+        
+        // Read non-optional properties to see if a project was encoded
+        if let projectName = coder.decodeObject(forKey: SerializationKey.projectName) as? String,
+        let platformName = coder.decodeObject(forKey: SerializationKey.platformName) as? String,
+            let frameworkName = coder.decodeObject(forKey: SerializationKey.frameworkName) as? String {
+            let frameworkVersion = coder.decodeObject(forKey: SerializationKey.frameworkVersion) as? String
+            let lastOpenFile = coder.decodeObject(forKey: SerializationKey.lastOpenFile) as? String
+            
+            self.project = Project(name: projectName, platformName: platformName, frameworkName: frameworkName, frameworkVersion: frameworkVersion, lastOpenFile: lastOpenFile)
+        }
     }
     
 

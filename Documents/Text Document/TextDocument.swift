@@ -32,6 +32,7 @@ private struct SerializationKey {
     static let syntaxStyle = "syntaxStyle"
     static let autosaveIdentifier = "autosaveIdentifier"
     static let isVerticalText = "isVerticalText"
+    static let project = "project"
 }
 
 
@@ -126,6 +127,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         coder.encode(self.autosaveIdentifier, forKey: SerializationKey.autosaveIdentifier)
         coder.encode(self.syntaxParser.style.name, forKey: SerializationKey.syntaxStyle)
         coder.encode(self.isVerticalText, forKey: SerializationKey.isVerticalText)
+        coder.encode(self.project, forKey: SerializationKey.project)
         
         super.encodeRestorableState(with: coder)
     }
@@ -152,6 +154,10 @@ final class TextDocument: NSDocument, EncodingHolder {
         }
         if coder.containsValue(forKey: SerializationKey.isVerticalText) {
             self.isVerticalText = coder.decodeBool(forKey: SerializationKey.isVerticalText)
+        }
+        if coder.containsValue(forKey: SerializationKey.project) {
+            self.project = coder.decodeObject(forKey: SerializationKey.project) as? ProjectDocument
+            NSLog("%@", self.project ?? "nil")
         }
     }
     

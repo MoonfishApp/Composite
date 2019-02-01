@@ -572,11 +572,31 @@
                     </menu>
                     <connections>
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                        <outlet property="dockMenu" destination="r8C-vR-OgY" id="Wej-jy-Wp1"/>
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Composite" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="r8C-vR-OgY">
+                    <items>
+                        <menuItem title="New Project..." id="EXz-vi-pvj">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="newProject:" target="Ady-hI-5gd" id="U4p-iv-DJJ"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="New File..." id="Z4Z-Ha-1pO">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="New Tab" id="dHy-Xf-2US">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="newWindowForTab:" target="Ady-hI-5gd" id="6Is-Dy-OVh"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="67" y="-39"/>
         </scene>

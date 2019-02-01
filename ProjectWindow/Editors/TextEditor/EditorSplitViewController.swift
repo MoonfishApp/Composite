@@ -26,7 +26,7 @@
 
 import Cocoa
 
-final class EditorViewController: NSSplitViewController {
+final class EditorSplitViewController: NSSplitViewController {
     
     // MARK: Public Properties
     
@@ -40,6 +40,11 @@ final class EditorViewController: NSSplitViewController {
         return self.navigationBarItem?.viewController as? NavigationBarController
     }
     
+    override var representedObject: Any? {
+        didSet {
+            _ = self.children.map { $0.representedObject = representedObject }            
+        }
+    }
     
     // MARK: Private Properties
     

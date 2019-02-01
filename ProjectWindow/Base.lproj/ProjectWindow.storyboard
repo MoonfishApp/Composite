@@ -127,8 +127,8 @@
                 <splitViewController id="SSn-7J-yjq" customClass="ProjectContentSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" id="2nx-D6-Fks" userLabel="Navigator"/>
-                        <splitViewItem id="4Ks-ct-VyO"/>
-                        <splitViewItem id="dVn-xe-UNb"/>
+                        <splitViewItem id="Gow-zY-bDi" userLabel="Editor"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="260" id="4w9-IY-bzn" userLabel="Inspector"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="eB3-ko-loa">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -140,8 +140,8 @@
                     <connections>
                         <outlet property="splitView" destination="eB3-ko-loa" id="4m6-iC-aAB"/>
                         <segue destination="IW5-Ch-IEj" kind="relationship" relationship="splitItems" id="ekw-VW-6yx"/>
-                        <segue destination="Mi8-Rn-AK6" kind="relationship" relationship="splitItems" id="hFy-96-SO7"/>
-                        <segue destination="1Lh-Ew-VIp" kind="relationship" relationship="splitItems" id="m3H-JA-e4b"/>
+                        <segue destination="tGk-tm-4b5" kind="relationship" relationship="splitItems" id="F04-SL-uxg"/>
+                        <segue destination="1Lh-Ew-VIp" kind="relationship" relationship="splitItems" id="tJf-69-pLR"/>
                     </connections>
                 </splitViewController>
                 <customObject id="xFU-aV-kIW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -194,6 +194,33 @@
                 <customObject id="Gah-Gl-MAQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1269" y="597"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qE7-OU-CPB">
+            <objects>
+                <viewController id="tGk-tm-4b5" sceneMemberID="viewController">
+                    <view key="view" id="ybr-iW-gzo">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u4K-27-JfA">
+                                <rect key="frame" x="165" y="141" width="121" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="No editor available" id="mC9-qE-08Z">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="u4K-27-JfA" firstAttribute="centerY" secondItem="ybr-iW-gzo" secondAttribute="centerY" id="D5j-gV-6m2"/>
+                            <constraint firstItem="u4K-27-JfA" firstAttribute="centerX" secondItem="ybr-iW-gzo" secondAttribute="centerX" id="WWK-0n-0bj"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="TDq-ak-MBO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1761" y="634"/>
         </scene>
     </scenes>
     <resources>

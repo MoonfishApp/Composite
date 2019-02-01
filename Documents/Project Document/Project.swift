@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Project: Codable {
-    
+class Project: NSObject, Codable {
+
     /// Name of the project, e.g. ProjectName
     let name: String
     

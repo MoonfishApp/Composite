@@ -761,7 +761,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
         // end current editing
         NSTextInputContext.current?.discardMarkedText()
         
-        let newEditorViewController = EditorViewController.instantiate(storyboard: "EditorView")
+        let newEditorViewController = EditorSplitViewController.instantiate(storyboard: "EditorView")
         self.splitViewController?.addSubview(for: newEditorViewController, relativeTo: currentEditorViewController)
         self.setup(editorViewController: newEditorViewController, baseViewController: currentEditorViewController)
         
@@ -884,7 +884,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
     
     
     /// create and set-up new (split) editor view
-    private func setup(editorViewController: EditorViewController, baseViewController: EditorViewController?) {
+    private func setup(editorViewController: EditorSplitViewController, baseViewController: EditorSplitViewController?) {
         
         editorViewController.setTextStorage(self.textStorage!)
         
@@ -936,9 +936,9 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
     
     
     /// child editor view controllers
-    private var editorViewControllers: [EditorViewController] {
+    private var editorViewControllers: [EditorSplitViewController] {
         
-        return self.splitViewController?.children as? [EditorViewController] ?? []
+        return self.splitViewController?.children as? [EditorSplitViewController] ?? []
     }
     
     
@@ -962,7 +962,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
     
     
     /// find target EditorViewController to manage split views for action sender
-    private func findTargetEditorViewController(for sender: Any?) -> EditorViewController? {
+    private func findTargetEditorViewController(for sender: Any?) -> EditorSplitViewController? {
         
         guard
             let view = (sender is NSMenuItem) ? (self.view.window?.firstResponder as? NSView) : sender as? NSView,

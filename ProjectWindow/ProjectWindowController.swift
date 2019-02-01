@@ -29,6 +29,11 @@ final class ProjectWindowController: NSWindowController {
 //    private var editView: SyntaxTextView {
 //        return (self.window?.contentViewController?.childViewControllers[1] as! CompositeSplitViewController).editorView
 //    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        shouldCascadeWindows = true
+    }
 
     override func windowDidLoad() {
         super.windowDidLoad()

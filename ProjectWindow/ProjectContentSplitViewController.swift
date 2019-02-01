@@ -10,14 +10,30 @@ import Cocoa
 
 final class ProjectContentSplitViewController: NSSplitViewController {
 
-    override var representedObject: Any? {
-        
-        didSet {
-            for viewController in self.children {
-                viewController.representedObject = representedObject
-            }
-        }
-    }
+//    var editorItem: NSSplitViewItem {
+//        
+//    }
+//    
+//    override var representedObject: Any? {
+//        
+//        didSet {
+//            
+//            let viewcontroller: NSSplitViewItem
+////            if let project = representedObject as? ProjectDocument {
+////                self.insertSplitViewItem(<#T##splitViewItem: NSSplitViewItem##NSSplitViewItem#>, at: <#T##Int#>)
+////            } else
+//            if let document = representedObject as? TextDocument {
+//                let storyboard = NSStoryboard(name: NSStoryboard.Name("CompositeEditor"), bundle: nil)
+//                let editor = storyboard.instantiateInitialController()
+//            } else {
+//                return
+//            }
+//            
+//            for viewController in self.children {
+//                viewController.representedObject = representedObject
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
