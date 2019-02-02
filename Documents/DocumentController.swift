@@ -60,13 +60,7 @@ class DocumentController: NSDocumentController {
                 return
                 
             } else if let project = document as? ProjectDocument {
-                
-                //if canBeRestored == ... {
-                    
-                    // The editor window of this project can be restored
-                    
-                    // Restore window..
-                //} else
+
                 if let defaultDocument = project.project?.lastOpenFile {
                     
                     // Create a new editor window with the default file in the editor viewcontroller
@@ -81,9 +75,9 @@ class DocumentController: NSDocumentController {
                         project.showWindows()
                         return
                     }
-                    
+                
                     self.openDocument(withContentsOf: defaultDocumentURL, display: false) { (document, documentWasAlreadyOpen, error) in
-                        
+
                         if let textDocument = document as? TextDocument {
                             textDocument.project = project
                             textDocument.makeWindowControllers()

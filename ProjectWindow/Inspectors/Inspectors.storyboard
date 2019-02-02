@@ -40,16 +40,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="431"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pb-dZ-eqy">
-                                <rect key="frame" x="57" y="366" width="86" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4pb-dZ-eqy">
+                                <rect key="frame" x="57" y="207" width="86" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="ABI Inspector" id="6G6-HJ-qgC">
                                     <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="4pb-dZ-eqy" firstAttribute="centerX" secondItem="icp-0J-tTB" secondAttribute="centerX" id="aza-Oc-brO"/>
+                            <constraint firstItem="4pb-dZ-eqy" firstAttribute="centerY" secondItem="icp-0J-tTB" secondAttribute="centerY" id="tZg-zS-bF2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="pZP-2J-URy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

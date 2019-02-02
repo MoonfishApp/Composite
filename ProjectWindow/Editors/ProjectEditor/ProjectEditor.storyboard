@@ -39,16 +39,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1mf-38-Ydc">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1mf-38-Ydc">
                                 <rect key="frame" x="26" y="141" width="149" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Project Editor Navigator" id="AJr-i2-0JY">
                                     <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="1mf-38-Ydc" firstAttribute="centerY" secondItem="12h-yf-iog" secondAttribute="centerY" id="UcP-2e-2W7"/>
+                            <constraint firstItem="1mf-38-Ydc" firstAttribute="centerX" secondItem="12h-yf-iog" secondAttribute="centerX" id="fcu-ZI-a8X"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="6vc-uT-4t2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -63,16 +66,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="24h-ak-oP3">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="24h-ak-oP3">
                                 <rect key="frame" x="182" y="141" width="87" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Project Editor" id="7yr-sV-XPX">
                                     <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="24h-ak-oP3" firstAttribute="centerX" secondItem="v3v-o9-dBE" secondAttribute="centerX" id="3v1-6K-RSI"/>
+                            <constraint firstItem="24h-ak-oP3" firstAttribute="centerY" secondItem="v3v-o9-dBE" secondAttribute="centerY" id="5Hh-nA-UFK"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="9ct-0h-Iwu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

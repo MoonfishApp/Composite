@@ -24,7 +24,7 @@ final class FileNavigatorViewController: NSViewController {
             if let project = representedObject as? ProjectDocument {
                 
                 fileURLObserver?.invalidate()
-                fileURLObserver = project.observe(\ProjectDocument.fileURL, options: .new) { document, change in
+                fileURLObserver = project.observe(\ProjectDocument.fileURL, options: [.new, .initial]) { document, change in
                     
                     try? self.load(url: project.workDirectory, openFile: project.fileURL?.path)
                 }
@@ -35,13 +35,13 @@ final class FileNavigatorViewController: NSViewController {
 //                    assertionFailure()
 //                    return
 //                }
-                
+                print (textDocument.project ?? "NIL")
                 if let project = textDocument.project, let url = textDocument.project?.workDirectory {
                     try? self.load(url: url, openFile: textDocument.fileURL?.path)
                 } else {
                 
                     fileURLObserver?.invalidate()
-                    fileURLObserver = textDocument.observe(\TextDocument.project, options: .new) { textDocument, change in
+                    fileURLObserver = textDocument.observe(\TextDocument.project, options: [.new, .initial]) { textDocument, change in
                         
                         guard let url = textDocument.project?.workDirectory else { return }
 

@@ -14,26 +14,35 @@ final class ProjectContentSplitViewController: NSSplitViewController {
 //        
 //    }
 //    
-//    override var representedObject: Any? {
-//        
-//        didSet {
-//            
-//            let viewcontroller: NSSplitViewItem
-////            if let project = representedObject as? ProjectDocument {
-////                self.insertSplitViewItem(<#T##splitViewItem: NSSplitViewItem##NSSplitViewItem#>, at: <#T##Int#>)
-////            } else
-//            if let document = representedObject as? TextDocument {
-//                let storyboard = NSStoryboard(name: NSStoryboard.Name("CompositeEditor"), bundle: nil)
-//                let editor = storyboard.instantiateInitialController()
-//            } else {
-//                return
-//            }
-//            
-//            for viewController in self.children {
-//                viewController.representedObject = representedObject
-//            }
-//        }
-//    }
+    override var representedObject: Any? {
+        
+        didSet {
+
+            // Open the right editor, depending on the document
+            let editor: NSViewController
+            if let _ = representedObject as? ProjectDocument {
+                let storyboard = NSStoryboard(name: NSStoryboard.Name("ProjectEditor"), bundle: nil)
+                editor = storyboard.instantiateInitialController() as! NSViewController
+            } else if let _ = representedObject as? TextDocument {
+                let storyboard = NSStoryboard(name: NSStoryboard.Name("CompositeEditor"), bundle: nil)
+                editor = storyboard.instantiateInitialController() as! NSViewController
+            } else {
+                let storyboard = NSStoryboard(name: NSStoryboard.Name("NoEditor"), bundle: nil)
+                editor = storyboard.instantiateInitialController() as! NSViewController
+            }
+            let oldEditor = splitViewItems[1]
+            let inspectorItem = splitViewItems[2]
+            let newEditor = NSSplitViewItem(viewController: editor)
+            removeSplitViewItem(oldEditor)
+            removeSplitViewItem(inspectorItem)
+            addSplitViewItem(newEditor)
+            addSplitViewItem(inspectorItem)
+            
+            for viewController in self.children {
+                viewController.representedObject = representedObject
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
