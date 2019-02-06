@@ -12,6 +12,6 @@ final class EditWindowRestoration: NSObject, NSWindowRestoration {
     
     // See https://developer.apple.com/videos/play/wwdc2016/239/ @ 36:00
     static func restoreWindow(withIdentifier identifier: NSUserInterfaceItemIdentifier, state: NSCoder, completionHandler: @escaping (NSWindow?, Error?) -> Void) {
-        
+        NSLog(" ")
     }
 }

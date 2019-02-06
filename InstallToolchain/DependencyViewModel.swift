@@ -112,7 +112,7 @@ extension DependencyViewModel {
             else { return nil }
         
         operation.completionBlock = {
-            if let version = self.versionQueryParser(operation.output) {
+            if let versions = self.versionQueryParser(operation.output), let version = versions.first {
                 self.version = version
             }
         }
@@ -129,7 +129,7 @@ extension DependencyViewModel {
             else { return nil }
         
         operation.completionBlock = {
-            self.newerVersionAvailable = self.versionQueryParser(operation.output)
+            self.newerVersionAvailable = self.versionQueryParser(operation.output)?.last
         }
         
         return operation
@@ -175,7 +175,7 @@ extension DependencyViewModel {
         
         operation.completionBlock = {
             self.newerVersionAvailable = nil
-            if let version = self.versionQueryParser(operation.output) {
+            if let versions = self.versionQueryParser(operation.output), let version = versions.first {
                 self.version = version
             }
         }
@@ -188,7 +188,7 @@ extension DependencyViewModel {
     ///
     /// - Parameter output: <#output description#>
     /// - Returns: <#return value description#>
-    private func versionQueryParser(_ output: String) -> String? {
+    private func versionQueryParser(_ output: String) -> [String]? {
         
         // Filter 1.0.1-rc1 type version number
         // Some apps return multiple lines, and this closure will be called multiple times.
@@ -203,7 +203,7 @@ extension DependencyViewModel {
         
         // Some dependencies return multiple lines for their version information
         // Return the first one
-        return versions.first
+        return versions
     }
     
     

@@ -71,15 +71,16 @@ class DocumentController: NSDocumentController {
                     print("URL: \(defaultDocumentURL.path)")
                     
                     guard FileManager.default.fileExists(atPath: defaultDocumentURL.path) == true else {
+                    // if displayDocument == true?
                         project.makeWindowControllers()
                         project.showWindows()
                         return
                     }
-                
+
                     self.openDocument(withContentsOf: defaultDocumentURL, display: false) { (document, documentWasAlreadyOpen, error) in
 
                         if let textDocument = document as? TextDocument {
-                            textDocument.project = project
+                            textDocument.projectReference = ProjectReference(project: project)
                             textDocument.makeWindowControllers()
                             textDocument.showWindows()
                         }

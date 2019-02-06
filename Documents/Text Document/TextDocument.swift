@@ -32,7 +32,7 @@ private struct SerializationKey {
     static let syntaxStyle = "syntaxStyle"
     static let autosaveIdentifier = "autosaveIdentifier"
     static let isVerticalText = "isVerticalText"
-    static let project = "project"
+    static let projectReference = "projectReference"
 }
 
 
@@ -53,7 +53,7 @@ final class TextDocument: NSDocument, EncodingHolder {
     // MARK: Public Properties
     
     var isVerticalText = false
-    @objc dynamic var project: ProjectDocument? = nil
+    @objc var projectReference: ProjectReference? = nil
     
     // MARK: Readonly Properties
     
@@ -127,7 +127,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         coder.encode(self.autosaveIdentifier, forKey: SerializationKey.autosaveIdentifier)
         coder.encode(self.syntaxParser.style.name, forKey: SerializationKey.syntaxStyle)
         coder.encode(self.isVerticalText, forKey: SerializationKey.isVerticalText)
-        coder.encode(self.project, forKey: SerializationKey.project)
+        coder.encode(self.projectReference, forKey: SerializationKey.projectReference)
         
         super.encodeRestorableState(with: coder)
     }
@@ -155,13 +155,18 @@ final class TextDocument: NSDocument, EncodingHolder {
         if coder.containsValue(forKey: SerializationKey.isVerticalText) {
             self.isVerticalText = coder.decodeBool(forKey: SerializationKey.isVerticalText)
         }
-        if coder.containsValue(forKey: SerializationKey.project) {
-            self.project = coder.decodeObject(forKey: SerializationKey.project) as? ProjectDocument
-            NSLog("%@", self.project ?? "nil")
+        if coder.containsValue(forKey: SerializationKey.projectReference) {
+            self.projectReference = coder.decodeObject(forKey: SerializationKey.projectReference) as? ProjectReference
+            NSLog("%@", self.projectReference ?? "Nil")
         }
     }
     
     
+    /// restore last state
+//    override class var restorableStateKeyPaths: [String] {
+//
+//        return super.restorableStateKeyPaths + [#keyPath(projectReference),]
+//    }
     
     // MARK: Document Methods
     

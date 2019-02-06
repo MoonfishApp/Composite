@@ -16,14 +16,10 @@ import Cocoa
 
 private struct SerializationKey {
     
-    static let projectName = "projectName"
-    static let platformName = "platformName"
-    static let frameworkName = "frameworkName"
-    static let frameworkVersion = "frameworkVersion"
-    static let lastOpenFile = "lastOpenfile"
+    static let project = "project"
 }
 
-final class ProjectDocument: NSDocument {
+final class ProjectDocument: NSDocument, NSCoding {
     
     static let fileExtension = "composite"
     
@@ -81,19 +77,11 @@ final class ProjectDocument: NSDocument {
     }
     
     
-    
-    
     /// store internal document state
-    /// TODO: We're storing the project struct in ProjectDocument. Might want to
-    /// extract that into the Project struct (or NSObject dirived object)
     override func encodeRestorableState(with coder: NSCoder) {
         
         if let project = project {
-            coder.encode(project.name, forKey: SerializationKey.projectName)
-            coder.encode(project.platformName, forKey: SerializationKey.platformName)
-            coder.encode(project.frameworkName, forKey: SerializationKey.frameworkName)
-            coder.encode(project.frameworkVersion, forKey: SerializationKey.frameworkVersion)
-            coder.encode(project.lastOpenFile, forKey: SerializationKey.lastOpenFile)
+            coder.encode(project, forKey: SerializationKey.project)
         }
 
         super.encodeRestorableState(with: coder)
@@ -104,17 +92,18 @@ final class ProjectDocument: NSDocument {
         
         super.restoreState(with: coder)
         
-        // Read non-optional properties to see if a project was encoded
-        if let projectName = coder.decodeObject(forKey: SerializationKey.projectName) as? String,
-        let platformName = coder.decodeObject(forKey: SerializationKey.platformName) as? String,
-            let frameworkName = coder.decodeObject(forKey: SerializationKey.frameworkName) as? String {
-            let frameworkVersion = coder.decodeObject(forKey: SerializationKey.frameworkVersion) as? String
-            let lastOpenFile = coder.decodeObject(forKey: SerializationKey.lastOpenFile) as? String
-            
-            self.project = Project(name: projectName, platformName: platformName, frameworkName: frameworkName, frameworkVersion: frameworkVersion, lastOpenFile: lastOpenFile)
+        if let project = coder.decodeObject(forKey: SerializationKey.project) as? Project {
+            self.project = project
         }
     }
     
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.project, forKey: SerializationKey.project)
+    }
+    
+    init?(coder aDecoder: NSCoder) {
+        self.project = aDecoder.decodeObject(forKey: SerializationKey.project) as? Project
+    }
 
     override func makeWindowControllers() {
         
@@ -131,13 +120,6 @@ final class ProjectDocument: NSDocument {
 
     
     override func data(ofType typeName: String) throws -> Data {
-        
-//        guard let editWindowController = editWindowController, let project = editWindowController.project else {
-//            assertionFailure()
-//            return Data()
-//        }
-//        
-//        editWindowController.saveEditorFile()
         
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .xml

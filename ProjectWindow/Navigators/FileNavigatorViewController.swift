@@ -31,21 +31,17 @@ final class FileNavigatorViewController: NSViewController {
                 
             } else if let textDocument = representedObject as? TextDocument {
                 
-//                guard let project = textDocument.project else {
-//                    assertionFailure()
-//                    return
-//                }
-                print (textDocument.project ?? "NIL")
-                if let project = textDocument.project, let url = textDocument.project?.workDirectory {
-                    try? self.load(url: url, openFile: textDocument.fileURL?.path)
+                print (textDocument.projectReference ?? "NIL")
+                if let project = textDocument.projectReference, let url = textDocument.projectReference?.workDirectory {
+                    try? self.load(url: URL(string: url)!, openFile: textDocument.fileURL?.path)
                 } else {
                 
                     fileURLObserver?.invalidate()
-                    fileURLObserver = textDocument.observe(\TextDocument.project, options: [.new, .initial]) { textDocument, change in
+                    fileURLObserver = textDocument.observe(\TextDocument.projectReference, options: [.new, .initial]) { textDocument, change in
                         
-                        guard let url = textDocument.project?.workDirectory else { return }
+                        guard let url = textDocument.projectReference?.workDirectory else { return }
 
-                        try? self.load(url: url, openFile: textDocument.fileURL?.path)
+                        try? self.load(url: URL(string: url)!, openFile: textDocument.fileURL?.path)
                     }
                 }
             }

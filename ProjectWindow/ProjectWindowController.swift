@@ -8,6 +8,12 @@
 
 import Cocoa
 
+
+private struct SerializationKey {
+    
+    static let project = "project"
+}
+
 final class ProjectWindowController: NSWindowController {
     
     @IBOutlet weak var runButton: NSToolbarItem!
@@ -182,6 +188,29 @@ final class ProjectWindowController: NSWindowController {
     //    override func windowTitle(forDocumentDisplayName displayName: String) -> String {
     //        <#code#>
     //    }
+    
+    
+//    override func encodeRestorableState(with coder: NSCoder) {
+//
+//        // There is an issue encoding TextDocuments. The Project property in TextDocument
+//        // is not being encoded. It seems that NSDocument properties of NSDocuments can't be stored
+//        // So instead, we save the project file, and set the lastOpenFile to the current TextDocument
+//        if let textDocument = document as? TextDocument, let project = textDocument.project {
+//            coder.encode(project, forKey: SerializationKey.project)
+//        }
+//
+//        super.encodeRestorableState(with: coder)
+//
+//    }
+//
+//    override func restoreState(with coder: NSCoder) {
+//        super.restoreState(with: coder)
+//
+//        if coder.containsValue(forKey: SerializationKey.project) {
+//            let project = coder.decodeObject(forKey: SerializationKey.project) as? Project
+//            NSLog("found project: %@", project ?? "NIL")
+//        }
+//    }
     
     
 }
