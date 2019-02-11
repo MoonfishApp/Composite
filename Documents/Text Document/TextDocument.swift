@@ -32,7 +32,7 @@ private struct SerializationKey {
     static let syntaxStyle = "syntaxStyle"
     static let autosaveIdentifier = "autosaveIdentifier"
     static let isVerticalText = "isVerticalText"
-    static let projectReference = "projectReference"
+    static let projectPath = "projectPath"
 }
 
 
@@ -53,7 +53,7 @@ final class TextDocument: NSDocument, EncodingHolder {
     // MARK: Public Properties
     
     var isVerticalText = false
-    @objc var projectReference: ProjectReference? = nil
+    @objc dynamic var project: ProjectDocument? = nil
     
     // MARK: Readonly Properties
     
@@ -67,7 +67,6 @@ final class TextDocument: NSDocument, EncodingHolder {
     private(set) lazy var selection = TextSelection(document: self)
     private(set) lazy var analyzer = DocumentAnalyzer(document: self)
     private(set) lazy var incompatibleCharacterScanner = IncompatibleCharacterScanner(document: self)
-    
     
     // MARK: Private Properties
     
@@ -127,7 +126,10 @@ final class TextDocument: NSDocument, EncodingHolder {
         coder.encode(self.autosaveIdentifier, forKey: SerializationKey.autosaveIdentifier)
         coder.encode(self.syntaxParser.style.name, forKey: SerializationKey.syntaxStyle)
         coder.encode(self.isVerticalText, forKey: SerializationKey.isVerticalText)
-        coder.encode(self.projectReference, forKey: SerializationKey.projectReference)
+        if let path = project?.fileURL?.path {
+            // Store project path
+            coder.encode(path, forKey: SerializationKey.projectPath)
+        }
         
         super.encodeRestorableState(with: coder)
     }
@@ -155,9 +157,15 @@ final class TextDocument: NSDocument, EncodingHolder {
         if coder.containsValue(forKey: SerializationKey.isVerticalText) {
             self.isVerticalText = coder.decodeBool(forKey: SerializationKey.isVerticalText)
         }
-        if coder.containsValue(forKey: SerializationKey.projectReference) {
-            self.projectReference = coder.decodeObject(forKey: SerializationKey.projectReference) as? ProjectReference
-            NSLog("%@", self.projectReference ?? "Nil")
+        if coder.containsValue(forKey: SerializationKey.projectPath) {
+            // Restore project
+            if let path = coder.decodeObject(forKey: SerializationKey.projectPath) as? String {
+                let url = URL(fileURLWithPath: path)
+                // TODO: what if project file has moved?
+                DocumentController.shared.openDocument(withContentsOf: url, display: false) { (document, documentWasAlreadyOpen, error) in
+                    self.project = document as? ProjectDocument
+                }
+            }
         }
     }
     

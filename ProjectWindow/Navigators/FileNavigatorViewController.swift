@@ -15,7 +15,6 @@ final class FileNavigatorViewController: NSViewController {
 
     private var root: FileItem?
     private var projectObserver: NSKeyValueObservation?
-    private var fileURLObserver: NSKeyValueObservation?
     
     override var representedObject: Any? {
         didSet {
@@ -23,25 +22,25 @@ final class FileNavigatorViewController: NSViewController {
             
             if let project = representedObject as? ProjectDocument {
                 
-                fileURLObserver?.invalidate()
-                fileURLObserver = project.observe(\ProjectDocument.fileURL, options: [.new, .initial]) { document, change in
-                    
+                projectObserver?.invalidate()
+                projectObserver = project.observe(\ProjectDocument.fileURL, options: [.new, .initial]) { document, change in
+
                     try? self.load(url: project.workDirectory, openFile: project.fileURL?.path)
                 }
                 
             } else if let textDocument = representedObject as? TextDocument {
                 
-                print (textDocument.projectReference ?? "NIL")
-                if let project = textDocument.projectReference, let url = textDocument.projectReference?.workDirectory {
-                    try? self.load(url: URL(string: url)!, openFile: textDocument.fileURL?.path)
+                print (textDocument.project ?? "NIL")
+                if let project = textDocument.project {
+                    try? self.load(url: project.workDirectory, openFile: textDocument.fileURL?.path)
                 } else {
                 
-                    fileURLObserver?.invalidate()
-                    fileURLObserver = textDocument.observe(\TextDocument.projectReference, options: [.new, .initial]) { textDocument, change in
+                    projectObserver?.invalidate()
+                    projectObserver = textDocument.observe(\TextDocument.project, options: [.new]) { textDocument, change in
                         
-                        guard let url = textDocument.projectReference?.workDirectory else { return }
+                        guard let url = textDocument.project?.workDirectory else { return }
 
-                        try? self.load(url: URL(string: url)!, openFile: textDocument.fileURL?.path)
+                        try? self.load(url: url, openFile: textDocument.fileURL?.path)
                     }
                 }
             }
@@ -56,7 +55,6 @@ final class FileNavigatorViewController: NSViewController {
     
     deinit {
         projectObserver?.invalidate()
-        fileURLObserver?.invalidate()
     }
     
     @IBAction func fileViewDoubleClick(_ sender: NSOutlineView) {

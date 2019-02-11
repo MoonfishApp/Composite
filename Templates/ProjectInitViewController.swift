@@ -49,19 +49,13 @@ class ProjectInitViewController: NSViewController {
                                 return
                             }
                             
-                            let documentController = NSDocumentController.shared
-                            documentController.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
+                            DocumentController.shared.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
 
                                 if let error = error {
                                     self.progressIndicator.stopAnimation(self)
                                     let alert = NSAlert(error: error)
                                     alert.runModal()
                                 }
-
-//                                if let document = document as? ProjectDocument, let editWindowController = document.editWindowController {
-//                                    editWindowController.setConsole(self.textView.string)
-//                                    //                            editWindowController.project = self.projectDirectoryCreator.project
-//                                }
                                 self.view.window?.close()
                             }
                         }

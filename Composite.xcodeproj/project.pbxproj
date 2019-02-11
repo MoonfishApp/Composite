@@ -48,7 +48,6 @@
 		C7351C0D21FD4ED7000A3A5B /* DocumentController+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7351C0C21FD4ED7000A3A5B /* DocumentController+Action.swift */; };
 		C7351C0E2201251E000A3A5B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
 		C7351C10220130A8000A3A5B /* EditorSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BCF21EE9A8B007FB630 /* EditorSplitViewController.swift */; };
-		C735C9EE220557A100F37E40 /* ProjectReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C735C9ED220557A100F37E40 /* ProjectReference.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
 		C79A6B6221EE9865007FB630 /* SettingFileManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6021EE9865007FB630 /* SettingFileManaging.swift */; };
@@ -2210,7 +2209,6 @@
 				C79A6C2121EE9AF1007FB630 /* InspectorTabView.swift in Sources */,
 				C79A6CEC21EE9C52007FB630 /* NSRegularExpression+Additions.swift in Sources */,
 				C79A6C1821EE9AC1007FB630 /* NSTextView+Snippet.swift in Sources */,
-				C735C9EE220557A100F37E40 /* ProjectReference.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
 				C79A6C8F21EE9BD6007FB630 /* Pair.swift in Sources */,
 				C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */,

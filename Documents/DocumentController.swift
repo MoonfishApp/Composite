@@ -40,15 +40,18 @@ class DocumentController: NSDocumentController {
     /// open document
     override func openDocument(withContentsOf url: URL, display displayDocument: Bool, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
         
-        print("Open document for \(url.path)")
+        // Passing false to displayDocument to prevent two windows to be opened, since
+        // we're opening the windows manually. 
         super.openDocument(withContentsOf: url, display: false) { (document, documentWasAlreadyOpen, error) in
+            
+            // TODO: based on state documentWasAlreadyOpen, decide whether to open
+            // the project itself, or the lastOpenedFile in the project
         
             guard error == nil else {
                 assertionFailure(error!.localizedDescription)
                 return
             }
             
-            print("Document: \(document?.fileURL?.path ?? "none")")
             assert(Thread.isMainThread)
             assert(document != nil)
             
@@ -60,6 +63,11 @@ class DocumentController: NSDocumentController {
                 return
                 
             } else if let project = document as? ProjectDocument {
+                
+                guard displayDocument == true else {
+                    completionHandler(document, documentWasAlreadyOpen, error)
+                    return
+                }
 
                 if let defaultDocument = project.project?.lastOpenFile {
                     
@@ -67,22 +75,24 @@ class DocumentController: NSDocumentController {
                     
                     let defaultDocumentURL = project.workDirectory.appendingPathComponent(defaultDocument)
                     
-                    print("defaultDoc: \(defaultDocument)")
-                    print("URL: \(defaultDocumentURL.path)")
+//                    print("defaultDoc: \(defaultDocument)")
+//                    print("URL: \(defaultDocumentURL.path)")
                     
                     guard FileManager.default.fileExists(atPath: defaultDocumentURL.path) == true else {
-                    // if displayDocument == true?
                         project.makeWindowControllers()
                         project.showWindows()
+                        completionHandler(document, documentWasAlreadyOpen, error)
                         return
                     }
 
                     self.openDocument(withContentsOf: defaultDocumentURL, display: false) { (document, documentWasAlreadyOpen, error) in
 
                         if let textDocument = document as? TextDocument {
-                            textDocument.projectReference = ProjectReference(project: project)
+                            textDocument.project = project
                             textDocument.makeWindowControllers()
                             textDocument.showWindows()
+                            completionHandler(document, documentWasAlreadyOpen, error)
+                            return
                         }
                     }
                 } else {
@@ -91,6 +101,8 @@ class DocumentController: NSDocumentController {
                     // Open editor window with project file
                     project.makeWindowControllers()
                     project.showWindows()
+                    completionHandler(document, documentWasAlreadyOpen, error)
+                    return
                 }
                 
             } else {
