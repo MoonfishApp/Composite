@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Split View Controller-->
+        <!--Composite Editor Split View Controller-->
         <scene sceneID="aNH-AG-3Xh">
             <objects>
-                <splitViewController id="GGJ-Kc-xEy" sceneMemberID="viewController">
+                <splitViewController id="GGJ-Kc-xEy" customClass="CompositeEditorSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem holdingPriority="260" id="Gme-nh-KXD"/>
                         <splitViewItem id="qDr-29-7qk"/>

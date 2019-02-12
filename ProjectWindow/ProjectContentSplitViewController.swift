@@ -24,7 +24,7 @@ final class ProjectContentSplitViewController: NSSplitViewController {
                 let storyboard = NSStoryboard(name: NSStoryboard.Name("ProjectEditor"), bundle: nil)
                 editor = storyboard.instantiateInitialController() as! NSViewController
             } else if let _ = representedObject as? TextDocument {
-                let storyboard = NSStoryboard(name: NSStoryboard.Name("CompositeEditor"), bundle: nil)
+                let storyboard = NSStoryboard(name: NSStoryboard.Name("TextEditor"), bundle: nil)
                 editor = storyboard.instantiateInitialController() as! NSViewController
             } else {
                 let storyboard = NSStoryboard(name: NSStoryboard.Name("NoEditor"), bundle: nil)

@@ -761,7 +761,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
         // end current editing
         NSTextInputContext.current?.discardMarkedText()
         
-        let newEditorViewController = EditorSplitViewController.instantiate(storyboard: "EditorView")
+        let newEditorViewController = TextEditorSplitViewController.instantiate(storyboard: "EditorView")
         self.splitViewController?.addSubview(for: newEditorViewController, relativeTo: currentEditorViewController)
         self.setup(editorViewController: newEditorViewController, baseViewController: currentEditorViewController)
         
@@ -884,7 +884,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
     
     
     /// create and set-up new (split) editor view
-    private func setup(editorViewController: EditorSplitViewController, baseViewController: EditorSplitViewController?) {
+    private func setup(editorViewController: TextEditorSplitViewController, baseViewController: TextEditorSplitViewController?) {
         
         editorViewController.setTextStorage(self.textStorage!)
         
@@ -936,9 +936,9 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
     
     
     /// child editor view controllers
-    private var editorViewControllers: [EditorSplitViewController] {
+    private var editorViewControllers: [TextEditorSplitViewController] {
         
-        return self.splitViewController?.children as? [EditorSplitViewController] ?? []
+        return self.splitViewController?.children as? [TextEditorSplitViewController] ?? []
     }
     
     
@@ -962,7 +962,7 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
     
     
     /// find target EditorViewController to manage split views for action sender
-    private func findTargetEditorViewController(for sender: Any?) -> EditorSplitViewController? {
+    private func findTargetEditorViewController(for sender: Any?) -> TextEditorSplitViewController? {
         
         guard
             let view = (sender is NSMenuItem) ? (self.view.window?.firstResponder as? NSView) : sender as? NSView,

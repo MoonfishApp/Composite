@@ -47,7 +47,7 @@
 		C7351C0B21F94EA8000A3A5B /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7351C0A21F94EA8000A3A5B /* DocumentController.swift */; };
 		C7351C0D21FD4ED7000A3A5B /* DocumentController+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7351C0C21FD4ED7000A3A5B /* DocumentController+Action.swift */; };
 		C7351C0E2201251E000A3A5B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
-		C7351C10220130A8000A3A5B /* EditorSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BCF21EE9A8B007FB630 /* EditorSplitViewController.swift */; };
+		C7351C10220130A8000A3A5B /* TextEditorSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
 		C79A6B6221EE9865007FB630 /* SettingFileManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6021EE9865007FB630 /* SettingFileManaging.swift */; };
@@ -325,7 +325,7 @@
 		C7A584E621F0F8E50097B761 /* NavigatorTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A584E521F0F8E50097B761 /* NavigatorTabViewController.swift */; };
 		C7A584E821F0F8FC0097B761 /* InspectorTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A584E721F0F8FC0097B761 /* InspectorTabViewController.swift */; };
 		C7A584EA21F0F9E90097B761 /* CompositeEditorSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A584E921F0F9E90097B761 /* CompositeEditorSplitViewController.swift */; };
-		C7A584EC21F0FADC0097B761 /* CompositeEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584EB21F0FADC0097B761 /* CompositeEditor.storyboard */; };
+		C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584EB21F0FADC0097B761 /* TextEditor.storyboard */; };
 		C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584ED21F0FAE70097B761 /* Navigators.storyboard */; };
 		C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
@@ -465,7 +465,7 @@
 		C79A6BC821EE9A6E007FB630 /* DocumentViewController+TouchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocumentViewController+TouchBar.swift"; sourceTree = "<group>"; };
 		C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		C79A6BCA21EE9A6E007FB630 /* StatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
-		C79A6BCF21EE9A8B007FB630 /* EditorSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorSplitViewController.swift; sourceTree = "<group>"; };
+		C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorSplitViewController.swift; sourceTree = "<group>"; };
 		C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorTextViewController.swift; sourceTree = "<group>"; };
 		C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
 		C79A6BD221EE9A8B007FB630 /* LineNumberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNumberView.swift; sourceTree = "<group>"; };
@@ -698,7 +698,7 @@
 		C7A584E521F0F8E50097B761 /* NavigatorTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorTabViewController.swift; sourceTree = "<group>"; };
 		C7A584E721F0F8FC0097B761 /* InspectorTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorTabViewController.swift; sourceTree = "<group>"; };
 		C7A584E921F0F9E90097B761 /* CompositeEditorSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeEditorSplitViewController.swift; sourceTree = "<group>"; };
-		C7A584EB21F0FADC0097B761 /* CompositeEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompositeEditor.storyboard; sourceTree = "<group>"; };
+		C7A584EB21F0FADC0097B761 /* TextEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TextEditor.storyboard; sourceTree = "<group>"; };
 		C7A584ED21F0FAE70097B761 /* Navigators.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Navigators.storyboard; sourceTree = "<group>"; };
 		C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inspectors.storyboard; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
@@ -994,12 +994,12 @@
 		C7351C0621F91C86000A3A5B /* TextEditor */ = {
 			isa = PBXGroup;
 			children = (
-				C79A6BCF21EE9A8B007FB630 /* EditorSplitViewController.swift */,
+				C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */,
 				C715712C21F15BAE00A1A6B4 /* DocumentSplitViewController.swift */,
 				C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */,
 				C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */,
 				C79A6BD221EE9A8B007FB630 /* LineNumberView.swift */,
-				C7A584EB21F0FADC0097B761 /* CompositeEditor.storyboard */,
+				C7A584EB21F0FADC0097B761 /* TextEditor.storyboard */,
 			);
 			path = TextEditor;
 			sourceTree = "<group>";
@@ -1867,7 +1867,7 @@
 				C79A758A21EEDDAF007FB630 /* Dendrobates (Dark).cottheme in Resources */,
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
-				C7A584EC21F0FADC0097B761 /* CompositeEditor.storyboard in Resources */,
+				C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C79A6D4621EE9DD3007FB630 /* PrintPanelAccessory.storyboard in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
@@ -2298,7 +2298,7 @@
 				C7050A04215A174E003DDA2B /* UserDefaultStrings.swift in Sources */,
 				C711F5B821DF50EB005EBC5D /* CopyFile.swift in Sources */,
 				C79A6B6B21EE986E007FB630 /* SyntaxManager.swift in Sources */,
-				C7351C10220130A8000A3A5B /* EditorSplitViewController.swift in Sources */,
+				C7351C10220130A8000A3A5B /* TextEditorSplitViewController.swift in Sources */,
 				C711F5D321E13A45005EBC5D /* BashOperation.swift in Sources */,
 				C79A6BA621EE997F007FB630 /* WindowContentViewController.swift in Sources */,
 				C79A6C0D21EE9AC1007FB630 /* NSTextView+CurrentLineHighlighting.swift in Sources */,

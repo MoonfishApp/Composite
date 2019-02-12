@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Composite Editor Split View Controller-->
+        <!--Text Editor Split View Controller-->
         <scene sceneID="gEE-kf-dLm">
             <objects>
-                <splitViewController id="1AL-EU-3KP" customClass="CompositeEditorSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="1AL-EU-3KP" customClass="TextEditorSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="zY8-S7-CJa" userLabel="Navigation Bar"/>
                         <splitViewItem holdingPriority="240" id="VK5-No-Joo" userLabel="Editor View"/>
@@ -23,7 +23,9 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="navigationBarItem" destination="zY8-S7-CJa" id="zj3-oX-5tV"/>
                         <outlet property="splitView" destination="CZy-02-xzP" id="1CS-Ns-WFG"/>
+                        <outlet property="textViewItem" destination="VK5-No-Joo" id="xts-6h-JvD"/>
                         <segue destination="PcC-wM-kNs" kind="relationship" relationship="splitItems" id="tiu-na-Y3d"/>
                         <segue destination="yxx-CS-vXO" kind="relationship" relationship="splitItems" id="vsh-pR-NXR"/>
                         <segue destination="FI0-ZY-btk" kind="relationship" relationship="splitItems" id="oWt-Oa-sk3"/>

@@ -13,9 +13,7 @@ final class CompositeEditorSplitViewController: NSSplitViewController {
     override var representedObject: Any? {
         
         didSet {
-            for viewController in self.children {
-                viewController.representedObject = representedObject
-            }
+            _ = self.children.map { $0.representedObject = representedObject }
         }
     }
 }

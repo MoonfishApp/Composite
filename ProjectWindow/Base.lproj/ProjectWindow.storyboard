@@ -179,10 +179,10 @@
             </objects>
             <point key="canvasLocation" x="1527" y="272"/>
         </scene>
-        <!--CompositeEditor-->
+        <!--TextEditor-->
         <scene sceneID="RPK-Va-rWl">
             <objects>
-                <controllerPlaceholder storyboardName="CompositeEditor" id="Y7z-RN-VBm" sceneMemberID="viewController"/>
+                <controllerPlaceholder storyboardName="TextEditor" id="Y7z-RN-VBm" sceneMemberID="viewController"/>
                 <customObject id="4rm-7A-0JF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1919" y="272"/>

@@ -26,7 +26,7 @@
 
 import Cocoa
 
-final class EditorSplitViewController: NSSplitViewController {
+final class TextEditorSplitViewController: NSSplitViewController {
     
     // MARK: Public Properties
     

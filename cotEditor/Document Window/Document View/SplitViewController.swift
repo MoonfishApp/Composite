@@ -30,7 +30,7 @@ final class SplitViewController: NSSplitViewController {
     
     // MARK: Public Properties
     
-    private(set) weak var focusedSubviewController: EditorSplitViewController?
+    private(set) weak var focusedSubviewController: TextEditorSplitViewController?
     
     
     
@@ -99,7 +99,7 @@ final class SplitViewController: NSSplitViewController {
         
         guard let viewController = {
             self.children.lazy
-                .compactMap { $0 as? EditorSplitViewController }
+                .compactMap { $0 as? TextEditorSplitViewController }
                 .first { $0.textView == textView }
             }() else { return }
         
@@ -111,7 +111,7 @@ final class SplitViewController: NSSplitViewController {
     // MARK: Public Methods
     
     /// add subview for given viewController at desired position
-    func addSubview(for editorViewController: EditorSplitViewController, relativeTo otherEditorViewController: EditorSplitViewController?) {
+    func addSubview(for editorViewController: TextEditorSplitViewController, relativeTo otherEditorViewController: TextEditorSplitViewController?) {
         
         let splitViewItem = NSSplitViewItem(viewController: editorViewController)
         
@@ -135,10 +135,10 @@ final class SplitViewController: NSSplitViewController {
     
     
     /// find viewController for given subview
-    func viewController(for subview: NSView) -> EditorSplitViewController? {
+    func viewController(for subview: NSView) -> TextEditorSplitViewController? {
         
         return self.children.lazy
-            .compactMap { $0 as? EditorSplitViewController }
+            .compactMap { $0 as? TextEditorSplitViewController }
             .first { $0.splitView == subview }
     }
     
@@ -190,7 +190,7 @@ final class SplitViewController: NSSplitViewController {
             }
         }()
         
-        guard let nextEditorViewController = self.children[index] as? EditorSplitViewController else { return }
+        guard let nextEditorViewController = self.children[index] as? TextEditorSplitViewController else { return }
         
         self.view.window?.makeFirstResponder(nextEditorViewController.textView)
     }
@@ -201,7 +201,7 @@ final class SplitViewController: NSSplitViewController {
         
         let isVertical = self.splitView.isVertical
         
-        for case let viewController as EditorSplitViewController in self.children {
+        for case let viewController as TextEditorSplitViewController in self.children {
             viewController.navigationBarController?.isSplitOrientationVertical = isVertical
         }
     }
@@ -212,7 +212,7 @@ final class SplitViewController: NSSplitViewController {
         
         let isEnabled = self.splitViewItems.count > 1
         
-        for case let viewController as EditorSplitViewController in self.children {
+        for case let viewController as TextEditorSplitViewController in self.children {
             viewController.navigationBarController?.isCloseSplitButtonEnabled = isEnabled
         }
     }

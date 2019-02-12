@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Editor Split View Controller-->
+        <!--Text Editor Split View Controller-->
         <scene sceneID="2xt-bf-vnD">
             <objects>
-                <splitViewController id="sY9-RN-jMg" customClass="EditorSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="sY9-RN-jMg" customClass="TextEditorSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem holdingPriority="750" id="1jV-uy-ka5"/>
                         <splitViewItem id="Z56-OS-hF0"/>
