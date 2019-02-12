@@ -29,8 +29,7 @@ final class FileNavigatorViewController: NSViewController {
                 }
                 
             } else if let textDocument = representedObject as? TextDocument {
-                
-                print (textDocument.project ?? "NIL")
+                                
                 if let project = textDocument.project {
                     try? self.load(url: project.workDirectory, openFile: textDocument.fileURL?.path)
                 } else {

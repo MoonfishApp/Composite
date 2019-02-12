@@ -45,7 +45,6 @@ enum WritingDirection: Int {
     
     case leftToRight
     case rightToLeft
-    case vertical
 }
 
 

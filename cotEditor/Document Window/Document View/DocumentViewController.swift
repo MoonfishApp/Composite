@@ -70,8 +70,6 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
             break
         case .rightToLeft:
             self.writingDirection = .rightToLeft
-        case .vertical:
-            self.verticalLayoutOrientation = true
         }
         
         // set theme
@@ -265,34 +263,24 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
         case #selector(changeTabWidth)?:
             (item as? StatableItem)?.state = (self.tabWidth == item.tag) ? .on : .off
             
-        case #selector(makeLayoutOrientationHorizontal)?:
-            (item as? StatableItem)?.state = self.verticalLayoutOrientation ? .off : .on
-            
-        case #selector(makeLayoutOrientationVertical)?:
-            (item as? StatableItem)?.state = self.verticalLayoutOrientation ? .on : .off
-            
         case #selector(makeWritingDirectionLeftToRight)?:
             (item as? StatableItem)?.state = (self.writingDirection == .leftToRight) ? .on : .off
-            return !self.verticalLayoutOrientation
+            return true
             
         case #selector(makeWritingDirectionRightToLeft)?:
             (item as? StatableItem)?.state = (self.writingDirection == .rightToLeft) ? .on : .off
-            return !self.verticalLayoutOrientation
+            return true
             
         case #selector(changeWritingDirection)?:
             let tag: Int = {
-                switch (self.verticalLayoutOrientation, self.writingDirection) {
-                case (true, _): return 2
-                case (false, .rightToLeft): return 1
+                switch (self.writingDirection) {
+                case .leftToRight: return 2
+                case .rightToLeft: return 1
                 default: return 0
                 }
             }()
             (item as? SegmentedToolbarItem)?.segmentedControl?.selectSegment(withTag: tag)
-            
-        case #selector(changeOrientation)?:
-            let tag = self.verticalLayoutOrientation ? 1 : 0
-            (item as? SegmentedToolbarItem)?.segmentedControl?.selectSegment(withTag: tag)
-            
+                        
         case #selector(closeSplitTextView)?:
             return (self.splitViewController?.splitViewItems.count ?? 0) > 1
             
@@ -505,30 +493,6 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
         }
     }
     
-    
-    /// if text orientation is vertical
-    @objc var verticalLayoutOrientation: Bool {
-        
-        get {
-            guard let textView = self.focusedTextView else {
-                return UserDefaults.standard[.writingDirection] == .vertical
-            }
-            
-            return textView.layoutOrientation == .vertical
-        }
-        
-        set {
-            self.document?.isVerticalText = newValue
-            
-            let orientation: NSLayoutManager.TextLayoutOrientation = newValue ? .vertical : .horizontal
-            
-            for viewController in self.editorViewControllers {
-                viewController.textView?.setLayoutOrientation(orientation)
-            }
-        }
-    }
-    
-    
     var writingDirection: NSWritingDirection {
         
         get {
@@ -686,21 +650,6 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
         self.presentAsSheet(viewController)
     }
     
-    
-    /// make text layout orientation horizontal
-    @IBAction func makeLayoutOrientationHorizontal(_ sender: Any?) {
-        
-        self.verticalLayoutOrientation = false
-    }
-    
-    
-    /// make text layout orientation vertical
-    @IBAction func makeLayoutOrientationVertical(_ sender: Any?) {
-        
-        self.verticalLayoutOrientation = true
-    }
-    
-    
     /// make entire writing direction LTR
     @IBAction func makeWritingDirectionLeftToRight(_ sender: Any?) {
         
@@ -720,30 +669,13 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
         
         switch sender.selectedSegment {
         case 0:
-            self.makeLayoutOrientationHorizontal(nil)
             self.makeWritingDirectionLeftToRight(nil)
         case 1:
-            self.makeLayoutOrientationHorizontal(nil)
             self.makeWritingDirectionRightToLeft(nil)
         case 2:
             self.makeWritingDirectionLeftToRight(nil)
-            self.makeLayoutOrientationVertical(nil)
         default:
             assertionFailure("Segmented writing direction button must have 3 segments only.")
-        }
-    }
-    
-    
-    /// change layout orientation from segmented control button
-    @IBAction func changeOrientation(_ sender: NSSegmentedControl) {
-        
-        switch sender.selectedSegment {
-        case 0:
-            self.makeLayoutOrientationHorizontal(nil)
-        case 1:
-            self.makeLayoutOrientationVertical(nil)
-        default:
-            assertionFailure("Segmented layout orientation button must have 2 segments only.")
         }
     }
     
@@ -890,7 +822,6 @@ final class DocumentViewController: NSSplitViewController, SyntaxParserDelegate,
         
         editorViewController.textView?.wrapsLines = self.wrapsLines
         editorViewController.textView?.showsInvisibles = self.showsInvisibles
-        editorViewController.textView?.setLayoutOrientation(self.verticalLayoutOrientation ? .vertical : .horizontal)
         editorViewController.textView?.showsPageGuide = self.showsPageGuide
         editorViewController.showsNavigationBar = self.showsNavigationBar
         editorViewController.showsLineNumber = self.showsLineNumber  // need to be set after setting text orientation

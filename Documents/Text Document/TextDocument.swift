@@ -31,7 +31,6 @@ private struct SerializationKey {
     static let readingEncoding = "readingEncoding"
     static let syntaxStyle = "syntaxStyle"
     static let autosaveIdentifier = "autosaveIdentifier"
-    static let isVerticalText = "isVerticalText"
     static let projectPath = "projectPath"
 }
 
@@ -52,7 +51,6 @@ final class TextDocument: NSDocument, EncodingHolder {
     
     // MARK: Public Properties
     
-    var isVerticalText = false
     @objc dynamic var project: ProjectDocument? = nil
     
     // MARK: Readonly Properties
@@ -125,7 +123,6 @@ final class TextDocument: NSDocument, EncodingHolder {
         coder.encode(Int(self.encoding.rawValue), forKey: SerializationKey.readingEncoding)
         coder.encode(self.autosaveIdentifier, forKey: SerializationKey.autosaveIdentifier)
         coder.encode(self.syntaxParser.style.name, forKey: SerializationKey.syntaxStyle)
-        coder.encode(self.isVerticalText, forKey: SerializationKey.isVerticalText)
         if let path = project?.fileURL?.path {
             // Store project path
             coder.encode(path, forKey: SerializationKey.projectPath)
@@ -153,9 +150,6 @@ final class TextDocument: NSDocument, EncodingHolder {
             if self.syntaxParser.style.name != styleName {
                 self.setSyntaxStyle(name: styleName)
             }
-        }
-        if coder.containsValue(forKey: SerializationKey.isVerticalText) {
-            self.isVerticalText = coder.decodeBool(forKey: SerializationKey.isVerticalText)
         }
         if coder.containsValue(forKey: SerializationKey.projectPath) {
             // Restore project
@@ -307,8 +301,8 @@ final class TextDocument: NSDocument, EncodingHolder {
         document.lineEnding = self.lineEnding
         document.encoding = self.encoding
         document.hasUTF8BOM = self.hasUTF8BOM
-        document.isVerticalText = self.isVerticalText
         document.isExecutable = self.isExecutable
+        document.project = self.project
         
         return document
     }
@@ -610,7 +604,6 @@ final class TextDocument: NSDocument, EncodingHolder {
         
         // create printView
         let printView = PrintTextView()
-        printView.setLayoutOrientation(viewController.verticalLayoutOrientation ? .vertical : .horizontal)
         printView.documentName = self.displayName
         printView.filePath = self.fileURL?.path
         printView.syntaxParser.style = self.syntaxParser.style
