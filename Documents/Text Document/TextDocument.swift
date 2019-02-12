@@ -336,12 +336,6 @@ final class TextDocument: NSDocument, EncodingHolder {
         // do not save `com.apple.TextEncoding` extended attribute if it doesn't exists
         self.shouldSaveXattr = (file.xattrEncoding != nil)
         
-        // set text orientation state
-        // -> Ignore if no metadata found to avoid restoring to the horizontal layout while editing unwantedly.
-        if UserDefaults.standard[.savesTextOrientation], file.isVerticalText {
-            self.isVerticalText = true
-        }
-        
         // set read values
         self.encoding = file.encoding
         self.hasUTF8BOM = file.hasUTF8BOM
@@ -480,7 +474,6 @@ final class TextDocument: NSDocument, EncodingHolder {
         
         // store current state here, since the main thread will already be unblocked after `data(ofType:)`
         let encoding = self.encoding
-        let isVerticalText = self.isVerticalText
         
         try super.writeSafely(to: url, ofType: typeName, for: saveOperation)
         
@@ -488,10 +481,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         if self.shouldSaveXattr {
             try url.setExtendedAttribute(data: encoding.xattrEncodingData, for: FileExtendedAttributeName.encoding)
         }
-        if UserDefaults.standard[.savesTextOrientation] {
-            try url.setExtendedAttribute(data: isVerticalText ? Data(bytes: [1]) : nil, for: FileExtendedAttributeName.verticalText)
-        }
-        
+
         if saveOperation != .autosaveElsewhereOperation {
             // get the latest file attributes
             self.fileAttributes = try FileManager.default.attributesOfItem(atPath: url.path)  // FILE_READ

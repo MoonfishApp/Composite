@@ -34,7 +34,6 @@ extension FileAttributeKey {
 struct FileExtendedAttributeName {
     
     static let encoding = "com.apple.TextEncoding"
-    static let verticalText = "com.coteditor.VerticalText"
 }
 
 
@@ -54,8 +53,6 @@ struct DocumentFile {
     let encoding: String.Encoding
     let hasUTF8BOM: Bool
     let xattrEncoding: String.Encoding?
-    let isVerticalText: Bool
-    
     
     
     // MARK: -
@@ -69,7 +66,6 @@ struct DocumentFile {
         // check extended attributes
         let extendedAttributes = attributes[.extendedAttributes] as? [String: Data]
         self.xattrEncoding = extendedAttributes?[FileExtendedAttributeName.encoding]?.decodingXattrEncoding
-        self.isVerticalText = (extendedAttributes?[FileExtendedAttributeName.verticalText] != nil)
         
         // decode Data to String
         let content: String
