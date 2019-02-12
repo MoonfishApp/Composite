@@ -149,25 +149,13 @@ final class PrintTextView: NSTextView, NSLayoutManagerDelegate, Themable {
             // adjust values for line number drawing
             let horizontalOrigin = self.textContainerOrigin.x + self.lineFragmentPadding - self.lineNumberPadding
             
-            // vertical text
-            let isVerticalText = self.layoutOrientation == .vertical
-            if isVerticalText {
-                // rotate axis
-                NSGraphicsContext.saveGraphicsState()
-                NSGraphicsContext.current?.cgContext.rotate(by: -CGFloat.pi / 2)
-            }
-            
             self.enumerateLineFragments(in: dirtyRect, includingExtraLine: false) { (line, lineRect) in
                 guard let numberString: String = {
                     switch line {
                     case .new(let lineNumber, _):
-                        if isVerticalText, lineNumber != 1, lineNumber % 5 != 0 {
-                            return "·"  // draw real number only in every 5 times
-                        }
                         return String(lineNumber)
                         
                     case .wrapped:
-                        if isVerticalText { return nil }
                         return "-"
                     }
                     }() else { return }
@@ -175,21 +163,12 @@ final class PrintTextView: NSTextView, NSLayoutManagerDelegate, Themable {
                 // adjust position to draw
                 var point = NSPoint(x: horizontalOrigin, y: lineRect.maxY - charSize.height)
                 let digit = numberString.count
-                if isVerticalText {
-                    let width = charSize.width * CGFloat(digit) + charSize.height
-                    point = NSPoint(x: -point.y - width / 2,
-                                    y: point.x - charSize.height)
-                } else {
-                    point.x -= CGFloat(digit) * charSize.width  // align right
-                }
+                point.x -= CGFloat(digit) * charSize.width  // align right
                 
                 // draw number
                 NSAttributedString(string: numberString, attributes: attrs).draw(at: point)
             }
             
-            if isVerticalText {
-                NSGraphicsContext.restoreGraphicsState()
-            }
         }
     }
     
