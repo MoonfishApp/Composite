@@ -127,9 +127,9 @@ final class WindowContentViewController: NSSplitViewController, TabViewControlle
     // MARK: Public Methods
     
     /// deliver editor to outer view controllers
-    var documentViewController: DocumentViewController? {
+    var documentViewController: DocumentsSplitViewController? {
         
-        return self.documentViewItem?.viewController as? DocumentViewController
+        return self.documentViewItem?.viewController as? DocumentsSplitViewController
     }
     
     

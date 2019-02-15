@@ -13,7 +13,6 @@
                     <splitViewItems>
                         <splitViewItem id="zY8-S7-CJa" userLabel="Navigation Bar"/>
                         <splitViewItem holdingPriority="240" id="VK5-No-Joo" userLabel="Editor View"/>
-                        <splitViewItem canCollapse="YES" id="8h6-bq-muw" userLabel="Console"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="CZy-02-xzP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -28,7 +27,6 @@
                         <outlet property="textViewItem" destination="VK5-No-Joo" id="xts-6h-JvD"/>
                         <segue destination="PcC-wM-kNs" kind="relationship" relationship="splitItems" id="tiu-na-Y3d"/>
                         <segue destination="yxx-CS-vXO" kind="relationship" relationship="splitItems" id="vsh-pR-NXR"/>
-                        <segue destination="FI0-ZY-btk" kind="relationship" relationship="splitItems" id="oWt-Oa-sk3"/>
                     </connections>
                 </splitViewController>
                 <customObject id="dsb-H1-FIi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -226,14 +224,6 @@
                 <customObject id="cP8-D3-Qcy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1225" y="477"/>
-        </scene>
-        <!--Console-->
-        <scene sceneID="a6h-K5-49T">
-            <objects>
-                <controllerPlaceholder storyboardName="Console" id="FI0-ZY-btk" sceneMemberID="viewController"/>
-                <customObject id="aOf-iZ-x5S" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="966" y="871"/>
         </scene>
     </scenes>
     <resources>

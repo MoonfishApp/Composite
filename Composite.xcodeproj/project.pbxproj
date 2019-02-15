@@ -24,6 +24,7 @@
 		C7050A8F216938EC003DDA2B /* 2_celer_migrations.js in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
+		C70F666C22128E1500EEA9D1 /* DocumentInspectorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3921EE9D93007FB630 /* DocumentInspectorView.storyboard */; };
 		C711F58A21DDB68F005EBC5D /* Execute.command in Resources */ = {isa = PBXBuildFile; fileRef = C711F58821DCB9FF005EBC5D /* Execute.command */; };
 		C711F58E21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */; };
 		C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */; };
@@ -35,7 +36,6 @@
 		C711F5CF21E0887A005EBC5D /* TRC721.sol in Resources */ = {isa = PBXBuildFile; fileRef = C711F5CD21E08851005EBC5D /* TRC721.sol */; };
 		C711F5D321E13A45005EBC5D /* BashOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5D221E13A45005EBC5D /* BashOperation.swift */; };
 		C711F5D521E1B299005EBC5D /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5D421E1B299005EBC5D /* Operation.swift */; };
-		C715712D21F15BAE00A1A6B4 /* DocumentSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C715712C21F15BAE00A1A6B4 /* DocumentSplitViewController.swift */; };
 		C715712F21F15DF900A1A6B4 /* Console.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C715712E21F15DF900A1A6B4 /* Console.storyboard */; };
 		C72FEA9621E433BA000EF3C7 /* PlatformCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */; };
 		C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */; };
@@ -89,9 +89,8 @@
 		C79A6BC421EE9A64007FB630 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC021EE9A64007FB630 /* OutlineViewController.swift */; };
 		C79A6BC521EE9A64007FB630 /* IncompatibleCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC121EE9A64007FB630 /* IncompatibleCharactersViewController.swift */; };
 		C79A6BC621EE9A64007FB630 /* DocumentInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC221EE9A64007FB630 /* DocumentInspectorViewController.swift */; };
-		C79A6BCB21EE9A6E007FB630 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC721EE9A6E007FB630 /* DocumentViewController.swift */; };
-		C79A6BCC21EE9A6E007FB630 /* DocumentViewController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC821EE9A6E007FB630 /* DocumentViewController+TouchBar.swift */; };
-		C79A6BCD21EE9A6E007FB630 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */; };
+		C79A6BCB21EE9A6E007FB630 /* DocumentsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC721EE9A6E007FB630 /* DocumentsSplitViewController.swift */; };
+		C79A6BCC21EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC821EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift */; };
 		C79A6BCE21EE9A6E007FB630 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BCA21EE9A6E007FB630 /* StatusBarController.swift */; };
 		C79A6BD421EE9A8B007FB630 /* EditorTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */; };
 		C79A6BD521EE9A8B007FB630 /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */; };
@@ -252,11 +251,8 @@
 		C79A6D3221EE9D64007FB630 /* RegexReferenceView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3121EE9D64007FB630 /* RegexReferenceView.storyboard */; };
 		C79A6D3421EE9D73007FB630 /* FindPreferencesView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3321EE9D73007FB630 /* FindPreferencesView.storyboard */; };
 		C79A6D3621EE9D7C007FB630 /* MultipleReplacementPanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3521EE9D7C007FB630 /* MultipleReplacementPanel.storyboard */; };
-		C79A6D3821EE9D8A007FB630 /* DocumentWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3721EE9D8A007FB630 /* DocumentWindow.storyboard */; };
-		C79A6D3A21EE9D93007FB630 /* DocumentInspectorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3921EE9D93007FB630 /* DocumentInspectorView.storyboard */; };
 		C79A6D3C21EE9D9A007FB630 /* OutlineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3B21EE9D9A007FB630 /* OutlineView.storyboard */; };
 		C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3D21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard */; };
-		C79A6D4021EE9DAC007FB630 /* EditorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3F21EE9DAC007FB630 /* EditorView.storyboard */; };
 		C79A6D4221EE9DC0007FB630 /* OpenDocumentAccessory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D4121EE9DC0007FB630 /* OpenDocumentAccessory.storyboard */; };
 		C79A6D4421EE9DC9007FB630 /* SaveDocumentAccessory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D4321EE9DC9007FB630 /* SaveDocumentAccessory.storyboard */; };
 		C79A6D4621EE9DD3007FB630 /* PrintPanelAccessory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D4521EE9DD3007FB630 /* PrintPanelAccessory.storyboard */; };
@@ -358,6 +354,7 @@
 		C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A42112945F005A8FE2 /* Assets.xcassets */; };
 		C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */; settings = {ASSET_TAGS = (EditWindow, ); }; };
 		C7F0B9C22113CF7E005A8FE2 /* CompositeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */; };
+		C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
@@ -406,7 +403,6 @@
 		C711F5CD21E08851005EBC5D /* TRC721.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TRC721.sol; sourceTree = "<group>"; };
 		C711F5D221E13A45005EBC5D /* BashOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashOperation.swift; sourceTree = "<group>"; };
 		C711F5D421E1B299005EBC5D /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
-		C715712C21F15BAE00A1A6B4 /* DocumentSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSplitViewController.swift; sourceTree = "<group>"; };
 		C715712E21F15DF900A1A6B4 /* Console.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Console.storyboard; sourceTree = "<group>"; };
 		C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformCollectionViewItem.swift; sourceTree = "<group>"; };
 		C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlatformCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -461,8 +457,8 @@
 		C79A6BC021EE9A64007FB630 /* OutlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		C79A6BC121EE9A64007FB630 /* IncompatibleCharactersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncompatibleCharactersViewController.swift; sourceTree = "<group>"; };
 		C79A6BC221EE9A64007FB630 /* DocumentInspectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentInspectorViewController.swift; sourceTree = "<group>"; };
-		C79A6BC721EE9A6E007FB630 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
-		C79A6BC821EE9A6E007FB630 /* DocumentViewController+TouchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocumentViewController+TouchBar.swift"; sourceTree = "<group>"; };
+		C79A6BC721EE9A6E007FB630 /* DocumentsSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsSplitViewController.swift; sourceTree = "<group>"; };
+		C79A6BC821EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DocumentsSplitViewController+TouchBar.swift"; sourceTree = "<group>"; };
 		C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		C79A6BCA21EE9A6E007FB630 /* StatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorSplitViewController.swift; sourceTree = "<group>"; };
@@ -905,6 +901,9 @@
 			children = (
 				C7E76436211EC16300867DA4 /* ProjectWindowController.swift */,
 				C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */,
+				C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */,
+				C79A6BC721EE9A6E007FB630 /* DocumentsSplitViewController.swift */,
+				C79A6BC821EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift */,
 				C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */,
 				C715712B21F14F5800A1A6B4 /* Toolbar */,
 				C72FEB8621E9400A000EF3C7 /* Editors */,
@@ -995,10 +994,10 @@
 			isa = PBXGroup;
 			children = (
 				C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */,
-				C715712C21F15BAE00A1A6B4 /* DocumentSplitViewController.swift */,
 				C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */,
 				C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */,
 				C79A6BD221EE9A8B007FB630 /* LineNumberView.swift */,
+				C79A6BCA21EE9A6E007FB630 /* StatusBarController.swift */,
 				C7A584EB21F0FADC0097B761 /* TextEditor.storyboard */,
 			);
 			path = TextEditor;
@@ -1243,10 +1242,6 @@
 		C79A6BA921EE9984007FB630 /* Document View */ = {
 			isa = PBXGroup;
 			children = (
-				C79A6BC721EE9A6E007FB630 /* DocumentViewController.swift */,
-				C79A6BC821EE9A6E007FB630 /* DocumentViewController+TouchBar.swift */,
-				C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */,
-				C79A6BCA21EE9A6E007FB630 /* StatusBarController.swift */,
 			);
 			path = "Document View";
 			sourceTree = "<group>";
@@ -1859,7 +1854,6 @@
 				C79A759C21EEE4E9007FB630 /* Syntaxes in Resources */,
 				C79A6D4821EE9DDC007FB630 /* ProgressView.storyboard in Resources */,
 				C79A759221EEDDAF007FB630 /* Mono.cottheme in Resources */,
-				C79A6D3A21EE9D93007FB630 /* DocumentInspectorView.storyboard in Resources */,
 				C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */,
 				C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */,
 				C79A759421EEDDAF007FB630 /* Classic.cottheme in Resources */,
@@ -1873,6 +1867,7 @@
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
 				C7050A8C216938B1003DDA2B /* celer.sol in Resources */,
 				C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */,
+				C70F666C22128E1500EEA9D1 /* DocumentInspectorView.storyboard in Resources */,
 				C79A6D3C21EE9D9A007FB630 /* OutlineView.storyboard in Resources */,
 				C79A758D21EEDDAF007FB630 /* Lakritz.cottheme in Resources */,
 				C79A759321EEDDAF007FB630 /* Resinifictrix.cottheme in Resources */,
@@ -1891,7 +1886,6 @@
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C711F58A21DDB68F005EBC5D /* Execute.command in Resources */,
 				C79A758C21EEDDAF007FB630 /* Solarized (Light).cottheme in Resources */,
-				C79A6D3821EE9D8A007FB630 /* DocumentWindow.storyboard in Resources */,
 				C79A6D4A21EE9DE4007FB630 /* GoToLineView.storyboard in Resources */,
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,
 				C715712F21F15DF900A1A6B4 /* Console.storyboard in Resources */,
@@ -1910,7 +1904,6 @@
 				C711F5CF21E0887A005EBC5D /* TRC721.sol in Resources */,
 				C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */,
 				C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */,
-				C79A6D4021EE9DAC007FB630 /* EditorView.storyboard in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
@@ -2117,7 +2110,7 @@
 				C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */,
 				C79A6D1221EE9C64007FB630 /* NSCursor+Dark.swift in Sources */,
 				C79A6C7F21EE9BC9007FB630 /* RegularExpressionSyntaxType+Color.swift in Sources */,
-				C79A6BCC21EE9A6E007FB630 /* DocumentViewController+TouchBar.swift in Sources */,
+				C79A6BCC21EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift in Sources */,
 				C79A75DE21EEF0AF007FB630 /* MultipleReplacementListViewController.swift in Sources */,
 				C7351C0B21F94EA8000A3A5B /* DocumentController.swift in Sources */,
 				C79A6C0E21EE9AC1007FB630 /* NSTextView+Selection.swift in Sources */,
@@ -2165,7 +2158,6 @@
 				C79A6CF721EE9C52007FB630 /* String+Encoding.swift in Sources */,
 				C79A6BE121EE9A95007FB630 /* PatternSortViewController.swift in Sources */,
 				C7050A07215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
-				C715712D21F15BAE00A1A6B4 /* DocumentSplitViewController.swift in Sources */,
 				C79A6CDF21EE9C52007FB630 /* Selector+Codable.swift in Sources */,
 				C79A75DF21EEF0AF007FB630 /* MultipleReplacementSplitViewController.swift in Sources */,
 				C79A6C9121EE9BD6007FB630 /* DictionaryKey.swift in Sources */,
@@ -2236,6 +2228,7 @@
 				C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */,
 				C79A6D1021EE9C64007FB630 /* NSStoryboard+Instantiation.swift in Sources */,
 				C79A75D621EEF0A6007FB630 /* MultipleReplacement+TextView.swift in Sources */,
+				C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */,
 				C79A6C3E21EE9AFB007FB630 /* BackgroundView.swift in Sources */,
 				C79A6C0F21EE9AC1007FB630 /* EditorTextView+Transformation.swift in Sources */,
 				C79A75B221EEF05C007FB630 /* TextFinder.swift in Sources */,
@@ -2278,8 +2271,7 @@
 				C79A6D2121EE9C64007FB630 /* NSTouchBar+Validation.swift in Sources */,
 				C79A75A721EEEE21007FB630 /* DefaultKeys.swift in Sources */,
 				C79A6D2021EE9C64007FB630 /* NSBezierPath+RoundedCorner.swift in Sources */,
-				C79A6BCB21EE9A6E007FB630 /* DocumentViewController.swift in Sources */,
-				C79A6BCD21EE9A6E007FB630 /* SplitViewController.swift in Sources */,
+				C79A6BCB21EE9A6E007FB630 /* DocumentsSplitViewController.swift in Sources */,
 				C79A6CDC21EE9C52007FB630 /* UserDefaults.swift in Sources */,
 				C7DDD74A2140A65700674942 /* Dependency.swift in Sources */,
 				C79A6CB421EE9C10007FB630 /* DraggableArrayController.swift in Sources */,

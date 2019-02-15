@@ -62,6 +62,7 @@ final class TextEditorSplitViewController: NSSplitViewController {
             let textStorage = self.textView?.textStorage,
             let layoutManager = self.textView?.layoutManager
             else { return assertionFailure() }
+//            else { return }
         
         textStorage.removeLayoutManager(layoutManager)
     }
@@ -152,6 +153,7 @@ final class TextEditorSplitViewController: NSSplitViewController {
     func apply(style: SyntaxStyle) {
         
         guard let textView = self.textView else { return assertionFailure() }
+//        guard let textView = self.textView else { return }
         
         textView.inlineCommentDelimiter = style.inlineCommentDelimiter
         textView.blockCommentDelimiters = style.blockCommentDelimiters

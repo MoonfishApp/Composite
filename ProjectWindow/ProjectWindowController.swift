@@ -38,7 +38,7 @@ final class ProjectWindowController: NSWindowController {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        shouldCascadeWindows = true
+        shouldCascadeWindows = true        
     }
 
     override func windowDidLoad() {
@@ -211,6 +211,7 @@ final class ProjectWindowController: NSWindowController {
 //            NSLog("found project: %@", project ?? "NIL")
 //        }
 //    }
+    
     
     
 }

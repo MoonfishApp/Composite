@@ -791,7 +791,7 @@ final class TextDocument: NSDocument, EncodingHolder {
 //
 //        return self.windowControllers.first?.contentViewController
 //    }
-    var viewController: DocumentViewController? {
+    var viewController: DocumentsSplitViewController? {
         
         return (self.windowControllers.first?.contentViewController as? WindowContentViewController)?.documentViewController
     }

@@ -8,6 +8,7 @@
 
 import Cocoa
 
+// Temp: used for two splitviews in storyboard
 final class ProjectContentSplitViewController: NSSplitViewController {
 
 //    var editorItem: NSSplitViewItem {
@@ -17,30 +18,7 @@ final class ProjectContentSplitViewController: NSSplitViewController {
     override var representedObject: Any? {
         
         didSet {
-
-            // Open the right editor, depending on the document
-            let editor: NSViewController
-            if let _ = representedObject as? ProjectDocument {
-                let storyboard = NSStoryboard(name: NSStoryboard.Name("ProjectEditor"), bundle: nil)
-                editor = storyboard.instantiateInitialController() as! NSViewController
-            } else if let _ = representedObject as? TextDocument {
-                let storyboard = NSStoryboard(name: NSStoryboard.Name("TextEditor"), bundle: nil)
-                editor = storyboard.instantiateInitialController() as! NSViewController
-            } else {
-                let storyboard = NSStoryboard(name: NSStoryboard.Name("NoEditor"), bundle: nil)
-                editor = storyboard.instantiateInitialController() as! NSViewController
-            }
-            let oldEditor = splitViewItems[1]
-            let inspectorItem = splitViewItems[2]
-            let newEditor = NSSplitViewItem(viewController: editor)
-            removeSplitViewItem(oldEditor)
-            removeSplitViewItem(inspectorItem)
-            addSplitViewItem(newEditor)
-            addSplitViewItem(inspectorItem)
-            
-            for viewController in self.children {
-                viewController.representedObject = representedObject
-            }
+            _ = self.children.map { $0.representedObject = representedObject }
         }
     }
     
