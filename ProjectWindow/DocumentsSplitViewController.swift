@@ -70,8 +70,8 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
             break
         case .rightToLeft:
             self.writingDirection = .rightToLeft
-//        case .vertical:
-//            self.verticalLayoutOrientation = true
+        case .vertical:
+            self.verticalLayoutOrientation = true
         }
         
         // set theme
@@ -182,6 +182,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
                     editorViewController = controller
                 } else {
                     let storyboard = NSStoryboard(name: NSStoryboard.Name("TextEditor"), bundle: nil)
+//                    let storyboard = NSStoryboard(name: NSStoryboard.Name("EditorView"), bundle: nil)
                     editorViewController = storyboard.instantiateInitialController() as! TextEditorSplitViewController
                     removeSplitViewItem(splitViewItems.first!)
                     addSplitViewItem(NSSplitViewItem(viewController: editorViewController))
@@ -547,12 +548,11 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     @objc var verticalLayoutOrientation: Bool {
         
         get {
-            return false
-//            guard let textView = self.focusedTextView else {
-//                return UserDefaults.standard[.writingDirection] == .vertical
-//            }
-//
-//            return textView.layoutOrientation == .vertical
+            guard let textView = self.focusedTextView else {
+                return UserDefaults.standard[.writingDirection] == .vertical
+            }
+
+            return textView.layoutOrientation == .vertical
         }
         
         set {

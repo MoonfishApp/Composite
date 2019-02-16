@@ -171,12 +171,12 @@ final class LineNumberView: NSView {
     /// define the size
     override var intrinsicContentSize: NSSize {
         
-        switch self.orientation {
-        case .horizontal:
+//        switch self.orientation {
+//        case .horizontal:
             return NSSize(width: self.thickness, height: NSView.noIntrinsicMetric)
-        case .vertical:
-            return NSSize(width: NSView.noIntrinsicMetric, height: self.thickness)
-        }
+//        case .vertical:
+//            return NSSize(width: NSView.noIntrinsicMetric, height: self.thickness)
+//        }
     }
     
     
@@ -219,14 +219,14 @@ final class LineNumberView: NSView {
         
         // draw divider (1px)
         self.textColor(.stroke).setStroke()
-        switch self.orientation {
-        case .horizontal:
+//        switch self.orientation {
+//        case .horizontal:
             NSBezierPath.strokeLine(from: NSPoint(x: self.bounds.maxX - 0.5, y: dirtyRect.maxY),
                                     to: NSPoint(x: self.bounds.maxX - 0.5, y: dirtyRect.minY))
-        case .vertical:
-            NSBezierPath.strokeLine(from: NSPoint(x: dirtyRect.minX, y: self.bounds.minY + 0.5),
-                                    to: NSPoint(x: dirtyRect.maxX, y: self.bounds.minY + 0.5))
-        }
+//        case .vertical:
+//            NSBezierPath.strokeLine(from: NSPoint(x: dirtyRect.minX, y: self.bounds.minY + 0.5),
+//                                    to: NSPoint(x: dirtyRect.maxX, y: self.bounds.minY + 0.5))
+//        }
         
         NSGraphicsContext.restoreGraphicsState()
         
@@ -279,18 +279,18 @@ final class LineNumberView: NSView {
         context.setFillColor(self.textColor().cgColor)
         context.setStrokeColor(self.textColor(.stroke).cgColor)
         
-        let isVerticalText = textView.layoutOrientation == .vertical
+        let isVerticalText = false // textView.layoutOrientation == .vertical
         let scale = textView.scale
         
         // adjust drawing coordinate
         let relativePoint = self.convert(NSPoint.zero, from: textView)
         let lineBase = textView.textContainerOrigin.scaled(to: scale).y + drawingInfo.ascent
-        switch textView.layoutOrientation {
-        case .horizontal:
+//        switch textView.layoutOrientation {
+//        case .horizontal:
             context.translateBy(x: self.thickness, y: relativePoint.y - lineBase)
-        case .vertical:
-            context.translateBy(x: round(relativePoint.x - lineBase), y: 0)
-        }
+//        case .vertical:
+//            context.translateBy(x: round(relativePoint.x - lineBase), y: 0)
+//        }
         
         // draw labels
         textView.enumerateLineFragments(in: textView.visibleRect) { (line, lineRect) in
@@ -327,10 +327,10 @@ final class LineNumberView: NSView {
                 }
                 
                 // draw tick
-                if isVerticalText {
-                    let rect = CGRect(x: round(y) + 0.5, y: 1, width: 0, height: drawingInfo.tickLength)
-                    context.stroke(rect, width: 1)
-                }
+//                if isVerticalText {
+//                    let rect = CGRect(x: round(y) + 0.5, y: 1, width: 0, height: drawingInfo.tickLength)
+//                    context.stroke(rect, width: 1)
+//                }
                 
             case .wrapped:
                 // draw wrapped mark (-)
@@ -364,15 +364,15 @@ final class LineNumberView: NSView {
         
         // adjust thickness
         self.thickness = {
-            switch self.orientation {
-            case .horizontal:
+//            switch self.orientation {
+//            case .horizontal:
                 let requiredNumberOfDigits = max(self.numberOfLines.numberOfDigits, self.minNumberOfDigits)
                 let thickness = CGFloat(requiredNumberOfDigits) * drawingInfo.charWidth + 2 * drawingInfo.padding
                 return max(ceil(thickness), self.minVerticalThickness)
-            case .vertical:
-                let thickness = drawingInfo.fontSize + 2.5 * drawingInfo.tickLength
-                return max(ceil(thickness), self.minHorizontalThickness)
-            }
+//            case .vertical:
+//                let thickness = drawingInfo.fontSize + 2.5 * drawingInfo.tickLength
+//                return max(ceil(thickness), self.minHorizontalThickness)
+//            }
         }()
     }
     

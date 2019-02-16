@@ -25,6 +25,11 @@ final class ProjectContentSplitViewController: NSSplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+        
+        // -> needs layer to mask rounded window corners
+        //                to draw backgrounds of subviews correctly on macOS 10.12 (and macOS 10.13?)
+        self.view.wantsLayer = true
     }
     
 

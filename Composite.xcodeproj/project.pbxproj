@@ -355,6 +355,7 @@
 		C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */; settings = {ASSET_TAGS = (EditWindow, ); }; };
 		C7F0B9C22113CF7E005A8FE2 /* CompositeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */; };
 		C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */; };
+		C7F18AE62217DC740026D7DC /* EditorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3F21EE9DAC007FB630 /* EditorView.storyboard */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
@@ -1903,6 +1904,7 @@
 				C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */,
 				C711F5CF21E0887A005EBC5D /* TRC721.sol in Resources */,
 				C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */,
+				C7F18AE62217DC740026D7DC /* EditorView.storyboard in Resources */,
 				C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,

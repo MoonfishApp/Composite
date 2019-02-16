@@ -31,6 +31,7 @@ private struct SerializationKey {
     static let readingEncoding = "readingEncoding"
     static let syntaxStyle = "syntaxStyle"
     static let autosaveIdentifier = "autosaveIdentifier"
+    static let isVerticalText = "isVerticalText"
     static let projectPath = "projectPath"
 }
 
@@ -50,6 +51,8 @@ final class TextDocument: NSDocument, EncodingHolder {
     static let didChangeSyntaxStyleNotification = Notification.Name("DocumentDidChangeSyntaxStyle")
     
     // MARK: Public Properties
+    
+    let isVerticalText = false
     
     @objc dynamic var project: ProjectDocument? = nil
     
