@@ -70,6 +70,8 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
             break
         case .rightToLeft:
             self.writingDirection = .rightToLeft
+//        case .vertical:
+//            self.verticalLayoutOrientation = true
         }
         
         // set theme
@@ -83,9 +85,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         
         // observe defaults change
         self.defaultsObservers = [
-            UserDefaults.standard.observe(key: .theme, options: [.old, .new]) { [unowned self] change in
-                guard change.old == nil || self.theme?.name == change.old else { return }
-                
+            UserDefaults.standard.observe(key: .theme) { [unowned self] _ in
                 let themeName = ThemeManager.shared.userDefaultSettingName(forDark: self.view.effectiveAppearance.isDark)
                 self.setTheme(name: themeName)
             },
@@ -108,8 +108,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
             guard
                 self.view.window != nil,
                 let currentThemeName = self.theme?.name,
-                let themeName = ThemeManager.shared.equivalentSettingName(to: currentThemeName, forDark: self.view.effectiveAppearance.isDark),
-                currentThemeName != themeName
+                let themeName = ThemeManager.shared.equivalentSettingName(to: currentThemeName, forDark: self.view.effectiveAppearance.isDark)
                 else { return }
             
             self.setTheme(name: themeName)
@@ -124,6 +123,10 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
             #keyPath(showsLineNumber),
             #keyPath(showsPageGuide),
             #keyPath(showsInvisibles),
+            #keyPath(wrapsLines),
+            #keyPath(verticalLayoutOrientation),
+            #keyPath(writingDirection),
+            #keyPath(isAutoTabExpandEnabled),
         ]
     }
     
@@ -135,17 +138,27 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
             coder.encode(themeName, forKey: "theme")
         }
         
+        // manunally encode `restorableStateKeyPaths` since it doesn't work (macOS 10.14)
+        for keyPath in type(of: self).restorableStateKeyPaths {
+            coder.encode(self.value(forKeyPath: keyPath), forKey: keyPath)
+        }
+        
         super.encodeRestorableState(with: coder)
     }
     
     
-    /// resume UI state
+    /// restore UI state
     override func restoreState(with coder: NSCoder) {
         
         super.restoreState(with: coder)
         
         if let themeName = coder.decodeObject(forKey: "theme") as? String {
             self.setTheme(name: themeName)
+        }
+        
+        // manunally decode `restorableStateKeyPaths` since it doesn't work (macOS 10.14)
+        for keyPath in type(of: self).restorableStateKeyPaths where coder.containsValue(forKey: keyPath) {
+            self.setValue(coder.decodeObject(forKey: keyPath), forKeyPath: keyPath)
         }
     }
     
@@ -159,7 +172,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
             
             if let document = representedObject as? TextDocument {
             
-//            (self.statusBarItem?.viewController as? StatusBarController)?.documentAnalyzer = document.analyzer
+            (self.statusBarItem?.viewController as? StatusBarController)?.documentAnalyzer = document.analyzer
                 
                 document.textStorage.delegate = self
                 document.syntaxParser.delegate = self
@@ -202,35 +215,23 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
                                                        object: document)
                 
             } else if let document = representedObject as? ProjectDocument {
-                // TODO:
+
+                let storyboard = NSStoryboard(name: NSStoryboard.Name("ProjectEditor"), bundle: nil)
+                let editor = storyboard.instantiateInitialController() as! NSViewController
+                removeSplitViewItem(splitViewItems.first!)
+                addSplitViewItem(NSSplitViewItem(viewController: editor))
+
+            } else {
+                
+                let storyboard = NSStoryboard(name: NSStoryboard.Name("NoEditor"), bundle: nil)
+                let editor = storyboard.instantiateInitialController() as! NSViewController
+                removeSplitViewItem(splitViewItems.first!)
+                addSplitViewItem(NSSplitViewItem(viewController: editor))
             }
-            
-            /*
-             // Open the right editor, depending on the document
-             let editor: NSViewController
-             if let _ = representedObject as? ProjectDocument {
-             let storyboard = NSStoryboard(name: NSStoryboard.Name("ProjectEditor"), bundle: nil)
-             editor = storyboard.instantiateInitialController() as! NSViewController
-             } else if let _ = representedObject as? TextDocument {
-             let storyboard = NSStoryboard(name: NSStoryboard.Name("TextEditor"), bundle: nil)
-             editor = storyboard.instantiateInitialController() as! NSViewController
-             } else {
-             let storyboard = NSStoryboard(name: NSStoryboard.Name("NoEditor"), bundle: nil)
-             editor = storyboard.instantiateInitialController() as! NSViewController
-             }
-             let oldEditor = splitViewItems[1]
-             let inspectorItem = splitViewItems[2]
-             let newEditor = NSSplitViewItem(viewController: editor)
-             removeSplitViewItem(oldEditor)
-             removeSplitViewItem(inspectorItem)
-             addSplitViewItem(newEditor)
-             addSplitViewItem(inspectorItem)
-             
-             for viewController in self.children {
-             viewController.representedObject = representedObject
-             } */
         }
     }
+    
+    
     
     
     /// avoid showing draggable cursor
@@ -303,24 +304,34 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         case #selector(changeTabWidth)?:
             (item as? StatableItem)?.state = (self.tabWidth == item.tag) ? .on : .off
             
+        case #selector(makeLayoutOrientationHorizontal)?:
+            (item as? StatableItem)?.state = self.verticalLayoutOrientation ? .off : .on
+            
+        case #selector(makeLayoutOrientationVertical)?:
+            (item as? StatableItem)?.state = self.verticalLayoutOrientation ? .on : .off
+            
         case #selector(makeWritingDirectionLeftToRight)?:
             (item as? StatableItem)?.state = (self.writingDirection == .leftToRight) ? .on : .off
-            return true
+            return !self.verticalLayoutOrientation
             
         case #selector(makeWritingDirectionRightToLeft)?:
             (item as? StatableItem)?.state = (self.writingDirection == .rightToLeft) ? .on : .off
-            return true
+            return !self.verticalLayoutOrientation
             
         case #selector(changeWritingDirection)?:
             let tag: Int = {
-                switch (self.writingDirection) {
-                case .leftToRight: return 2
-                case .rightToLeft: return 1
+                switch (self.verticalLayoutOrientation, self.writingDirection) {
+                case (true, _): return 2
+                case (false, .rightToLeft): return 1
                 default: return 0
                 }
             }()
             (item as? SegmentedToolbarItem)?.segmentedControl?.selectSegment(withTag: tag)
-                        
+            
+        case #selector(changeOrientation)?:
+            let tag = self.verticalLayoutOrientation ? 1 : 0
+            (item as? SegmentedToolbarItem)?.segmentedControl?.selectSegment(withTag: tag)
+            
         case #selector(closeSplitTextView)?:
             return (self.splitViewController?.splitViewItems.count ?? 0) > 1
             
@@ -426,9 +437,8 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         
         guard
             let oldName = notification.userInfo?[Notification.UserInfoKey.old] as? String,
+            let newName = notification.userInfo?[Notification.UserInfoKey.new] as? String,
             oldName == self.theme?.name else { return }
-        
-        let newName = (notification.userInfo?[Notification.UserInfoKey.new] as? String) ?? ThemeManager.shared.userDefaultSettingName(forDark: self.view.effectiveAppearance.isDark)
         
         self.setTheme(name: newName)
     }
@@ -473,7 +483,6 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         }
         
         set {
-            //assert(self.statusBarItem != nil)
             self.statusBarItem?.isCollapsed = !newValue
         }
     }
@@ -502,7 +511,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     
     
     /// if lines soft-wrap at window edge
-    var wrapsLines = false {
+    @objc var wrapsLines = false {
         
         didSet {
             for viewController in self.editorViewControllers {
@@ -533,7 +542,32 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         }
     }
     
-    var writingDirection: NSWritingDirection {
+    
+    /// if text orientation is vertical
+    @objc var verticalLayoutOrientation: Bool {
+        
+        get {
+            return false
+//            guard let textView = self.focusedTextView else {
+//                return UserDefaults.standard[.writingDirection] == .vertical
+//            }
+//
+//            return textView.layoutOrientation == .vertical
+        }
+        
+        set {
+//            self.document?.isVerticalText = newValue
+            
+            let orientation: NSLayoutManager.TextLayoutOrientation = newValue ? .vertical : .horizontal
+            
+            for viewController in self.editorViewControllers {
+                viewController.textView?.setLayoutOrientation(orientation)
+            }
+        }
+    }
+    
+    
+    @objc var writingDirection: NSWritingDirection {
         
         get {
             return self.focusedTextView?.baseWritingDirection ?? .leftToRight
@@ -563,7 +597,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     
     
     /// whether replace tab with spaces
-    var isAutoTabExpandEnabled: Bool {
+    @objc var isAutoTabExpandEnabled: Bool {
         
         get {
             return self.focusedTextView?.isAutomaticTabExpansionEnabled ?? UserDefaults.standard[.autoExpandTab]
@@ -690,6 +724,21 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         self.presentAsSheet(viewController)
     }
     
+    
+    /// make text layout orientation horizontal
+    @IBAction func makeLayoutOrientationHorizontal(_ sender: Any?) {
+        
+        self.verticalLayoutOrientation = false
+    }
+    
+    
+    /// make text layout orientation vertical
+    @IBAction func makeLayoutOrientationVertical(_ sender: Any?) {
+        
+        self.verticalLayoutOrientation = true
+    }
+    
+    
     /// make entire writing direction LTR
     @IBAction func makeWritingDirectionLeftToRight(_ sender: Any?) {
         
@@ -709,13 +758,30 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         
         switch sender.selectedSegment {
         case 0:
+            self.makeLayoutOrientationHorizontal(nil)
             self.makeWritingDirectionLeftToRight(nil)
         case 1:
+            self.makeLayoutOrientationHorizontal(nil)
             self.makeWritingDirectionRightToLeft(nil)
         case 2:
             self.makeWritingDirectionLeftToRight(nil)
+            self.makeLayoutOrientationVertical(nil)
         default:
             assertionFailure("Segmented writing direction button must have 3 segments only.")
+        }
+    }
+    
+    
+    /// change layout orientation from segmented control button
+    @IBAction func changeOrientation(_ sender: NSSegmentedControl) {
+        
+        switch sender.selectedSegment {
+        case 0:
+            self.makeLayoutOrientationHorizontal(nil)
+        case 1:
+            self.makeLayoutOrientationVertical(nil)
+        default:
+            assertionFailure("Segmented layout orientation button must have 2 segments only.")
         }
     }
     
@@ -764,7 +830,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         // move focus to the next text view if the view to close has a focus
         if splitViewController.focusedSubviewController == currentEditorViewController {
             let childViewControllers = self.editorViewControllers
-            let deleteIndex = childViewControllers.index(of: currentEditorViewController) ?? 0
+            let deleteIndex = childViewControllers.firstIndex(of: currentEditorViewController) ?? 0
             let newFocusEditorViewController = childViewControllers[safe: deleteIndex + 1] ?? childViewControllers.first!
             
             self.view.window?.makeFirstResponder(newFocusEditorViewController.textView)
@@ -773,7 +839,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         // close
         if let splitViewItem = splitViewController.splitViewItem(for: currentEditorViewController) {
             splitViewController.removeSplitViewItem(splitViewItem)
-        
+            
             if let textView = currentEditorViewController.textView {
                 NotificationCenter.default.removeObserver(self, name: NSTextView.didChangeSelectionNotification, object: textView)
             }
@@ -862,6 +928,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         
         editorViewController.textView?.wrapsLines = self.wrapsLines
         editorViewController.textView?.showsInvisibles = self.showsInvisibles
+        editorViewController.textView?.setLayoutOrientation(self.verticalLayoutOrientation ? .vertical : .horizontal)
         editorViewController.textView?.showsPageGuide = self.showsPageGuide
         editorViewController.showsNavigationBar = self.showsNavigationBar
         editorViewController.showsLineNumber = self.showsLineNumber  // need to be set after setting text orientation

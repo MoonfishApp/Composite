@@ -40,11 +40,6 @@ final class TextEditorSplitViewController: NSSplitViewController {
         return self.navigationBarItem?.viewController as? NavigationBarController
     }
     
-    override var representedObject: Any? {
-        didSet {
-            _ = self.children.map { $0.representedObject = representedObject }            
-        }
-    }
     
     // MARK: Private Properties
     
@@ -62,7 +57,6 @@ final class TextEditorSplitViewController: NSSplitViewController {
             let textStorage = self.textView?.textStorage,
             let layoutManager = self.textView?.layoutManager
             else { return assertionFailure() }
-//            else { return }
         
         textStorage.removeLayoutManager(layoutManager)
     }
@@ -144,8 +138,10 @@ final class TextEditorSplitViewController: NSSplitViewController {
     /// set textStorage to inner text view
     func setTextStorage(_ textStorage: NSTextStorage) {
         
-        self.textView?.layoutManager?.replaceTextStorage(textStorage)
-        self.textView?.didChangeText()  // notify to lineNumberView to drive initial line count
+        guard let textView = self.textView else { return assertionFailure() }
+        
+        textView.layoutManager?.replaceTextStorage(textStorage)
+        textView.didChangeText()  // notify to lineNumberView to drive initial line count
     }
     
     
@@ -153,7 +149,6 @@ final class TextEditorSplitViewController: NSSplitViewController {
     func apply(style: SyntaxStyle) {
         
         guard let textView = self.textView else { return assertionFailure() }
-//        guard let textView = self.textView else { return }
         
         textView.inlineCommentDelimiter = style.inlineCommentDelimiter
         textView.blockCommentDelimiters = style.blockCommentDelimiters
