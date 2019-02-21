@@ -45,5 +45,37 @@ final class FileItem: NSObject {
         }
         return _children
     }()
-
+    
+    /// Returns path to item. Last item is the item being searched
+    /// Usage: findFile(url: ...) (without setting path)
+    func find(file url: URL, path: [FileItem] = [FileItem]()) -> [FileItem]? {
+        
+        var path = path
+        path.append(self)
+        if self.url == url {
+            return path
+        } else {
+            for child in children {
+                if let foundPath = child.find(file: url, path: path) {
+                    return foundPath
+                }
+            }
+        }
+        return nil
+        
+        
+//        for child in children {
+//            if child.url == url {
+//                return (path.append(child) as! [FileItem])
+//            } else {
+//                return child.findFile(url: url, path: path)
+//            }
+//        }
+//        return nil
+    }
+    
+    static func ==(lhs: FileItem, rhs: FileItem) -> Bool {
+        return lhs.url == rhs.url
+    }
 }
+

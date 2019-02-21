@@ -43,6 +43,7 @@ final class ProjectWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        window?.isRestorable = false
 //        window?.appearance = NSAppearance(named: .vibrantDark)
 //            window?.restorationClass = EditWindowRestoration.self
     }

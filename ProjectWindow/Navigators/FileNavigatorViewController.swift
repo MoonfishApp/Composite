@@ -13,37 +13,35 @@ final class FileNavigatorViewController: NSViewController {
     
     @IBOutlet weak var fileView: NSOutlineView!
 
-    private var root: FileItem?
+    private var rootItem: FileItem?
     private var projectObserver: NSKeyValueObservation?
+    
+    /// Hack. Forces SelectionDidChange to ignore programmatically set selection
+    private var ignoreSelection: Bool = false
     
     override var representedObject: Any? {
         didSet {
-            guard let representedObject = representedObject as? NSDocument else { return }
             
-            if let project = representedObject as? ProjectDocument {
+            if let _ = rootItem {
+                // Ignore for now
+                // When does this happen?
+            } else if let textDocument = representedObject as? TextDocument, let project = textDocument.project {
+                // RootItem is nil, the outlineview is currently empty.
+                // A new project was opened, with textDocument as default document
                 
-                projectObserver?.invalidate()
-                projectObserver = project.observe(\ProjectDocument.fileURL, options: [.new, .initial]) { document, change in
-
-                    try? self.load(url: project.workDirectory, openFile: project.fileURL?.path)
-                }
+                try? self.showFileItems(root: project.workDirectory, selectItem: textDocument.fileURL)
                 
-            } else if let textDocument = representedObject as? TextDocument {
-                                
-                if let project = textDocument.project {
-                    try? self.load(url: project.workDirectory, openFile: textDocument.fileURL?.path)
-                } else {
+            } else if let project = representedObject as? ProjectDocument {
+                // RootItem is nil, the outlineview is currently empty.
+                // A new project with no default document was opened,
+                // Projectfile is opened by default
+            
+                try? self.showFileItems(root: project.workDirectory, selectItem: project.fileURL)
                 
-                    projectObserver?.invalidate()
-                    projectObserver = textDocument.observe(\TextDocument.project, options: [.new]) { textDocument, change in
-                        
-                        guard let url = textDocument.project?.workDirectory else { return }
-
-                        try? self.load(url: url, openFile: textDocument.fileURL?.path)
-                    }
-                }
+            } else {
+                // Shouldn't happen
+                assertionFailure()
             }
-
         }
     }
 
@@ -67,24 +65,27 @@ final class FileNavigatorViewController: NSViewController {
     }
     
     
-    /// Called from ProjectWindowController
-    func load(url: URL, openFile: String? = nil) throws {
+    /// Adds file tree to view and selects selectItem
+    func showFileItems(root: URL, selectItem: URL? = nil) throws {
         
-        root = try FileItem(url: url)
+        // Create root item. Rest of tree will be created lazily
+        rootItem = try FileItem(url: root)
+        
+        // Show files in view and expand root
         fileView.reloadData()
+        fileView.expandItem(rootItem)
         
-        // Open last open file from project (or default file in a new project)
-        fileView.expandItem(root) // Always expand root
-        guard let openFile = openFile as NSString?, var root = self.root else { return }
-        let components = openFile.pathComponents
-        for component in components {
-            for item in root.children {
-                if component == item.localizedName {
-                    fileView.expandItem(item)
-                    fileView.selectRowIndexes([fileView.row(forItem: item)], byExtendingSelection: false)
-                    root = item
-                }
+        // Select item
+        if let selectItem = selectItem, let path = rootItem?.find(file: selectItem) {
+            
+            for item in path {
+                fileView.expandItem(item)
             }
+            
+            let rowToSelect = fileView.row(forItem: path.last)
+            guard rowToSelect != -1 else { return }
+            ignoreSelection = true
+            fileView.selectRowIndexes([rowToSelect], byExtendingSelection: false)
         }
     }
 }
@@ -101,15 +102,31 @@ extension FileNavigatorViewController: NSOutlineViewDelegate {
         return view
     }
     
+    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+        
+        guard let item = item as? FileItem, item.isDirectory == false else { return false }
+        return true
+    }
+    
     func outlineViewSelectionDidChange(_ notification: Notification) {
+        
+        if ignoreSelection == true {
+            ignoreSelection = false
+            return
+        }
+        
         guard let outlineView = notification.object as? NSOutlineView else { return }
         
-        let supportedPathExtensions = ["sol", "js", "json"]
         let selectedIndex = outlineView.selectedRow
-        guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, supportedPathExtensions.contains(item.url.pathExtension) else { return }
-
-        let editWindowController = (view.window?.windowController as! ProjectWindowController)
-        editWindowController.setEditor(url: item.url)
+        guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, let controller = view.window?.windowController else {
+            return }
+        
+        DocumentController.shared.openDocument(withContentsOf: item.url, display: false) { document, isAlreadyOpen, error in
+            guard error == nil, let document = document else { return }
+            DispatchQueue.main.async {
+                (DocumentController.shared as! DocumentController).replace(document, inController: controller)
+            }
+        }
     }
 }
 
@@ -118,7 +135,7 @@ extension FileNavigatorViewController: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         
         // If root is not set, don't show anything
-        guard root != nil else { return 0 }
+        guard rootItem != nil else { return 0 }
         
         // item is nil if requesting root
         guard let item = item as? FileItem else { return 1 }
@@ -136,24 +153,8 @@ extension FileNavigatorViewController: NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         guard let item = item as? FileItem else {
-            return root!
+            return rootItem!
         }
         return item.children[index]
     }
 }
-
-
-//    func loadBrowser(select item: String? = nil) {
-////        guard let project = project, let document = document as? ProjectDocument else { return }
-//        window?.title = project?.name ?? "Demo Project"
-//        do {
-////            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875/")
-//
-//            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875")
-//            try fileBrowserViewController.load(url: url, projectName: "Demo Project", openFile: "contracts/Untitled9875.sol")
-////            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
-//    }

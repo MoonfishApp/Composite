@@ -75,9 +75,6 @@ class DocumentController: NSDocumentController {
                     
                     let defaultDocumentURL = project.workDirectory.appendingPathComponent(defaultDocument)
                     
-//                    print("defaultDoc: \(defaultDocument)")
-//                    print("URL: \(defaultDocumentURL.path)")
-                    
                     guard FileManager.default.fileExists(atPath: defaultDocumentURL.path) == true else {
                         project.makeWindowControllers()
                         project.showWindows()
@@ -209,4 +206,47 @@ class DocumentController: NSDocumentController {
         document.windowControllers.first?.window?.addTabbedWindow(newTab, ordered: .below)
     }
     
+    /// Based on TextEdit example, see https://stackoverflow.com/questions/34497218/nsdocument-opening-over-a-default-document
+    func replace(_ document: NSDocument, inController controller: NSWindowController) {
+        
+        guard Thread.isMainThread else { return assertionFailure() }
+        
+        let documentToBeReplaced = currentDocument // Note: Can be nil
+        
+        document.addWindowController(controller) //(controller.copy() as! NSWindowController)
+        controller.document = document
+
+        if let documentToBeReplaced = documentToBeReplaced {
+            documentToBeReplaced.removeWindowController(controller)
+            documentToBeReplaced.close()
+            removeDocument(documentToBeReplaced)
+        }
+
+        /*
+        if ([NSThread isMainThread]) {
+            NSDocument *transientDoc = [documents objectAtIndex:0], *doc = [documents objectAtIndex:1];
+            NSArray *controllersToTransfer = [[transientDoc windowControllers] copy];
+            NSEnumerator *controllerEnum = [controllersToTransfer objectEnumerator];
+            NSWindowController *controller;
+            
+         
+            while (controller = [controllerEnum nextObject]) {
+                [doc addWindowController:controller];
+                [transientDoc removeWindowController:controller];
+            }
+            [transientDoc close];
+         
+            // We replaced the value of the transient document with opened document, need to notify accessibility clients.
+            for (NSLayoutManager *layoutManager in [[(Document *)doc textStorage] layoutManagers]) {
+                for (NSTextContainer *textContainer in [layoutManager textContainers]) {
+                    NSTextView *textView = [textContainer textView];
+                    if (textView) NSAccessibilityPostNotification(textView, NSAccessibilityValueChangedNotification);
+                }
+            }
+            
+        } else {
+            [self performSelectorOnMainThread:_cmd withObject:documents waitUntilDone:YES];
+        }*/
+        
+    }
 }
