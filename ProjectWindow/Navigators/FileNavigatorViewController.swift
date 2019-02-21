@@ -14,7 +14,6 @@ final class FileNavigatorViewController: NSViewController {
     @IBOutlet weak var fileView: NSOutlineView!
 
     private var rootItem: FileItem?
-    private var projectObserver: NSKeyValueObservation?
     
     /// Hack. Forces SelectionDidChange to ignore programmatically set selection
     private var ignoreSelection: Bool = false
@@ -48,10 +47,6 @@ final class FileNavigatorViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-    }
-    
-    deinit {
-        projectObserver?.invalidate()
     }
     
     @IBAction func fileViewDoubleClick(_ sender: NSOutlineView) {
