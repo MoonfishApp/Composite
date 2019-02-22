@@ -103,7 +103,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         self.lineEnding = LineEnding(index: UserDefaults.standard[.lineEndCharCode]) ?? .lf
         self.syntaxParser = SyntaxParser(textStorage: self.textStorage)
         self.syntaxParser.style = SyntaxManager.shared.setting(name: UserDefaults.standard[.syntaxStyle]!) ?? SyntaxStyle()
-        
+
         // use the encoding user selected in open panel, if exists
 //        if let accessorySelectedEncoding = (DocumentController.shared as! DocumentController).accessorySelectedEncoding {
 //            self.readingEncoding = accessorySelectedEncoding

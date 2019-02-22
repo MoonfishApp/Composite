@@ -37,8 +37,8 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     private var defaultsObservers: [UserDefaultsObservation] = []
     private weak var syntaxHighlightProgress: Progress?
     
-    @IBOutlet private weak var splitViewItem: NSSplitViewItem?
-    @IBOutlet private weak var statusBarItem: NSSplitViewItem?
+//    @IBOutlet private weak var splitViewItem: NSSplitViewItem?
+    @IBOutlet private weak var statusBarItem: NSSplitViewItem? // unused
     
     
     
@@ -182,12 +182,13 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
                     editorViewController = controller
                 } else {
                     let storyboard = NSStoryboard(name: NSStoryboard.Name("TextEditor"), bundle: nil)
-//                    let storyboard = NSStoryboard(name: NSStoryboard.Name("EditorView"), bundle: nil)
                     editorViewController = storyboard.instantiateInitialController() as! TextEditorSplitViewController
                     removeSplitViewItem(splitViewItems.first!)
                     addSplitViewItem(NSSplitViewItem(viewController: editorViewController))
                 }
                 self.setup(editorViewController: editorViewController, baseViewController: nil)
+                let themeName = ThemeManager.shared.userDefaultSettingName(forDark: self.view.effectiveAppearance.isDark)
+                self.setTheme(name: themeName)
                 
                 // start parcing syntax highlights and outline menu
                 document.syntaxParser.invalidateOutline()
@@ -936,9 +937,9 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         if let syntaxParser = self.syntaxParser {
             editorViewController.apply(style: syntaxParser.style)
         }
-        
+//        baseViewController?.textView is nil
         // copy textView states
-        if let baseTextView = baseViewController?.textView, let textView = editorViewController.textView {
+        if let baseTextView = baseViewController?.textView, let textView = editorViewController.textView {        
             textView.font = baseTextView.font
             textView.theme = baseTextView.theme
             textView.tabWidth = baseTextView.tabWidth
@@ -955,7 +956,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     /// split view controller
     private var splitViewController: SplitViewController? {
         
-        return self.splitViewItem?.viewController as? SplitViewController
+        return self.splitViewItems.first?.viewController as? SplitViewController // this is a TextEditorSplitViewController
     }
     
     
@@ -976,7 +977,8 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     /// child editor view controllers
     private var editorViewControllers: [TextEditorSplitViewController] {
         
-        return self.splitViewController?.children as? [TextEditorSplitViewController] ?? []
+        print(self.splitViewItems)
+        return self.splitViewItems.map{ return $0.viewController } as? [TextEditorSplitViewController] ?? []
     }
     
     

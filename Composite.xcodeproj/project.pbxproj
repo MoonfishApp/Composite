@@ -266,20 +266,6 @@
 		C79A750021EEDD04007FB630 /* ConsolePanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A74FF21EEDD04007FB630 /* ConsolePanel.storyboard */; };
 		C79A750221EEDD0D007FB630 /* UnicodePanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A750121EEDD0D007FB630 /* UnicodePanel.storyboard */; };
 		C79A750421EEDD18007FB630 /* ColorCodePanelAccessory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A750321EEDD18007FB630 /* ColorCodePanelAccessory.storyboard */; };
-		C79A758721EEDDAF007FB630 /* Pulse.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A757921EEDDAE007FB630 /* Pulse.cottheme */; };
-		C79A758821EEDDAF007FB630 /* Anura.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A757A21EEDDAE007FB630 /* Anura.cottheme */; };
-		C79A758921EEDDAF007FB630 /* Dendrobates.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A757B21EEDDAE007FB630 /* Dendrobates.cottheme */; };
-		C79A758A21EEDDAF007FB630 /* Dendrobates (Dark).cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A757C21EEDDAE007FB630 /* Dendrobates (Dark).cottheme */; };
-		C79A758B21EEDDAF007FB630 /* _Plain.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A757D21EEDDAE007FB630 /* _Plain.cottheme */; };
-		C79A758C21EEDDAF007FB630 /* Solarized (Light).cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A757E21EEDDAE007FB630 /* Solarized (Light).cottheme */; };
-		C79A758D21EEDDAF007FB630 /* Lakritz.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A757F21EEDDAE007FB630 /* Lakritz.cottheme */; };
-		C79A758E21EEDDAF007FB630 /* Printen.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A758021EEDDAE007FB630 /* Printen.cottheme */; };
-		C79A758F21EEDDAF007FB630 /* Kawazu.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A758121EEDDAF007FB630 /* Kawazu.cottheme */; };
-		C79A759021EEDDAF007FB630 /* Note.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A758221EEDDAF007FB630 /* Note.cottheme */; };
-		C79A759121EEDDAF007FB630 /* Solarized (Dark).cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A758321EEDDAF007FB630 /* Solarized (Dark).cottheme */; };
-		C79A759221EEDDAF007FB630 /* Mono.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A758421EEDDAF007FB630 /* Mono.cottheme */; };
-		C79A759321EEDDAF007FB630 /* Resinifictrix.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A758521EEDDAF007FB630 /* Resinifictrix.cottheme */; };
-		C79A759421EEDDAF007FB630 /* Classic.cottheme in Resources */ = {isa = PBXBuildFile; fileRef = C79A758621EEDDAF007FB630 /* Classic.cottheme */; };
 		C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */ = {isa = PBXBuildFile; fileRef = C79A759721EEDDD8007FB630 /* updateHelpindex.sh */; };
 		C79A759C21EEE4E9007FB630 /* Syntaxes in Resources */ = {isa = PBXBuildFile; fileRef = C79A759B21EEE4E9007FB630 /* Syntaxes */; };
 		C79A759E21EEE532007FB630 /* makeSyntaxMap.rb in Resources */ = {isa = PBXBuildFile; fileRef = C79A759D21EEE532007FB630 /* makeSyntaxMap.rb */; };
@@ -356,6 +342,7 @@
 		C7F0B9C22113CF7E005A8FE2 /* CompositeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */; };
 		C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */; };
 		C7F18AE62217DC740026D7DC /* EditorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3F21EE9DAC007FB630 /* EditorView.storyboard */; };
+		C7F18B06221F7C030026D7DC /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = C7F18B05221F7C020026D7DC /* Themes */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
@@ -641,20 +628,6 @@
 		C79A74FF21EEDD04007FB630 /* ConsolePanel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConsolePanel.storyboard; sourceTree = "<group>"; };
 		C79A750121EEDD0D007FB630 /* UnicodePanel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UnicodePanel.storyboard; sourceTree = "<group>"; };
 		C79A750321EEDD18007FB630 /* ColorCodePanelAccessory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ColorCodePanelAccessory.storyboard; sourceTree = "<group>"; };
-		C79A757921EEDDAE007FB630 /* Pulse.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pulse.cottheme; sourceTree = "<group>"; };
-		C79A757A21EEDDAE007FB630 /* Anura.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Anura.cottheme; sourceTree = "<group>"; };
-		C79A757B21EEDDAE007FB630 /* Dendrobates.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dendrobates.cottheme; sourceTree = "<group>"; };
-		C79A757C21EEDDAE007FB630 /* Dendrobates (Dark).cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Dendrobates (Dark).cottheme"; sourceTree = "<group>"; };
-		C79A757D21EEDDAE007FB630 /* _Plain.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _Plain.cottheme; sourceTree = "<group>"; };
-		C79A757E21EEDDAE007FB630 /* Solarized (Light).cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Solarized (Light).cottheme"; sourceTree = "<group>"; };
-		C79A757F21EEDDAE007FB630 /* Lakritz.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lakritz.cottheme; sourceTree = "<group>"; };
-		C79A758021EEDDAE007FB630 /* Printen.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Printen.cottheme; sourceTree = "<group>"; };
-		C79A758121EEDDAF007FB630 /* Kawazu.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Kawazu.cottheme; sourceTree = "<group>"; };
-		C79A758221EEDDAF007FB630 /* Note.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Note.cottheme; sourceTree = "<group>"; };
-		C79A758321EEDDAF007FB630 /* Solarized (Dark).cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Solarized (Dark).cottheme"; sourceTree = "<group>"; };
-		C79A758421EEDDAF007FB630 /* Mono.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Mono.cottheme; sourceTree = "<group>"; };
-		C79A758521EEDDAF007FB630 /* Resinifictrix.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Resinifictrix.cottheme; sourceTree = "<group>"; };
-		C79A758621EEDDAF007FB630 /* Classic.cottheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Classic.cottheme; sourceTree = "<group>"; };
 		C79A759721EEDDD8007FB630 /* updateHelpindex.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = updateHelpindex.sh; sourceTree = "<group>"; };
 		C79A759B21EEE4E9007FB630 /* Syntaxes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Syntaxes; path = cotEditor/Resources/Syntaxes; sourceTree = SOURCE_ROOT; };
 		C79A759D21EEE532007FB630 /* makeSyntaxMap.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = makeSyntaxMap.rb; path = cotEditor/Resources/makeSyntaxMap.rb; sourceTree = SOURCE_ROOT; };
@@ -734,6 +707,7 @@
 		C7F0B9AF2112945F005A8FE2 /* CompositeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompositeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B9B32112945F005A8FE2 /* CompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeTests.swift; sourceTree = "<group>"; };
 		C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeSplitViewController.swift; sourceTree = "<group>"; };
+		C7F18B05221F7C020026D7DC /* Themes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Themes; path = cotEditor/Resources/Themes; sourceTree = SOURCE_ROOT; };
 		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Composite.release.xcconfig"; path = "Pods/Target Support Files/Pods-Composite/Pods-Composite.release.xcconfig"; sourceTree = "<group>"; };
 		F81936C3214C6F2F00C3222B /* uninstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = uninstall.command; sourceTree = "<group>"; };
@@ -994,6 +968,7 @@
 		C7351C0621F91C86000A3A5B /* TextEditor */ = {
 			isa = PBXGroup;
 			children = (
+				C79A6B8721EE993B007FB630 /* Text View */,
 				C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */,
 				C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */,
 				C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */,
@@ -1020,7 +995,6 @@
 				C79A6B0B21EE9467007FB630 /* Preferences */,
 				C79A6B8221EE98F9007FB630 /* Text Finder */,
 				C79A6B8421EE992C007FB630 /* Document Window */,
-				C79A6B8721EE993B007FB630 /* Text View */,
 				C79A6B8621EE993A007FB630 /* Views */,
 				C79A6B8521EE9938007FB630 /* Models */,
 				C79A6C4621EE9B17007FB630 /* Utilities */,
@@ -1462,7 +1436,7 @@
 				C79A75E721EEF943007FB630 /* SyntaxMap.json */,
 				C79A6D2921EE9CBA007FB630 /* Storyboards */,
 				C79A759B21EEE4E9007FB630 /* Syntaxes */,
-				C79A6D2721EE9CB7007FB630 /* Themes */,
+				C7F18B05221F7C020026D7DC /* Themes */,
 				C79A6D2621EE9CB6007FB630 /* Scripts */,
 			);
 			path = Resources;
@@ -1475,27 +1449,6 @@
 				C79A759721EEDDD8007FB630 /* updateHelpindex.sh */,
 			);
 			path = Scripts;
-			sourceTree = "<group>";
-		};
-		C79A6D2721EE9CB7007FB630 /* Themes */ = {
-			isa = PBXGroup;
-			children = (
-				C79A757D21EEDDAE007FB630 /* _Plain.cottheme */,
-				C79A757A21EEDDAE007FB630 /* Anura.cottheme */,
-				C79A758621EEDDAF007FB630 /* Classic.cottheme */,
-				C79A757C21EEDDAE007FB630 /* Dendrobates (Dark).cottheme */,
-				C79A757B21EEDDAE007FB630 /* Dendrobates.cottheme */,
-				C79A758121EEDDAF007FB630 /* Kawazu.cottheme */,
-				C79A757F21EEDDAE007FB630 /* Lakritz.cottheme */,
-				C79A758421EEDDAF007FB630 /* Mono.cottheme */,
-				C79A758221EEDDAF007FB630 /* Note.cottheme */,
-				C79A758021EEDDAE007FB630 /* Printen.cottheme */,
-				C79A757921EEDDAE007FB630 /* Pulse.cottheme */,
-				C79A758521EEDDAF007FB630 /* Resinifictrix.cottheme */,
-				C79A758321EEDDAF007FB630 /* Solarized (Dark).cottheme */,
-				C79A757E21EEDDAE007FB630 /* Solarized (Light).cottheme */,
-			);
-			path = Themes;
 			sourceTree = "<group>";
 		};
 		C79A6D2921EE9CBA007FB630 /* Storyboards */ = {
@@ -1853,13 +1806,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C79A759C21EEE4E9007FB630 /* Syntaxes in Resources */,
+				C7F18B06221F7C030026D7DC /* Themes in Resources */,
 				C79A6D4821EE9DDC007FB630 /* ProgressView.storyboard in Resources */,
-				C79A759221EEDDAF007FB630 /* Mono.cottheme in Resources */,
 				C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */,
 				C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */,
-				C79A759421EEDDAF007FB630 /* Classic.cottheme in Resources */,
 				C79A6D3221EE9D64007FB630 /* RegexReferenceView.storyboard in Resources */,
-				C79A758A21EEDDAF007FB630 /* Dendrobates (Dark).cottheme in Resources */,
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
 				C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */,
@@ -1870,8 +1821,6 @@
 				C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */,
 				C70F666C22128E1500EEA9D1 /* DocumentInspectorView.storyboard in Resources */,
 				C79A6D3C21EE9D9A007FB630 /* OutlineView.storyboard in Resources */,
-				C79A758D21EEDDAF007FB630 /* Lakritz.cottheme in Resources */,
-				C79A759321EEDDAF007FB630 /* Resinifictrix.cottheme in Resources */,
 				C7351C0521F91999000A3A5B /* ProjectEditor.storyboard in Resources */,
 				C79A750021EEDD04007FB630 /* ConsolePanel.storyboard in Resources */,
 				C79A6D5021EE9E03007FB630 /* CustomTabWidthView.storyboard in Resources */,
@@ -1881,12 +1830,9 @@
 				C79A759E21EEE532007FB630 /* makeSyntaxMap.rb in Resources */,
 				C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */,
 				C79A6D4221EE9DC0007FB630 /* OpenDocumentAccessory.storyboard in Resources */,
-				C79A758B21EEDDAF007FB630 /* _Plain.cottheme in Resources */,
-				C79A758F21EEDDAF007FB630 /* Kawazu.cottheme in Resources */,
 				C7050A8F216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C711F58A21DDB68F005EBC5D /* Execute.command in Resources */,
-				C79A758C21EEDDAF007FB630 /* Solarized (Light).cottheme in Resources */,
 				C79A6D4A21EE9DE4007FB630 /* GoToLineView.storyboard in Resources */,
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,
 				C715712F21F15DF900A1A6B4 /* Console.storyboard in Resources */,
@@ -1895,7 +1841,6 @@
 				C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
 				C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */,
 				C79A6D3021EE9D56007FB630 /* FindPanel.storyboard in Resources */,
-				C79A758821EEDDAF007FB630 /* Anura.cottheme in Resources */,
 				C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
 				C79A750221EEDD0D007FB630 /* UnicodePanel.storyboard in Resources */,
 				C79A6D3621EE9D7C007FB630 /* MultipleReplacementPanel.storyboard in Resources */,
@@ -1909,18 +1854,13 @@
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
-				C79A759121EEDDAF007FB630 /* Solarized (Dark).cottheme in Resources */,
 				C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */,
 				C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */,
 				C79A6D3421EE9D73007FB630 /* FindPreferencesView.storyboard in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
 				C79A750421EEDD18007FB630 /* ColorCodePanelAccessory.storyboard in Resources */,
-				C79A758921EEDDAF007FB630 /* Dendrobates.cottheme in Resources */,
-				C79A758721EEDDAF007FB630 /* Pulse.cottheme in Resources */,
-				C79A759021EEDDAF007FB630 /* Note.cottheme in Resources */,
 				C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */,
 				C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */,
-				C79A758E21EEDDAF007FB630 /* Printen.cottheme in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

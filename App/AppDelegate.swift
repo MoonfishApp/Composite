@@ -12,6 +12,40 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     private lazy var preferencesWindowController = NSWindowController.instantiate(storyboard: "Preferences")
+    
+//    @IBOutlet private weak var encodingsMenu: NSMenu?
+    @IBOutlet private weak var syntaxStylesMenu: NSMenu?
+    @IBOutlet private weak var themesMenu: NSMenu?
+//    @IBOutlet private weak var whatsNewMenuItem: NSMenuItem?
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        // store key bindings in MainMenu.xib before menu is modified
+        MenuKeyBindingManager.shared.scanDefaultMenuKeyBindings()
+        
+        // append the current version number to "What’s New" menu item
+//        let shortVersionRange = Bundle.main.shortVersion.range(of: "^[0-9]+\\.[0-9]+", options: .regularExpression)!
+//        let shortVersion = String(Bundle.main.shortVersion[shortVersionRange])
+//        self.whatsNewMenuItem?.title = String(format: "What’s New in CotEditor %@".localized, shortVersion)
+        
+        // build menus
+//        self.buildEncodingMenu()
+        self.buildSyntaxMenu()
+        self.buildThemeMenu()
+//        ScriptManager.shared.buildScriptMenu()
+        
+        // manually insert Share menu on macOS 10.12 and earlier
+//        if NSAppKitVersion.current < .macOS10_13 {
+//            (DocumentController.shared as? DocumentController)?.insertLegacyShareMenu()
+//        }
+        
+        // observe setting list updates
+//        NotificationCenter.default.addObserver(self, selector: #selector(buildEncodingMenu), name: didUpdateSettingListNotification, object: EncodingManager.shared)
+        NotificationCenter.default.addObserver(self, selector: #selector(buildSyntaxMenu), name: didUpdateSettingListNotification, object: SyntaxManager.shared)
+        NotificationCenter.default.addObserver(self, selector: #selector(buildThemeMenu), name: didUpdateSettingListNotification, object: ThemeManager.shared)
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -73,6 +107,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func showPreferences(_ sender: Any?) {
         
         self.preferencesWindowController.showWindow(sender)
+    }
+
+    
+    /// build syntax style menu in the main menu
+    @objc private func buildSyntaxMenu() {
+        
+        let menu = self.syntaxStylesMenu!
+        
+        menu.removeAllItems()
+        
+        // add None
+        menu.addItem(withTitle: BundledStyleName.none, action: #selector(SyntaxHolder.changeSyntaxStyle), keyEquivalent: "")
+        menu.addItem(.separator())
+        
+        // add syntax styles
+        for styleName in SyntaxManager.shared.settingNames {
+            menu.addItem(withTitle: styleName, action: #selector(SyntaxHolder.changeSyntaxStyle), keyEquivalent: "")
+        }
+        menu.addItem(.separator())
+        
+        // add item to recolor
+        let recolorAction = #selector(SyntaxHolder.recolorAll)
+        let shortcut = MenuKeyBindingManager.shared.shortcut(for: recolorAction)
+        let recoloritem = NSMenuItem(title: "Re-Color All".localized, action: recolorAction, keyEquivalent: shortcut.keyEquivalent)
+        recoloritem.keyEquivalentModifierMask = shortcut.modifierMask  // = default: Cmd + Opt + R
+        menu.addItem(recoloritem)
+    }
+    
+    
+    /// build theme menu in the main menu
+    @objc private func buildThemeMenu() {
+        
+        let menu = self.themesMenu!
+        
+        menu.removeAllItems()
+        
+        for themeName in ThemeManager.shared.settingNames {
+            menu.addItem(withTitle: themeName, action: #selector(ThemeHolder.changeTheme), keyEquivalent: "")
+        }
     }
     
 }

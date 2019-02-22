@@ -204,7 +204,6 @@
                         </connections>
                     </splitView>
                     <connections>
-                        <outlet property="splitView" destination="Fzk-GW-dof" id="BWJ-RV-QLI"/>
                         <segue destination="tGk-tm-4b5" kind="relationship" relationship="splitItems" id="SME-IZ-EhX"/>
                     </connections>
                 </splitViewController>

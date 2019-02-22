@@ -454,8 +454,25 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Editor" id="kwp-bg-oNH">
                                     <items>
-                                        <menuItem title="Find..." keyEquivalent="f" id="q64-2D-1YO"/>
+                                        <menuItem title="Syntax Style" id="ROw-Xd-Wau">
+                                            <menu key="submenu" title="Syntax Style" id="OZm-eA-u23">
+                                                <items>
+                                                    <menuItem isSeparatorItem="YES" id="8yP-vu-CCZ"/>
+                                                    <menuItem title="Re-Color All" keyEquivalent="r" id="GTh-Lz-k8B">
+                                                        <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <connections>
+                                                            <action selector="recolorAll:" target="Ady-hI-5gd" id="ubW-LQ-b1g"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem title="Theme" id="E6x-Ne-S6e">
+                                            <menu key="submenu" title="Theme" id="qvc-tY-gYs"/>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="nOv-HP-S3B"/>
+                                        <menuItem title="Find..." keyEquivalent="f" id="tiT-VW-cYt"/>
+                                        <menuItem isSeparatorItem="YES" id="7XP-RW-v2d"/>
                                         <menuItem title="Find and Replace..." keyEquivalent="F" id="MN2-oT-hUL"/>
                                     </items>
                                 </menu>
@@ -575,7 +592,12 @@
                         <outlet property="dockMenu" destination="r8C-vR-OgY" id="Wej-jy-Wp1"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Composite" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Composite" customModuleProvider="target">
+                    <connections>
+                        <outlet property="syntaxStylesMenu" destination="OZm-eA-u23" id="ADT-uD-4oJ"/>
+                        <outlet property="themesMenu" destination="qvc-tY-gYs" id="nmx-4P-etL"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="r8C-vR-OgY">

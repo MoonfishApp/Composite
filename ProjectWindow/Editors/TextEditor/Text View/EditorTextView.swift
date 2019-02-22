@@ -535,7 +535,7 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
                 }
                 
                 return (range, indent, insertion)
-            }
+        }
         
         super.insertNewline(sender)
         
@@ -1213,6 +1213,8 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
     /// document object representing the text view contents
     private var document: TextDocument? {
         
+        assert(self.window?.windowController?.document as? TextDocument != nil)
+        
         return self.window?.windowController?.document as? TextDocument
     }
     
@@ -1473,7 +1475,7 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         let pattern = "\\b" + NSRegularExpression.escapedPattern(for: substring) + "\\b"
         let regex = try! NSRegularExpression(pattern: pattern)
         let matches = regex.matches(in: self.string, range: self.string.nsRange)
-            
+        
         guard matches.count < UserDefaults.standard[.maximumSelectionInstanceHighlightCount] else { return }
         
         matches
