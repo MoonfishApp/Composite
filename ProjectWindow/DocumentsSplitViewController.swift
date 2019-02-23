@@ -956,6 +956,8 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     /// split view controller
     private var splitViewController: SplitViewController? {
         
+        // TODO: fix
+//        print("var splitViewController doesn't work")
         return self.splitViewItems.first?.viewController as? SplitViewController // this is a TextEditorSplitViewController
     }
     
@@ -977,7 +979,6 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     /// child editor view controllers
     private var editorViewControllers: [TextEditorSplitViewController] {
         
-        print(self.splitViewItems)
         return self.splitViewItems.map{ return $0.viewController } as? [TextEditorSplitViewController] ?? []
     }
     
