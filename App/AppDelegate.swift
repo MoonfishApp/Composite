@@ -12,6 +12,11 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     private lazy var preferencesWindowController = NSWindowController.instantiate(storyboard: "Preferences")
+    private lazy var toolchainWindowController = NSWindowController.instantiate(storyboard: "InstallToolchain")
+    private lazy var templateWindowController = NSWindowController.instantiate(storyboard: "Template")
+    
+//    let installToolchainStoryboard = NSStoryboard(name: NSStoryboard.Name("InstallToolchain"), bundle: nil)
+//    let installWizard = installToolchainStoryboard.instantiateInitialController() as? NSWindowController
     
 //    @IBOutlet private weak var encodingsMenu: NSMenu?
     @IBOutlet private weak var syntaxStylesMenu: NSMenu?
@@ -50,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         if UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false {
-            showInstallWizard()
+            showInstallToolchains(self)
         } else {
             (DocumentController.shared as! DocumentController).newProject(self)
         }
@@ -58,25 +63,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
-    }
-
-    
-//    @IBAction func showPreferences(_ sender: Any) {
-//        
-//        if preferencesController == nil {
-//            let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Preferences"), bundle: nil)
-//            preferencesController = storyboard.instantiateInitialController() as? PreferencesWindowController
-//        }
-//        
-//        if let preferencesController = preferencesController {
-//            preferencesController.showWindow(sender)
-//        }
-//    }
-    
-    func showInstallWizard() {
-        let installToolchainStoryboard = NSStoryboard(name: NSStoryboard.Name("InstallToolchain"), bundle: nil)
-        let installWizard = installToolchainStoryboard.instantiateInitialController() as? NSWindowController
-        installWizard?.showWindow(self)
     }
     
     override init() {
@@ -105,10 +91,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// show preferences window
     @IBAction func showPreferences(_ sender: Any?) {
-        
         self.preferencesWindowController.showWindow(sender)
     }
 
+    
+    @IBAction func showInstallToolchains(_ sender: AnyObject) {
+        self.toolchainWindowController.showWindow(sender)
+    }
+    
+    @IBAction func showProjectTemplates(_ sender: AnyObject) {
+        self.templateWindowController.showWindow(sender)
+    }
     
     /// build syntax style menu in the main menu
     @objc private func buildSyntaxMenu() {
