@@ -254,8 +254,6 @@
 					<dict>
 						<key>name</key>
 						<string>brew</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -280,8 +278,6 @@
 					<dict>
 						<key>name</key>
 						<string>node</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -306,8 +302,6 @@
 						<string>OCaml</string>
 						<key>filename</key>
 						<string>ocaml</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/ocaml</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -330,8 +324,8 @@
 					<dict>
 						<key>name</key>
 						<string>OCaml Package Manager</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
+						<key>filename</key>
+						<string>opam</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -354,8 +348,6 @@
 					<dict>
 						<key>name</key>
 						<string>Scilla</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -402,8 +394,6 @@
 					<dict>
 						<key>name</key>
 						<string>Scilla</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -426,8 +416,6 @@
 					<dict>
 						<key>name</key>
 						<string>Zilliqa JavaScript API</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -450,8 +438,6 @@
 					<dict>
 						<key>name</key>
 						<string>Kaya</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>

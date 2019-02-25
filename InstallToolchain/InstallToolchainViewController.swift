@@ -52,7 +52,7 @@ class InstallToolchainViewController: NSViewController {
                 showDetailsFor(first)
             }
             self.fetchFileLocations()       // Set paths to binaries if installed
-//            self.fetchVersionNumbers()      // Fetch version numbers
+            self.fetchVersionNumbers()      // Fetch version numbers
         }
     }
     

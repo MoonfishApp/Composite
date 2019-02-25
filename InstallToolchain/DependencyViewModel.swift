@@ -111,23 +111,15 @@ extension DependencyViewModel {
         guard whichCommand.isEmpty == false, let operation = try? BashOperation(commands: [whichCommand], verbose: false)
             else { return nil }
         
-        operation.outputClosure = {
-            print("**** outputclosure for \(self.whichCommand):")
-            print($0)
-        }
-        
-        
         operation.completionBlock = {
             guard operation.output.isEmpty == false else {
-                print("**** output.isEmpty for \(self.whichCommand)")
                 self.isInstalled = false
                 return
             }
             
-            print("**** output for \(self.whichCommand): \(operation.output)")
             // TODO: Regex to check it's a valid path?
             self.isInstalled = true
-            self.path = operation.output
+            self.path = operation.output.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
         
         return operation

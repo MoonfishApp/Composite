@@ -119,21 +119,9 @@ class BashOperation: Operation {
         }
         
         // Handle output
-//        self.captureStandardOutput()
-        task.standardOutput = outputPipe // temp
+        self.captureStandardOutput()
         
         task.launch()
-        
-        let fileHandle = outputPipe.fileHandleForReading
-        let data = fileHandle.readDataToEndOfFile()
-        if let string = String(data: data, encoding: .utf8) {
-            print("***** Received: \(string)")
-            outputClosure?(string)
-        } else {
-            print("**** No parsable data \(data.count)")
-        }
-        
-        // Do we need to flush the outputPipe?
         task.waitUntilExit()
     }
     
@@ -149,17 +137,12 @@ class BashOperation: Operation {
             let output = self.outputPipe.fileHandleForReading.availableData
             guard let outputString = String(data: output, encoding: String.Encoding.utf8), !outputString.isEmpty else { return }
             
-            DispatchQueue.main.async(execute: {
-                print(outputString)
-                self.outputClosure?(outputString)
-                self.delegate?.bashOperation(self, receivedOutput: outputString)
-                self.output = self.output + "\n" + outputString
-                self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify() // Do we need this?
-            })
-        }
-        
-        DispatchQueue.main.async(execute: {
+            print(outputString)
+            self.outputClosure?(outputString)
+            self.delegate?.bashOperation(self, receivedOutput: outputString)
+            self.output = self.output + "\n" + outputString
             self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        })
+        }
+        self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
     }
 }
