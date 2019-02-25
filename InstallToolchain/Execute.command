@@ -19,6 +19,7 @@ usage() {
 }
 
 printCommand() {
+
     echo '$ '$@
 
 # The use of tput triggers errors in NSTask. Disabling for now.
@@ -33,15 +34,17 @@ printCommand() {
 #    printf '%s\n' $colorReset
 }
 
-dflag=false                 # d argument is not set
+dflag=false                  # d argument is not set
+verbose=0                #
 #colorReset="$(tput sgr0)"   # reset
 #colorRed="$(tput setaf 1)"  # red
 #bold="$(tput bold)"         # bold
 
-while getopts ":p:d:h" opt; do
+while getopts ":p:d:vh" opt; do
     case "$opt" in
         p) p=$OPTARG ;; # Optional path
         d) dflag=true; d=$OPTARG ;; # Project Directory. Mandatory
+        v) verbose=1 ;; # if true disables printCommand
         h|*) usage ;;   # help
     esac
 done
@@ -61,13 +64,13 @@ fi
 #echo "PATH="$PATH
 
 # 3. cd to directory
-printCommand 'cd '$d
-cd "${d}" || exit 1
+((verbose)) && printCommand 'cd '$d
+((verbose)) && cd "${d}" || exit 1
 
 # 4. Execute the commands
 for command in "$@"; do
-    printCommand $command
+    ((verbose)) && printCommand $command
     $command || exit 1
 done
 
-printf '\nReady.\n'
+((verbose)) && printf '\nReady.\n'

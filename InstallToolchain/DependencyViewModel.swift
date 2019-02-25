@@ -19,9 +19,10 @@ class DependencyViewModel {
     
     let name: String
     
-    var displayName: String { return state.display(name: name)}
+    /// Includes install-state emoji
+    var displayName: String { return state.display(name: name) }
     
-    let path: String
+    let filename: String
     
     let installLink: String?
     
@@ -33,6 +34,9 @@ class DependencyViewModel {
     
     let outdatedCommand: String?
     
+    // Find location of dependency
+    let whichCommand: String
+    
     private (set) var version: String = "" {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
@@ -40,6 +44,18 @@ class DependencyViewModel {
     }
     
     private (set) var newerVersionAvailable: String? = nil {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
+        }
+    }
+    
+    private (set) var isInstalled: Bool = false {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
+        }
+    }
+
+    private (set) var path: String? = nil {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
         }
@@ -57,7 +73,7 @@ class DependencyViewModel {
         }
         
         // Not installed
-        if isInstalled == false {
+        if path == nil {
             return .notInstalled
         }
         
@@ -72,9 +88,8 @@ class DependencyViewModel {
     init(_ dependency: Dependency) {
     
         name = dependency.name.capitalizedFirstChar().replacingOccurrences(of: ".app", with: "")
-        
-        /// The full path of the app (directory and app)
-        path = URL(fileURLWithPath: dependency.defaultLocation).appendingPathComponent(dependency.name).path
+        filename = (dependency.filename ?? "").isEmpty ? dependency.name : dependency.filename!
+    
         required = dependency.required
         isFrameworkVersion = dependency.isFrameworkVersion
         installLink = dependency.installLink
@@ -83,22 +98,40 @@ class DependencyViewModel {
         installCommand = dependency.installCommand
         updateCommand = dependency.updateCommand
         outdatedCommand = dependency.outdatedCommand
-    }
-}
-
-
-// File validation
-extension DependencyViewModel {
-    
-    /// True if file exists at defaultLocation
-    /// TODO: use which command?
-    var isInstalled: Bool {
-        return FileManager.default.fileExists(atPath: path)
+        whichCommand = "which " + filename
     }
 }
 
 // Operations
 extension DependencyViewModel {
+    
+    
+    func fileLocation() -> BashOperation? {
+        
+        guard whichCommand.isEmpty == false, let operation = try? BashOperation(commands: [whichCommand], verbose: false)
+            else { return nil }
+        
+        operation.outputClosure = {
+            print("**** outputclosure for \(self.whichCommand):")
+            print($0)
+        }
+        
+        
+        operation.completionBlock = {
+            guard operation.output.isEmpty == false else {
+                print("**** output.isEmpty for \(self.whichCommand)")
+                self.isInstalled = false
+                return
+            }
+            
+            print("**** output for \(self.whichCommand): \(operation.output)")
+            // TODO: Regex to check it's a valid path?
+            self.isInstalled = true
+            self.path = operation.output
+        }
+        
+        return operation
+    }
     
     /// <#Description#>
     ///

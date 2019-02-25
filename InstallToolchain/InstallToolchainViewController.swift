@@ -25,6 +25,9 @@ class InstallToolchainViewController: NSViewController {
     /// Queue used to fetch versions (which can be extremely slow)
     let fetchVersionQueue: OperationQueue = OperationQueue()
     
+    /// Queue used to fetch paths of the dependencies (if installed)
+    let pathQueue: OperationQueue = OperationQueue()
+    
     /// Queue used to install and update tools
     let userInitiatedQueue: OperationQueue = OperationQueue()
     
@@ -48,6 +51,7 @@ class InstallToolchainViewController: NSViewController {
             if let first = frameworkViewModels.first {
                 showDetailsFor(first)
             }
+            self.fetchFileLocations()       // Set paths to binaries if installed
             self.fetchVersionNumbers()      // Fetch version numbers
         }
     }
@@ -63,9 +67,12 @@ class InstallToolchainViewController: NSViewController {
         
         
         fetchVersionQueue.maxConcurrentOperationCount = 1
+        pathQueue.qualityOfService = .userInteractive
+        pathQueue.maxConcurrentOperationCount = 1
         fetchVersionQueue.qualityOfService = .userInteractive
         userInitiatedQueue.maxConcurrentOperationCount = 1
         userInitiatedQueue.qualityOfService = .userInitiated
+        
         
         installCountObserver = userInitiatedQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
             DispatchQueue.main.async {
@@ -103,6 +110,17 @@ class InstallToolchainViewController: NSViewController {
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
+        }
+    }
+    
+    // Searches for paths of the dependencies. Should be near-instant
+    func fetchFileLocations() {
+
+        for frameworkViewModel in frameworkViewModels {
+            for tool in frameworkViewModel.dependencies {
+                guard let operation = tool.fileLocation() else { continue }
+                pathQueue.addOperation(operation)
+            }
         }
     }
     
@@ -151,6 +169,7 @@ class InstallToolchainViewController: NSViewController {
     
     @IBAction func done(_ sender: Any) {
         fetchVersionQueue.cancelAllOperations()
+        pathQueue.cancelAllOperations()
         view.window?.close()
         (DocumentController.shared as! DocumentController).newProject(self)
     }
@@ -313,7 +332,7 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 
             case "PathColumn":
                 
-                view.textField?.stringValue = item.path 
+                view.textField?.stringValue = item.path ?? ""
                 view.textField?.textColor = NSColor.gray
                 
             case "ActionColumn":
