@@ -10,12 +10,12 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="EditWindow" id="jGA-0Y-lOj" customClass="ProjectWindowController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Document Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
+                    <window key="window" title="Document Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv" customClass="ProjectWindow" customModule="Composite" customModuleProvider="target">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="307"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="719E2E60-8F3D-48BB-9027-070BF074E24D" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="lhk-QH-kAL">
+                        <toolbar key="toolbar" implicitIdentifier="719E2E60-8F3D-48BB-9027-070BF074E24D" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="lhk-QH-kAL">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Bqt-lg-4QR"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="9QW-KK-5p9"/>
@@ -97,12 +97,26 @@
                                         <action selector="lintButtonClicked:" target="jGA-0Y-lOj" id="Xem-Yo-g88"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="90F5AB4F-A409-4E9F-A36C-75084D49B96C" label="Custom View" paletteLabel="Custom View" sizingBehavior="auto" id="aJf-u5-bWu">
+                                    <nil key="toolTip"/>
+                                    <textField key="view" verticalHuggingPriority="750" id="bSj-Gf-ybJ">
+                                        <rect key="frame" x="0.0" y="14" width="96" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Df1-E2-fiq">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="tYP-A1-bOR"/>
                                 <toolbarItem reference="gpu-zx-1eY"/>
                                 <toolbarItem reference="rRd-A3-uJt"/>
                                 <toolbarItem reference="mn2-dn-q0c"/>
+                                <toolbarItem reference="9QW-KK-5p9"/>
+                                <toolbarItem reference="aJf-u5-bWu"/>
                                 <toolbarItem reference="9QW-KK-5p9"/>
                                 <toolbarItem reference="QEL-oc-DYZ"/>
                             </defaultToolbarItems>
@@ -117,7 +131,6 @@
                     </connections>
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="q8B-OF-YNf" customClass="ProjectToolbarController" customModule="Composite" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="75" y="268.5"/>
         </scene>

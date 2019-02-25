@@ -24,17 +24,20 @@ final class ProjectWindowController: NSWindowController {
         }
     }
     
-//    var consoleTextView: NSTextView {
-//        return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
-//    }
-//
-//    var fileBrowserViewController: FileNavigatorViewController {
-//        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
-//    }
+    var project: Project? {
+        if let projectDocument = (document as? TextDocument)?.project {
+            return projectDocument.project
+        }
+        if let projectDocument = document as? ProjectDocument {
+            return projectDocument.project
+        } else {
+            assertionFailure()
+            return nil
+        }
+    }
     
-//    private var editView: SyntaxTextView {
-//        return (self.window?.contentViewController?.childViewControllers[1] as! CompositeSplitViewController).editorView
-//    }
+    private let commandQueue: OperationQueue = OperationQueue()
+    private var commandProgressObserver: NSKeyValueObservation?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -45,69 +48,35 @@ final class ProjectWindowController: NSWindowController {
         super.windowDidLoad()
         window?.isRestorable = false
 //        window?.appearance = NSAppearance(named: .vibrantDark)
-//            window?.restorationClass = EditWindowRestoration.self
-    }
-    
-//    override func awakeFromNib() {
-//        loadBrowser()
-//    }
-    
-//    func loadBrowser(select item: String? = nil) {
-////        guard let project = project, let document = document as? ProjectDocument else { return }
-//        window?.title = project?.name ?? "Demo Project"
-//        do {
-////            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875/")
-//
-//            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875")
-//            try fileBrowserViewController.load(url: url, projectName: "Demo Project", openFile: "contracts/Untitled9875.sol")
-////            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
-//    }
-
-    
-    /// Sets console vc text. Called by PreparingViewController
-    func setConsole(_ string: String) {
-//        consoleTextView.string = consoleTextView.string + "\n" + string
-//
-//        let range = NSRange(location:consoleTextView.string.count,length:0)
-//        consoleTextView.scrollRangeToVisible(range)
-    }
-
-    func setEditor(url: URL) {
-//        do {
-//            let text = try String(contentsOf: url)
-//            saveEditorFile()
-//            editView.text = text
-//            editorURL = url
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
-    }
-    
-    func saveEditorFile() {
-//        guard let editorURL = editorURL else {
-//            return
-//        }
-//        do {
-////            Occasional bug: projects get duplicated as subdirectories of an open project.
-////            wrong url
-////            ▿ file:///Users/ronalddanger/Development/Temp/Untitled89652768/Untitled2346789/contracts/TutorialToken.sol
-////
-////            untitled 89 is the right one.
-////            this file is saved in the 2768 directory. the full project is actually saved there
-////            print("******===== \(editorURL.path)")
-//            try editView.text.write(to: editorURL, atomically: true, encoding: .utf8)
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
+//        window?.restorationClass = EditWindowRestoration.self
+        
+        commandQueue.maxConcurrentOperationCount = 1
+        commandQueue.qualityOfService = .userInteractive
+        
+        commandProgressObserver = commandQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
+            DispatchQueue.main.async {
+//                if queue.operationCount == 0 {
+//                    self.progressIndicator.stopAnimation(self)
+//                    self.progressIndicator.isHidden = true
+//                    self.TotalInstallCount = 0
+//                } else {
+//                    if queue.operationCount > self.TotalInstallCount {
+//                        self.TotalInstallCount = queue.operationCount
+//                    }
+//                    self.progressIndicator.doubleValue = (1.0 - (Double(queue.operationCount) / Double(self.TotalInstallCount))) * 100.0
+//                    self.progressIndicator.startAnimation(self)
+//                    self.progressIndicator.isHidden = false
+                }
+            }
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {
+        
+        guard let project = project else { return assertionFailure() }
+        
+        
+        setConsole(text: "Run")
+
         
 //        guard let document = document as? Document, let interface = document.interface else { return }
 //        script?.terminate()
@@ -133,6 +102,12 @@ final class ProjectWindowController: NSWindowController {
     }
 
     @IBAction func pauseButtonClicked(_ sender: Any) {
+        
+        guard let project = project else { return assertionFailure() }
+        
+        commandQueue.cancelAllOperations()
+        setConsole(text: "", replaceText: true)
+        
 //        script?.terminate()
 //        script = nil
 //        setConsole("Cancelled.")
@@ -140,6 +115,8 @@ final class ProjectWindowController: NSWindowController {
     }
     
     @IBAction func lintButtonClicked(_ sender: Any) {
+        
+        guard let project = project else { return assertionFailure() }
         
 //        guard let document = document as? Document, let interface = document.interface else { return }
 //        script?.terminate()
@@ -164,6 +141,7 @@ final class ProjectWindowController: NSWindowController {
     
     @IBAction func webButtonClicked(_ sender: Any) {
         
+        guard let project = project else { return assertionFailure() }
       
         
 //        guard let project = project, let sender = sender as? NSButton else { return }
@@ -186,33 +164,17 @@ final class ProjectWindowController: NSWindowController {
 //        }
     }
     
-    //    override func windowTitle(forDocumentDisplayName displayName: String) -> String {
-    //        <#code#>
-    //    }
-    
-    
-//    override func encodeRestorableState(with coder: NSCoder) {
-//
-//        // There is an issue encoding TextDocuments. The Project property in TextDocument
-//        // is not being encoded. It seems that NSDocument properties of NSDocuments can't be stored
-//        // So instead, we save the project file, and set the lastOpenFile to the current TextDocument
-//        if let textDocument = document as? TextDocument, let project = textDocument.project {
-//            coder.encode(project, forKey: SerializationKey.project)
-//        }
-//
-//        super.encodeRestorableState(with: coder)
-//
-//    }
-//
-//    override func restoreState(with coder: NSCoder) {
-//        super.restoreState(with: coder)
-//
-//        if coder.containsValue(forKey: SerializationKey.project) {
-//            let project = coder.decodeObject(forKey: SerializationKey.project) as? Project
-//            NSLog("found project: %@", project ?? "NIL")
-//        }
-//    }
-    
-    
-    
+    func setConsole(text: String, replaceText: Bool = false) {
+        
+        guard let inspectorItems = (self.contentViewController as? ProjectContentSplitViewController)?.splitViewItems,
+            inspectorItems.count >= 3,
+            let consoleItems = (inspectorItems[1].viewController as? ProjectContentSplitViewController)?.splitViewItems,
+            consoleItems.count >= 2,
+            let output = (consoleItems[1].viewController as? OutputViewController)
+        else {
+                return assertionFailure()
+        }
+        
+        output.setOutput(text: text, replaceText: replaceText)
+    }
 }

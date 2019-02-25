@@ -50,6 +50,7 @@
 		C7351C10220130A8000A3A5B /* TextEditorSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
+		C77D81DE222370C700C37441 /* ProjectWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77D81DD222370C700C37441 /* ProjectWindow.swift */; };
 		C79A6B6221EE9865007FB630 /* SettingFileManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6021EE9865007FB630 /* SettingFileManaging.swift */; };
 		C79A6B6321EE9865007FB630 /* SettingManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6121EE9865007FB630 /* SettingManaging.swift */; };
 		C79A6B6821EE986E007FB630 /* ReplacementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6B6421EE986D007FB630 /* ReplacementManager.swift */; };
@@ -302,7 +303,6 @@
 		C79A75E221EEF230007FB630 /* PrintPanelAccessoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BEC21EE9AA8007FB630 /* PrintPanelAccessoryController.swift */; };
 		C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E321EEF5C1007FB630 /* MainMenu.swift */; };
 		C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */ = {isa = PBXBuildFile; fileRef = C79A75E721EEF943007FB630 /* SyntaxMap.json */; };
-		C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75E921F01517007FB630 /* ProjectToolbarController.swift */; };
 		C79A75EC21F06413007FB630 /* ProjectContentSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */; };
 		C7A584E621F0F8E50097B761 /* NavigatorTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A584E521F0F8E50097B761 /* NavigatorTabViewController.swift */; };
 		C7A584E821F0F8FC0097B761 /* InspectorTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A584E721F0F8FC0097B761 /* InspectorTabViewController.swift */; };
@@ -404,6 +404,7 @@
 		C735C9ED220557A100F37E40 /* ProjectReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReference.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallToolchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
+		C77D81DD222370C700C37441 /* ProjectWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindow.swift; sourceTree = "<group>"; };
 		C79A6A8F21ED98B5007FB630 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		C79A6B6021EE9865007FB630 /* SettingFileManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingFileManaging.swift; sourceTree = "<group>"; };
 		C79A6B6121EE9865007FB630 /* SettingManaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingManaging.swift; sourceTree = "<group>"; };
@@ -663,7 +664,6 @@
 		C79A75DD21EEF0AF007FB630 /* MultipleReplacementPanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleReplacementPanelController.swift; sourceTree = "<group>"; };
 		C79A75E321EEF5C1007FB630 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C79A75E721EEF943007FB630 /* SyntaxMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SyntaxMap.json; sourceTree = "<group>"; };
-		C79A75E921F01517007FB630 /* ProjectToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectToolbarController.swift; sourceTree = "<group>"; };
 		C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectContentSplitViewController.swift; sourceTree = "<group>"; };
 		C7A584E521F0F8E50097B761 /* NavigatorTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorTabViewController.swift; sourceTree = "<group>"; };
 		C7A584E721F0F8FC0097B761 /* InspectorTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorTabViewController.swift; sourceTree = "<group>"; };
@@ -809,14 +809,6 @@
 			path = OpenZeppelin;
 			sourceTree = "<group>";
 		};
-		C715712B21F14F5800A1A6B4 /* Toolbar */ = {
-			isa = PBXGroup;
-			children = (
-				C79A75E921F01517007FB630 /* ProjectToolbarController.swift */,
-			);
-			path = Toolbar;
-			sourceTree = "<group>";
-		};
 		C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,19 +867,19 @@
 			isa = PBXGroup;
 			children = (
 				C7E76436211EC16300867DA4 /* ProjectWindowController.swift */,
+				C77D81DD222370C700C37441 /* ProjectWindow.swift */,
 				C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */,
 				C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */,
 				C79A6BC721EE9A6E007FB630 /* DocumentsSplitViewController.swift */,
 				C79A6BC821EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift */,
+				C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */,
+				C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */,
+				C7050A342166FBC9003DDA2B /* LanguageServer.swift */,
 				C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */,
-				C715712B21F14F5800A1A6B4 /* Toolbar */,
 				C72FEB8621E9400A000EF3C7 /* Editors */,
 				C72FEB8521E94005000EF3C7 /* Navigators */,
 				C72FEB8421E93FFC000EF3C7 /* Inspectors */,
 				C72FEB8321E93FEF000EF3C7 /* Console */,
-				C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */,
-				C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */,
-				C7050A342166FBC9003DDA2B /* LanguageServer.swift */,
 			);
 			path = ProjectWindow;
 			sourceTree = "<group>";
@@ -2133,6 +2125,7 @@
 				C79A6C3D21EE9AFB007FB630 /* StyledButton.swift in Sources */,
 				C7F0B9A32112945D005A8FE2 /* ProjectDocument.swift in Sources */,
 				C79A75BF21EEF070007FB630 /* FindPanelButtonViewController.swift in Sources */,
+				C77D81DE222370C700C37441 /* ProjectWindow.swift in Sources */,
 				C79A6C9221EE9BD6007FB630 /* Snippet.swift in Sources */,
 				C79A75C221EEF070007FB630 /* FindPanelSplitView.swift in Sources */,
 				C79A6CF521EE9C52007FB630 /* String+Additions.swift in Sources */,
@@ -2145,7 +2138,6 @@
 				C79A6C1821EE9AC1007FB630 /* NSTextView+Snippet.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
 				C79A6C8F21EE9BD6007FB630 /* Pair.swift in Sources */,
-				C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */,
 				C79A75AC21EEEE46007FB630 /* AppInfo.swift in Sources */,
 				C79A6CB021EE9C10007FB630 /* OrderedSet.swift in Sources */,
 				C79A75AD21EEEE46007FB630 /* WriteToConsoleCommand.swift in Sources */,
