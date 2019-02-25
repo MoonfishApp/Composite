@@ -15,6 +15,9 @@ struct DependencyFramework: Codable {
     /// Name of the framework, e.g. Truffle or EtherLime
     let name: String
     
+    /// Name of the framework's icon image stored in assets
+    let iconName: String?
+    
     /// Array of dependencies required to use the framework
     let dependencies: [Dependency]
     

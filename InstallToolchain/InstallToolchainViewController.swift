@@ -142,7 +142,7 @@ class InstallToolchainViewController: NSViewController {
     private func showDetailsFor(_ item: DependencyFrameworkViewModel) {
         detailLabel.stringValue = item.name.capitalizedFirstChar()
         detailInfoLabel.stringValue = item.description
-        detailImageView.image = NSImage(named: NSImage.Name(item.name))
+        detailImageView.image = item.icon
         detailMoreInfoButton.alternateTitle = item.projectUrl
         detailMoreInfoButton.isHidden = false
         detailDocumentationButton.alternateTitle = item.documentationUrl

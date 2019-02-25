@@ -239,6 +239,158 @@
 	</dict>
 	<dict>
 		<key>platform</key>
+		<string>zilliqa</string>
+		<key>projectUrl</key>
+		<string>https://zilliqa.com</string>
+		<key>documentationUrl</key>
+		<string>https://zilliqa.com/for-developers.html</string>
+		<key>frameworks</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Zilliqa Developer Tools</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string></string>
+						<key>installCommand-rem</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>updateCommand</key>
+						<string>brew update</string>
+						<key>outdatedCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>url</key>
+						<string>https://brew.sh</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>updateCommand</key>
+						<string>brew upgrade node</string>
+						<key>outdatedCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://nodejs.org/</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Scilla</string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string></string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string></string>
+						<key>updateCommand</key>
+						<string></string>
+						<key>outdatedCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://github.com/Zilliqa/scilla</string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Zilliqa JavaScript API</string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string></string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string></string>
+						<key>updateCommand</key>
+						<string></string>
+						<key>outdatedCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://github.com/Zilliqa/Zilliqa-JavaScript-Library</string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Kaya</string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>kaya-cli --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g kaya-cli</string>
+						<key>installLink</key>
+						<string></string>
+						<key>updateCommand</key>
+						<string>npm -g update --save kaya-cli</string>
+						<key>outdatedCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://github.com/Zilliqa/kaya</string>
+						<key>required</key>
+						<true/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>Zilliqa enables new solutions to real-world problems with its scalable, secure, high-performance public blockchain platform.</string>
+				<key>projectUrl</key>
+				<string>https://zilliqa.com</string>
+				<key>documentationUrl</key>
+				<string>https://zilliqa.com/for-developers.html</string>
+				<key>defaultFramework</key>
+				<true/>
+				<key>iconName</key>
+				<string>Zilliqa</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>platform</key>
 		<string>tron</string>
 		<key>projectUrl</key>
 		<string>https://tron.network</string>
