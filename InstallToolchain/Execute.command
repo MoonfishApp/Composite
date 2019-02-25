@@ -65,7 +65,7 @@ fi
 
 # 3. cd to directory
 ((verbose)) && printCommand 'cd '$d
-((verbose)) && cd "${d}" || exit 1
+cd "${d}" || exit 1
 
 # 4. Execute the commands
 for command in "$@"; do

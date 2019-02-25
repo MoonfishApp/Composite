@@ -119,9 +119,21 @@ class BashOperation: Operation {
         }
         
         // Handle output
-        self.captureStandardOutput()
+//        self.captureStandardOutput()
+        task.standardOutput = outputPipe // temp
         
         task.launch()
+        
+        let fileHandle = outputPipe.fileHandleForReading
+        let data = fileHandle.readDataToEndOfFile()
+        if let string = String(data: data, encoding: .utf8) {
+            print("***** Received: \(string)")
+            outputClosure?(string)
+        } else {
+            print("**** No parsable data \(data.count)")
+        }
+        
+        // Do we need to flush the outputPipe?
         task.waitUntilExit()
     }
     
