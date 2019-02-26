@@ -263,11 +263,8 @@ extension DependencyViewModel {
     
     func isInstalling() -> Bool {
         
-        let installing = installOperations.allObjects.compactMap { ($0 as! Operation).isExecuting == true }
-        let updating = updateOperations.allObjects.compactMap { ($0 as! Operation).isExecuting == true }
-        
-//        print ("====installing: \(installing.count) updating: \(updating.count)")
-//        print("isIntalling: \(installing.count > 0 || updating.count > 0)")
+        let installing = installOperations.allObjects.compactMap { ($0 as! Operation).isExecuting == true ? $0 : nil }
+        let updating = updateOperations.allObjects.compactMap { ($0 as! Operation).isExecuting == true ? $0 : nil }
         return installing.count > 0 || updating.count > 0
     }
 }

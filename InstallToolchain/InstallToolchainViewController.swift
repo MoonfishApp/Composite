@@ -77,21 +77,18 @@ class InstallToolchainViewController: NSViewController {
         installCountObserver = installQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
             DispatchQueue.main.async {
                 if queue.operationCount == 0 {
-                    print("*** operationCount = 0")
                     self.progressIndicator.stopAnimation(self)
                     self.progressIndicator.isHidden = true
                     self.totalInstallCount = 0
                     self.outlineView.reloadData()
                 } else {
                     self.outlineView.reloadData()
-                    print("*** queue.operationCount: \(queue.operationCount) self.TotalInstallCount: \(self.totalInstallCount)")
                     if queue.operationCount > self.totalInstallCount {
                         self.totalInstallCount = queue.operationCount
                     }
                     self.progressIndicator.doubleValue = (1.0 - (Double(queue.operationCount) / Double(self.totalInstallCount))) * 90.0 + 10
                     self.progressIndicator.startAnimation(self)
                     self.progressIndicator.isHidden = false
-                    print("*** self.progressIndicator.doubleValue: \(self.progressIndicator.doubleValue)")
                 }
             }
         }
