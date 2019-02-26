@@ -34,6 +34,9 @@ class Dependency: Codable {
     /// Command to install depedency
     let installCommand: String?
     
+    /// Command to initialize dependency
+    let initCommand: String?
+    
     /// If there's no command line install, use http link
     let installLink: String?
     

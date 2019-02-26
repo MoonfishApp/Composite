@@ -13,9 +13,8 @@ class DependencyViewModel {
     
     static let notificationString = "DependencyViewModelNotification"
     
-    private weak var installOperation: BashOperation? = nil
-    
-    private weak var updateOperation: BashOperation? = nil
+    private var installOperations = NSPointerArray.weakObjects()
+    private var updateOperations = NSPointerArray.weakObjects()
     
     let name: String
     
@@ -29,6 +28,8 @@ class DependencyViewModel {
     let versionCommand: String?
     
     let installCommand: String?
+    
+    let initCommand: String?
     
     let updateCommand: String?
     
@@ -44,12 +45,6 @@ class DependencyViewModel {
     }
     
     private (set) var newerVersionAvailable: String? = nil {
-        didSet {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
-        }
-    }
-    
-    private (set) var isInstalled: Bool = false {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
         }
@@ -96,6 +91,7 @@ class DependencyViewModel {
         
         versionCommand = dependency.versionCommand
         installCommand = dependency.installCommand
+        initCommand = dependency.initCommand
         updateCommand = dependency.updateCommand
         outdatedCommand = dependency.outdatedCommand
         whichCommand = "which " + filename
@@ -106,19 +102,17 @@ class DependencyViewModel {
 extension DependencyViewModel {
     
     
-    func fileLocation() -> BashOperation? {
+    func fileLocationOperation() -> BashOperation? {
         
         guard whichCommand.isEmpty == false, let operation = try? BashOperation(commands: [whichCommand], verbose: false)
             else { return nil }
         
         operation.completionBlock = {
             guard operation.output.isEmpty == false else {
-                self.isInstalled = false
                 return
             }
             
             // TODO: Regex to check it's a valid path?
-            self.isInstalled = true
             self.path = operation.output.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         }
         
@@ -142,6 +136,20 @@ extension DependencyViewModel {
             }
         }
 
+        return operation
+    }
+    
+    /// <#Description#>
+    ///
+    /// - Returns: <#return value description#>
+    func initOperation() -> BashOperation? {
+        
+        guard
+            let command = initCommand,
+            command.isEmpty == false,
+            let operation = try? BashOperation(directory: "~", commands: [command])
+            else { return nil }
+        
         return operation
     }
     
@@ -170,7 +178,7 @@ extension DependencyViewModel {
         }
         
         // If dependency is already installed, return nil
-        guard isInstalled == false else { return nil }
+        guard state == .notInstalled else { return nil }
         
         // If dependency needs to be downloaded from a web page and installed manually, open url
         if let link = installLink, let url = URL(string: link) {
@@ -185,8 +193,9 @@ extension DependencyViewModel {
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
-        installOperation = operation
-        return [operation, versionQueryOperation()].compactMap{ $0 }
+        let operations = [operation, initOperation(), fileLocationOperation(), versionQueryOperation()].compactMap{ $0 }
+        self.installOperations.addObjects(operations)
+        return operations
     }
     
     func update() -> [BashOperation]? {
@@ -194,7 +203,7 @@ extension DependencyViewModel {
         guard
             let command = updateCommand,
             command.isEmpty == false,
-            isInstalled == true,
+            state != .notInstalled,
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
@@ -204,8 +213,9 @@ extension DependencyViewModel {
                 self.version = version
             }
         }
-        updateOperation = operation
-        return [operation, versionQueryOperation()].compactMap{ $0 }
+        let operations = [operation, versionQueryOperation()].compactMap{ $0 }
+        self.updateOperations.addObjects(operations)
+        return operations
     }
     
     
@@ -252,9 +262,13 @@ extension DependencyViewModel {
     }
     
     func isInstalling() -> Bool {
-        if let i = installOperation, i.isExecuting == true { return true }
-        if let u = updateOperation, u.isExecuting == true { return true }
-        return false
+        
+        let installing = installOperations.allObjects.compactMap { ($0 as! Operation).isExecuting == true }
+        let updating = updateOperations.allObjects.compactMap { ($0 as! Operation).isExecuting == true }
+        
+//        print ("====installing: \(installing.count) updating: \(updating.count)")
+//        print("isIntalling: \(installing.count > 0 || updating.count > 0)")
+        return installing.count > 0 || updating.count > 0
     }
 }
 

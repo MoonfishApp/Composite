@@ -29,13 +29,13 @@ class InstallToolchainViewController: NSViewController {
     let pathQueue: OperationQueue = OperationQueue()
     
     /// Queue used to install and update tools
-    let userInitiatedQueue: OperationQueue = OperationQueue()
+    let installQueue: OperationQueue = OperationQueue()
     
     /// KVO for installQueue.operationCount
     /// If operationCount is greater than zero,
     /// the progress indicator will animate
     private var installCountObserver: NSKeyValueObservation?
-    private var TotalInstallCount = 0
+    private var totalInstallCount = 0
     
     private var platforms = [DependencyPlatformViewModel]() {
         didSet {
@@ -70,23 +70,28 @@ class InstallToolchainViewController: NSViewController {
         pathQueue.qualityOfService = .userInteractive
         pathQueue.maxConcurrentOperationCount = 1
         fetchVersionQueue.qualityOfService = .userInteractive
-        userInitiatedQueue.maxConcurrentOperationCount = 1
-        userInitiatedQueue.qualityOfService = .userInitiated
+        installQueue.maxConcurrentOperationCount = 1
+        installQueue.qualityOfService = .userInitiated
         
         
-        installCountObserver = userInitiatedQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
+        installCountObserver = installQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
             DispatchQueue.main.async {
                 if queue.operationCount == 0 {
+                    print("*** operationCount = 0")
                     self.progressIndicator.stopAnimation(self)
                     self.progressIndicator.isHidden = true
-                    self.TotalInstallCount = 0
+                    self.totalInstallCount = 0
+                    self.outlineView.reloadData()
                 } else {
-                    if queue.operationCount > self.TotalInstallCount {
-                        self.TotalInstallCount = queue.operationCount
+                    self.outlineView.reloadData()
+                    print("*** queue.operationCount: \(queue.operationCount) self.TotalInstallCount: \(self.totalInstallCount)")
+                    if queue.operationCount > self.totalInstallCount {
+                        self.totalInstallCount = queue.operationCount
                     }
-                    self.progressIndicator.doubleValue = (1.0 - (Double(queue.operationCount) / Double(self.TotalInstallCount))) * 100.0
+                    self.progressIndicator.doubleValue = (1.0 - (Double(queue.operationCount) / Double(self.totalInstallCount))) * 90.0 + 10
                     self.progressIndicator.startAnimation(self)
                     self.progressIndicator.isHidden = false
+                    print("*** self.progressIndicator.doubleValue: \(self.progressIndicator.doubleValue)")
                 }
             }
         }
@@ -118,7 +123,7 @@ class InstallToolchainViewController: NSViewController {
 
         for frameworkViewModel in frameworkViewModels {
             for tool in frameworkViewModel.dependencies {
-                guard let operation = tool.fileLocation() else { continue }
+                guard let operation = tool.fileLocationOperation() else { continue }
                 pathQueue.addOperation(operation)
             }
         }
@@ -132,7 +137,7 @@ class InstallToolchainViewController: NSViewController {
             for tool in frameworkViewModel.dependencies {
                 
                 // Fetch version
-                guard tool.version.isEmpty, let operation = tool.versionQueryOperation() else { continue }
+                guard tool.state != .notInstalled, tool.version.isEmpty, let operation = tool.versionQueryOperation() else { continue }
                 fetchVersionQueue.addOperation(operation)
                 
                 // Check if newer version is available
@@ -195,9 +200,9 @@ class InstallToolchainViewController: NSViewController {
         
         for model in models {
             if model.state == .notInstalled, let operations = model.install() {
-                _ = operations.map { self.userInitiatedQueue.addOperation($0) }
+                _ = operations.map { self.installQueue.addOperation($0) }
             } else if model.state == .outdated, let operations = model.update() {
-                _ = operations.map { self.userInitiatedQueue.addOperation($0) }
+                _ = operations.map { self.installQueue.addOperation($0) }
             }
         }
     }

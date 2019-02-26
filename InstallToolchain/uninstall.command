@@ -10,8 +10,7 @@ npm -g uninstall tronbox
 #brew uninstall node
 
 brew uninstall ocaml
-brew uninstall gpatch
-brew uninstall opam
+brew uninstall gpatch opam
 brew uninstall pkg-config
 brew uninstall libffi
 brew uninstall openssl

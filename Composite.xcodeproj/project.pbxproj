@@ -314,6 +314,7 @@
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
+		C7DCFE8A2224C30D00CB63DE /* NSPointerArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */; };
 		C7DDD74A2140A65700674942 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD7492140A65700674942 /* Dependency.swift */; };
 		C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD74B2140AB6D00674942 /* Dependencies.plist */; };
 		C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */; };
@@ -675,6 +676,7 @@
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPointerArray.swift; sourceTree = "<group>"; };
 		C7DDD7492140A65700674942 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		C7DDD74B2140AB6D00674942 /* Dependencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependencies.plist; sourceTree = "<group>"; };
 		C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyPlatform.swift; sourceTree = "<group>"; };
@@ -1654,6 +1656,7 @@
 			children = (
 				C7DDD752214100D200674942 /* String.swift */,
 				C711F5D421E1B299005EBC5D /* Operation.swift */,
+				C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2194,6 +2197,7 @@
 				C79A6D2421EE9C64007FB630 /* MutableCopying.swift in Sources */,
 				C79A6CA321EE9C08007FB630 /* RegularExpressionFormatter.swift in Sources */,
 				C711F5D521E1B299005EBC5D /* Operation.swift in Sources */,
+				C7DCFE8A2224C30D00CB63DE /* NSPointerArray.swift in Sources */,
 				C79A6CEB21EE9C52007FB630 /* OperationQueue.swift in Sources */,
 				C79A6C7121EE9B82007FB630 /* SyntaxHighlightParseOperation.swift in Sources */,
 				C79A6B6A21EE986E007FB630 /* ThemeManager.swift in Sources */,
