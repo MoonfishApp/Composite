@@ -106,7 +106,7 @@
 						<key>updateCommand</key>
 						<string>npm update --save solium</string>
 						<key>outdatedCommand</key>
-						<string>npm -g outdated tronbox</string>
+						<string>npm -g outdated solium</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
@@ -116,27 +116,27 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>Ganache.app</string>
+						<string>ganache</string>
 						<key>defaultLocation</key>
 						<string>/Applications</string>
 						<key>isFrameworkVersion</key>
 						<false/>
-						<key>versionCommand</key>
+						<key>versionCommand-macApps</key>
 						<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
+						<key>versionCommand</key>
+						<string>ganache-cli --version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installLink</key>
-						<string>https://truffleframework.com/ganache</string>
 						<key>updateCommand</key>
-						<string></string>
+						<string>npm install -g ganache-cli</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm -g outdated ganache-cli</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
-						<string>https://truffleframework.com/ganache</string>
+						<string>https://www.npmjs.com/package/ganache-cli</string>
 						<key>required</key>
-						<true/>
+						<false/>
 					</dict>
 				</array>
 				<key>description</key>

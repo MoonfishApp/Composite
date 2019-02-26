@@ -114,7 +114,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="PathColumn" width="168.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="6d2-OB-8Nm">
+                                                <tableColumn identifier="PathColumn" width="111.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="6d2-OB-8Nm">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Path">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -128,11 +128,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="hIM-Os-FkF">
-                                                            <rect key="frame" x="194" y="1" width="168" height="17"/>
+                                                            <rect key="frame" x="194" y="1" width="111" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpE-aL-Pbu">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="168" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="CeI-dI-PZg">
                                                                         <font key="font" metaFont="system"/>
@@ -147,7 +147,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="ActionColumn" editable="NO" width="126" minWidth="40" maxWidth="1000" id="tw4-IA-HyH">
+                                                <tableColumn identifier="ActionColumn" editable="NO" width="182.5" minWidth="40" maxWidth="1000" id="tw4-IA-HyH">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Action">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -161,12 +161,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="ActionCell" id="ebr-gp-6SF">
-                                                            <rect key="frame" x="365" y="1" width="126" height="17"/>
+                                                            <rect key="frame" x="308" y="1" width="183" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <button identifier="Button1" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMi-EV-tIM">
-                                                                    <rect key="frame" x="3" y="-1" width="115" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <button identifier="Button1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qMi-EV-tIM">
+                                                                    <rect key="frame" x="3" y="-1" width="177" height="17"/>
                                                                     <buttonCell key="cell" type="inline" title="Install" bezelStyle="inline" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dck-uk-KsO">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="smallSystemBold"/>
@@ -176,6 +175,11 @@
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="qMi-EV-tIM" firstAttribute="centerY" secondItem="ebr-gp-6SF" secondAttribute="centerY" id="Xc3-W8-jlY"/>
+                                                                <constraint firstAttribute="trailing" secondItem="qMi-EV-tIM" secondAttribute="trailing" constant="3" id="oga-q8-WYD"/>
+                                                                <constraint firstItem="qMi-EV-tIM" firstAttribute="leading" secondItem="ebr-gp-6SF" secondAttribute="leading" constant="3" id="omU-6e-LFe"/>
+                                                            </constraints>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
