@@ -24,18 +24,6 @@ final class ProjectWindowController: NSWindowController {
         }
     }
     
-//    var consoleTextView: NSTextView {
-//        return (self.window?.contentViewController?.children[1] as! CompositeSplitViewController).consoleView
-//    }
-//
-//    var fileBrowserViewController: FileNavigatorViewController {
-//        return (self.window?.contentViewController! as! NSSplitViewController).children[0] as! FileNavigatorViewController
-//    }
-    
-//    private var editView: SyntaxTextView {
-//        return (self.window?.contentViewController?.childViewControllers[1] as! CompositeSplitViewController).editorView
-//    }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         shouldCascadeWindows = true        
@@ -48,64 +36,6 @@ final class ProjectWindowController: NSWindowController {
 //            window?.restorationClass = EditWindowRestoration.self
     }
     
-//    override func awakeFromNib() {
-//        loadBrowser()
-//    }
-    
-//    func loadBrowser(select item: String? = nil) {
-////        guard let project = project, let document = document as? ProjectDocument else { return }
-//        window?.title = project?.name ?? "Demo Project"
-//        do {
-////            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875/")
-//
-//            let url = URL(fileURLWithPath: "/Users/ronalddanger/Development/Temp/Untitled9875")
-//            try fileBrowserViewController.load(url: url, projectName: "Demo Project", openFile: "contracts/Untitled9875.sol")
-////            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
-//    }
-
-    
-    /// Sets console vc text. Called by PreparingViewController
-    func setConsole(_ string: String) {
-//        consoleTextView.string = consoleTextView.string + "\n" + string
-//
-//        let range = NSRange(location:consoleTextView.string.count,length:0)
-//        consoleTextView.scrollRangeToVisible(range)
-    }
-
-    func setEditor(url: URL) {
-//        do {
-//            let text = try String(contentsOf: url)
-//            saveEditorFile()
-//            editView.text = text
-//            editorURL = url
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
-    }
-    
-    func saveEditorFile() {
-//        guard let editorURL = editorURL else {
-//            return
-//        }
-//        do {
-////            Occasional bug: projects get duplicated as subdirectories of an open project.
-////            wrong url
-////            ▿ file:///Users/ronalddanger/Development/Temp/Untitled89652768/Untitled2346789/contracts/TutorialToken.sol
-////
-////            untitled 89 is the right one.
-////            this file is saved in the 2768 directory. the full project is actually saved there
-////            print("******===== \(editorURL.path)")
-//            try editView.text.write(to: editorURL, atomically: true, encoding: .utf8)
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
-    }
 
     @IBAction func runButtonClicked(_ sender: Any) {
         
