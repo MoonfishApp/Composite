@@ -346,24 +346,6 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>sol</string>
-			</array>
-			<key>CFBundleTypeName</key>
-			<string>Solidity contract</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>org.ethereum.solidity</string>
-			</array>
-			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
-			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).TextDocument</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
 				<string>xml</string>
 				<string>xsl</string>
 				<string>dtd</string>
@@ -412,12 +394,16 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>scilla</string>
+				<string>sol</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Scilla contract</string>
+			<string>Solidity contract</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array/>
+			<key>LSTypeIsPackage</key>
+			<integer>0</integer>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).TextDocument</string>
 		</dict>
@@ -460,7 +446,9 @@
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
-				<array/>
+				<array>
+					<string>sol</string>
+				</array>
 				<key>public.mime-type</key>
 				<array/>
 			</dict>

@@ -48,6 +48,7 @@ class DocumentController: NSDocumentController {
             // the project itself, or the lastOpenedFile in the project
         
             guard error == nil else {
+                print(error!)
                 assertionFailure(error!.localizedDescription)
                 return
             }
