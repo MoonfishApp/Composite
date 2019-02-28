@@ -117,6 +117,8 @@
 					<dict>
 						<key>name</key>
 						<string>ganache</string>
+						<key>filename</key>
+						<string>ganache-cli</string>
 						<key>defaultLocation</key>
 						<string>/Applications</string>
 						<key>isFrameworkVersion</key>
@@ -127,8 +129,10 @@
 						<string>ganache-cli --version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>updateCommand</key>
+						<key>installCommand</key>
 						<string>npm install -g ganache-cli</string>
+						<key>updateCommand</key>
+						<string>npm update -g ganache-cli</string>
 						<key>outdatedCommand</key>
 						<string>npm -g outdated ganache-cli</string>
 						<key>comment</key>
@@ -329,7 +333,7 @@
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string></string>
+						<string>opam --version</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
@@ -374,32 +378,8 @@
 					<dict>
 						<key>name</key>
 						<string>Scilla</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
 						<key>isFrameworkVersion</key>
 						<true/>
-						<key>versionCommand</key>
-						<string></string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string></string>
-						<key>updateCommand</key>
-						<string></string>
-						<key>outdatedCommand</key>
-						<string></string>
-						<key>comment</key>
-						<string></string>
-						<key>url</key>
-						<string>https://github.com/Zilliqa/scilla</string>
-						<key>required</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>Scilla</string>
-						<key>isFrameworkVersion</key>
-						<false/>
 						<key>versionCommand</key>
 						<string></string>
 						<key>versionRegex</key>

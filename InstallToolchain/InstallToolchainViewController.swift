@@ -23,10 +23,10 @@ class InstallToolchainViewController: NSViewController {
     @IBOutlet weak var detailDocumentationButton: NSButton!
     
     /// Queue used to fetch versions (which can be extremely slow)
-    let fetchVersionQueue: OperationQueue = OperationQueue()
+    let versionQueue: OperationQueue = OperationQueue()
     
     /// Queue used to fetch paths of the dependencies (if installed)
-    let pathQueue: OperationQueue = OperationQueue()
+    let fileQueue: OperationQueue = OperationQueue()
     
     /// Queue used to install and update tools
     let installQueue: OperationQueue = OperationQueue()
@@ -39,6 +39,7 @@ class InstallToolchainViewController: NSViewController {
     
     private var platforms = [DependencyPlatformViewModel]() {
         didSet {
+            assert(Thread.isMainThread)
             platformCollectionView.reloadData()
             platformCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
             frameworkViewModels = platforms.first?.frameworks ?? [DependencyFrameworkViewModel]()
@@ -47,6 +48,7 @@ class InstallToolchainViewController: NSViewController {
     
     private var frameworkViewModels = [DependencyFrameworkViewModel]() {
         didSet {
+            assert(Thread.isMainThread)
             outlineView.reloadData()
             if let first = frameworkViewModels.first {
                 showDetailsFor(first)
@@ -66,10 +68,10 @@ class InstallToolchainViewController: NSViewController {
             object: nil)
         
         
-        fetchVersionQueue.maxConcurrentOperationCount = 1
-        pathQueue.qualityOfService = .userInteractive
-        pathQueue.maxConcurrentOperationCount = 1
-        fetchVersionQueue.qualityOfService = .userInteractive
+        fileQueue.maxConcurrentOperationCount = 1
+        fileQueue.qualityOfService = .userInteractive
+        versionQueue.maxConcurrentOperationCount = 1
+        versionQueue.qualityOfService = .userInteractive
         installQueue.maxConcurrentOperationCount = 1
         installQueue.qualityOfService = .userInitiated
         
@@ -121,36 +123,39 @@ class InstallToolchainViewController: NSViewController {
         for frameworkViewModel in frameworkViewModels {
             for tool in frameworkViewModel.dependencies {
                 guard let operation = tool.fileLocationOperation() else { continue }
-                pathQueue.addOperation(operation)
+                fileQueue.addOperation(operation)
             }
         }
     }
     
     func fetchVersionNumbers() {
         
-        fetchVersionQueue.cancelAllOperations()
+        versionQueue.cancelAllOperations()
         
         for frameworkViewModel in frameworkViewModels {
             for tool in frameworkViewModel.dependencies {
                 
                 // Fetch version
-                guard tool.state != .notInstalled, tool.version.isEmpty, let operation = tool.versionQueryOperation() else { continue }
-                fetchVersionQueue.addOperation(operation)
+                guard let operation = tool.versionQueryOperation() else { continue }
+                versionQueue.addOperation(operation)
                 
                 // Check if newer version is available
                 guard let outdatedOperation = tool.outdatedOperation() else { continue }
-                fetchVersionQueue.addOperation(outdatedOperation)
+                versionQueue.addOperation(outdatedOperation)
             }
         }
     }
     
     @objc private func dependencyChange(notification: NSNotification){
-        DispatchQueue.main.async {            
+        
+        DispatchQueue.main.async {
             self.outlineView.reloadData()
         }
     }
     
     private func configurePlatformCollectionView() {
+        
+        assert(Thread.isMainThread)
         view.wantsLayer = true
         
         let nib = NSNib(nibNamed: NSNib.Name("PlatformCollectionViewItem"), bundle: nil)
@@ -170,8 +175,8 @@ class InstallToolchainViewController: NSViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        fetchVersionQueue.cancelAllOperations()
-        pathQueue.cancelAllOperations()
+        fileQueue.cancelAllOperations()
+        fileQueue.cancelAllOperations()
         view.window?.close()
         (DocumentController.shared as! DocumentController).newProject(self)
     }

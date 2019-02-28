@@ -199,7 +199,7 @@ extension DependencyViewModel {
     }
     
     func update() -> [BashOperation]? {
-        
+        print(updateCommand!)
         guard
             let command = updateCommand,
             command.isEmpty == false,
@@ -209,9 +209,6 @@ extension DependencyViewModel {
         
         operation.completionBlock = {
             self.newerVersionAvailable = nil
-            if let versions = self.versionQueryParser(operation.output), let version = versions.first {
-                self.version = version
-            }
         }
         let operations = [operation, versionQueryOperation()].compactMap{ $0 }
         self.updateOperations.addObjects(operations)
