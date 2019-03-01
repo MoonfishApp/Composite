@@ -24,9 +24,9 @@
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
 		C70F666C22128E1500EEA9D1 /* DocumentInspectorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3921EE9D93007FB630 /* DocumentInspectorView.storyboard */; };
 		C711F58A21DDB68F005EBC5D /* Execute.command in Resources */ = {isa = PBXBuildFile; fileRef = C711F58821DCB9FF005EBC5D /* Execute.command */; };
-		C711F58E21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */; };
+		C711F58E21DDF30B005EBC5D /* FrameworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F58C21DDF30B005EBC5D /* FrameworkInterface.swift */; };
 		C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */; };
-		C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */; };
+		C711F59721DF3F91005EBC5D /* FrameworkInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F59521DF3F91005EBC5D /* FrameworkInterface.plist */; };
 		C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */; };
 		C711F5B821DF50EB005EBC5D /* CopyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B621DF50EB005EBC5D /* CopyFile.swift */; };
 		C711F5D321E13A45005EBC5D /* BashOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5D221E13A45005EBC5D /* BashOperation.swift */; };
@@ -379,8 +379,8 @@
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
 		C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Tronbox.plist"; sourceTree = "<group>"; };
 		C711F58821DCB9FF005EBC5D /* Execute.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Execute.command; sourceTree = "<group>"; };
-		C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkCommands.swift; sourceTree = "<group>"; };
-		C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FrameworkCommands.plist; sourceTree = "<group>"; };
+		C711F58C21DDF30B005EBC5D /* FrameworkInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkInterface.swift; sourceTree = "<group>"; };
+		C711F59521DF3F91005EBC5D /* FrameworkInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FrameworkInterface.plist; sourceTree = "<group>"; };
 		C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInit.swift; sourceTree = "<group>"; };
 		C711F5B621DF50EB005EBC5D /* CopyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFile.swift; sourceTree = "<group>"; };
 		C711F5D221E13A45005EBC5D /* BashOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashOperation.swift; sourceTree = "<group>"; };
@@ -1620,8 +1620,8 @@
 		C7A8FDBD212F2030005E20AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */,
-				C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */,
+				C711F59521DF3F91005EBC5D /* FrameworkInterface.plist */,
+				C711F58C21DDF30B005EBC5D /* FrameworkInterface.swift */,
 				C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */,
 				C711F5B621DF50EB005EBC5D /* CopyFile.swift */,
 			);
@@ -1839,7 +1839,7 @@
 				C79A6D3421EE9D73007FB630 /* FindPreferencesView.storyboard in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
 				C79A750421EEDD18007FB630 /* ColorCodePanelAccessory.storyboard in Resources */,
-				C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */,
+				C711F59721DF3F91005EBC5D /* FrameworkInterface.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2182,7 +2182,7 @@
 				C79A6C9721EE9BD6007FB630 /* Shortcut.swift in Sources */,
 				C79A6D1D21EE9C64007FB630 /* NSTextStorage+ScriptingSupport.swift in Sources */,
 				C79A6CE621EE9C52007FB630 /* DispatchQueue.swift in Sources */,
-				C711F58E21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */,
+				C711F58E21DDF30B005EBC5D /* FrameworkInterface.swift in Sources */,
 				C79A6BA021EE9962007FB630 /* TextDocument+ScriptingSupport.swift in Sources */,
 				C79A6CF421EE9C52007FB630 /* String+Sandboxing.swift in Sources */,
 				C72FEA9621E433BA000EF3C7 /* PlatformCollectionViewItem.swift in Sources */,

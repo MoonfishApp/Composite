@@ -252,7 +252,7 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Zilliqa</string>
+				<string>Composite</string>
 				<key>dependencies</key>
 				<array>
 					<dict>

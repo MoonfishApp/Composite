@@ -1,5 +1,5 @@
 //
-//  FrameworkCommands.swift
+//  FrameworkInterface.swift
 //  SCE
 //
 //  Created by Ronald "Danger" Mannak on 1/2/19.
@@ -10,8 +10,8 @@ import Foundation
 
 /// Stores the available commands for a framework (e.g. Truffle or Tronbox)
 /// properties are read from Dependencies.plist file
-struct FrameworkCommands: Codable {
-    
+struct FrameworkInterface: Codable {
+        
     /// E.g. ethereum
     let platform: String
     
@@ -32,19 +32,21 @@ struct FrameworkCommands: Codable {
     
     let warningRegex: String?
     
+    let initInterface: InitInterface
+    
     /// Commands
     let commands: Commands
     
     /// Loads all framework commands from FrameworkCommands.plist in the bundle
-    static func loadCommands() throws -> [FrameworkCommands] {
+    static func loadCommands() throws -> [FrameworkInterface] {
         
-        let dependenciesFile = Bundle.main.url(forResource: "FrameworkCommands.plist", withExtension: nil)!
+        let dependenciesFile = Bundle.main.url(forResource: "FrameworkInterface.plist", withExtension: nil)!
         let data = try Data(contentsOf: dependenciesFile)
         let decoder = PropertyListDecoder()
-        return try decoder.decode([FrameworkCommands].self, from: data)
+        return try decoder.decode([FrameworkInterface].self, from: data)
     }
     
-    static func loadCommands(for framework: String, version: String? = nil, platform: String? = nil) throws -> FrameworkCommands {
+    static func loadCommands(for framework: String, version: String? = nil, platform: String? = nil) throws -> FrameworkInterface {
         
         // TODO: match versions
         guard let commands = try loadCommands().filter({ $0.framework.capitalized == framework.capitalized }).first else {
@@ -73,6 +75,12 @@ struct Commands: Codable {
     let console: String?
     
     let lint: String?
+    
+}
+
+struct InitInterface: Codable {
+
+    let initDirectories: [String]?
     
     let initEmpty: FrameworkInit
     
