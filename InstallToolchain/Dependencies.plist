@@ -359,7 +359,7 @@
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string>opam list ocaml-migrate-parsetree</string>
+						<string>opam list installed ocaml-migrate-parsetree</string>
 						<key>versionRegex</key>
 						<string>\s(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
 						<key>installCommand</key>
