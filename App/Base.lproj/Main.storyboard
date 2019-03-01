@@ -27,6 +27,12 @@
                                                 <action selector="showPreferences:" target="Ady-hI-5gd" id="RiF-uc-YRo"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Toolchains" id="8gg-Yy-zGP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showInstallToolchains:" target="Ady-hI-5gd" id="lyA-k8-L0e"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>

@@ -71,26 +71,8 @@ extension DocumentController {
     
     @IBAction func newProject(_ sender: Any?) {
         
-        print("New Proejct")
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("Template"), bundle: nil)
-        let templateController = storyboard.instantiateInitialController() as? NSWindowController
-        templateController?.showWindow(sender)
-        
-        // Show template here?
-        
-        /*
-        let document: NSDocument
-        do {
-            document = try self.openUntitledDocumentAndDisplay(false)
-        } catch {
-            self.presentError(error)
-            return
-        }
-        
-        DocumentWindow.tabbingPreference = .manual
-        document.makeWindowControllers()
-        document.showWindows()
-        DocumentWindow.tabbingPreference = nil */
+        guard let delegate = NSApplication.shared.delegate as? AppDelegate else { return }
+        delegate.showProjectTemplates(self)
     }
     
     @IBAction func newFile(_ sender: Any?) {

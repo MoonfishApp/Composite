@@ -54,11 +54,11 @@ class BashOperation: Operation {
     ///   - path: Path of the <script>.command. If nil, main bundle will be assumed
     ///   - directory: directory where script will be run (e.g. project directory)
     ///   - commands: Commands to execute. Quotes will be added
-    ///   - output: Output of the script will be send here
-    ///   - finished: Called when finished with exit code
+    ///   - verboseStdout: if true (default), stdOut will include cd and command in output
+    ///     (used for pretty output in console). If false, stdOut will only contain command's output
     /// - Throws: File not found if Bash script cannot be found
     init(script: String = "Execute", ext: String = "command", path: String? = nil,
-         directory: String, commands: [String]) throws {
+         directory: String = "~", commands: [String], verbose: Bool = true) throws {
         
         // 1. Prepare script location
         // Set launchPath to the location of the bash script to be executed
@@ -81,6 +81,9 @@ class BashOperation: Operation {
         
         // 3. Set Bash arguments
         var arguments = [String]()
+        if verbose == true {
+            arguments.append("-v") // Only show command's output
+        }
         arguments.append("-d")
         arguments.append(expandedDirectory)
         
@@ -134,22 +137,12 @@ class BashOperation: Operation {
             let output = self.outputPipe.fileHandleForReading.availableData
             guard let outputString = String(data: output, encoding: String.Encoding.utf8), !outputString.isEmpty else { return }
             
-            DispatchQueue.main.async(execute: {
-                print(outputString)
-                self.outputClosure?(outputString)
-                self.delegate?.bashOperation(self, receivedOutput: outputString)
-                self.output = self.output + "\n" + outputString
-                self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify() // Do we need this?
-            })
-        }
-        DispatchQueue.main.async(execute: {
+            print(outputString)
+            self.outputClosure?(outputString)
+            self.delegate?.bashOperation(self, receivedOutput: outputString)
+            self.output = self.output + "\n" + outputString
             self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        })
+        }
+        self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
     }
-    
-//    override func cancel() {
-//        task.terminate()
-//        Need to manually implement cancel now?
-//    }
-
 }

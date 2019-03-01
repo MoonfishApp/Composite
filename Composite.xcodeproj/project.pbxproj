@@ -314,6 +314,7 @@
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
+		C7DCFE8A2224C30D00CB63DE /* NSPointerArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */; };
 		C7DDD74A2140A65700674942 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD7492140A65700674942 /* Dependency.swift */; };
 		C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD74B2140AB6D00674942 /* Dependencies.plist */; };
 		C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */; };
@@ -675,6 +676,7 @@
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPointerArray.swift; sourceTree = "<group>"; };
 		C7DDD7492140A65700674942 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		C7DDD74B2140AB6D00674942 /* Dependencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependencies.plist; sourceTree = "<group>"; };
 		C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyPlatform.swift; sourceTree = "<group>"; };
@@ -817,6 +819,14 @@
 			path = Toolbar;
 			sourceTree = "<group>";
 		};
+		C72CF6072228DF3400637A8B /* ProjectInit */ = {
+			isa = PBXGroup;
+			children = (
+				C7E76447212358A900867DA4 /* ProjectInitViewController.swift */,
+			);
+			path = ProjectInit;
+			sourceTree = "<group>";
+		};
 		C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,7 +857,6 @@
 				C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */,
 				C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */,
 				C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */,
-				C7E76447212358A900867DA4 /* ProjectInitViewController.swift */,
 				C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */,
 				C7E7643E2122A2CF00867DA4 /* TemplateCollectionViewItem.xib */,
 				C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */,
@@ -1654,6 +1663,7 @@
 			children = (
 				C7DDD752214100D200674942 /* String.swift */,
 				C711F5D421E1B299005EBC5D /* Operation.swift */,
+				C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1674,6 +1684,7 @@
 				C72FEB7F21E7E6B7000EF3C7 /* Preferences */,
 				C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */,
 				C72FEB7E21E7E6AB000EF3C7 /* Templates */,
+				C72CF6072228DF3400637A8B /* ProjectInit */,
 				C72FEB8021E7E6C4000EF3C7 /* ProjectWindow */,
 				C70509D521541C6F003DDA2B /* Documents */,
 				C79A6ACF21EE75A3007FB630 /* cotEditor */,
@@ -2194,6 +2205,7 @@
 				C79A6D2421EE9C64007FB630 /* MutableCopying.swift in Sources */,
 				C79A6CA321EE9C08007FB630 /* RegularExpressionFormatter.swift in Sources */,
 				C711F5D521E1B299005EBC5D /* Operation.swift in Sources */,
+				C7DCFE8A2224C30D00CB63DE /* NSPointerArray.swift in Sources */,
 				C79A6CEB21EE9C52007FB630 /* OperationQueue.swift in Sources */,
 				C79A6C7121EE9B82007FB630 /* SyntaxHighlightParseOperation.swift in Sources */,
 				C79A6B6A21EE986E007FB630 /* ThemeManager.swift in Sources */,

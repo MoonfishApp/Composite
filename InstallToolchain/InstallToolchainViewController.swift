@@ -8,6 +8,8 @@
 
 import Cocoa
 
+
+/// TODO: Add a forced remove and install option if user holds command or option button
 class InstallToolchainViewController: NSViewController {
     
     @IBOutlet weak var platformCollectionView: NSCollectionView!
@@ -23,19 +25,23 @@ class InstallToolchainViewController: NSViewController {
     @IBOutlet weak var detailDocumentationButton: NSButton!
     
     /// Queue used to fetch versions (which can be extremely slow)
-    let fetchVersionQueue: OperationQueue = OperationQueue()
+    let versionQueue: OperationQueue = OperationQueue()
+    
+    /// Queue used to fetch paths of the dependencies (if installed)
+    let fileQueue: OperationQueue = OperationQueue()
     
     /// Queue used to install and update tools
-    let userInitiatedQueue: OperationQueue = OperationQueue()
+    let installQueue: OperationQueue = OperationQueue()
     
     /// KVO for installQueue.operationCount
     /// If operationCount is greater than zero,
     /// the progress indicator will animate
     private var installCountObserver: NSKeyValueObservation?
-    private var TotalInstallCount = 0
+    private var totalInstallCount = 0
     
     private var platforms = [DependencyPlatformViewModel]() {
         didSet {
+            assert(Thread.isMainThread)
             platformCollectionView.reloadData()
             platformCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
             frameworkViewModels = platforms.first?.frameworks ?? [DependencyFrameworkViewModel]()
@@ -44,10 +50,12 @@ class InstallToolchainViewController: NSViewController {
     
     private var frameworkViewModels = [DependencyFrameworkViewModel]() {
         didSet {
+            assert(Thread.isMainThread)
             outlineView.reloadData()
             if let first = frameworkViewModels.first {
                 showDetailsFor(first)
             }
+            self.fetchFileLocations()       // Set paths to binaries if installed
             self.fetchVersionNumbers()      // Fetch version numbers
         }
     }
@@ -62,22 +70,27 @@ class InstallToolchainViewController: NSViewController {
             object: nil)
         
         
-        fetchVersionQueue.maxConcurrentOperationCount = 1
-        fetchVersionQueue.qualityOfService = .userInteractive
-        userInitiatedQueue.maxConcurrentOperationCount = 1
-        userInitiatedQueue.qualityOfService = .userInitiated
+        fileQueue.maxConcurrentOperationCount = 1
+        fileQueue.qualityOfService = .userInteractive
+        versionQueue.maxConcurrentOperationCount = 1
+        versionQueue.qualityOfService = .userInteractive
+        installQueue.maxConcurrentOperationCount = 1
+        installQueue.qualityOfService = .userInitiated
         
-        installCountObserver = userInitiatedQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
+        
+        installCountObserver = installQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
             DispatchQueue.main.async {
                 if queue.operationCount == 0 {
                     self.progressIndicator.stopAnimation(self)
                     self.progressIndicator.isHidden = true
-                    self.TotalInstallCount = 0
+                    self.totalInstallCount = 0
+                    self.outlineView.reloadData()
                 } else {
-                    if queue.operationCount > self.TotalInstallCount {
-                        self.TotalInstallCount = queue.operationCount
+                    self.outlineView.reloadData()
+                    if queue.operationCount > self.totalInstallCount {
+                        self.totalInstallCount = queue.operationCount
                     }
-                    self.progressIndicator.doubleValue = (1.0 - (Double(queue.operationCount) / Double(self.TotalInstallCount))) * 100.0
+                    self.progressIndicator.doubleValue = (1.0 - (Double(queue.operationCount) / Double(self.totalInstallCount))) * 90.0 + 10
                     self.progressIndicator.startAnimation(self)
                     self.progressIndicator.isHidden = false
                 }
@@ -106,31 +119,45 @@ class InstallToolchainViewController: NSViewController {
         }
     }
     
+    // Searches for paths of the dependencies. Should be near-instant
+    func fetchFileLocations() {
+
+        for frameworkViewModel in frameworkViewModels {
+            for tool in frameworkViewModel.dependencies {
+                guard let operation = tool.fileLocationOperation() else { continue }
+                fileQueue.addOperation(operation)
+            }
+        }
+    }
+    
     func fetchVersionNumbers() {
         
-        fetchVersionQueue.cancelAllOperations()
+        versionQueue.cancelAllOperations()
         
         for frameworkViewModel in frameworkViewModels {
             for tool in frameworkViewModel.dependencies {
                 
                 // Fetch version
-                guard tool.version.isEmpty, let operation = tool.versionQueryOperation() else { continue }
-                fetchVersionQueue.addOperation(operation)
+                guard let operation = tool.versionQueryOperation() else { continue }
+                versionQueue.addOperation(operation)
                 
                 // Check if newer version is available
                 guard let outdatedOperation = tool.outdatedOperation() else { continue }
-                fetchVersionQueue.addOperation(outdatedOperation)
+                versionQueue.addOperation(outdatedOperation)
             }
         }
     }
     
     @objc private func dependencyChange(notification: NSNotification){
-        DispatchQueue.main.async {            
+        
+        DispatchQueue.main.async {
             self.outlineView.reloadData()
         }
     }
     
     private func configurePlatformCollectionView() {
+        
+        assert(Thread.isMainThread)
         view.wantsLayer = true
         
         let nib = NSNib(nibNamed: NSNib.Name("PlatformCollectionViewItem"), bundle: nil)
@@ -142,7 +169,7 @@ class InstallToolchainViewController: NSViewController {
     private func showDetailsFor(_ item: DependencyFrameworkViewModel) {
         detailLabel.stringValue = item.name.capitalizedFirstChar()
         detailInfoLabel.stringValue = item.description
-        detailImageView.image = NSImage(named: NSImage.Name(item.name))
+        detailImageView.image = item.icon
         detailMoreInfoButton.alternateTitle = item.projectUrl
         detailMoreInfoButton.isHidden = false
         detailDocumentationButton.alternateTitle = item.documentationUrl
@@ -150,7 +177,8 @@ class InstallToolchainViewController: NSViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        fetchVersionQueue.cancelAllOperations()
+        fileQueue.cancelAllOperations()
+        fileQueue.cancelAllOperations()
         view.window?.close()
         (DocumentController.shared as! DocumentController).newProject(self)
     }
@@ -176,9 +204,9 @@ class InstallToolchainViewController: NSViewController {
         
         for model in models {
             if model.state == .notInstalled, let operations = model.install() {
-                _ = operations.map { self.userInitiatedQueue.addOperation($0) }
+                _ = operations.map { self.installQueue.addOperation($0) }
             } else if model.state == .outdated, let operations = model.update() {
-                _ = operations.map { self.userInitiatedQueue.addOperation($0) }
+                _ = operations.map { self.installQueue.addOperation($0) }
             }
         }
     }
@@ -313,7 +341,7 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 
             case "PathColumn":
                 
-                view.textField?.stringValue = item.path 
+                view.textField?.stringValue = item.path ?? ""
                 view.textField?.textColor = NSColor.gray
                 
             case "ActionColumn":
