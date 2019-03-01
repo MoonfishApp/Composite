@@ -58,15 +58,17 @@ struct Commands: Codable {
     
     let compile: String
     
-    let cleanCompile: String?
-    
     let deploy: String
     
     let cleanDeploy: String?
     
     let runTests: String
     
+    let cleanCompile: String?
+    
     let cleanRunTests: String?
+    
+    let cleanProject: String?
     
     let console: String?
     
@@ -87,4 +89,6 @@ struct FrameworkInit: Codable {
     /// If true, ProjectInit will create the project directory (<directory>/<projectName>) and run the commands in the project directory.
     /// If false, ProjectInit will run the commands in <directory>. This is how Embark works.
     let createProjectDirectory: Bool
+    
+    let directories: [String]?
 }

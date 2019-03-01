@@ -63,8 +63,9 @@ class ChooseTemplateViewController: NSViewController {
         
         for platform in platforms {
             self.platformPopup.addItem(withTitle: platform.name)
-            let installedFrameworks = platform.frameworks.filter{ $0.state != .notInstalled }
-            self.platformPopup.item(withTitle: platform.name)?.isEnabled = installedFrameworks.count > 0
+            // Enable all platforms for now
+//            let installedFrameworks = platform.frameworks.filter{ $0.state != .notInstalled }
+//            self.platformPopup.item(withTitle: platform.name)?.isEnabled = installedFrameworks.count > 0
         }
     }
     
@@ -79,7 +80,7 @@ class ChooseTemplateViewController: NSViewController {
 
         for framework in selectedPlatform.frameworks {
             frameworkPopup.addItem(withTitle: framework.name)
-            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
+//            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
         }
         frameworkPopup.selectItem(at: 0)
     }
@@ -111,6 +112,17 @@ class ChooseTemplateViewController: NSViewController {
     
     
     @IBAction func ChooseClicked(_ sender: Any) {
+        
+        // TODO: check if platform and framework are installed. If not, present
+        // option to install
+//        for framework in selectedPlatform.frameworks {
+//            //            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
+//
+//            for dependency in framework.dependencies {
+//                guard let operation = dependency.fileLocationOperation() else { continue }
+//                fileQueue.addOperation(operation)
+//            }
+//        }
         
         guard let selection = templateCollectionView.selectionIndexPaths.first else { return }
         

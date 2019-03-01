@@ -20,23 +20,23 @@
 		C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */; };
 		C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A312166E4F8003DDA2B /* EditorInterface.plist */; };
 		C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A342166FBC9003DDA2B /* LanguageServer.swift */; };
-		C7050A8C216938B1003DDA2B /* celer.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8A216938B1003DDA2B /* celer.sol */; };
-		C7050A8F216938EC003DDA2B /* 2_celer_migrations.js in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
 		C70F666C22128E1500EEA9D1 /* DocumentInspectorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3921EE9D93007FB630 /* DocumentInspectorView.storyboard */; };
 		C711F58A21DDB68F005EBC5D /* Execute.command in Resources */ = {isa = PBXBuildFile; fileRef = C711F58821DCB9FF005EBC5D /* Execute.command */; };
 		C711F58E21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */; };
 		C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */; };
-		C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C711F59121DF379D005EBC5D /* ERC20.sol */; };
 		C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */; };
 		C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */; };
-		C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */; };
 		C711F5B821DF50EB005EBC5D /* CopyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B621DF50EB005EBC5D /* CopyFile.swift */; };
-		C711F5CF21E0887A005EBC5D /* TRC721.sol in Resources */ = {isa = PBXBuildFile; fileRef = C711F5CD21E08851005EBC5D /* TRC721.sol */; };
 		C711F5D321E13A45005EBC5D /* BashOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5D221E13A45005EBC5D /* BashOperation.swift */; };
 		C711F5D521E1B299005EBC5D /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5D421E1B299005EBC5D /* Operation.swift */; };
 		C715712F21F15DF900A1A6B4 /* Console.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C715712E21F15DF900A1A6B4 /* Console.storyboard */; };
+		C72CF609222908D100637A8B /* Templates-Zilliqa.plist in Resources */ = {isa = PBXBuildFile; fileRef = C72CF608222908D100637A8B /* Templates-Zilliqa.plist */; };
+		C72CF60C2229141000637A8B /* Zelliqa in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60B2229141000637A8B /* Zelliqa */; };
+		C72CF610222916FE00637A8B /* Celer in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60D222916FD00637A8B /* Celer */; };
+		C72CF611222916FE00637A8B /* OpenZeppelin in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60E222916FE00637A8B /* OpenZeppelin */; };
+		C72CF612222916FE00637A8B /* Truffle in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60F222916FE00637A8B /* Truffle */; };
 		C72FEA9621E433BA000EF3C7 /* PlatformCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */; };
 		C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */; };
 		C72FEA9E21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */; };
@@ -334,8 +334,6 @@
 		C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645E2128F04800867DA4 /* OutputViewController.swift */; };
 		C7E76463212936E300867DA4 /* FileNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76462212936E300867DA4 /* FileNavigatorViewController.swift */; };
 		C7E76467212937F100867DA4 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76466212937F100867DA4 /* FileItem.swift */; };
-		C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* TRC20.sol */; };
-		C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */; };
 		C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */; };
 		C7F0B9A32112945D005A8FE2 /* ProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */; };
 		C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A42112945F005A8FE2 /* Assets.xcassets */; };
@@ -377,22 +375,22 @@
 		C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Truffle.plist"; sourceTree = "<group>"; };
 		C7050A312166E4F8003DDA2B /* EditorInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EditorInterface.plist; sourceTree = "<group>"; };
 		C7050A342166FBC9003DDA2B /* LanguageServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageServer.swift; sourceTree = "<group>"; };
-		C7050A8A216938B1003DDA2B /* celer.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = celer.sol; sourceTree = "<group>"; };
-		C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_celer_migrations.js; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
 		C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Tronbox.plist"; sourceTree = "<group>"; };
 		C711F58821DCB9FF005EBC5D /* Execute.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Execute.command; sourceTree = "<group>"; };
 		C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkCommands.swift; sourceTree = "<group>"; };
-		C711F59121DF379D005EBC5D /* ERC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = ERC20.sol; sourceTree = "<group>"; };
 		C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FrameworkCommands.plist; sourceTree = "<group>"; };
 		C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInit.swift; sourceTree = "<group>"; };
-		C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EthereumTruffle.json; sourceTree = "<group>"; };
 		C711F5B621DF50EB005EBC5D /* CopyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFile.swift; sourceTree = "<group>"; };
-		C711F5CD21E08851005EBC5D /* TRC721.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TRC721.sol; sourceTree = "<group>"; };
 		C711F5D221E13A45005EBC5D /* BashOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashOperation.swift; sourceTree = "<group>"; };
 		C711F5D421E1B299005EBC5D /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		C715712E21F15DF900A1A6B4 /* Console.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Console.storyboard; sourceTree = "<group>"; };
+		C72CF608222908D100637A8B /* Templates-Zilliqa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Zilliqa.plist"; sourceTree = "<group>"; };
+		C72CF60B2229141000637A8B /* Zelliqa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Zelliqa; sourceTree = "<group>"; };
+		C72CF60D222916FD00637A8B /* Celer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Celer; sourceTree = "<group>"; };
+		C72CF60E222916FE00637A8B /* OpenZeppelin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OpenZeppelin; sourceTree = "<group>"; };
+		C72CF60F222916FE00637A8B /* Truffle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Truffle; sourceTree = "<group>"; };
 		C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformCollectionViewItem.swift; sourceTree = "<group>"; };
 		C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlatformCollectionViewItem.xib; sourceTree = "<group>"; };
 		C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyPlatformViewModel.swift; sourceTree = "<group>"; };
@@ -698,8 +696,6 @@
 		C7E7645E2128F04800867DA4 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		C7E76462212936E300867DA4 /* FileNavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNavigatorViewController.swift; sourceTree = "<group>"; };
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
-		C7E76468212D3D0400867DA4 /* TRC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TRC20.sol; sourceTree = "<group>"; };
-		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
 		C7F0B99C2112945C005A8FE2 /* Composite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Composite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F0B9A22112945D005A8FE2 /* ProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDocument.swift; sourceTree = "<group>"; };
@@ -772,21 +768,13 @@
 			path = Documents;
 			sourceTree = "<group>";
 		};
-		C7050A892169388D003DDA2B /* Celer */ = {
-			isa = PBXGroup;
-			children = (
-				C7050A8A216938B1003DDA2B /* celer.sol */,
-				C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */,
-			);
-			path = Celer;
-			sourceTree = "<group>";
-		};
 		C711F59321DF3A29005EBC5D /* Template Files */ = {
 			isa = PBXGroup;
 			children = (
-				C7050A892169388D003DDA2B /* Celer */,
-				C7A8FDBF212F2060005E20AC /* Truffle */,
-				C711F5A721DF474D005EBC5D /* OpenZeppelin */,
+				C72CF60B2229141000637A8B /* Zelliqa */,
+				C72CF60D222916FD00637A8B /* Celer */,
+				C72CF60E222916FE00637A8B /* OpenZeppelin */,
+				C72CF60F222916FE00637A8B /* Truffle */,
 			);
 			path = "Template Files";
 			sourceTree = "<group>";
@@ -794,21 +782,12 @@
 		C711F59421DF3A7E005EBC5D /* Template plist */ = {
 			isa = PBXGroup;
 			children = (
-				C7050A0B215C6D70003DDA2B /* Templates-Etherlime.plist */,
 				C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */,
+				C7050A0B215C6D70003DDA2B /* Templates-Etherlime.plist */,
+				C72CF608222908D100637A8B /* Templates-Zilliqa.plist */,
 				C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */,
 			);
 			path = "Template plist";
-			sourceTree = "<group>";
-		};
-		C711F5A721DF474D005EBC5D /* OpenZeppelin */ = {
-			isa = PBXGroup;
-			children = (
-				C7E76468212D3D0400867DA4 /* TRC20.sol */,
-				C711F5CD21E08851005EBC5D /* TRC721.sol */,
-				C711F59121DF379D005EBC5D /* ERC20.sol */,
-			);
-			path = OpenZeppelin;
 			sourceTree = "<group>";
 		};
 		C715712B21F14F5800A1A6B4 /* Toolbar */ = {
@@ -1649,15 +1628,6 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
-		C7A8FDBF212F2060005E20AC /* Truffle */ = {
-			isa = PBXGroup;
-			children = (
-				C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */,
-				C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */,
-			);
-			path = Truffle;
-			sourceTree = "<group>";
-		};
 		C7DDD751214100C800674942 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1823,26 +1793,27 @@
 				C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */,
 				C79A6D3221EE9D64007FB630 /* RegexReferenceView.storyboard in Resources */,
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
-				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
 				C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C79A6D4621EE9DD3007FB630 /* PrintPanelAccessory.storyboard in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
-				C7050A8C216938B1003DDA2B /* celer.sol in Resources */,
 				C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */,
+				C72CF612222916FE00637A8B /* Truffle in Resources */,
 				C70F666C22128E1500EEA9D1 /* DocumentInspectorView.storyboard in Resources */,
 				C79A6D3C21EE9D9A007FB630 /* OutlineView.storyboard in Resources */,
 				C7351C0521F91999000A3A5B /* ProjectEditor.storyboard in Resources */,
 				C79A750021EEDD04007FB630 /* ConsolePanel.storyboard in Resources */,
 				C79A6D5021EE9E03007FB630 /* CustomTabWidthView.storyboard in Resources */,
 				C7DDD75A2141E02800674942 /* InstallToolchain.storyboard in Resources */,
+				C72CF609222908D100637A8B /* Templates-Zilliqa.plist in Resources */,
+				C72CF60C2229141000637A8B /* Zelliqa in Resources */,
 				C79A74FC21EEDC8D007FB630 /* CharacterPopover.storyboard in Resources */,
 				C79A6D4421EE9DC9007FB630 /* SaveDocumentAccessory.storyboard in Resources */,
 				C79A759E21EEE532007FB630 /* makeSyntaxMap.rb in Resources */,
 				C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */,
 				C79A6D4221EE9DC0007FB630 /* OpenDocumentAccessory.storyboard in Resources */,
-				C7050A8F216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
+				C72CF611222916FE00637A8B /* OpenZeppelin in Resources */,
 				C711F58A21DDB68F005EBC5D /* Execute.command in Resources */,
 				C79A6D4A21EE9DE4007FB630 /* GoToLineView.storyboard in Resources */,
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,
@@ -1857,11 +1828,9 @@
 				C79A6D3621EE9D7C007FB630 /* MultipleReplacementPanel.storyboard in Resources */,
 				C79A74FE21EEDC92007FB630 /* HUDView.storyboard in Resources */,
 				C79A6D4C21EE9DEC007FB630 /* PatternSortView.storyboard in Resources */,
-				C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */,
-				C711F5CF21E0887A005EBC5D /* TRC721.sol in Resources */,
 				C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */,
+				C72CF610222916FE00637A8B /* Celer in Resources */,
 				C7F18AE62217DC740026D7DC /* EditorView.storyboard in Resources */,
-				C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
@@ -1871,7 +1840,6 @@
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
 				C79A750421EEDD18007FB630 /* ColorCodePanelAccessory.storyboard in Resources */,
 				C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */,
-				C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

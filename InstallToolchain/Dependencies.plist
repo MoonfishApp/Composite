@@ -252,7 +252,7 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Zilliqa Developer Tools</string>
+				<string>Zilliqa</string>
 				<key>dependencies</key>
 				<array>
 					<dict>
