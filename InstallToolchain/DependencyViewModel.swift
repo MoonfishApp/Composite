@@ -141,7 +141,7 @@ extension DependencyViewModel {
         
         operation.completionBlock = {
             if let versions = self.versionQueryParser(operation.output), let version = versions.first {
-                self.version = version
+                self.version = version.trimmingCharacters(in: .whitespaces)
             }
         }
 
