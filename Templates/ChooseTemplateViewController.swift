@@ -42,9 +42,26 @@ class ChooseTemplateViewController: NSViewController {
         
         configureTemplateView()
         
+        // Select last used platform if present in user defaults
         loadPlatforms()
+        if let lastUsedPlatformName = UserDefaults.standard[.lastUsedPlatform], let item = platformPopup.item(withTitle: lastUsedPlatformName) {
+            platformPopup.select(item)
+        }
+        
+        // Select last used framework if present in user defaults
         setFrameworkPopup()
+        if let lastUsedFrameworkName = UserDefaults.standard[.lastUsedFramework], let item = frameworkPopup.item(withTitle: lastUsedFrameworkName) {
+            frameworkPopup.select(item)
+        }
+        
         setTemplates()
+    }
+    
+    override func viewWillDisappear() {
+        let selectedPlatform = platforms[platformPopup.indexOfSelectedItem]
+        let selectedFramework = selectedPlatform.frameworks[frameworkPopup.indexOfSelectedItem]
+        UserDefaults.standard[.lastUsedPlatform] = selectedPlatform.name
+        UserDefaults.standard[.lastUsedFramework] = selectedFramework.name
     }
     
     
@@ -82,14 +99,13 @@ class ChooseTemplateViewController: NSViewController {
             frameworkPopup.addItem(withTitle: framework.name)
 //            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
         }
-        frameworkPopup.selectItem(at: 0)
     }
     
     /// Popupalates templates view
     private func setTemplates() {
         
         let framework = platforms[platformPopup.indexOfSelectedItem].frameworks[frameworkPopup.indexOfSelectedItem]
-
+        
         // Load templates. categories didSet triggers reload of collectionViews
         do {
             categories = try loadTemplates(framework: framework.name)
@@ -97,6 +113,7 @@ class ChooseTemplateViewController: NSViewController {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
+        
     }
     
     /// Loads templates from disk

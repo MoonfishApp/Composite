@@ -27,6 +27,13 @@ import Foundation
 
 extension DefaultKeys {
     
+    // Composite additions
+    
+    // Templates
+    static let lastUsedPlatform = DefaultKey<String>("lastUsedPlatform")
+    static let lastUsedFramework = DefaultKey<String>("lastUsedFramework")
+    static let lastUsedTemplateCategory = DefaultKey<String>("lastUsedTemplateCategory")
+    
     // General
     static let quitAlwaysKeepsWindows = DefaultKey<Bool>("NSQuitAlwaysKeepsWindows")
     static let noDocumentOnLaunchBehavior = DefaultKey<NoDocumentOnLaunchBehavior>("noDocumentOnLaunchBehavior")
