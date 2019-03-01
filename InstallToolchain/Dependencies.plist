@@ -385,7 +385,7 @@
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
-						<string></string>
+						<string>curl -fsSL https://github.com/Zilliqa/scilla/releases/latest</string>
 						<key>updateCommand</key>
 						<string></string>
 						<key>outdatedCommand</key>
@@ -429,11 +429,11 @@
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
-						<string>npm install -g kaya-cli</string>
+						<string>npm install -g tslib kaya-cli</string>
 						<key>installLink</key>
 						<string></string>
 						<key>updateCommand</key>
-						<string>npm -g update --save kaya-cli</string>
+						<string>npm -g update --save tslib kaya-cli</string>
 						<key>outdatedCommand</key>
 						<string></string>
 						<key>comment</key>
