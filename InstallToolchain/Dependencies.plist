@@ -58,7 +58,7 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated npm</string>
 						<key>comment</key>
 						<string>node and npm are required by Truffle</string>
 						<key>url</key>
@@ -199,7 +199,7 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated npm</string>
 						<key>comment</key>
 						<string>node and npm are required by Truffle</string>
 						<key>url</key>
@@ -293,7 +293,7 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated npm</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
@@ -359,13 +359,13 @@
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string></string>
+						<string>opam list ocaml-migrate-parsetree</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
-						<string>opam install ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1</string>
+						<string>opam install ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 --yes</string>
 						<key>updateCommand</key>
-						<string>opam upgrade ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1</string>
+						<string>opam upgrade ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 --yes</string>
 						<key>outdatedCommand</key>
 						<string></string>
 						<key>comment</key>
@@ -513,7 +513,7 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated npm</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>

@@ -17,7 +17,7 @@ enum DependencyState {
             return "Coming soon"
         case .notInstalled:
             return "Install"
-        case .outdated:
+        case .outdated, .unknown:
             return "Update"
         case .installing:
             return "Installing..."
@@ -51,8 +51,8 @@ enum DependencyState {
         let emoji: String
         
         switch self {
-        case .unknown: emoji = "❓"
-        case .uptodate: emoji = "✅"
+//        case .unknown: emoji = "❓"
+        case .uptodate, .unknown: emoji = "✅"
         case .outdated: emoji = "⚠️"
         case .notInstalled:
             emoji = "❌"

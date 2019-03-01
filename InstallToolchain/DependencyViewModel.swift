@@ -68,12 +68,18 @@ class DependencyViewModel {
         }
         
         // Not installed
-        if path == nil {
+        // Note that some tools (like opam) only set a version humber
+        if path == nil && version.isEmpty {
             return .notInstalled
         }
         
+        // Unable to ascertain whether version is up to date
+        if newerVersionAvailable == nil && (outdatedCommand ?? "").isEmpty {
+            return .unknown
+        }
+        
         // upToDate / isOutdated
-        if newerVersionAvailable != nil {
+        if newerVersionAvailable != nil  {
             return .outdated
         }
         
