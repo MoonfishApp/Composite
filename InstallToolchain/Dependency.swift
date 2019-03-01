@@ -30,6 +30,9 @@ class Dependency: Codable {
     
     /// Command to display version
     let versionCommand: String?
+    
+    /// Optional regular expression pattern to parse version
+    let versionRegex: String?
         
     /// Command to install depedency
     let installCommand: String?

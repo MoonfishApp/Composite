@@ -27,6 +27,8 @@ class DependencyViewModel {
     
     let versionCommand: String?
     
+    let versionRegex: String
+    
     let installCommand: String?
     
     let initCommand: String?
@@ -96,6 +98,7 @@ class DependencyViewModel {
         installLink = dependency.installLink
         
         versionCommand = dependency.versionCommand
+        versionRegex = (dependency.versionRegex ?? "").isEmpty ? "(\\d+)\\.(\\d+)\\.(\\d+)\\-?(\\w+)?" : dependency.versionRegex!
         installCommand = dependency.installCommand
         initCommand = dependency.initCommand
         updateCommand = dependency.updateCommand
@@ -232,7 +235,7 @@ extension DependencyViewModel {
         // Some apps return multiple lines, and this closure will be called multiple times.
         // Therefore, if no match if found, the output closure will not be called, since the
         // version number could be in the previous or next line.
-        guard let regex = try? NSRegularExpression(pattern: "(\\d+)\\.(\\d+)\\.(\\d+)\\-?(\\w+)?", options: .caseInsensitive) else {
+        guard let regex = try? NSRegularExpression(pattern: versionRegex, options: .caseInsensitive) else {
             return nil
         }
         let versions = regex.matches(in: output, options: [], range: NSRange(location: 0, length: output.count)).map {

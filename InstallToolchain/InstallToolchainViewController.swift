@@ -8,6 +8,8 @@
 
 import Cocoa
 
+
+/// TODO: Add a forced remove and install option if user holds command or option button
 class InstallToolchainViewController: NSViewController {
     
     @IBOutlet weak var platformCollectionView: NSCollectionView!

@@ -361,11 +361,11 @@
 						<key>versionCommand</key>
 						<string>opam list ocaml-migrate-parsetree</string>
 						<key>versionRegex</key>
-						<string></string>
+						<string>\s(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
 						<key>installCommand</key>
-						<string>opam install ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 --yes</string>
+						<string>opam install ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 user-setup --yes</string>
 						<key>updateCommand</key>
-						<string>opam upgrade ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 --yes</string>
+						<string>opam upgrade ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1  user-setup  --yes</string>
 						<key>outdatedCommand</key>
 						<string></string>
 						<key>comment</key>
