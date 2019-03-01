@@ -377,53 +377,33 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>Scilla</string>
+						<string>yarn</string>
 						<key>isFrameworkVersion</key>
 						<true/>
 						<key>versionCommand</key>
-						<string></string>
+						<string>yarn --version</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
-						<string>curl -fsSL https://github.com/Zilliqa/scilla/releases/latest</string>
+						<string>brew install yarn</string>
 						<key>updateCommand</key>
-						<string></string>
+						<string>brew upgrade yarn</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>brew outdated yarn</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
 						<string>https://github.com/Zilliqa/scilla</string>
 						<key>required</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>Zilliqa JavaScript API</string>
-						<key>isFrameworkVersion</key>
 						<false/>
-						<key>versionCommand</key>
-						<string></string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string></string>
-						<key>updateCommand</key>
-						<string></string>
-						<key>outdatedCommand</key>
-						<string></string>
-						<key>comment</key>
-						<string></string>
-						<key>url</key>
-						<string>https://github.com/Zilliqa/Zilliqa-JavaScript-Library</string>
-						<key>required</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
 						<string>Kaya</string>
+						<key>filename</key>
+						<string>kaya-cli</string>
 						<key>isFrameworkVersion</key>
-						<false/>
+						<true/>
 						<key>versionCommand</key>
 						<string>kaya-cli --version</string>
 						<key>versionRegex</key>
@@ -435,7 +415,7 @@
 						<key>updateCommand</key>
 						<string>npm -g update --save tslib kaya-cli</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated kaya-cli</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>

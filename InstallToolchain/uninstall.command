@@ -14,6 +14,8 @@ npm -g uninstall tronbox
 opam remove ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 user-setup --yes
 brew uninstall ocaml
 brew uninstall gpatch opam
+brew uninstall yarn
+yarn remove zilliqa-js
 
 brew uninstall pkg-config
 brew uninstall libffi

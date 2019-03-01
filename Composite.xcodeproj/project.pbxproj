@@ -819,6 +819,14 @@
 			path = Toolbar;
 			sourceTree = "<group>";
 		};
+		C72CF6072228DF3400637A8B /* ProjectInit */ = {
+			isa = PBXGroup;
+			children = (
+				C7E76447212358A900867DA4 /* ProjectInitViewController.swift */,
+			);
+			path = ProjectInit;
+			sourceTree = "<group>";
+		};
 		C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,7 +857,6 @@
 				C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */,
 				C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */,
 				C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */,
-				C7E76447212358A900867DA4 /* ProjectInitViewController.swift */,
 				C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */,
 				C7E7643E2122A2CF00867DA4 /* TemplateCollectionViewItem.xib */,
 				C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */,
@@ -1677,6 +1684,7 @@
 				C72FEB7F21E7E6B7000EF3C7 /* Preferences */,
 				C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */,
 				C72FEB7E21E7E6AB000EF3C7 /* Templates */,
+				C72CF6072228DF3400637A8B /* ProjectInit */,
 				C72FEB8021E7E6C4000EF3C7 /* ProjectWindow */,
 				C70509D521541C6F003DDA2B /* Documents */,
 				C79A6ACF21EE75A3007FB630 /* cotEditor */,
