@@ -14,4 +14,5 @@ enum CompositeError: Error {
     case platformNotFound(String)
     case frameworkNotFound(String)
     case bashScriptFailed(String)
+    case initError(String)
 }

@@ -37,13 +37,13 @@ class ProjectInitViewController: NSViewController {
                             self.counter = self.counter + 1
                         }
                         
-                    }) { exitStatus in
+                    }) { exitStatus, error in
                         
                         DispatchQueue.main.async {
                             self.progressIndicator.stopAnimation(self)
                             
-                            guard exitStatus == 0 else {
-                                let error = CompositeError.bashScriptFailed("Bash error")
+                            guard exitStatus == 0 && error == nil else {
+                                let error = error ?? CompositeError.bashScriptFailed("Bash error")
                                 let alert = NSAlert(error: error)
                                 alert.runModal()
                                 return

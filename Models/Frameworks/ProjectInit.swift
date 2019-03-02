@@ -12,9 +12,10 @@ import Foundation
  
  */
 class ProjectInit {
-    
+
     let frameworkInterface: FrameworkInterface
     
+    /// Shortcut to the framework init struct
     let frameworkInit: FrameworkInit
     
     let operationQueue = OperationQueue()
@@ -35,14 +36,23 @@ class ProjectInit {
     
     let projectFileURL: URL
     
+    /// Call when project initialization finished successfully or unsuccessfully.
+    /// Success: exit status = 0, error = nil.
+    let finished: (Int, Error?) -> Void
+    
+    /// Stdout
+    let output: (String)->Void
+    
     // TODO: add env arguments
-    init(projectName: String, baseDirectory: String, template: Template? = nil, frameworkName: String, frameworkVersion: String? = nil, platform: String? = nil) throws {
+    init(projectName: String, baseDirectory: String, template: Template? = nil, frameworkName: String, frameworkVersion: String? = nil, platform: String? = nil, output: @escaping (String)->Void, finished: @escaping (Int, Error?) -> Void) throws {
 
         // Set properties
         self.projectName = projectName
         self.baseDirectory = baseDirectory
         self.template = template
         projectFileURL = URL(fileURLWithPath: baseDirectory).appendingPathComponent(projectName).appendingPathComponent("\(projectName).composite")
+        self.finished = finished
+        self.output = output
         
         // Fetch framework init from FrameworkInterface.plist
         frameworkInterface = try FrameworkInterface.loadCommands(for: frameworkName)
@@ -57,7 +67,14 @@ class ProjectInit {
         operationQueue.qualityOfService = .userInitiated
     }
     
-    func initializeProject(output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws {
+    // Just checking we don't have a retain cycle
+    // If all is well, app will crash
+    deinit {
+        print("Deinit ProjectInit")
+        assertionFailure()
+    }
+    
+    func initializeProject() throws {
         
         // 1. Create project directory (if needed)
         //    Some frameworks create the project directory themselves.
@@ -72,14 +89,17 @@ class ProjectInit {
         
         // 2. Initialize new FrameworkInit instance
         //    From bashDirectory set in step 1
-        let initOperation = frameworkInitOperation(directory: bashDirectory, output: <#T##(String) -> Void#>)
+        if let initOperation = frameworkInitOperation(directory: bashDirectory) {
+            operationQueue.addOperation(initOperation)
+        }
         
-        //        operationQueue.addOperation(operation)
-
-        
-        // 3. Create directories (if needed)
+        // 3. Create directory structure (if the framework doesn't do that already)
+        if let createDirectoriesOperation = createDirectoriesOperation() {
+            operationQueue.addOperation(createDirectoriesOperation)
+        }
         
         // 4. Run framework initializer (e.g. etherlime init, if available)
+        
         
         // 5. Copy template files to the project and rename to project name if necessary
         
@@ -112,16 +132,40 @@ class ProjectInit {
     }
     
     func cancel() {
-        operationQueue.cancelAllOperations()
+        operationQueue.cancelAllOperations() // Check if all operations cancel correctly
     }
 }
 
-// Operations
+// Operation creators
 extension ProjectInit {
     
-    private func createDirectoriesOperation(output: @escaping (String)->Void) -> Operation? {
+    
+    /// Called by Operation creators when they encounter an error
+    ///
+    ///
+    /// - Parameter error: <#error description#>
+    private func ExitwithError(exitStatus: Int, error: Error?) {
+        
+        // 1. Cancel all operation in the queue
+        cancel()
+        
+        // Send error message to stdout
+        self.output((error ?? CompositeError.initError("Initialization error")).localizedDescription)
+        
+        // 2. Finish init with call to finished and pass error
+        finished(exitStatus, error)
+    }
+    
+    
+    /// Operation to creates the directory structure of the project
+    /// (e.g. contracts, test, migrations, etc.)
+    ///
+    /// - Parameter output: stdout output
+    /// - Returns: nil when the initDirectories in the framework interface was not set.
+    ///            (in that case the framework init command will have created the directory structure
+    private func createDirectoriesOperation() -> Operation? {
 
-        guard let directories = frameworkCommands.initDirectories, directories.count > 0 else { return nil }
+        guard let directories = frameworkInterface.initInterface.initDirectories, directories.count > 0 else { return nil }
         
         let operation = BlockOperation {
             for directory in directories {
@@ -129,7 +173,8 @@ extension ProjectInit {
                 do {
                     try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
                 } catch {
-                    output("ERROR creating \(url.path) directory.")
+                    self.finished(0, CompositeError.initError("Error creating directory \(url.path)"))
+                    return
                 }
             }
         }
@@ -137,28 +182,43 @@ extension ProjectInit {
 
     }
     
-    private func copyFilesOperation(output: @escaping (String)->Void) -> Operation? {
+    
+    /// Operation copying files from the Composite bundle to the project file
+    ///
+    /// - Parameter output: stdout output
+    /// - Returns: returns nil if no files need to be copied
+    private func copyFilesOperation() -> Operation? {
 
+        guard let copyFiles = self.template?.copyFiles else { return nil }
+        
         let operation = BlockOperation {
             
             // Copy files
-            if let copyFiles = self.template?.copyFiles {
-                for file in copyFiles {
-                    do {
-                        let newFilename = try file.copy(projectName: self.projectName, projectDirectory: self.projectDirectory)
-                        output("Copied \(newFilename) to \(file.destination).")
-                    } catch {
-                        output("ERROR copying \(file.filename) to \(file.destination):")
-                        output(error.localizedDescription)
-                    }
+            for file in copyFiles {
+                do {
+                    let newFilename = try file.copy(projectName: self.projectName, projectDirectory: self.projectDirectory)
+                    self.output("Copied \(newFilename) to \(file.destination).")
+                } catch {
+                    self.output("ERROR copying \(file.filename) to \(file.destination):")
+                    self.finished(0, error)
+                    return
                 }
             }
         }
         return operation
     }
     
-    private func frameworkInitOperation(directory: String, output: @escaping (String)->Void) -> Operation? {
+    
+    /// <#Description#>
+    ///
+    /// - Parameters:
+    ///   - directory: <#directory description#>
+    ///   - output: <#output description#>
+    /// - Returns: nil if no commands are found
+    private func frameworkInitOperation(directory: String) -> Operation? {
 
+        guard frameworkInit.commands.isEmpty == false else { return nil }
+        
         do {
             let operation = try BashOperation(directory: directory, commands: frameworkInit.commands)
             operation.outputClosure = output
