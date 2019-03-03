@@ -18,7 +18,18 @@ class ProjectInit {
     /// Shortcut to the framework init struct
     let frameworkInit: FrameworkInit
     
+    let framework: DependencyFrameworkViewModel
+    
+    let platform: DependencyPlatformViewModel
+    
     let operationQueue = OperationQueue()
+    
+    var progress: Double = 0
+    
+    private var progressObserver: NSKeyValueObservation!
+    
+    /// Maximum number of operations
+    private var maxOperationCount: Int = 0
     
     /// Name of the project (and project directory)
     let projectName: String
@@ -38,24 +49,25 @@ class ProjectInit {
     
     /// Call when project initialization finished successfully or unsuccessfully.
     /// Success: exit status = 0, error = nil.
-    let finished: (Int, Error?) -> Void
+    var finished: (Int, Error?) -> Void = {_,_ in }
     
     /// Stdout
-    let output: (String)->Void
+    var output: (String)->Void = {_ in }
     
     // TODO: add env arguments
-    init(projectName: String, baseDirectory: String, template: Template? = nil, frameworkName: String, frameworkVersion: String? = nil, platform: String? = nil, output: @escaping (String)->Void, finished: @escaping (Int, Error?) -> Void) throws {
+    init(projectName: String, baseDirectory: String, template: Template? = nil, framework: DependencyFrameworkViewModel, platform: DependencyPlatformViewModel) throws {
 
         // Set properties
         self.projectName = projectName
         self.baseDirectory = baseDirectory
         self.template = template
+        self.framework = framework
+        self.platform = platform
+        
         projectFileURL = URL(fileURLWithPath: baseDirectory).appendingPathComponent(projectName).appendingPathComponent("\(projectName).composite")
-        self.finished = finished
-        self.output = output
         
         // Fetch framework init from FrameworkInterface.plist
-        frameworkInterface = try FrameworkInterface.loadCommands(for: frameworkName)
+        frameworkInterface = try FrameworkInterface.loadCommands(for: framework.framework.name)
         if let template = template, let commands = template.initType.commands(frameworkInterface) {
             frameworkInit = commands
         } else {
@@ -74,9 +86,29 @@ class ProjectInit {
         assertionFailure()
     }
     
-    func initializeProject() throws {
+    func initializeProject(output: @escaping (String)->Void, finished: @escaping (Int, Error?) -> Void) throws {
+
+        // 1. Set closure properties
+        self.finished = finished
+        self.output = output
         
-        // 1. Create project directory (if needed)
+        //
+        progressObserver = operationQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
+            
+            if queue.operationCount > self.maxOperationCount {
+                self.maxOperationCount = queue.operationCount
+            }
+            
+            self.progress = 10 + (1.0 - (Double(queue.operationCount) / Double(self.maxOperationCount))) * 90.0
+        }
+
+        // 2. Fetch framework version
+        if let version = versionOperation() {
+            operationQueue.addOperation(version)
+            operationQueue.addOperation(printVersion())
+        }
+        
+        // 2. Create project directory (if needed)
         //    Some frameworks create the project directory themselves.
         //    If so, createProjectDirectory is false
         let bashDirectory: String
@@ -87,49 +119,53 @@ class ProjectInit {
             bashDirectory = baseDirectory
         }
         
-        // 2. Initialize new FrameworkInit instance
+        // 3. Initialize new FrameworkInit instance
         //    From bashDirectory set in step 1
         if let initOperation = frameworkInitOperation(directory: bashDirectory) {
             operationQueue.addOperation(initOperation)
         }
         
-        // 3. Create directory structure (if the framework doesn't do that already)
+        // 4. Create directory structure (if the framework doesn't do that already)
         if let createDirectoriesOperation = createDirectoriesOperation() {
             operationQueue.addOperation(createDirectoriesOperation)
         }
         
-        // 4. Run framework initializer (e.g. etherlime init, if available)
+        // 5. Run framework initializer (e.g. etherlime init, if available)
         
         
-        // 5. Copy template files to the project and rename to project name if necessary
+        // 6. Copy template files to the project and rename to project name if necessary
         
-        // 6. ...? Run script to finish up?
+        // 7. ...? Run script to finish up?
         
+        // 8. Create new project file
+        
+        // 9. Call finished
+        //finished(operation.exitStatus ?? 0)
         
     }
     
-    private func saveProjectFile() {
-        
-        // Prepare openfile
-        var openFile: String? = nil
-        if let templateOpenFile = template?.openFile {
-            openFile = templateOpenFile.replacingOccurrences(of: "$(PROJECT_NAME)", with: projectName)
-        }
-        
-        // TODO: fix framework version
-        let project = Project(name: projectName, platformName: frameworkInterface.platform, frameworkName: frameworkInterface.framework, frameworkVersion: "0", lastOpenFile: openFile)
-        
-        // save openFile in projectfile as lastOpenedFile
-        let encoder = PropertyListEncoder()
-        encoder.outputFormat = .xml
-        do {
-            let data = try encoder.encode(project)
-            FileManager.default.createFile(atPath: projectDirectory.appendingPathComponent("\(projectName).composite").path, contents: data, attributes: nil)
-        } catch {
-            print(error)
-            assertionFailure()
-        }
-    }
+//    private func saveProjectFile() {
+//
+//        // Prepare openfile
+//        var openFile: String? = nil
+//        if let templateOpenFile = template?.openFile {
+//            openFile = templateOpenFile.replacingOccurrences(of: "$(PROJECT_NAME)", with: projectName)
+//        }
+//
+//        // TODO: fix framework version
+//        let project = Project(name: projectName, platformName: frameworkInterface.platform, frameworkName: frameworkInterface.framework, frameworkVersion: "0", lastOpenFile: openFile)
+//
+//        // save openFile in projectfile as lastOpenedFile
+//        let encoder = PropertyListEncoder()
+//        encoder.outputFormat = .xml
+//        do {
+//            let data = try encoder.encode(project)
+//            FileManager.default.createFile(atPath: projectDirectory.appendingPathComponent("\(projectName).composite").path, contents: data, attributes: nil)
+//        } catch {
+//            print(error)
+//            assertionFailure()
+//        }
+//    }
     
     func cancel() {
         operationQueue.cancelAllOperations() // Check if all operations cancel correctly
@@ -139,12 +175,11 @@ class ProjectInit {
 // Operation creators
 extension ProjectInit {
     
-    
     /// Called by Operation creators when they encounter an error
     ///
     ///
     /// - Parameter error: <#error description#>
-    private func ExitwithError(exitStatus: Int, error: Error?) {
+    private func exitWithError(exitStatus: Int, error: Error?) {
         
         // 1. Cancel all operation in the queue
         cancel()
@@ -156,6 +191,28 @@ extension ProjectInit {
         finished(exitStatus, error)
     }
     
+    
+    /// fetches framework version
+    ///
+    /// - Returns: operation
+    private func versionOperation() -> Operation? {
+        
+        guard framework.version.isEmpty, let dependency = self.framework.dependencies.filter({ $0.isFrameworkVersion == true }).first else {
+            return nil
+        }
+        
+        let operation = dependency.versionQueryOperation()
+        return operation
+    }
+    
+    /// Outputs framework name and version number to stdout
+    ///
+    /// - Returns: operation
+    private func printVersion() -> Operation {
+        return BlockOperation {
+            self.output(self.framework.name + " " + self.framework.version)
+        }
+    }
     
     /// Operation to creates the directory structure of the project
     /// (e.g. contracts, test, migrations, etc.)
@@ -219,34 +276,22 @@ extension ProjectInit {
 
         guard frameworkInit.commands.isEmpty == false else { return nil }
         
+        let operation: BashOperation
         do {
-            let operation = try BashOperation(directory: directory, commands: frameworkInit.commands)
+            operation = try BashOperation(directory: directory, commands: frameworkInit.commands)
             operation.outputClosure = output
             operation.completionBlock = {
-            
-                //            // Copy files
-                //            if let copyFiles = self.template?.copyFiles {
-                //                for file in copyFiles {
-                //                    do {
-                //                        let newFilename = try file.copy(projectName: self.projectName, projectDirectory: self.projectDirectory)
-                //                        output("Copied \(newFilename) to \(file.destination).")
-                //                    } catch {
-                //                        output("ERROR copying \(file.filename) to \(file.destination).")
-                //                    }
-                //                }
-                //            }
                 
-                // Create .comp project file
-                self.saveProjectFile()
-                
-                finished(operation.exitStatus ?? 0)
+                if let exitStatus = operation.exitStatus, exitStatus != 0 {
+                    self.exitWithError(exitStatus: exitStatus, error: CompositeError.initError("Error initializing project"))
+                    return
+                }
             }
+            return operation
         } catch {
-            output("ERROR creating \(url.path) directory.")
-            output(error.localizedDescription)
-            self.operationQueue.cancelAllOperations()
+            exitWithError(exitStatus: 0, error: error)
         }
-        return operation
+        return nil
     }
     
 }

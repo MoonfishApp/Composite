@@ -194,7 +194,7 @@
 		<key>platform</key>
 		<string>Zilliqa</string>
 		<key>framework</key>
-		<string>Composite</string>
+		<string>Zilliqa</string>
 		<key>minVersion</key>
 		<string></string>
 		<key>maxVersion</key>

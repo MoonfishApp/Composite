@@ -11,7 +11,7 @@ import Cocoa
 
 class DependencyFrameworkViewModel {
 
-    private let framework: DependencyFramework
+    let framework: DependencyFramework
     
     private (set) var name: String
     

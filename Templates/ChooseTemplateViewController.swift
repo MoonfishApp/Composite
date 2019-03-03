@@ -244,20 +244,11 @@ class ChooseTemplateViewController: NSViewController {
     
     private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) throws -> ProjectInit {
         
-//        forward template here, or fetch the right project init from the plist
-//        Store templateIit
+        // Fetch selected view models
+        let platform = platforms[platformPopup.indexOfSelectedItem]
+        let framework = platform.frameworks[frameworkPopup.indexOfSelectedItem]
         
-        let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem]
-//        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform this one was commented out
-        let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].name
-        let selectedFrameworkVersion = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].version
-
-        print(selectedFrameworkName)
-        print(selectedFrameworkVersion)
-        
-        let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, frameworkName: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, platform: selectedFrameworkName)
-
-//        let projectInit = try ProjectInit(projectName: "test", baseDirectory: "~", template: template, frameworkName: "test", frameworkVersion: "1", platform: "2")
+        let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, framework: framework, platform: platform)
         return projectInit
     }
 }
