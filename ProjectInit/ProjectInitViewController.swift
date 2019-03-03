@@ -19,7 +19,7 @@ class ProjectInitViewController: NSViewController {
     var projectInit: ProjectInit! {
         didSet {
             
-                //
+                // observe init progress
                 self.progressObserver = self.projectInit.observe(\ProjectInit.progress, options: .new) { project, change in
                     DispatchQueue.main.async {
                         self.progressIndicator.doubleValue = project.progress

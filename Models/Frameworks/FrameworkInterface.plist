@@ -219,9 +219,7 @@
 			<dict>
 				<key>commands</key>
 				<array>
-					<string>truffle init</string>
-					<string>npm init -y</string>
-					<string>npm install --save-exact openzeppelin-solidity</string>
+					<string>yarn add @zilliqa-js/zilliqa</string>
 				</array>
 				<key>createProjectDirectory</key>
 				<true/>
@@ -239,9 +237,7 @@
 			<dict>
 				<key>commands</key>
 				<array>
-					<string>truffle unbox ($TEMPLATE)</string>
-					<string>npm init -y</string>
-					<string>npm install --save-exact openzeppelin-solidity</string>
+					<string>yarn add @zilliqa-js/zilliqa</string>
 				</array>
 				<key>createProjectDirectory</key>
 				<true/>
