@@ -35,8 +35,9 @@
 		C72CF609222908D100637A8B /* Templates-Zilliqa.plist in Resources */ = {isa = PBXBuildFile; fileRef = C72CF608222908D100637A8B /* Templates-Zilliqa.plist */; };
 		C72CF60C2229141000637A8B /* Zelliqa in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60B2229141000637A8B /* Zelliqa */; };
 		C72CF610222916FE00637A8B /* Celer in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60D222916FD00637A8B /* Celer */; };
-		C72CF611222916FE00637A8B /* OpenZeppelin in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60E222916FE00637A8B /* OpenZeppelin */; };
 		C72CF612222916FE00637A8B /* Truffle in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60F222916FE00637A8B /* Truffle */; };
+		C72CF615222BA85800637A8B /* Tronbox in Resources */ = {isa = PBXBuildFile; fileRef = C72CF614222BA85800637A8B /* Tronbox */; };
+		C72CF617222BA88300637A8B /* Etherlime in Resources */ = {isa = PBXBuildFile; fileRef = C72CF616222BA88300637A8B /* Etherlime */; };
 		C72FEA9621E433BA000EF3C7 /* PlatformCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */; };
 		C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */; };
 		C72FEA9E21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */; };
@@ -389,8 +390,9 @@
 		C72CF608222908D100637A8B /* Templates-Zilliqa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Zilliqa.plist"; sourceTree = "<group>"; };
 		C72CF60B2229141000637A8B /* Zelliqa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Zelliqa; sourceTree = "<group>"; };
 		C72CF60D222916FD00637A8B /* Celer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Celer; sourceTree = "<group>"; };
-		C72CF60E222916FE00637A8B /* OpenZeppelin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OpenZeppelin; sourceTree = "<group>"; };
 		C72CF60F222916FE00637A8B /* Truffle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Truffle; sourceTree = "<group>"; };
+		C72CF614222BA85800637A8B /* Tronbox */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tronbox; sourceTree = "<group>"; };
+		C72CF616222BA88300637A8B /* Etherlime */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Etherlime; sourceTree = "<group>"; };
 		C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformCollectionViewItem.swift; sourceTree = "<group>"; };
 		C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlatformCollectionViewItem.xib; sourceTree = "<group>"; };
 		C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyPlatformViewModel.swift; sourceTree = "<group>"; };
@@ -773,8 +775,9 @@
 			children = (
 				C72CF60B2229141000637A8B /* Zelliqa */,
 				C72CF60D222916FD00637A8B /* Celer */,
-				C72CF60E222916FE00637A8B /* OpenZeppelin */,
+				C72CF616222BA88300637A8B /* Etherlime */,
 				C72CF60F222916FE00637A8B /* Truffle */,
+				C72CF614222BA85800637A8B /* Tronbox */,
 			);
 			path = "Template Files";
 			sourceTree = "<group>";
@@ -1791,6 +1794,7 @@
 				C79A6D4821EE9DDC007FB630 /* ProgressView.storyboard in Resources */,
 				C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */,
 				C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */,
+				C72CF617222BA88300637A8B /* Etherlime in Resources */,
 				C79A6D3221EE9D64007FB630 /* RegexReferenceView.storyboard in Resources */,
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */,
@@ -1813,7 +1817,6 @@
 				C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */,
 				C79A6D4221EE9DC0007FB630 /* OpenDocumentAccessory.storyboard in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
-				C72CF611222916FE00637A8B /* OpenZeppelin in Resources */,
 				C711F58A21DDB68F005EBC5D /* Execute.command in Resources */,
 				C79A6D4A21EE9DE4007FB630 /* GoToLineView.storyboard in Resources */,
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,
@@ -1832,6 +1835,7 @@
 				C72CF610222916FE00637A8B /* Celer in Resources */,
 				C7F18AE62217DC740026D7DC /* EditorView.storyboard in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
+				C72CF615222BA85800637A8B /* Tronbox in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
 				C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */,
