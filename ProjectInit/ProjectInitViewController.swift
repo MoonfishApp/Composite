@@ -23,7 +23,6 @@ class ProjectInitViewController: NSViewController {
                 self.progressObserver = self.projectInit.observe(\ProjectInit.progress, options: .new) { project, change in
                     DispatchQueue.main.async {
                         self.progressIndicator.doubleValue = project.progress
-                        print("=========== \(project.progress)")
                     }
                 }
                 
