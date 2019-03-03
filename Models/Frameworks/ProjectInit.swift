@@ -11,7 +11,7 @@ import Foundation
 /**
  
  */
-class ProjectInit {
+class ProjectInit: NSObject {
 
     let frameworkInterface: FrameworkInterface
     
@@ -24,7 +24,8 @@ class ProjectInit {
     
     let operationQueue = OperationQueue()
     
-    var progress: Double = 0
+    /// Progress from 0 to 100. Min value set to 10 to indicate progress to user
+    @objc private (set) dynamic var progress: Double = 10
     
     private var progressObserver: NSKeyValueObservation!
     
@@ -92,7 +93,7 @@ class ProjectInit {
         self.finished = finished
         self.output = output
         
-        //
+        // 2. Keep track of completion progress
         progressObserver = operationQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
             
             if queue.operationCount > self.maxOperationCount {
@@ -102,13 +103,13 @@ class ProjectInit {
             self.progress = 10 + (1.0 - (Double(queue.operationCount) / Double(self.maxOperationCount))) * 90.0
         }
 
-        // 2. Fetch framework version
+        // 3. Fetch framework version
         if let version = versionOperation() {
             operationQueue.addOperation(version)
             operationQueue.addOperation(printVersion())
         }
         
-        // 2. Create project directory (if needed)
+        // 4. Create project directory (if needed)
         //    Some frameworks create the project directory themselves.
         //    If so, createProjectDirectory is false
         let bashDirectory: String
@@ -119,29 +120,29 @@ class ProjectInit {
             bashDirectory = baseDirectory
         }
         
-        // 3. Initialize new FrameworkInit instance
-        //    From bashDirectory set in step 1
+        // 5. Initialize new FrameworkInit instance
+        //    E.g. etherlime init
+        //    from bashDirectory set in step 1
         if let initOperation = frameworkInitOperation(directory: bashDirectory) {
             operationQueue.addOperation(initOperation)
         }
         
-        // 4. Create directory structure (if the framework doesn't do that already)
+        // 6. Create directory structure (if the framework doesn't do that already)
         if let createDirectoriesOperation = createDirectoriesOperation() {
             operationQueue.addOperation(createDirectoriesOperation)
         }
         
-        // 5. Run framework initializer (e.g. etherlime init, if available)
+        // 7. Copy template files to the project and rename to project name if necessary
+        if let copyFiles = copyFilesOperation() {
+            operationQueue.addOperation(copyFiles)
+        }
         
+        // 8. ...? Run script to finish up?
         
-        // 6. Copy template files to the project and rename to project name if necessary
+        // 9. Create new project file
         
-        // 7. ...? Run script to finish up?
-        
-        // 8. Create new project file
-        
-        // 9. Call finished
-        //finished(operation.exitStatus ?? 0)
-        
+        // 10. Call finished
+        operationQueue.addOperation(finishedSuccessfully())        
     }
     
 //    private func saveProjectFile() {
@@ -197,6 +198,8 @@ extension ProjectInit {
     /// - Returns: operation
     private func versionOperation() -> Operation? {
         
+        // Find the dependency that sets the framework version
+        // Return nil if version is already set
         guard framework.version.isEmpty, let dependency = self.framework.dependencies.filter({ $0.isFrameworkVersion == true }).first else {
             return nil
         }
@@ -206,6 +209,7 @@ extension ProjectInit {
     }
     
     /// Outputs framework name and version number to stdout
+    /// TODO: this doesn't work. all dependencies have empty version strings.
     ///
     /// - Returns: operation
     private func printVersion() -> Operation {
@@ -253,7 +257,7 @@ extension ProjectInit {
             // Copy files
             for file in copyFiles {
                 do {
-                    let newFilename = try file.copy(projectName: self.projectName, projectDirectory: self.projectDirectory)
+                    let newFilename = try file.copy(projectName: self.projectName, projectDirectory: self.projectDirectory, subdirectory: self.framework.name)
                     self.output("Copied \(newFilename) to \(file.destination).")
                 } catch {
                     self.output("ERROR copying \(file.filename) to \(file.destination):")
@@ -294,4 +298,27 @@ extension ProjectInit {
         return nil
     }
     
+    private func finishedSuccessfully() -> Operation {
+        
+        return BlockOperation{
+            self.output("Initialization successful")
+            self.finished(0, nil)
+        }
+    }
+    
 }
+
+
+/*
+ 
+ 
+ How can I create new documents other than through user-action methods?
+ You can use NSDocumentController’s open... methods, which create a document and, if shouldCreateUI is TRUE, also create the document’s window controller(s) and add the document to the list of open documents. These methods also check file paths and return an existing document for the file path if one exists.
+ 
+ You can also use NSDocumentController's make... methods, which just create the document. Usually, you will want to call addDocument: to add the new document to the NSDocumentController.
+ 
+ Finally, you can simply create a document yourself with any initializer the subclass supports. Usually, you will want to add the document to the NSDocumentController with NSDocumentController's addDocument: method.
+ 
+ NSDocumentController's newDocument: action method creates a new document of the first type listed in the application’s array of document types (as configured in Xcode). But this isn't really enough for applications that want to support several distinct types of document.
+ 
+ */

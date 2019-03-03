@@ -18,9 +18,9 @@ struct CopyFile: Codable {
 extension CopyFile {
     
     /// Returns (new) filename 
-    func copy(projectName: String?, projectDirectory: URL) throws -> String {
+    func copy(projectName: String?, projectDirectory: URL, subdirectory: String) throws -> String {
         
-        guard let source = Bundle.main.url(forResource: filename, withExtension: nil) else {
+        guard let source = Bundle.main.url(forResource: filename, withExtension: nil, subdirectory: subdirectory) else {
             throw CompositeError.fileNotFound(filename)
         }
         
