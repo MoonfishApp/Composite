@@ -23,25 +23,22 @@ final class ProjectDocument: NSDocument, NSCoding {
     
     static let fileExtension = "composite"
     
-    ///
+    /// The project instance
     private (set) var project: Project?
     
     ///
-    private (set) var interface: EditorInterface? = nil
-    
-    /// URL of the .comp project file E.g. ~/Projects/ProjectName/ProjectName.comp
-    var projectFileURL: URL {
-        return fileURL!
-    }
+//    private (set) var interface: EditorInterface? = nil
     
     /// Parent directory of the project, e.g. ~/Projects (not ~/Projects/ProjectName)
     var baseDirectory: URL {
+        
         return workDirectory.deletingLastPathComponent()
     }
     
     /// E.g. ~/Projects/ProjectName
     var workDirectory: URL {
-        return projectFileURL.deletingLastPathComponent()
+        
+        return fileURL!.deletingLastPathComponent()
     }
     
     /// return document window's editor wrapper
@@ -51,16 +48,19 @@ final class ProjectDocument: NSDocument, NSCoding {
     }
 
     override class var autosavesInPlace: Bool {
+        
         return true
     }
 
     override init() {
+        
         super.init()
         hasUndoManager = false
         // Add your subclass-specific initialization here.
     }
     
     convenience init(project: Project, url: URL) {
+        
         self.init()
         fileURL = url
         self.project = project
@@ -68,13 +68,50 @@ final class ProjectDocument: NSDocument, NSCoding {
     
     /// can read document on a background thread?
     override class func canConcurrentlyReadDocuments(ofType: String) -> Bool {        
+        
+        return true
+    }
+    
+    override func canAsynchronouslyWrite(to url: URL, ofType typeName: String, for saveOperation: NSDocument.SaveOperationType) -> Bool {
+        
         return true
     }
     
     /// return preferred file extension corresponding to the current syntax style
     override func fileNameExtension(forType typeName: String, saveOperation: NSDocument.SaveOperationType) -> String? {
+        
         return ProjectDocument.fileExtension
     }
+    
+    override func duplicate(_ sender: Any?) {
+        
+        fatalError("Not supported")
+    }
+    
+    override func read(from url: URL, ofType typeName: String) throws {
+        
+        guard url.pathExtension == ProjectDocument.fileExtension else { throw CompositeError.fileNotFound(typeName) }
+        
+        let data = try Data(contentsOf: url)
+        
+        let decoder = PropertyListDecoder()
+        self.project = try decoder.decode(Project.self, from: data)
+        
+        // TODO: Load FrameworkInterface and EditorInterface
+        
+//        let platformName = project!.platformName
+//        let frameworkName = project!.frameworkName
+//        let frameworkVersion = project!.frameworkVersion
+        
+//        guard let platform = Platform.init(rawValue: platformName) else { throw CompositeError.platformNotFound(platformName) }
+        
+        //        interface = try EditorInterface.loadInterface(platform: platform, framework: frameworkName, version: frameworkVersion).first
+    }
+    
+    
+    
+    
+    
     
     
     /// store internal document state
@@ -126,41 +163,16 @@ final class ProjectDocument: NSDocument, NSCoding {
         let data = try encoder.encode(project)
         return data
     }
-
-    override func read(from url: URL, ofType typeName: String) throws {
-        
-        guard url.pathExtension == ProjectDocument.fileExtension else { throw CompositeError.fileNotFound(typeName) }
-        
-        let data = try Data(contentsOf: url)
-        
-        let decoder = PropertyListDecoder()
-        self.project = try decoder.decode(Project.self, from: data)
-        
-        let platformName = project!.platformName
-        let frameworkName = project!.frameworkName
-        let frameworkVersion = project!.frameworkVersion
-        
-        guard let platform = Platform.init(rawValue: platformName) else { throw CompositeError.platformNotFound(platformName) }
-        
-        interface = try EditorInterface.loadInterface(platform: platform, framework: frameworkName, version: frameworkVersion).first
-    }
     
-//    override func read(from data: Data, ofType typeName: String) throws {
-//
-//        let decoder = PropertyListDecoder()
-//        project = try decoder.decode(Project.self, from: data)
-//
-//        let platformName = project!.platformName
-//        let frameworkName = project!.frameworkName
-//        let frameworkVersion = project!.frameworkVersion
-//
-//        guard let platform = Platform.init(rawValue: platformName) else { throw CompositeError.platformNotFound(platformName) }
-//
-//        interface = try EditorInterface.loadInterface(platform: platform, framework: frameworkName, version: frameworkVersion).first
+
+//    override func save(_ sender: Any?) {
+//        <#code#>
+//    }
+//    
+//    override func saveAs(_ sender: Any?) {
+//        <#code#>
 //    }
     
-    
-    /// Initiates project and saves project file
     override func save(to url: URL, ofType typeName: String, for saveOperation: NSDocument.SaveOperationType, completionHandler: @escaping (Error?) -> Void) {
         
         
@@ -212,10 +224,6 @@ final class ProjectDocument: NSDocument, NSCoding {
 //            case .autosaveAsOperation, .autosaveElsewhereOperation, .autosaveInPlaceOperation: break
 //            }
         }
-    }
-
-    override func canAsynchronouslyWrite(to url: URL, ofType typeName: String, for saveOperation: NSDocument.SaveOperationType) -> Bool {
-        return true
     }
     
     private func applyContentToWindow() {

@@ -106,7 +106,9 @@ class ProjectInit: NSObject {
         // 3. Fetch framework version
         if let version = versionOperation() {
             operationQueue.addOperation(version)
-            operationQueue.addOperation(printVersion())
+            let printOperation = printVersion()
+            operationQueue.addOperation(printOperation)
+            printOperation.addDependency(version)
         }
         
         // 4. Create project directory (if needed)
@@ -137,36 +139,12 @@ class ProjectInit: NSObject {
             operationQueue.addOperation(copyFiles)
         }
         
-        // 8. ...? Run script to finish up?
+        // 8. Create new project file
+        operationQueue.addOperation(createProjectFile())
         
-        // 9. Create new project file
-        
-        // 10. Call finished
+        // 9. Call finished
         operationQueue.addOperation(finishedSuccessfully())        
     }
-    
-//    private func saveProjectFile() {
-//
-//        // Prepare openfile
-//        var openFile: String? = nil
-//        if let templateOpenFile = template?.openFile {
-//            openFile = templateOpenFile.replacingOccurrences(of: "$(PROJECT_NAME)", with: projectName)
-//        }
-//
-//        // TODO: fix framework version
-//        let project = Project(name: projectName, platformName: frameworkInterface.platform, frameworkName: frameworkInterface.framework, frameworkVersion: "0", lastOpenFile: openFile)
-//
-//        // save openFile in projectfile as lastOpenedFile
-//        let encoder = PropertyListEncoder()
-//        encoder.outputFormat = .xml
-//        do {
-//            let data = try encoder.encode(project)
-//            FileManager.default.createFile(atPath: projectDirectory.appendingPathComponent("\(projectName).composite").path, contents: data, attributes: nil)
-//        } catch {
-//            print(error)
-//            assertionFailure()
-//        }
-//    }
     
     func cancel() {
         operationQueue.cancelAllOperations() // Check if all operations cancel correctly
@@ -296,6 +274,39 @@ extension ProjectInit {
             exitWithError(exitStatus: 0, error: error)
         }
         return nil
+    }
+    
+    private func createProjectFile() -> Operation {
+        
+        return BlockOperation {
+        
+            let project = Project(name: self.projectName, platformName: self.platform.name, frameworkName: self.framework.name, frameworkVersion: self.framework.version, defaultOpenFile: self.template?.openFile)
+        }
+        
+        
+        //    private func saveProjectFile() {
+        //
+        //        // Prepare openfile
+        //        var openFile: String? = nil
+        //        if let templateOpenFile = template?.openFile {
+        //            openFile = templateOpenFile.replacingOccurrences(of: "$(PROJECT_NAME)", with: projectName)
+        //        }
+        //
+        //        // TODO: fix framework version
+        //        let project = Project(name: projectName, platformName: frameworkInterface.platform, frameworkName: frameworkInterface.framework, frameworkVersion: "0", lastOpenFile: openFile)
+        //
+        //        // save openFile in projectfile as lastOpenedFile
+        //        let encoder = PropertyListEncoder()
+        //        encoder.outputFormat = .xml
+        //        do {
+        //            let data = try encoder.encode(project)
+        //            FileManager.default.createFile(atPath: projectDirectory.appendingPathComponent("\(projectName).composite").path, contents: data, attributes: nil)
+        //        } catch {
+        //            print(error)
+        //            assertionFailure()
+        //        }
+        //    }
+
     }
     
     private func finishedSuccessfully() -> Operation {

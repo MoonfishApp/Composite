@@ -32,23 +32,16 @@ class Project: NSObject, NSCoding, Codable {
     // E.g. 0.9.5
     let frameworkVersion: String?
     
-    var lastOpenFile: String? // Should be defaultOpenFile
+    /// Default file to open (usually the contract)
+    var defaultOpenFile: String?
     
-    /// E.g. ~/Projects/ProjectName
-//    let workDirectory: URL
-    
-    /// Parent directory of the project, e.g. ~/Projects (not ~/Projects/ProjectName)
-//    var baseDirectory: URL {
-//        return workDirectory.deletingLastPathComponent()
-//    }
-    
-    init(name: String, platformName: String, frameworkName: String, frameworkVersion: String? = nil, lastOpenFile: String?) {
+    init(name: String, platformName: String, frameworkName: String, frameworkVersion: String? = nil, defaultOpenFile: String?) {
         
         self.name = name
         self.platformName = platformName
         self.frameworkName = frameworkName
         self.frameworkVersion = frameworkVersion // If nil, find latest version
-        self.lastOpenFile = lastOpenFile?.replaceOccurrencesOfProjectName(with: name)
+        self.defaultOpenFile = defaultOpenFile?.replaceOccurrencesOfProjectName(with: name)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,7 +50,7 @@ class Project: NSObject, NSCoding, Codable {
         self.platformName = aDecoder.decodeObject(forKey: SerializationKey.platformName) as? String ?? ""
         self.frameworkName = aDecoder.decodeObject(forKey: SerializationKey.projectName) as? String ?? ""
         self.frameworkVersion = aDecoder.decodeObject(forKey: SerializationKey.frameworkVersion) as? String
-        self.lastOpenFile = aDecoder.decodeObject(forKey: SerializationKey.lastOpenFile) as? String
+        self.defaultOpenFile = aDecoder.decodeObject(forKey: SerializationKey.lastOpenFile) as? String
         
         super.init()
     }
@@ -68,7 +61,7 @@ class Project: NSObject, NSCoding, Codable {
         aCoder.encode(self.platformName, forKey: SerializationKey.platformName)
         aCoder.encode(self.frameworkName, forKey: SerializationKey.frameworkName)
         aCoder.encode(self.frameworkVersion, forKey: SerializationKey.frameworkVersion)
-        aCoder.encode(self.lastOpenFile, forKey: SerializationKey.lastOpenFile)
+        aCoder.encode(self.defaultOpenFile, forKey: SerializationKey.lastOpenFile)
     }
     
 }

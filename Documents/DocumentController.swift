@@ -70,7 +70,7 @@ class DocumentController: NSDocumentController {
                     return
                 }
 
-                if let defaultDocument = project.project?.lastOpenFile {
+                if let defaultDocument = project.project?.defaultOpenFile {
                     
                     // Create a new editor window with the default file in the editor viewcontroller
                     
