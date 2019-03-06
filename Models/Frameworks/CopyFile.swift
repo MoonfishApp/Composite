@@ -24,6 +24,12 @@ extension CopyFile {
             throw CompositeError.fileNotFound(filename)
         }
         
+        // If we want to use aliases/symbolic links instead of copying the same contracts
+        // shared by multiple frameworks in the future
+//        if let symlink = try? FileManager.default.destinationOfSymbolicLink(atPath: source.path) {
+//            print("Found symlink at \(source.path) pointing to \(symlink)")
+//        }
+        
         // Rename file to project name
         let newFilename: String
         if let projectName = projectName, renameFileToProjectName == true {
@@ -39,6 +45,7 @@ extension CopyFile {
         
         // Open file and replace all instances of <#__project_name#> with the project name
         if let projectName = projectName {
+            assert(FileManager.default.fileExists(atPath: destinationURL.path))
             let content = try String(contentsOf: destinationURL)
             let updatedContent = content.replaceOccurrencesOfProjectName(with: projectName)
             try updatedContent.write(to: destinationURL, atomically: true, encoding: .utf8)

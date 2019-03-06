@@ -6,13 +6,8 @@
 //  Copyright © 2018 A Puzzle A Day. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 import Cocoa
-
-/*
- [NSDocumentController fileExtensionsFromType:] is deprecated, and does not work when passed a uniform type identifier (UTI). If the application didn't invoke it directly then the problem is probably that some other NSDocument or NSDocumentController method is getting confused by a UTI that's not actually declared anywhere. Maybe it should be declared in the UTExportedTypeDeclarations section of this app's Info.plist but is not. The alleged UTI in question is "app.composite.project".
- 
- */
 
 private struct SerializationKey {
     
@@ -38,7 +33,8 @@ final class ProjectDocument: NSDocument, NSCoding {
     /// E.g. ~/Projects/ProjectName
     var workDirectory: URL {
         
-        return fileURL!.deletingLastPathComponent()
+        guard let fileURL = fileURL else { return URL(fileURLWithPath: "")}
+        return fileURL.deletingLastPathComponent()
     }
     
     /// return document window's editor wrapper
@@ -54,6 +50,8 @@ final class ProjectDocument: NSDocument, NSCoding {
 
     override init() {
         
+        // [caution] This method may be called from a background thread due to concurrent-opening.
+        
         super.init()
         hasUndoManager = false
         // Add your subclass-specific initialization here.
@@ -64,6 +62,10 @@ final class ProjectDocument: NSDocument, NSCoding {
         self.init()
         fileURL = url
         self.project = project
+    }
+    
+    init?(coder aDecoder: NSCoder) {
+        self.project = aDecoder.decodeObject(forKey: SerializationKey.project) as? Project
     }
     
     /// can read document on a background thread?
@@ -92,11 +94,8 @@ final class ProjectDocument: NSDocument, NSCoding {
         
         guard url.pathExtension == ProjectDocument.fileExtension else { throw CompositeError.fileNotFound(typeName) }
         
-        let data = try Data(contentsOf: url)
-        
-        let decoder = PropertyListDecoder()
-        self.project = try decoder.decode(Project.self, from: data)
-        
+        self.project = try Project.open(url)
+
         // TODO: Load FrameworkInterface and EditorInterface
         
 //        let platformName = project!.platformName
@@ -107,11 +106,6 @@ final class ProjectDocument: NSDocument, NSCoding {
         
         //        interface = try EditorInterface.loadInterface(platform: platform, framework: frameworkName, version: frameworkVersion).first
     }
-    
-    
-    
-    
-    
     
     
     /// store internal document state
@@ -138,10 +132,12 @@ final class ProjectDocument: NSDocument, NSCoding {
         aCoder.encode(self.project, forKey: SerializationKey.project)
     }
     
-    init?(coder aDecoder: NSCoder) {
-        self.project = aDecoder.decodeObject(forKey: SerializationKey.project) as? Project
+    /// avoid let system add the standard save panel accessory (pop-up menu for document type change)
+    override var shouldRunSavePanelWithAccessoryView: Bool {
+        
+        return false
     }
-
+    
     override func makeWindowControllers() {
         
         // Returns the Storyboard that contains your Document window.
@@ -164,73 +160,32 @@ final class ProjectDocument: NSDocument, NSCoding {
         return data
     }
     
-
-//    override func save(_ sender: Any?) {
-//        <#code#>
-//    }
-//    
-//    override func saveAs(_ sender: Any?) {
-//        <#code#>
-//    }
-    
-    override func save(to url: URL, ofType typeName: String, for saveOperation: NSDocument.SaveOperationType, completionHandler: @escaping (Error?) -> Void) {
-        
-        
-        // modify place to create backup file
-        //   -> save backup file always in `~/Library/Autosaved Information/` directory
-        //      (The default backup URL is the same directory as the fileURL.)
-        let newURL: URL = {
-//            guard
-//                saveOperation == .autosaveElsewhereOperation,
-//                let fileURL = self.fileURL
-//                else { return url }
-//
-//            let autosaveDirectoryURL = (DocumentController.shared as! DocumentController).autosaveDirectoryURL
-//            let baseFileName = fileURL.deletingPathExtension().lastPathComponent
-//                .replacingOccurrences(of: ".", with: "", options: .anchored)  // avoid file to be hidden
-            
-            // append a unique string to avoid overwriting another backup file with the same file name.
-//            let fileName = baseFileName + " (" + self.autosaveIdentifier + ")"
-            
-//            return autosaveDirectoryURL.appendingPathComponent(fileName).appendingPathExtension(fileURL.pathExtension)
-            return URL(fileURLWithPath: "")
-        }()
-        
-        super.save(to: newURL, ofType: typeName, for: saveOperation) { [unowned self] (error: Error?) in
-            defer {
-                completionHandler(error)
-            }
-            
-            guard error == nil else { return }
-//
-//            assert(Thread.isMainThread)
-//
-//            // apply syntax style that is inferred from the file name or the shebang
-//            if saveOperation == .saveAsOperation {
-//                let fileName = url.lastPathComponent
-//                if let styleName = SyntaxManager.shared.settingName(documentFileName: fileName)
-//                    ?? SyntaxManager.shared.settingName(documentContent: self.string)
-//                    // -> Due to the async-saving, self.string can be changed from the actual saved contents.
-//                    //    But we don't care about that.
-//                {
-//                    self.setSyntaxStyle(name: styleName)
-//                }
-//            }
-//
-//            switch saveOperation {
-//            case .saveOperation, .saveAsOperation, .saveToOperation:
-//                self.analyzer.invalidateFileInfo()
-//                ScriptManager.shared.dispatchEvent(documentSaved: self)
-//            case .autosaveAsOperation, .autosaveElsewhereOperation, .autosaveInPlaceOperation: break
-//            }
-        }
-    }
-    
     private func applyContentToWindow() {
         if let viewController = self.viewController {
             viewController.representedObject = self
         }
     }
+    
+    /// apply current state to menu items
+//    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+//
+//        switch menuItem.action {
+//        case #selector(changeEncoding(_:))?:
+//            let encodingTag = self.hasUTF8BOM ? -Int(self.encoding.rawValue) : Int(self.encoding.rawValue)
+//            menuItem.state = (menuItem.tag == encodingTag) ? .on : .off
+//
+//        case #selector(changeLineEnding(_:))?:
+//            menuItem.state = (LineEnding(index: menuItem.tag) == self.lineEnding) ? .on : .off
+//
+//        case #selector(changeSyntaxStyle(_:))?:
+//            let name = self.syntaxParser.style.name
+//            menuItem.state = (menuItem.title == name) ? .on : .off
+//
+//        default: break
+//        }
+//
+//        return super.validateMenuItem(menuItem)
+//    }
     
 }
 

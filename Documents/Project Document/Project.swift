@@ -35,6 +35,13 @@ class Project: NSObject, NSCoding, Codable {
     /// Default file to open (usually the contract)
     var defaultOpenFile: String?
     
+    static func open(_ url: URL) throws -> Project {
+    
+        let data = try Data(contentsOf: url)
+        let decoder = PropertyListDecoder()
+        return try decoder.decode(Project.self, from: data)
+    }
+    
     init(name: String, platformName: String, frameworkName: String, frameworkVersion: String? = nil, defaultOpenFile: String?) {
         
         self.name = name

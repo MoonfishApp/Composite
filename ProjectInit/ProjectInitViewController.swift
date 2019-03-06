@@ -52,21 +52,23 @@ class ProjectInitViewController: NSViewController {
                         }
                         
                         self.view.window?.close()
-//                            DocumentController.shared.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
-//
-//                                if let error = error {
-//                                    self.progressIndicator.stopAnimation(self)
-//                                    let alert = NSAlert(error: error)
-//                                    alert.runModal()
-//                                }
-//                                self.view.window?.close()
-//                            }
+                        DocumentController.shared.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
+
+                            if let error = error {
+                                self.progressIndicator.stopAnimation(self)
+                                let alert = NSAlert(error: error)
+                                alert.runModal()
+                            }
+                            self.view.window?.close()
+                        }
                     }
                 }
             } catch {
-                self.progressIndicator.stopAnimation(self)
-                let alert = NSAlert(error: error)
-                alert.runModal()
+                DispatchQueue.main.async {
+                    self.progressIndicator.stopAnimation(self)
+                    let alert = NSAlert(error: error)
+                    alert.runModal()
+                }
             }
         }
     }
