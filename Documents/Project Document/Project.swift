@@ -49,6 +49,8 @@ class Project: NSObject, NSCoding, Codable {
         self.frameworkName = frameworkName
         self.frameworkVersion = frameworkVersion // If nil, find latest version
         self.defaultOpenFile = defaultOpenFile?.replaceOccurrencesOfProjectName(with: name)
+        
+        // $(PROJECT_NAME)
     }
     
     required init?(coder aDecoder: NSCoder) {

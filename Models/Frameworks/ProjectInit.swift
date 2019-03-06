@@ -286,7 +286,7 @@ extension ProjectInit {
             let project = Project(name: self.projectName, platformName: self.platform.name, frameworkName: self.framework.name, frameworkVersion: self.framework.version, defaultOpenFile: self.template?.openFile)
             let document = ProjectDocument(project: project, url: self.projectFileURL)
             
-            document.save(to: self.projectFileURL, ofType: "composite", for: .saveToOperation, completionHandler: { error in
+            document.save(to: self.projectFileURL, ofType: ProjectDocument.fileExtension, for: .saveToOperation, completionHandler: { error in
                 if let error = error {
                     assertionFailure(error.localizedDescription)
                 }
