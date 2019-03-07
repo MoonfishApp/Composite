@@ -27,7 +27,7 @@ keywords:
 - beginString: "library"
 - beginString: "import"
 - beginString: "builtin"
-- beginString: "transition"
+- beginString: "transition "
 - beginString: "fun"
 - beginString: "field"
 - beginString: "tfun"
@@ -35,29 +35,37 @@ keywords:
 - beginString: "end"
 - beginString: "match"
 - beginString: "with"
-- beginString: "event"
-- beginString: "send"
-- beginString: "accept"
-- beginString: "let"
-- beginString: "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
-regularExpression: true
+- beginString: "\\bevent\\b"
+  regularExpression: true
+- beginString: "send "
+- beginString: "accept "
+- beginString: "let "
+#- beginString: "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
+#regularExpression: true
 
 commands:
 - beginString: "eq"
 - beginString: "concat"
 - beginString: "substr"
+- beginString: "to_string"
+- beginString: "strlen"
 - beginString: "blt"
 - beginString: "badd"
-- beginString: "dist"
+- beginString: "bsub"
 - beginString: "sha256hash"
+- beginString: "keccak256hash"
+- beginString: "ripemd160hash"
 - beginString: "to_bystr"
-- beginString: "schnorr_gen_key_pair"
-- beginString: "schnorr_sign"
+- beginString: "to_uint256"
 - beginString: "schnorr_verify"
 - beginString: "contains"
+- beginString: "<- exists"      # in-place map contains
 - beginString: "put"
+- beginString: ":="             # in-place map put
 - beginString: "get"
+- beginString: "<-"             # in-place map get
 - beginString: "remove"
+- beginString: "delete"         # in-place map remove
 - beginString: "to_list"
 - beginString: "lt"
 - beginString: "add"
@@ -65,6 +73,7 @@ commands:
 - beginString: "mul"
 - beginString: "div"
 - beginString: "rem"
+- beginString: "pow"
 - beginString: "to_int32"
 - beginString: "to_int64"
 - beginString: "to_int128"
@@ -78,8 +87,9 @@ types:
 - beginString: "Bool"
 - beginString: "Option"
 - beginString: "List"
+- beginString: "Pair"
+- beginString: "Nat"
 - beginString: "BNum"
-- beginString: "BLOCKNUMBER"
 - beginString: "Message"
 - beginString: "Event"
 - beginString: "Uint256"
@@ -93,12 +103,15 @@ types:
 - beginString: "ByStr20"
 - beginString: "ByStr32"
 - beginString: "ByStr33"
+- beginString: "ByStr64"
 - beginString: "Unit"
+# TODO: Add user defined ADTs https://scilla.readthedocs.io/en/latest/scilla-in-depth.html#user-defined-adts
 
 variables:
 - beginString: "_balance"
 - beginString: "_sender"
 - beginString: "_amount"
+- beginString: "_this_address"
 
 values:
 - beginString: "Map"
@@ -109,6 +122,8 @@ values:
 - beginString: "None"
 - beginString: "False"
 - beginString: "True"
+- beginString: "Zero"
+- beginString: "Succ"
 
 characters:
 #- beginString: ";"
@@ -140,20 +155,20 @@ strings:
 numbers:
 
 # decimalInteger
-- beginString: "(?:(?:[1-9]\\d*)|(?:0))"
-  regularExpression: true
+#- beginString: "(?:(?:[1-9]\\d*)|(?:0))"
+#  regularExpression: true
 
 # hexInteger
-- beginString: "(?:0[xX][\\dA-Fa-f]+)"
-  regularExpression: true
+#- beginString: "(?:0[xX][\\dA-Fa-f]+)"
+#  regularExpression: true
 
 # integer
-- beginString: "(?:' + decimalInteger + '|' + hexInteger + ')"
-  regularExpression: true
+#- beginString: "(?:' + decimalInteger + '|' + hexInteger + ')"
+#regularExpression: true
 
 # intPart
-- beginString: "(?:\\d+)"
-  regularExpression: true
+#- beginString: "(?:\\d+)"
+#  regularExpression: true
 
 completions:
 - keyString: "contract"
