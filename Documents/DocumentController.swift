@@ -37,6 +37,22 @@ class DocumentController: NSDocumentController {
         return true
     }
     
+    /// returns first project file in directory
+    ///
+    /// - Parameter directory: directory to search
+    /// - Returns: nil if no project file was found, otherwise the first one found
+    private func findProjectFile(in directory: URL) throws -> URL? {
+        
+        // Sanity check
+        var isDirectory: ObjCBool = false
+        guard FileManager.default.fileExists(atPath: directory.path, isDirectory: &isDirectory), isDirectory.boolValue else {
+            assertionFailure()
+            return nil
+        }
+        
+        return try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsPackageDescendants, .skipsHiddenFiles]).filter({ $0.pathExtension == ProjectDocument.fileExtension }).first
+    }
+    
     /// open document
     override func openDocument(withContentsOf url: URL, display displayDocument: Bool, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
         
@@ -58,9 +74,37 @@ class DocumentController: NSDocumentController {
             
             if let document = document as? TextDocument {
                 
-                // We probably need to add project to the file?
+                defer { completionHandler(document, documentWasAlreadyOpen, error) }
                 
-                completionHandler(document, documentWasAlreadyOpen, error)
+                // 1. Check if a project file is in the same directory. If so, open project file
+                // 2. If not, check if project file is located in the parent directory
+                let documentDirectory = url.deletingLastPathComponent()
+                let parentDirectory = documentDirectory.deletingLastPathComponent()
+                do {
+                    if let projectFileURL = [try self.findProjectFile(in: documentDirectory), try self.findProjectFile(in: parentDirectory)].compactMap({ $0 }).first {
+                        
+                        
+                        // Open found project file, and have project file open document
+                        
+                    }
+                } catch {
+                    assertionFailure(error.localizedDescription)
+                }
+
+                // See if url extension is listed in one of the platforms and frameworks
+                
+                // If not, just open file and directory, disable run, etc.
+                
+                // Ask user if they want to copy the file to a new project
+                // (Or just add project?)
+                
+                // Present viewcontroller with choice which platform / framework file is
+                // If it's clear which platform / framework is used (e.g. if tron.json is available), select that platform
+                
+                // If not, offer to create a new empty project, and then copying
+                // How does system know which platform and framework to use?
+                // -> Look for e.g. tron.json file
+                            
                 return
                 
             } else if let project = document as? ProjectDocument {
