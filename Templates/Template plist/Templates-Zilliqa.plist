@@ -59,7 +59,7 @@
 				<string></string>
 				<key>initType</key>
 				<string>initTemplate</string>
-				<key>copyFiles-empty</key>
+				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
@@ -90,7 +90,7 @@
 				<string></string>
 				<key>initType</key>
 				<string>initTemplate</string>
-				<key>copyFiles-empty</key>
+				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
@@ -121,42 +121,11 @@
 				<string></string>
 				<key>initType</key>
 				<string>initTemplate</string>
-				<key>copyFiles-empty</key>
+				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
 						<string>Auction.scilla</string>
-						<key>destination</key>
-						<string>contracts</string>
-						<key>renameFileToProjectName</key>
-						<true/>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>Crowd Funding</string>
-				<key>templateName</key>
-				<string>crowdfunding</string>
-				<key>imageName</key>
-				<string></string>
-				<key>standard</key>
-				<string></string>
-				<key>description</key>
-				<string></string>
-				<key>moreInfoUrl</key>
-				<string></string>
-				<key>openFile</key>
-				<string>contracts/$(PROJECT_NAME).scilla</string>
-				<key>detailViewType</key>
-				<string></string>
-				<key>initType</key>
-				<string>initTemplate</string>
-				<key>copyFiles-empty</key>
-				<array>
-					<dict>
-						<key>filename</key>
-						<string>CrowdFunding.scilla</string>
 						<key>destination</key>
 						<string>contracts</string>
 						<key>renameFileToProjectName</key>
@@ -183,7 +152,7 @@
 				<string></string>
 				<key>initType</key>
 				<string>initTemplate</string>
-				<key>copyFiles-empty</key>
+				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
@@ -209,12 +178,12 @@
 				<key>moreInfoUrl</key>
 				<string>https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md</string>
 				<key>openFile</key>
-				<string></string>
+				<string>contracts/$(PROJECT_NAME).scilla</string>
 				<key>detailViewType</key>
 				<string></string>
 				<key>initType</key>
 				<string>initTemplate</string>
-				<key>copyFiles-empty</key>
+				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
@@ -222,7 +191,7 @@
 						<key>destination</key>
 						<string>contracts</string>
 						<key>renameFileToProjectName</key>
-						<false/>
+						<true/>
 					</dict>
 				</array>
 			</dict>
@@ -245,7 +214,7 @@
 				<string></string>
 				<key>initType</key>
 				<string>initTemplate</string>
-				<key>copyFiles-empty</key>
+				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
@@ -276,7 +245,7 @@
 				<string></string>
 				<key>initType</key>
 				<string>initTemplate</string>
-				<key>copyFiles-empty</key>
+				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
