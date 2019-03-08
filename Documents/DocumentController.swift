@@ -37,135 +37,6 @@ class DocumentController: NSDocumentController {
         return true
     }
     
-    /// returns first project file in directory
-    ///
-    /// - Parameter directory: directory to search
-    /// - Returns: nil if no project file was found, otherwise the first one found
-    private func findProjectFile(in directory: URL) throws -> URL? {
-        
-        // Sanity check
-        var isDirectory: ObjCBool = false
-        guard FileManager.default.fileExists(atPath: directory.path, isDirectory: &isDirectory), isDirectory.boolValue else {
-            assertionFailure()
-            return nil
-        }
-        
-        return try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsPackageDescendants, .skipsHiddenFiles]).filter({ $0.pathExtension == ProjectDocument.fileExtension }).first
-    }
-    
-    private func showTextDocument(_ textDocument: TextDocument, asPartOf project: ProjectDocument) {
-        
-        textDocument.project = project
-        textDocument.makeWindowControllers()
-        textDocument.showWindows()
-    }
-    
-    
-    private func show(project: ProjectDocument, openFile: String? = nil, completionHandler: @escaping (NSDocument?) -> Void) { //, documentWasAlreadyOpen: Bool, error: Error?, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
-        
-        // 1. If there's no other file (usually contract) to open, create a window with the project shown.
-        guard let defaultDocument = openFile ?? project.project?.defaultOpenFile, FileManager.default.fileExists(atPath: project.workDirectory.appendingPathComponent(defaultDocument).path) == true else {
-            
-            project.makeWindowControllers()
-            project.showWindows()
-            completionHandler(project)
-            return
-        }
-        
-        // 2. Open default or provided document
-        let documentToOpen = project.workDirectory.appendingPathComponent(defaultDocument)
-        self.openDocument(withContentsOf: documentToOpen, display: false) { (document, documentWasAlreadyOpen, error) in
-            
-            if let textDocument = document as? TextDocument {
-                self.showTextDocument(textDocument, asPartOf: project)
-                completionHandler(textDocument)
-                return
-            }
-        }
-        
-        
-        /*
-        
-        if let defaultDocument = openFile ?? project.project?.defaultOpenFile {
-            
-            // If no default or open file is provided, open window with project file
-            let defaultDocumentURL = project.workDirectory.appendingPathComponent(defaultDocument)
-            guard FileManager.default.fileExists(atPath: defaultDocumentURL.path) == true else {
-                project.makeWindowControllers()
-                project.showWindows()
-                return
-            }
-
-            
-            // Create a new editor window with the default file in the editor viewcontroller
-
-            self.openDocument(withContentsOf: defaultDocumentURL, display: false) { (document, documentWasAlreadyOpen, error) in
-                
-                if let textDocument = document as? TextDocument {
-                    self.showTextDocument(textDocument, asPartOf: project)
-                    return
-                }
-            }
-        } else {
-            
-            // Project does not have default file
-            // Open editor window with project file
-            project.makeWindowControllers()
-            project.showWindows()
-        } */
-    }
-    
-    
-    
-    private func show(textDocument: TextDocument, url: URL, completionHandler: @escaping (NSDocument?, Error?) -> Void) {
-        
-        // The app needs a project file to display textDocument
-        
-        // 1. Check if a project file is in the same directory or parent directory.
-        //    If so, open project file
-        let documentDirectory = url.deletingLastPathComponent()
-        let parentDirectory = documentDirectory.deletingLastPathComponent()
-        do {
-            if let projectFileURL = [try self.findProjectFile(in: documentDirectory), try self.findProjectFile(in: parentDirectory)].compactMap({ $0 }).first {
-                
-                // Open found project file
-                self.openDocument(withContentsOf: projectFileURL, display: false, completionHandler: { (document, documentWasAlreadyOpen, error) in
-                    
-                    // Error opening project file
-                    guard error == nil else {
-                        assertionFailure(error!.localizedDescription)
-                        completionHandler(document, error!)
-                        return
-                    }
-                    
-                    // Somehow opened document isn't a project file
-                    guard let projectDocument = document as? ProjectDocument else {
-                        assertionFailure("project isn't a project")
-                        completionHandler(document, CompositeError.cannotOpenFile(projectFileURL.path))
-                        return
-                    }
-                    
-                    // Show textDocument as part of the project
-                    self.showTextDocument(textDocument, asPartOf: projectDocument)
-                    completionHandler(textDocument, nil)
-                })
-                return
-            }
-        } catch {
-            completionHandler(textDocument, error)
-            return
-        }
-        
-        
-        assertionFailure()
-        // 2. There is no project file. Create a lost of platforms and frameworks
-        //    that support the text file extension.
-        
-        // 3. Present user with choice to create a new project.
-        
-        // 4. Create new project and add selected file
-        
-    }
     
     /// open document
     override func openDocument(withContentsOf url: URL, display displayDocument: Bool, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
@@ -294,32 +165,124 @@ class DocumentController: NSDocumentController {
             documentToBeReplaced.close()
             removeDocument(documentToBeReplaced)
         }
+    }
+}
 
-        /*
-        if ([NSThread isMainThread]) {
-            NSDocument *transientDoc = [documents objectAtIndex:0], *doc = [documents objectAtIndex:1];
-            NSArray *controllersToTransfer = [[transientDoc windowControllers] copy];
-            NSEnumerator *controllerEnum = [controllersToTransfer objectEnumerator];
-            NSWindowController *controller;
-            
-         
-            while (controller = [controllerEnum nextObject]) {
-                [doc addWindowController:controller];
-                [transientDoc removeWindowController:controller];
-            }
-            [transientDoc close];
-         
-            // We replaced the value of the transient document with opened document, need to notify accessibility clients.
-            for (NSLayoutManager *layoutManager in [[(Document *)doc textStorage] layoutManagers]) {
-                for (NSTextContainer *textContainer in [layoutManager textContainers]) {
-                    NSTextView *textView = [textContainer textView];
-                    if (textView) NSAccessibilityPostNotification(textView, NSAccessibilityValueChangedNotification);
-                }
-            }
-            
-        } else {
-            [self performSelectorOnMainThread:_cmd withObject:documents waitUntilDone:YES];
-        }*/
+extension DocumentController {
+    
+    /// returns first project file in directory
+    ///
+    /// - Parameter directory: directory to search
+    /// - Returns: nil if no project file was found, otherwise the first one found
+    private func findProjectFile(in directory: URL) throws -> URL? {
         
+        // Sanity check
+        var isDirectory: ObjCBool = false
+        guard FileManager.default.fileExists(atPath: directory.path, isDirectory: &isDirectory), isDirectory.boolValue else {
+            assertionFailure()
+            return nil
+        }
+        
+        return try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil, options: [.skipsSubdirectoryDescendants, .skipsPackageDescendants, .skipsHiddenFiles]).filter({ $0.pathExtension == ProjectDocument.fileExtension }).first
+    }
+    
+    /// Display new window for project
+    ///
+    /// - Parameters:
+    ///   - project: project to be displayed
+    ///   - openFile: file to opened. Overrides defaultOpenFile property
+    ///   - completionHandler: called when completed
+    private func show(project: ProjectDocument, openFile: String? = nil, completionHandler: @escaping (NSDocument?) -> Void) { //, documentWasAlreadyOpen: Bool, error: Error?, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
+        
+        // 1. If there's no other file (usually contract) to open, create a window with the project shown.
+        guard let defaultDocument = openFile ?? project.project?.defaultOpenFile, FileManager.default.fileExists(atPath: project.workDirectory.appendingPathComponent(defaultDocument).path) == true else {
+            
+            project.makeWindowControllers()
+            project.showWindows()
+            completionHandler(project)
+            return
+        }
+        
+        // 2. Open default or provided document
+        let documentToOpen = project.workDirectory.appendingPathComponent(defaultDocument)
+        self.openDocument(withContentsOf: documentToOpen, display: false) { (document, documentWasAlreadyOpen, error) in
+            
+            if let textDocument = document as? TextDocument {
+                self.showTextDocument(textDocument, asPartOf: project)
+                completionHandler(textDocument)
+                return
+            }
+        }
+    }
+    
+    
+    /// Creates new window for textdocument. Finds project file if needed
+    ///
+    ///
+    /// - Parameters:
+    ///   - textDocument: text document to display
+    ///   - url: url of text document
+    ///   - completionHandler: called when done
+    private func show(textDocument: TextDocument, url: URL, completionHandler: @escaping (NSDocument?, Error?) -> Void) {
+        
+        // The app needs a project file to display textDocument
+        
+        // 1. Check if a project file is in the same directory or parent directory.
+        //    If so, open project file
+        let documentDirectory = url.deletingLastPathComponent()
+        let parentDirectory = documentDirectory.deletingLastPathComponent()
+        do {
+            if let projectFileURL = [try self.findProjectFile(in: documentDirectory), try self.findProjectFile(in: parentDirectory)].compactMap({ $0 }).first {
+                
+                // Open found project file
+                self.openDocument(withContentsOf: projectFileURL, display: false, completionHandler: { (document, documentWasAlreadyOpen, error) in
+                    
+                    // Error opening project file
+                    guard error == nil else {
+                        assertionFailure(error!.localizedDescription)
+                        completionHandler(document, error!)
+                        return
+                    }
+                    
+                    // Somehow opened document isn't a project file
+                    guard let projectDocument = document as? ProjectDocument else {
+                        assertionFailure("project isn't a project")
+                        completionHandler(document, CompositeError.cannotOpenFile(projectFileURL.path))
+                        return
+                    }
+                    
+                    // Show textDocument as part of the project
+                    self.showTextDocument(textDocument, asPartOf: projectDocument)
+                    completionHandler(textDocument, nil)
+                })
+                return
+            }
+        } catch {
+            completionHandler(textDocument, error)
+            return
+        }
+        
+        
+        assertionFailure()
+        // 2. There is no project file. Create a lost of platforms and frameworks
+        //    that support the text file extension.
+        
+        // 3. Present user with choice to create a new project.
+        
+        // 4. Create new project and add selected file
+        
+    }
+
+    
+    /// Shows text document and project
+    ///
+    /// - Parameters:
+    ///   - textDocument: textDocument to be displayed
+    ///   - project: project textDocument is part of
+    private func showTextDocument(_ textDocument: TextDocument, asPartOf project: ProjectDocument) {
+        
+        textDocument.project = project
+        textDocument.makeWindowControllers()
+        textDocument.showWindows()
     }
 }

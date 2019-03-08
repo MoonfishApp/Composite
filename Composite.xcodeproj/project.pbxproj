@@ -315,6 +315,9 @@
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
+		C7DB1672223243B60021C222 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DB1671223243B60021C222 /* Import.storyboard */; };
+		C7DB1674223246860021C222 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1673223246860021C222 /* ImportViewController.swift */; };
+		C7DB1676223246DE0021C222 /* ImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1675223246DE0021C222 /* ImportManager.swift */; };
 		C7DCFE8A2224C30D00CB63DE /* NSPointerArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */; };
 		C7DDD74A2140A65700674942 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD7492140A65700674942 /* Dependency.swift */; };
 		C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD74B2140AB6D00674942 /* Dependencies.plist */; };
@@ -676,6 +679,9 @@
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C7DB1671223243B60021C222 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
+		C7DB1673223246860021C222 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
+		C7DB1675223246DE0021C222 /* ImportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportManager.swift; sourceTree = "<group>"; };
 		C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPointerArray.swift; sourceTree = "<group>"; };
 		C7DDD7492140A65700674942 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		C7DDD74B2140AB6D00674942 /* Dependencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependencies.plist; sourceTree = "<group>"; };
@@ -1631,6 +1637,16 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		C7DB1670223243A20021C222 /* Import */ = {
+			isa = PBXGroup;
+			children = (
+				C7DB1671223243B60021C222 /* Import.storyboard */,
+				C7DB1673223246860021C222 /* ImportViewController.swift */,
+				C7DB1675223246DE0021C222 /* ImportManager.swift */,
+			);
+			path = Import;
+			sourceTree = "<group>";
+		};
 		C7DDD751214100C800674942 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1657,6 +1673,7 @@
 				C72FEB7F21E7E6B7000EF3C7 /* Preferences */,
 				C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */,
 				C72FEB7E21E7E6AB000EF3C7 /* Templates */,
+				C7DB1670223243A20021C222 /* Import */,
 				C72CF6072228DF3400637A8B /* ProjectInit */,
 				C72FEB8021E7E6C4000EF3C7 /* ProjectWindow */,
 				C70509D521541C6F003DDA2B /* Documents */,
@@ -1824,6 +1841,7 @@
 				C79A6D4E21EE9DF5007FB630 /* CustomSurroundStringView.storyboard in Resources */,
 				C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */,
 				C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
+				C7DB1672223243B60021C222 /* Import.storyboard in Resources */,
 				C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */,
 				C79A6D3021EE9D56007FB630 /* FindPanel.storyboard in Resources */,
 				C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
@@ -2131,6 +2149,7 @@
 				C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */,
 				C79A75AC21EEEE46007FB630 /* AppInfo.swift in Sources */,
 				C79A6CB021EE9C10007FB630 /* OrderedSet.swift in Sources */,
+				C7DB1674223246860021C222 /* ImportViewController.swift in Sources */,
 				C79A75AD21EEEE46007FB630 /* WriteToConsoleCommand.swift in Sources */,
 				C79A75CE21EEF07D007FB630 /* RegexFindPanelTextView.swift in Sources */,
 				C79A6C4421EE9AFB007FB630 /* SelectionColorWell.swift in Sources */,
@@ -2210,6 +2229,7 @@
 				C70509EA2155B486003DDA2B /* DependencyState.swift in Sources */,
 				C79A75CB21EEF07D007FB630 /* FindPanelTextView.swift in Sources */,
 				C79A6CB221EE9C10007FB630 /* Atomic.swift in Sources */,
+				C7DB1676223246DE0021C222 /* ImportManager.swift in Sources */,
 				C79A6D1821EE9C64007FB630 /* NSView+ViewController.swift in Sources */,
 				C7E76448212358A900867DA4 /* ProjectInitViewController.swift in Sources */,
 				C79A75AE21EEEE46007FB630 /* ServicesProvider.swift in Sources */,
