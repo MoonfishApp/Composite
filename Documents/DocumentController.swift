@@ -148,8 +148,8 @@ class DocumentController: NSDocumentController {
                     // Show textDocument as part of the project
                     self.showTextDocument(textDocument, asPartOf: projectDocument)
                     completionHandler(textDocument, nil)
-                    return
                 })
+                return
             }
         } catch {
             completionHandler(textDocument, error)
