@@ -8,11 +8,32 @@
 
 import Cocoa
 
-class ImportViewController: NSViewController {
+final class ImportViewController: NSViewController {
+    
+    @IBOutlet weak var createNewProjectButton: NSButton!
+    
+    var importManager: ImportManager! {
+        didSet {
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
     }
+    
+    @IBAction func createNewProject(_ sender: Any) {
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+    }
+}
+
+extension ImportViewController: NSTableViewDataSource {
+    
+}
+
+extension ImportViewController: NSTableViewDelegate {
     
 }

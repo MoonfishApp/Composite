@@ -32,8 +32,7 @@ struct DependencyFramework: Codable {
     
     /// True if is this is the default framework for the platform
     let defaultFramework: Bool
-
-    // TODO: Can we add a filter or regex or something that will scan and recognize an
-    // existing project as a project created in this framework? E.g. to recognize if
-    // a project was created by EtherLime or Truffle?
+    
+    /// Supported file extensions of contract types, e.g. "sol" or "scilla"
+    let fileExtension: [String]?
 }

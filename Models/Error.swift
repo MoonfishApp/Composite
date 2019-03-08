@@ -16,4 +16,5 @@ enum CompositeError: Error {
     case frameworkNotFound(String)
     case bashScriptFailed(String)
     case initError(String)
+    case internalError(String)
 }

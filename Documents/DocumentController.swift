@@ -262,15 +262,10 @@ extension DocumentController {
             return
         }
         
-        
-        assertionFailure()
-        // 2. There is no project file. Create a lost of platforms and frameworks
-        //    that support the text file extension.
-        
-        // 3. Present user with choice to create a new project.
-        
-        // 4. Create new project and add selected file
-        
+        // 2. No project file found. Hand over to importViewController
+        let importWindowController = (NSStoryboard(name: NSStoryboard.Name("Import"), bundle: nil).instantiateInitialController()! as! NSWindowController)
+        (importWindowController.contentViewController as! ImportViewController).importManager = ImportManager(document: textDocument)
+        importWindowController.showWindow(self)
     }
 
     
