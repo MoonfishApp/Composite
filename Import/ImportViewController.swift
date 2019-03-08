@@ -30,10 +30,15 @@ final class ImportViewController: NSViewController {
     }
 }
 
-extension ImportViewController: NSTableViewDataSource {
+extension ImportViewController: NSOutlineViewDelegate {
     
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        return nil
+    }
+    
+//    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+//        <#code#>
+//    }
 }
 
-extension ImportViewController: NSTableViewDelegate {
-    
-}
+

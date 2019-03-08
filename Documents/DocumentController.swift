@@ -263,9 +263,13 @@ extension DocumentController {
         }
         
         // 2. No project file found. Hand over to importViewController
-        let importWindowController = (NSStoryboard(name: NSStoryboard.Name("Import"), bundle: nil).instantiateInitialController()! as! NSWindowController)
-        (importWindowController.contentViewController as! ImportViewController).importManager = ImportManager(document: textDocument)
-        importWindowController.showWindow(self)
+        do {
+            let importWindowController = (NSStoryboard(name: NSStoryboard.Name("Import"), bundle: nil).instantiateInitialController()! as! NSWindowController)
+            (importWindowController.contentViewController as! ImportViewController).importManager = try ImportManager(document: textDocument)
+            importWindowController.showWindow(self)
+        } catch {
+            completionHandler(textDocument, error)
+        }
     }
 
     

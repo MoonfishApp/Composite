@@ -8,19 +8,44 @@
 
 import Cocoa
 
-final class ImportManager {
+final class ImportManager: NSObject {
     
-    let document: NSDocument
+    private let document: NSDocument
     
-    init(document: NSDocument) {
+    private let platforms: [DependencyPlatformViewModel]
+    
+    init(document: NSDocument) throws {
+    
         self.document = document
         
         // Search for frameworks that support the file extension of document
+        platforms = try DependencyPlatformViewModel.loadPlatforms() //(forExtension: document.fileExtension)
         
     }
 }
 
-// TODO: Can we add a filter or regex or something that will scan and recognize an
-// existing project as a project created in this framework? E.g. to recognize if
-// a project was created by EtherLime or Truffle?
-
+extension ImportManager: NSOutlineViewDataSource {
+    
+    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
+        if let item = item as? DependencyPlatformViewModel {
+            return item.frameworks.count
+        } else if item == nil {
+            // Root
+            return self.platforms.count
+        } else {
+            assertionFailure()
+            return 0
+        }
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
+        if let item = item as? DependencyPlatformViewModel, item.frameworks.count > 0 {
+            return true
+        }
+        return false
+    }
+    
+    //    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+    //
+    //    }
+}
