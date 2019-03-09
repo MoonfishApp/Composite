@@ -45,8 +45,8 @@ final class FileNavigatorViewController: NSViewController {
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do view setup here.
     }
     
     @IBAction func fileViewDoubleClick(_ sender: NSOutlineView) {

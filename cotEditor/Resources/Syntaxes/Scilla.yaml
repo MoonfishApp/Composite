@@ -170,6 +170,4 @@ numbers:
 #- beginString: "(?:\\d+)"
 #  regularExpression: true
 
-completions:
-- keyString: "contract"
-- keyString: "transition"
+completions: []

@@ -121,7 +121,6 @@
 		C79A6C1121EE9AC1007FB630 /* NSTextView+TextReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BFA21EE9AC0007FB630 /* NSTextView+TextReplacement.swift */; };
 		C79A6C1221EE9AC1007FB630 /* EditorTextView+Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BFB21EE9AC0007FB630 /* EditorTextView+Scaling.swift */; };
 		C79A6C1321EE9AC1007FB630 /* EditorTextView+CursorMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BFC21EE9AC0007FB630 /* EditorTextView+CursorMovement.swift */; };
-		C79A6C1421EE9AC1007FB630 /* EditorTextView+WindowUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BFD21EE9AC0007FB630 /* EditorTextView+WindowUpdate.swift */; };
 		C79A6C1521EE9AC1007FB630 /* NSTextView+MultiCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BFE21EE9AC0007FB630 /* NSTextView+MultiCursor.swift */; };
 		C79A6C1621EE9AC1007FB630 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BFF21EE9AC0007FB630 /* LayoutManager.swift */; };
 		C79A6C1721EE9AC1007FB630 /* EditorTextView+SurroundSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6C0021EE9AC1007FB630 /* EditorTextView+SurroundSelection.swift */; };
@@ -2251,7 +2250,6 @@
 				C79A6C9C21EE9BEC007FB630 /* CharacterInfo.swift in Sources */,
 				C79A6C4221EE9AFB007FB630 /* TokenTextView.swift in Sources */,
 				C79A6C0721EE9AC1007FB630 /* EditorTextView+Indenting.swift in Sources */,
-				C79A6C1421EE9AC1007FB630 /* EditorTextView+WindowUpdate.swift in Sources */,
 				C79A6C7921EE9B82007FB630 /* SyntaxStyleValidator.swift in Sources */,
 				C79A75C021EEF070007FB630 /* FindPanelController.swift in Sources */,
 				C79A6CE721EE9C52007FB630 /* String+JapaneseTransformation.swift in Sources */,

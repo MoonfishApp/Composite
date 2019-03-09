@@ -33,11 +33,7 @@ extension NSTextView {
     @discardableResult
     func replace(with string: String, range: NSRange, selectedRange: NSRange?, actionName: String? = nil) -> Bool {
         
-        let selectedRanges: [NSRange]? = {
-            guard let selectedRange = selectedRange else { return nil }
-            
-            return [selectedRange]
-        }()
+        let selectedRanges: [NSRange]? = selectedRange.flatMap { [$0] }
         
         return self.replace(with: [string], ranges: [range], selectedRanges: selectedRanges, actionName: actionName)
     }
@@ -63,7 +59,6 @@ extension NSTextView {
         if let actionName = actionName {
             self.undoManager?.setActionName(actionName)
         }
-        
         
         textStorage.beginEditing()
         // use a backward enumeration to skip adjustment of applying location
@@ -115,7 +110,7 @@ extension NSTextView {
     func trimTrailingWhitespace(ignoresEmptyLines: Bool, keepingEditingPoint: Bool = false) {
         
         assert(Thread.isMainThread)
-
+        
         let ranges = self.string.rangesOfTrailingWhitespace(ignoresEmptyLines: ignoresEmptyLines)
         let editingRanges = (self.rangesForUserTextChange ?? self.selectedRanges).map { $0.rangeValue }
         
@@ -123,7 +118,7 @@ extension NSTextView {
         let replacementRanges: [NSRange] = keepingEditingPoint
             ? ranges.filter { range in editingRanges.allSatisfy { !$0.touches(range) } }
             : ranges
-           
+        
         guard !replacementRanges.isEmpty else { return }
         
         let replacementStrings = [String](repeating: "", count: replacementRanges.count)
@@ -166,7 +161,7 @@ extension String {
 
 
 extension String {
-
+    
     func rangesOfTrailingWhitespace(ignoresEmptyLines: Bool) -> [NSRange] {
         
         let pattern = ignoresEmptyLines ? "(?<!^|[ \\t])[ \\t]+$" : "[ \\t]+$"

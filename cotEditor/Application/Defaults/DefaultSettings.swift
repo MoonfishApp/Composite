@@ -100,7 +100,7 @@ struct DefaultSettings {
         .completesDocumentWords: true,
         .completesSyntaxWords: true,
         .completesStandartWords: false,
-        .autoComplete: false,
+        .autoComplete: true,
         
         .lineEndCharCode: 0,
         .encodingList: DefaultSettings.encodings.map { UInt($0) },
