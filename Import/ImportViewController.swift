@@ -46,8 +46,15 @@ final class ImportViewController: NSViewController {
     func noFrameworksFound() {
         
         self.createNewProjectButton.isEnabled = false
-        assertionFailure()
-        // TODO:
+        let alert = NSAlert()
+        alert.messageText = "Unable to open file"
+        alert.informativeText = "Unknown contract type"
+        alert.addButton(withTitle: "OK")
+        alert.alertStyle = .warning
+        
+        alert.beginSheetModal(for: self.view.window!) { response in
+            self.view.window?.close()
+        }
     }
 }
 
