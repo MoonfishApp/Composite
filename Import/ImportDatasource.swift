@@ -54,9 +54,21 @@ extension ImportDatasource: NSOutlineViewDataSource {
         }
         return false
     }
+
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        if item == nil, let platforms = platforms {
+            // Root
+            return platforms[index]
+        } else if let item = item as? DependencyPlatformViewModel {
+            return item.frameworks[index]
+        } else {
+            assertionFailure()
+            return ""
+        }
+    }
     
-    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
-        
+    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any?  {
+
         if let item = item as? DependencyPlatformViewModel {
             return item.name
         } else if let item = item as? DependencyFrameworkViewModel {
@@ -65,8 +77,5 @@ extension ImportDatasource: NSOutlineViewDataSource {
             return "unknown"
         }
     }
-    
-//        func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-//
-//        }
+
 }
