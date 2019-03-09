@@ -317,7 +317,7 @@
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
 		C7DB1672223243B60021C222 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DB1671223243B60021C222 /* Import.storyboard */; };
 		C7DB1674223246860021C222 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1673223246860021C222 /* ImportViewController.swift */; };
-		C7DB1676223246DE0021C222 /* ImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1675223246DE0021C222 /* ImportManager.swift */; };
+		C7DB1676223246DE0021C222 /* ImportDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1675223246DE0021C222 /* ImportDatasource.swift */; };
 		C7DCFE8A2224C30D00CB63DE /* NSPointerArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */; };
 		C7DDD74A2140A65700674942 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD7492140A65700674942 /* Dependency.swift */; };
 		C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD74B2140AB6D00674942 /* Dependencies.plist */; };
@@ -681,7 +681,7 @@
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7DB1671223243B60021C222 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
 		C7DB1673223246860021C222 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
-		C7DB1675223246DE0021C222 /* ImportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportManager.swift; sourceTree = "<group>"; };
+		C7DB1675223246DE0021C222 /* ImportDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDatasource.swift; sourceTree = "<group>"; };
 		C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPointerArray.swift; sourceTree = "<group>"; };
 		C7DDD7492140A65700674942 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		C7DDD74B2140AB6D00674942 /* Dependencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependencies.plist; sourceTree = "<group>"; };
@@ -1642,7 +1642,7 @@
 			children = (
 				C7DB1671223243B60021C222 /* Import.storyboard */,
 				C7DB1673223246860021C222 /* ImportViewController.swift */,
-				C7DB1675223246DE0021C222 /* ImportManager.swift */,
+				C7DB1675223246DE0021C222 /* ImportDatasource.swift */,
 			);
 			path = Import;
 			sourceTree = "<group>";
@@ -2229,7 +2229,7 @@
 				C70509EA2155B486003DDA2B /* DependencyState.swift in Sources */,
 				C79A75CB21EEF07D007FB630 /* FindPanelTextView.swift in Sources */,
 				C79A6CB221EE9C10007FB630 /* Atomic.swift in Sources */,
-				C7DB1676223246DE0021C222 /* ImportManager.swift in Sources */,
+				C7DB1676223246DE0021C222 /* ImportDatasource.swift in Sources */,
 				C79A6D1821EE9C64007FB630 /* NSView+ViewController.swift in Sources */,
 				C7E76448212358A900867DA4 /* ProjectInitViewController.swift in Sources */,
 				C79A75AE21EEEE46007FB630 /* ServicesProvider.swift in Sources */,

@@ -10,14 +10,18 @@ import Cocoa
 
 final class ImportViewController: NSViewController {
     
+    @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet weak var createNewProjectButton: NSButton!
-    
-    var importManager: ImportManager! {
+    @IBOutlet var importDatasource: ImportDatasource!
+
+    override var representedObject: Any? {
         didSet {
-            
+            guard let representedObject = representedObject as? TextDocument else { return }
+            self.importDatasource.document = representedObject
+            outlineView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -27,6 +31,7 @@ final class ImportViewController: NSViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
+        self.view.window?.close()
     }
 }
 

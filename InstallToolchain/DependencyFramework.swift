@@ -34,5 +34,5 @@ struct DependencyFramework: Codable {
     let defaultFramework: Bool
     
     /// Supported file extensions of contract types, e.g. "sol" or "scilla"
-    let fileExtension: [String]?
+    let fileExtensions: [String]?
 }

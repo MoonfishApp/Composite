@@ -46,13 +46,30 @@ struct DependencyPlatform: Codable {
     static func load(_ platform: Platform? = nil) throws -> DependencyPlatform? {
         
         let platforms = try loadPlatforms()
-        return platforms.filter{ (item) -> Bool in return item.platform == platform }.first
+        return platforms.filter{ $0.platform == platform }.first
     }
     
     static func loadIncluded() throws -> [DependencyPlatform] {
         
         let platforms = try loadPlatforms()
-        return platforms.filter{ (item) -> Bool in return item.frameworks.count > 0 }
+        return platforms.filter{ $0.frameworks.count > 0 }
+    }
+    
+    static func load(forExtension fileExtension: String) throws -> [DependencyPlatform]? {
+        
+        var supportedPlatforms = [DependencyPlatform]()
+        for platform in try loadIncluded() {
+        
+            // Assumption for now: if at least one framework supports the file extension,
+            // (equal to contract programming language), all frameworks of the platform
+            // will support the file extension. We'll need to revisit this if
+            // frameworks of a platform support different languages.
+            let frameworks = platform.frameworks.compactMap{ $0.fileExtensions?.contains(fileExtension) }
+            if !frameworks.isEmpty {
+                supportedPlatforms.append(platform)
+            }
+        }
+        return supportedPlatforms.isEmpty ? nil : supportedPlatforms
     }
 }
 

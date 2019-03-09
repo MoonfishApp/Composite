@@ -35,4 +35,9 @@ class DependencyPlatformViewModel {
         let platforms = try DependencyPlatform.loadPlatforms()
         return platforms.map { DependencyPlatformViewModel(platform: $0) }
     }
+    
+    static func loadPlatforms(forExtension fileExention: String) throws -> [DependencyPlatformViewModel]? {
+        guard let platforms = try DependencyPlatform.load(forExtension: fileExention) else { return nil }
+        return platforms.map { DependencyPlatformViewModel(platform: $0) }
+    }
 }
