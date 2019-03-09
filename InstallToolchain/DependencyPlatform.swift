@@ -64,7 +64,7 @@ struct DependencyPlatform: Codable {
             // (equal to contract programming language), all frameworks of the platform
             // will support the file extension. We'll need to revisit this if
             // frameworks of a platform support different languages.
-            let frameworks = platform.frameworks.compactMap{ $0.fileExtensions?.contains(fileExtension) }
+            let frameworks = platform.frameworks.filter { $0.fileExtensions?.contains(fileExtension) ?? true }
             if !frameworks.isEmpty {
                 supportedPlatforms.append(platform)
             }

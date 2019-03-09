@@ -35,9 +35,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1N-6j-Dag">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1N-6j-Dag">
                                 <rect key="frame" x="311" y="13" width="155" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Create new project" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XH6-e3-tt6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -46,9 +45,8 @@
                                     <action selector="createNewProject:" target="BUd-QZ-CZh" id="KmS-0t-EQK"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4TD-Bs-Es6">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4TD-Bs-Es6">
                                 <rect key="frame" x="229" y="13" width="82" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qev-Fx-Jm2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -60,25 +58,14 @@ Gw
                                     <action selector="cancel:" target="BUd-QZ-CZh" id="M6N-1b-0Ld"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egD-60-wOW">
-                                <rect key="frame" x="18" y="196" width="444" height="51"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" selectable="YES" id="eXw-11-GSn">
-                                    <font key="font" metaFont="system"/>
-                                    <string key="title">Composite is unable to find a Composite project file. Select the platform and framework to create a new project and copy the selected file into the project.</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zo-Iy-TU0">
-                                <rect key="frame" x="20" y="50" width="440" height="138"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" id="DbI-Tj-JtB">
-                                    <rect key="frame" x="1" y="1" width="438" height="136"/>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zo-Iy-TU0">
+                                <rect key="frame" x="20" y="50" width="440" height="158"/>
+                                <clipView key="contentView" id="DbI-Tj-JtB">
+                                    <rect key="frame" x="1" y="1" width="438" height="156"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="z2P-cx-1K8" id="YoA-hN-82a">
-                                            <rect key="frame" x="0.0" y="0.0" width="476" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="476" height="156"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -125,8 +112,8 @@ Gw
                                         </outlineView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.026315789473684209" horizontal="YES" id="Bi4-si-0b3">
-                                    <rect key="frame" x="1" y="121" width="438" height="16"/>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Bi4-si-0b3">
+                                    <rect key="frame" x="1" y="141" width="438" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="mSU-mm-eLz">
@@ -134,7 +121,28 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="egD-60-wOW">
+                                <rect key="frame" x="18" y="216" width="444" height="34"/>
+                                <textFieldCell key="cell" selectable="YES" title="Composite is unable to find a Composite project file. Select the platform and framework to create a new project." id="eXw-11-GSn">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="b1N-6j-Dag" secondAttribute="bottom" constant="20" id="B9J-Y9-CJx"/>
+                            <constraint firstItem="b1N-6j-Dag" firstAttribute="leading" secondItem="4TD-Bs-Es6" secondAttribute="trailing" constant="12" id="F2r-mi-0NS"/>
+                            <constraint firstItem="egD-60-wOW" firstAttribute="top" secondItem="uFe-Mc-xt9" secondAttribute="top" constant="20" id="JTL-EQ-1Ya"/>
+                            <constraint firstAttribute="trailing" secondItem="b1N-6j-Dag" secondAttribute="trailing" constant="20" id="Vge-Tq-rjh"/>
+                            <constraint firstAttribute="trailing" secondItem="egD-60-wOW" secondAttribute="trailing" constant="20" id="XIl-60-YWf"/>
+                            <constraint firstItem="0zo-Iy-TU0" firstAttribute="leading" secondItem="uFe-Mc-xt9" secondAttribute="leading" constant="20" id="ZWq-VZ-isJ"/>
+                            <constraint firstAttribute="bottom" secondItem="0zo-Iy-TU0" secondAttribute="bottom" constant="50" id="fw7-O7-v9w"/>
+                            <constraint firstAttribute="trailing" secondItem="0zo-Iy-TU0" secondAttribute="trailing" constant="20" id="nlA-yw-AJa"/>
+                            <constraint firstItem="0zo-Iy-TU0" firstAttribute="top" secondItem="egD-60-wOW" secondAttribute="bottom" constant="8" id="oVt-hw-Eln"/>
+                            <constraint firstItem="egD-60-wOW" firstAttribute="leading" secondItem="uFe-Mc-xt9" secondAttribute="leading" constant="20" id="tjH-zP-Gp8"/>
+                            <constraint firstAttribute="bottom" secondItem="4TD-Bs-Es6" secondAttribute="bottom" constant="20" id="toh-mE-n7Y"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="createNewProjectButton" destination="b1N-6j-Dag" id="oXP-NB-W3S"/>

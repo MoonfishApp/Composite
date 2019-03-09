@@ -22,9 +22,12 @@ final class ImportViewController: NSViewController {
             outlineView.expandItem(nil, expandChildren: true)
             
             // Select first framework
-//            let index = outlineView.index
+            outlineView.selectRowIndexes([1], byExtendingSelection: true)
             
-//            outlineView.selectite
+            // If no suitable frameworks were found
+            if importDatasource.platforms?.isEmpty ?? true {
+                self.noFrameworksFound()
+            }
         }
     }
     
@@ -38,6 +41,13 @@ final class ImportViewController: NSViewController {
     
     @IBAction func cancel(_ sender: Any) {
         self.view.window?.close()
+    }
+    
+    func noFrameworksFound() {
+        
+        self.createNewProjectButton.isEnabled = false
+        assertionFailure()
+        // TODO:
     }
 }
 
