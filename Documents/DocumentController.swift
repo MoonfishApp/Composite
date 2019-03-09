@@ -86,6 +86,19 @@ class DocumentController: NSDocumentController {
         }
     }
     
+    override func beginOpenPanel(_ openPanel: NSOpenPanel, forTypes inTypes: [String]?, completionHandler: @escaping (Int) -> Void) {
+        
+        // TODO: If inTypes is passed to super, the open dialog will allow *every*
+        // document to be opened, including PDFs and PNGs
+        // Quick fix: hardcoding supported contracts.
+        // This doesn't affect opening other files (e.g. js or json) from within
+        // project window's file navigator.
+//        inTypes?.compactMap { print($0) }
+        super.beginOpenPanel(openPanel, forTypes: ["composite", "scilla", "sol"]) { (result: Int) in
+            completionHandler(result)
+        }
+    }
+    
     /// open untitled document
     /// Not supported
     override func openUntitledDocumentAndDisplay(_ displayDocument: Bool) throws -> NSDocument {

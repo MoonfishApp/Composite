@@ -6,7 +6,7 @@
 //  Copyright © 2019 A Puzzle A Day. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 /**
  
@@ -85,6 +85,11 @@ class ProjectInit: NSObject {
     deinit {
         print("Deinit ProjectInit")
         assertionFailure()
+    }
+    
+    static func canCreateProject(at url: URL) -> Bool {
+
+        return FileManager.default.fileExists(atPath: url.path) == false
     }
     
     func initializeProject(output: @escaping (String)->Void, finished: @escaping (Int, Error?) -> Void) throws {

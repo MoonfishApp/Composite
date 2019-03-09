@@ -217,11 +217,10 @@ class ChooseTemplateViewController: NSViewController {
             guard result == .OK, let directory = savePanel.url else { return }
             
             // Do not allow overwriting existing files or directories
-            let fileManager = FileManager.default
-            guard fileManager.fileExists(atPath: directory.path) == false else {
+            guard ProjectInit.canCreateProject(at: directory) == true else {
                 let alert = NSAlert()
-                alert.informativeText = "Cannot overwrite existing file or directory."
-                alert.messageText = "Choose another projectname."
+                alert.messageText = "Cannot overwrite existing file or directory."
+                alert.informativeText = "Choose another projectname."
                 alert.runModal()
                 return
             }

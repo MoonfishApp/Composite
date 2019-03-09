@@ -37,6 +37,50 @@ final class ImportViewController: NSViewController {
     }
     
     @IBAction func createNewProject(_ sender: Any) {
+        
+        let savePanel = NSSavePanel()
+        savePanel.nameFieldStringValue = (representedObject as! NSDocument).fileURL?.deletingPathExtension().path ?? ""
+        savePanel.beginSheetModal(for: view.window!) { result in
+            
+            guard result == .OK, let directory = savePanel.url else { return }
+            
+            // Do not allow overwriting existing files or directories
+            guard ProjectInit.canCreateProject(at: directory) == true else {
+                let alert = NSAlert()
+                alert.messageText = "Cannot overwrite existing file or directory."
+                alert.informativeText = "Choose another projectname."
+                alert.runModal()
+                return
+            }
+            
+            // Fetch selected framework
+//            guard let framework = self.outlineView.item(atRow: outlineView.selectedRow) as? DependencyFrameworkViewModel else { return assertionFailure() }
+//            
+//            // Create project init
+//            let projectInit = ProjectInit(projectName: <#T##String#>, baseDirectory: <#T##String#>, framework: <#T##DependencyFrameworkViewModel#>, platform: <#T##DependencyPlatformViewModel#>)
+            
+            
+            // Fetch selected view models
+//            let platform = platforms[platformPopup.indexOfSelectedItem]
+//            let framework = platform.frameworks[frameworkPopup.indexOfSelectedItem]
+//
+//            let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, framework: framework, platform: platform)
+//            return projectInit
+            
+//            let projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
+//            let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
+//
+//            do {
+//                let projectInit = try self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template)
+//                self.projectInit = projectInit
+//            } catch {
+//                let alert = NSAlert(error: error)
+//                alert.runModal()
+//            }
+            
+            let id = NSStoryboardSegue.Identifier("ProjectInitSegue")
+            self.performSegue(withIdentifier: id, sender: self)
+        }
     }
     
     @IBAction func cancel(_ sender: Any) {
