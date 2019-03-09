@@ -19,12 +19,18 @@ final class ImportViewController: NSViewController {
             guard let representedObject = representedObject as? TextDocument else { return }
             self.importDatasource.document = representedObject
             outlineView.reloadData()
+            outlineView.expandItem(nil, expandChildren: true)
+            
+            // Select first framework
+//            let index = outlineView.index
+            
+//            outlineView.selectite
         }
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do view setup here.
     }
     
     @IBAction func createNewProject(_ sender: Any) {
@@ -38,12 +44,27 @@ final class ImportViewController: NSViewController {
 extension ImportViewController: NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        return nil
+
+        guard let view: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ImportCellView"), owner: self) as? NSTableCellView else {
+            assertionFailure()
+            return nil
+        }
+        
+        if let item = item as? DependencyPlatformViewModel {
+            view.textField?.stringValue = item.name
+        } else if let item = item as? DependencyFrameworkViewModel {
+            view.textField?.stringValue = item.name
+        } else {
+            assertionFailure()
+            view.textField?.stringValue = ""
+        }
+
+        return view
     }
     
-//    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
-//        <#code#>
-//    }
+    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+        return item is DependencyFrameworkViewModel
+    }
 }
 
 

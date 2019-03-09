@@ -37,11 +37,10 @@ final class ImportDatasource: NSObject {
 extension ImportDatasource: NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if let item = item as? DependencyPlatformViewModel {
-            return item.frameworks.count
-        } else if item == nil {
-            // Root
+        if item == nil {
             return self.platforms?.count ?? 0
+        } else if let item = item as? DependencyPlatformViewModel {
+            return item.frameworks.count
         } else {
             assertionFailure()
             return 0
@@ -67,15 +66,18 @@ extension ImportDatasource: NSOutlineViewDataSource {
         }
     }
     
-    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any?  {
-
-        if let item = item as? DependencyPlatformViewModel {
-            return item.name
-        } else if let item = item as? DependencyFrameworkViewModel {
-            return item.displayName
-        } else {
-            return "unknown"
-        }
-    }
+//    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any?  {
+//
+//        if let item = item as? DependencyPlatformViewModel {
+//            print(item.name)
+//            return item.name
+//        } else if let item = item as? DependencyFrameworkViewModel {
+//            print(item.displayName)
+//            return item.displayName
+//        } else {
+//            assertionFailure()
+//            return "unknown"
+//        }
+//    }
 
 }
