@@ -464,7 +464,7 @@ Gw
         <!--Window Controller-->
         <scene sceneID="Zvs-Ds-wLj">
             <objects>
-                <windowController id="aiD-bt-la6" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="ProjectInit" id="aiD-bt-la6" sceneMemberID="viewController">
                     <window key="window" title="Preparing..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="RCo-9e-Arc">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -482,10 +482,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="964" y="1537"/>
         </scene>
-        <!--Creating Template-->
+        <!--Initializing Project-->
         <scene sceneID="oPn-9l-uYc">
             <objects>
-                <viewController title="Creating Template" id="M4e-WR-LdV" customClass="ProjectInitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Initializing Project" id="M4e-WR-LdV" customClass="ProjectInitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ABZ-cb-tOG">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>

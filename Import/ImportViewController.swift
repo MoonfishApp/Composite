@@ -13,8 +13,6 @@ final class ImportViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet weak var createNewProjectButton: NSButton!
     @IBOutlet var importDatasource: ImportDatasource!
-    
-    var projectInit: ProjectInit? = nil
 
     override var representedObject: Any? {
         didSet {
@@ -62,32 +60,27 @@ final class ImportViewController: NSViewController {
                 else { return assertionFailure() }
             
             // Create project init
+            let projectInit: ProjectInit
             do {
-                self.projectInit = try ProjectInit(directory: directory, template: nil, framework: framework, platform: platform, importFile: (self.representedObject as! NSDocument).fileURL)
+                projectInit = try ProjectInit(directory: directory, template: nil, framework: framework, platform: platform, importFile: (self.representedObject as! NSDocument).fileURL)
             } catch {
                 let alert = NSAlert(error: error)
                 alert.runModal()
+                self.view.window?.close()
+                return
             }
-            (self.representedObject as! NSDocument).close()
             
-            let id = NSStoryboardSegue.Identifier("ProjectInitSegue")
-            self.performSegue(withIdentifier: id, sender: self)
+            // Close windows and references to document
+            (self.representedObject as! NSDocument).close()
+            self.view.window?.close()
+            
+            // Show Project Init
+            let projectInitWindowController = (NSStoryboard(name: NSStoryboard.Name("Template"), bundle: nil).instantiateController(withIdentifier: "ProjectInit")) as! NSWindowController
+            projectInitWindowController.showWindow(self)
+            (projectInitWindowController.contentViewController as! ProjectInitViewController).projectInit = projectInit
         }
     }
-    
-    /// Set up PreparingViewController
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        
-        super.prepare(for: segue, sender: sender)
-        guard let projectInit = projectInit else { return }
-        
-        if let destination = segue.destinationController as? NSWindowController, let projectInitWindow = destination.contentViewController as? ProjectInitViewController {
-            projectInitWindow.projectInit = projectInit
-        } else {
-            assertionFailure()
-        }
-        self.view.window!.close()
-    }
+
     
     @IBAction func cancel(_ sender: Any) {
         self.view.window?.close()
