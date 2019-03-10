@@ -7,12 +7,19 @@
 //
 
 import Foundation
+import Cocoa
 
 class DependencyFrameworkViewModel {
 
-    private let framework: DependencyFramework
+    let framework: DependencyFramework
     
     private (set) var name: String
+    
+    private let iconName: String?
+    
+    var icon: NSImage? {
+        return NSImage(named: NSImage.Name(iconName ?? name))
+    }
     
     var version: String {
         for dependency in dependencies {
@@ -30,6 +37,8 @@ class DependencyFrameworkViewModel {
     let documentationUrl: String
     
     var description: String { return framework.description }
+    
+    var contractDirectory: String { return framework.contractDirectory }
     
     let dependencies: [DependencyViewModel]
     
@@ -64,6 +73,7 @@ class DependencyFrameworkViewModel {
     init(_ framework: DependencyFramework) {
         self.framework = framework
         name = framework.name
+        iconName = framework.iconName
         projectUrl = framework.projectUrl
         documentationUrl = framework.documentationUrl
         dependencies = framework.dependencies.map { DependencyViewModel($0) }

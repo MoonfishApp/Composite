@@ -16,9 +16,9 @@ class TemplateContainerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        templates = (childViewControllers.first! as! ChooseTemplateViewController) // Set in storyboard
-        options = (storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Options")) as! TemplateOptionsViewController)
-        addChildViewController(options)
+        templates = (children.first! as! ChooseTemplateViewController) // Set in storyboard
+        options = (storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("Options")) as! TemplateOptionsViewController)
+        addChild(options)
         
         templates.container = self
         options.container = self

@@ -13,20 +13,32 @@ import Cocoa
 /// Dependency is an application Composite depends on, e.g. truffle
 class Dependency: Codable {
     
-    /// Filename
+    /// Name of the dependency. If no filename is provided,
+    /// name will be assumed to be the filename.
+    /// The first character of name is automatically capitalized in the view model
     let name: String
     
+    /// In case the filename is not the same as the dependency name, filename is set
+    let filename: String?
+    
     /// Default location of the dependency
-    let defaultLocation: String
+    /// Unused
+//    let defaultLocation: String
     
     /// Version of this dependency is forwarded to the framework
     let isFrameworkVersion: Bool
     
     /// Command to display version
     let versionCommand: String?
+    
+    /// Optional regular expression pattern to parse version
+    let versionRegex: String?
         
     /// Command to install depedency
     let installCommand: String?
+    
+    /// Command to initialize dependency
+    let initCommand: String?
     
     /// If there's no command line install, use http link
     let installLink: String?

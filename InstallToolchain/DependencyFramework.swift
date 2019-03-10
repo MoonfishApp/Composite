@@ -14,6 +14,9 @@ struct DependencyFramework: Codable {
     
     /// Name of the framework, e.g. Truffle or EtherLime
     let name: String
+        
+    /// Name of the framework's icon image stored in assets
+    let iconName: String?
     
     /// Array of dependencies required to use the framework
     let dependencies: [Dependency]
@@ -28,9 +31,12 @@ struct DependencyFramework: Codable {
     let documentationUrl: String
     
     /// True if is this is the default framework for the platform
+    /// Used to pre-select framework in UI
     let defaultFramework: Bool
-
-    // TODO: Can we add a filter or regex or something that will scan and recognize an
-    // existing project as a project created in this framework? E.g. to recognize if
-    // a project was created by EtherLime or Truffle?
+    
+    /// E.g. "contracts"
+    let contractDirectory: String
+    
+    /// Supported file extensions of contract types, e.g. "sol" or "scilla"
+    let fileExtensions: [String]?
 }

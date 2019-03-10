@@ -20,7 +20,7 @@
 						<key>name</key>
 						<string>brew</string>
 						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
+						<string>/usr/local/bin/brew</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -46,7 +46,7 @@
 						<key>name</key>
 						<string>node</string>
 						<key>defaultLocation</key>
-						<string>/usr/local/bin</string>
+						<string>/usr/local/bin/node</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -58,7 +58,7 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated npm</string>
 						<key>comment</key>
 						<string>node and npm are required by Truffle</string>
 						<key>url</key>
@@ -70,7 +70,7 @@
 						<key>name</key>
 						<string>truffle</string>
 						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
+						<string>/usr/local/bin/truffle</string>
 						<key>isFrameworkVersion</key>
 						<true/>
 						<key>versionCommand</key>
@@ -106,7 +106,7 @@
 						<key>updateCommand</key>
 						<string>npm update --save solium</string>
 						<key>outdatedCommand</key>
-						<string>npm -g outdated tronbox</string>
+						<string>npm -g outdated solium</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
@@ -116,27 +116,31 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>Ganache.app</string>
+						<string>ganache</string>
+						<key>filename</key>
+						<string>ganache-cli</string>
 						<key>defaultLocation</key>
 						<string>/Applications</string>
 						<key>isFrameworkVersion</key>
 						<false/>
-						<key>versionCommand</key>
+						<key>versionCommand-macApps</key>
 						<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
+						<key>versionCommand</key>
+						<string>ganache-cli --version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installLink</key>
-						<string>https://truffleframework.com/ganache</string>
+						<key>installCommand</key>
+						<string>npm install -g ganache-cli</string>
 						<key>updateCommand</key>
-						<string></string>
+						<string>npm update -g ganache-cli</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm -g outdated ganache-cli</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
-						<string>https://truffleframework.com/ganache</string>
+						<string>https://www.npmjs.com/package/ganache-cli</string>
 						<key>required</key>
-						<true/>
+						<false/>
 					</dict>
 				</array>
 				<key>description</key>
@@ -147,6 +151,12 @@
 				<string>https://truffleframework.com/docs/truffle/overview</string>
 				<key>defaultFramework</key>
 				<false/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
+				<key>fileExtensions</key>
+				<array>
+					<string>sol</string>
+				</array>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -195,7 +205,7 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated npm</string>
 						<key>comment</key>
 						<string>node and npm are required by Truffle</string>
 						<key>url</key>
@@ -234,17 +244,32 @@
 				<string>https://etherlime.readthedocs.io/en/latest/</string>
 				<key>defaultFramework</key>
 				<true/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
+				<key>fileExtensions</key>
+				<array>
+					<string>sol</string>
+				</array>
 			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>zilliqa</string>
+		<key>projectUrl</key>
+		<string>https://zilliqa.com</string>
+		<key>documentationUrl</key>
+		<string>https://zilliqa.com/for-developers.html</string>
+		<key>frameworks</key>
+		<array>
 			<dict>
 				<key>name</key>
-				<string>Celer</string>
+				<string>Zilliqa</string>
 				<key>dependencies</key>
 				<array>
 					<dict>
 						<key>name</key>
 						<string>brew</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -269,8 +294,6 @@
 					<dict>
 						<key>name</key>
 						<string>node</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
@@ -282,9 +305,9 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated npm</string>
 						<key>comment</key>
-						<string>node and npm are required by Truffle</string>
+						<string></string>
 						<key>url</key>
 						<string>https://nodejs.org/</string>
 						<key>required</key>
@@ -292,122 +315,143 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>etherlime</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
+						<string>OCaml</string>
+						<key>filename</key>
+						<string>ocaml</string>
 						<key>isFrameworkVersion</key>
-						<true/>
+						<false/>
 						<key>versionCommand</key>
-						<string>etherlime --version</string>
+						<string>ocaml -version</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
-						<string>npm i -g etherlime</string>
+						<string>brew install ocaml</string>
 						<key>updateCommand</key>
-						<string>npm -g update --save etherlime</string>
+						<string>brew update ocaml</string>
 						<key>outdatedCommand</key>
-						<string>npm -g outdated etherlime</string>
+						<string>brew outdated ocaml</string>
 						<key>comment</key>
 						<string></string>
+						<key>url</key>
+						<string>https://ocaml.org</string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>OCaml Package Manager</string>
+						<key>filename</key>
+						<string>opam</string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>opam --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install gpatch opam</string>
+						<key>updateCommand</key>
+						<string>brew update gpatch opam</string>
+						<key>initCommand</key>
+						<string>opam init --disable-sandboxing -y --compiler=4.06.1</string>
+						<key>outdatedCommand</key>
+						<string>brew outdated opam</string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://opam.ocaml.org</string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>OCaml Toolchain</string>
+						<key>filename</key>
+						<string>ocaml-migrate-parsetree</string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>opam list installed ocaml-migrate-parsetree</string>
+						<key>versionRegex</key>
+						<string>\s(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
+						<key>installCommand</key>
+						<string>opam install ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 user-setup --yes</string>
+						<key>updateCommand</key>
+						<string>opam upgrade ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1  user-setup  --yes</string>
+						<key>outdatedCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://opam.ocaml.org</string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>yarn</string>
+						<key>isFrameworkVersion</key>
+						<true/>
+						<key>versionCommand</key>
+						<string>yarn --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install yarn</string>
+						<key>updateCommand</key>
+						<string>brew upgrade yarn</string>
+						<key>outdatedCommand</key>
+						<string>brew outdated yarn</string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://github.com/Zilliqa/scilla</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Kaya</string>
+						<key>filename</key>
+						<string>kaya-cli</string>
+						<key>isFrameworkVersion</key>
+						<true/>
+						<key>versionCommand</key>
+						<string>kaya-cli --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g tslib kaya-cli</string>
+						<key>installLink</key>
+						<string></string>
+						<key>updateCommand</key>
+						<string>npm -g update --save tslib kaya-cli</string>
+						<key>outdatedCommand</key>
+						<string>npm outdated kaya-cli</string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://github.com/Zilliqa/kaya</string>
 						<key>required</key>
 						<true/>
 					</dict>
 				</array>
 				<key>description</key>
-				<string>Etherlime is an ethereum development and deployment framework based on ethers.js. This framework provides alternative to the other web3.js based frameworks and allows for ultimate control by the developer.</string>
+				<string>Zilliqa enables new solutions to real-world problems with its scalable, secure, high-performance public blockchain platform.</string>
 				<key>projectUrl</key>
-				<string>https://github.com/LimeChain/etherlime</string>
+				<string>https://zilliqa.com</string>
 				<key>documentationUrl</key>
-				<string>https://etherlime.readthedocs.io/en/latest/</string>
+				<string>https://zilliqa.com/for-developers.html</string>
 				<key>defaultFramework</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>0x Instant</string>
-				<key>dependencies</key>
+				<key>iconName</key>
+				<string>Zilliqa</string>
+				<key>contractDirectory</key>
+				<string>contracts</string>
+				<key>fileExtensions</key>
 				<array>
-					<dict>
-						<key>name</key>
-						<string>brew</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>isFrameworkVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>brew -v</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string></string>
-						<key>installCommand-rem</key>
-						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
-						<key>updateCommand</key>
-						<string>brew update</string>
-						<key>outdatedCommand</key>
-						<string></string>
-						<key>comment</key>
-						<string>Brew is needed for installing npm</string>
-						<key>url</key>
-						<string>https://brew.sh</string>
-						<key>required</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>node</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin</string>
-						<key>isFrameworkVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>node -v</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>brew install node</string>
-						<key>updateCommand</key>
-						<string>brew upgrade node</string>
-						<key>outdatedCommand</key>
-						<string></string>
-						<key>comment</key>
-						<string>node and npm are required by Truffle</string>
-						<key>url</key>
-						<string>https://nodejs.org/</string>
-						<key>required</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>etherlime</string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>isFrameworkVersion</key>
-						<true/>
-						<key>versionCommand</key>
-						<string>etherlime --version</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>npm i -g etherlime</string>
-						<key>updateCommand</key>
-						<string>npm -g update --save etherlime</string>
-						<key>outdatedCommand</key>
-						<string>npm -g outdated etherlime</string>
-						<key>comment</key>
-						<string></string>
-						<key>required</key>
-						<true/>
-					</dict>
+					<string>scilla</string>
 				</array>
-				<key>description</key>
-				<string>Etherlime is an ethereum development and deployment framework based on ethers.js. This framework provides alternative to the other web3.js based frameworks and allows for ultimate control by the developer.</string>
-				<key>projectUrl</key>
-				<string>https://github.com/LimeChain/etherlime</string>
-				<key>documentationUrl</key>
-				<string>https://etherlime.readthedocs.io/en/latest/</string>
-				<key>defaultFramework</key>
-				<true/>
 			</dict>
 		</array>
 	</dict>
@@ -467,7 +511,7 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
-						<string></string>
+						<string>npm outdated npm</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
@@ -534,6 +578,12 @@
 				<string>https://developers.tron.network</string>
 				<key>defaultFramework</key>
 				<true/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
+				<key>fileExtensions</key>
+				<array>
+					<string>sol</string>
+				</array>
 			</dict>
 		</array>
 	</dict>

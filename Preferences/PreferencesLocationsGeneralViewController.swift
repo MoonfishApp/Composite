@@ -18,6 +18,6 @@ class PreferencesLocationsGeneralViewController: NSViewController {
     @IBAction func openInstall(_ sender: Any) {
         view.window?.close()
         guard let delegate = NSApplication.shared.delegate as? AppDelegate else { return }
-        delegate.showInstallWizard()        
+        delegate.showInstallToolchains(self)
     }
 }

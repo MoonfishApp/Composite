@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XbM-v8-GFD">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Inspector Tab View Controller-->
+        <scene sceneID="SEA-Kc-LgA">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="0" id="Sl9-6t-fag" customClass="InspectorTabViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="1" identifier="" id="lNS-TV-PCL"/>
+                        <tabViewItem label="2" id="spJ-4G-6Uf"/>
+                    </tabViewItems>
+                    <tabView key="tabView" id="oZA-KG-YDk">
+                        <rect key="frame" x="0.0" y="0.0" width="148" height="363"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="Sl9-6t-fag" id="dbc-fY-MpZ"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="oZA-KG-YDk" id="paa-FR-vFP"/>
+                        <segue destination="XbM-v8-GFD" kind="relationship" relationship="tabItems" id="bQ8-fV-tUa"/>
+                        <segue destination="beh-Dy-KNj" kind="relationship" relationship="tabItems" id="Hzk-Rn-B25"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="CiA-Th-RTJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-163" y="94.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="x8O-5s-egg">
+            <objects>
+                <viewController id="XbM-v8-GFD" sceneMemberID="viewController">
+                    <view key="view" id="icp-0J-tTB">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="431"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4pb-dZ-eqy">
+                                <rect key="frame" x="57" y="207" width="86" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="ABI Inspector" id="6G6-HJ-qgC">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="4pb-dZ-eqy" firstAttribute="centerX" secondItem="icp-0J-tTB" secondAttribute="centerX" id="aza-Oc-brO"/>
+                            <constraint firstItem="4pb-dZ-eqy" firstAttribute="centerY" secondItem="icp-0J-tTB" secondAttribute="centerY" id="tZg-zS-bF2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="pZP-2J-URy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="247" y="-58"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Gei-UR-B3K">
+            <objects>
+                <viewController id="beh-Dy-KNj" sceneMemberID="viewController">
+                    <view key="view" id="wLf-l4-gUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="431"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JwD-8j-9mO">
+                                <rect key="frame" x="82" y="141" width="73" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Inspector 2" id="dL7-Bd-Ct2">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="dID-cq-6aF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="247" y="471"/>
+        </scene>
+    </scenes>
+</document>

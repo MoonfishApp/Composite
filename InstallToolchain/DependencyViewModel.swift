@@ -13,25 +13,32 @@ class DependencyViewModel {
     
     static let notificationString = "DependencyViewModelNotification"
     
-    private weak var installOperation: BashOperation? = nil
-    
-    private weak var updateOperation: BashOperation? = nil
+    private var installOperations = NSPointerArray.weakObjects()
+    private var updateOperations = NSPointerArray.weakObjects()
     
     let name: String
     
-    var displayName: String { return state.display(name: name)}
+    /// Includes install-state emoji
+    var displayName: String { return state.display(name: name) }
     
-    let path: String
+    let filename: String
     
     let installLink: String?
     
     let versionCommand: String?
     
+    let versionRegex: String
+    
     let installCommand: String?
+    
+    let initCommand: String?
     
     let updateCommand: String?
     
     let outdatedCommand: String?
+    
+    // Find location of dependency
+    let whichCommand: String
     
     private (set) var version: String = "" {
         didSet {
@@ -40,6 +47,12 @@ class DependencyViewModel {
     }
     
     private (set) var newerVersionAvailable: String? = nil {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
+        }
+    }
+
+    private (set) var path: String? = nil {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
         }
@@ -57,12 +70,18 @@ class DependencyViewModel {
         }
         
         // Not installed
-        if isInstalled == false {
+        // Note that some tools (like opam) only set a version humber
+        if path == nil && version.isEmpty {
             return .notInstalled
         }
         
+        // Unable to ascertain whether version is up to date
+        if newerVersionAvailable == nil && (outdatedCommand ?? "").isEmpty {
+            return .unknown
+        }
+        
         // upToDate / isOutdated
-        if newerVersionAvailable != nil {
+        if newerVersionAvailable != nil  {
             return .outdated
         }
         
@@ -72,33 +91,42 @@ class DependencyViewModel {
     init(_ dependency: Dependency) {
     
         name = dependency.name.capitalizedFirstChar().replacingOccurrences(of: ".app", with: "")
-        
-        /// The full path of the app (directory and app)
-        path = URL(fileURLWithPath: dependency.defaultLocation).appendingPathComponent(dependency.name).path
+        filename = (dependency.filename ?? "").isEmpty ? dependency.name : dependency.filename!
+    
         required = dependency.required
         isFrameworkVersion = dependency.isFrameworkVersion
         installLink = dependency.installLink
         
         versionCommand = dependency.versionCommand
+        versionRegex = (dependency.versionRegex ?? "").isEmpty ? "(\\d+)\\.(\\d+)\\.(\\d+)\\-?(\\w+)?" : dependency.versionRegex!
         installCommand = dependency.installCommand
+        initCommand = dependency.initCommand
         updateCommand = dependency.updateCommand
         outdatedCommand = dependency.outdatedCommand
-    }
-}
-
-
-// File validation
-extension DependencyViewModel {
-    
-    /// True if file exists at defaultLocation
-    /// TODO: use which command?
-    var isInstalled: Bool {
-        return FileManager.default.fileExists(atPath: path)
+        whichCommand = "which " + filename
     }
 }
 
 // Operations
 extension DependencyViewModel {
+    
+    
+    func fileLocationOperation() -> BashOperation? {
+        
+        guard whichCommand.isEmpty == false, let operation = try? BashOperation(commands: [whichCommand], verbose: false)
+            else { return nil }
+        
+        operation.completionBlock = {
+            guard operation.output.isEmpty == false else {
+                return
+            }
+            
+            // TODO: Regex to check it's a valid path?
+            self.path = operation.output.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        }
+        
+        return operation
+    }
     
     /// <#Description#>
     ///
@@ -112,11 +140,25 @@ extension DependencyViewModel {
             else { return nil }
         
         operation.completionBlock = {
-            if let version = self.versionQueryParser(operation.output) {
-                self.version = version
+            if let versions = self.versionQueryParser(operation.output), let version = versions.first {
+                self.version = version.trimmingCharacters(in: .whitespaces)
             }
         }
 
+        return operation
+    }
+    
+    /// <#Description#>
+    ///
+    /// - Returns: <#return value description#>
+    func initOperation() -> BashOperation? {
+        
+        guard
+            let command = initCommand,
+            command.isEmpty == false,
+            let operation = try? BashOperation(directory: "~", commands: [command])
+            else { return nil }
+        
         return operation
     }
     
@@ -129,7 +171,7 @@ extension DependencyViewModel {
             else { return nil }
         
         operation.completionBlock = {
-            self.newerVersionAvailable = self.versionQueryParser(operation.output)
+            self.newerVersionAvailable = self.versionQueryParser(operation.output)?.last
         }
         
         return operation
@@ -145,7 +187,7 @@ extension DependencyViewModel {
         }
         
         // If dependency is already installed, return nil
-        guard isInstalled == false else { return nil }
+        guard state == .notInstalled else { return nil }
         
         // If dependency needs to be downloaded from a web page and installed manually, open url
         if let link = installLink, let url = URL(string: link) {
@@ -160,27 +202,26 @@ extension DependencyViewModel {
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
-        installOperation = operation
-        return [operation, versionQueryOperation()].compactMap{ $0 }
+        let operations = [operation, initOperation(), fileLocationOperation(), versionQueryOperation()].compactMap{ $0 }
+        self.installOperations.addObjects(operations)
+        return operations
     }
     
     func update() -> [BashOperation]? {
-        
+        print(updateCommand!)
         guard
             let command = updateCommand,
             command.isEmpty == false,
-            isInstalled == true,
+            state != .notInstalled,
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
         operation.completionBlock = {
             self.newerVersionAvailable = nil
-            if let version = self.versionQueryParser(operation.output) {
-                self.version = version
-            }
         }
-        updateOperation = operation
-        return [operation, versionQueryOperation()].compactMap{ $0 }
+        let operations = [operation, versionQueryOperation()].compactMap{ $0 }
+        self.updateOperations.addObjects(operations)
+        return operations
     }
     
     
@@ -188,13 +229,13 @@ extension DependencyViewModel {
     ///
     /// - Parameter output: <#output description#>
     /// - Returns: <#return value description#>
-    private func versionQueryParser(_ output: String) -> String? {
+    private func versionQueryParser(_ output: String) -> [String]? {
         
         // Filter 1.0.1-rc1 type version number
         // Some apps return multiple lines, and this closure will be called multiple times.
         // Therefore, if no match if found, the output closure will not be called, since the
         // version number could be in the previous or next line.
-        guard let regex = try? NSRegularExpression(pattern: "(\\d+)\\.(\\d+)\\.(\\d+)\\-?(\\w+)?", options: .caseInsensitive) else {
+        guard let regex = try? NSRegularExpression(pattern: versionRegex, options: .caseInsensitive) else {
             return nil
         }
         let versions = regex.matches(in: output, options: [], range: NSRange(location: 0, length: output.count)).map {
@@ -203,7 +244,7 @@ extension DependencyViewModel {
         
         // Some dependencies return multiple lines for their version information
         // Return the first one
-        return versions.first
+        return versions
     }
     
     
@@ -227,9 +268,10 @@ extension DependencyViewModel {
     }
     
     func isInstalling() -> Bool {
-        if let i = installOperation, i.isExecuting == true { return true }
-        if let u = updateOperation, u.isExecuting == true { return true }
-        return false
+        
+        let installing = installOperations.allObjects.compactMap { ($0 as! Operation).isExecuting == true ? $0 : nil }
+        let updating = updateOperations.allObjects.compactMap { ($0 as! Operation).isExecuting == true ? $0 : nil }
+        return installing.count > 0 || updating.count > 0
     }
 }
 
