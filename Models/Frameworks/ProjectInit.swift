@@ -72,7 +72,7 @@ class ProjectInit: NSObject {
     init(directory: URL, template: Template? = nil, framework: DependencyFrameworkViewModel, platform: DependencyPlatformViewModel, importFile: URL? = nil) throws {
 
         // Set properties
-        self.projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
+        self.projectName = directory.lastPathComponent //.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
         self.baseDirectory = directory.deletingLastPathComponent().path // e.g. "/~/Documents/"
         self.template = template
         self.framework = framework

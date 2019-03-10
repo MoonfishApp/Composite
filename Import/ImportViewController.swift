@@ -39,7 +39,7 @@ final class ImportViewController: NSViewController {
     @IBAction func createNewProject(_ sender: Any) {
         
         let savePanel = NSSavePanel()
-        savePanel.nameFieldStringValue = (representedObject as! NSDocument).fileURL?.deletingPathExtension().path ?? ""
+        savePanel.nameFieldStringValue = (representedObject as! NSDocument).fileURL?.deletingPathExtension().lastPathComponent ?? ""
         savePanel.beginSheetModal(for: view.window!) { result in
             
             guard result == .OK, let directory = savePanel.url else { return }
@@ -48,7 +48,7 @@ final class ImportViewController: NSViewController {
             guard ProjectInit.canCreateProject(at: directory) == true else {
                 let alert = NSAlert()
                 alert.messageText = "Cannot overwrite existing file or directory."
-                alert.informativeText = "Choose another projectname."
+                alert.informativeText = "Choose another project name."
                 alert.runModal()
                 return
             }
