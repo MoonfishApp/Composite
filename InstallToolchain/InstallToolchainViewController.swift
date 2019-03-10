@@ -41,10 +41,12 @@ class InstallToolchainViewController: NSViewController {
     
     private var platforms = [DependencyPlatformViewModel]() {
         didSet {
+            
             assert(Thread.isMainThread)
             platformCollectionView.reloadData()
             platformCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
             frameworkViewModels = platforms.first?.frameworks ?? [DependencyFrameworkViewModel]()
+            
         }
     }
     
@@ -98,6 +100,14 @@ class InstallToolchainViewController: NSViewController {
         }
         
         showOnStartupButton.state = UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false ? .on : .off
+
+        // Bug in 10.13 prevents scrolling colletionviews beyond the initial rect.
+        // See https://stackoverflow.com/questions/46433652/nscollectionview-does-not-scroll-items-past-initial-visible-rect
+//        if #available(OSX 10.13, *) {
+//            if let contentSize = self.platformCollectionView.collectionViewLayout?.collectionViewContentSize {
+//                self.platformCollectionView.setFrameSize(contentSize)
+//            }
+//        }
         
         configurePlatformCollectionView()
         loadPlatforms()
