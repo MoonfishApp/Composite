@@ -31,6 +31,7 @@
 		C711F5B821DF50EB005EBC5D /* CopyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B621DF50EB005EBC5D /* CopyFile.swift */; };
 		C711F5D321E13A45005EBC5D /* BashOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5D221E13A45005EBC5D /* BashOperation.swift */; };
 		C711F5D521E1B299005EBC5D /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5D421E1B299005EBC5D /* Operation.swift */; };
+		C714D347223500B0004787B1 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C714D346223500B0004787B1 /* Date.swift */; };
 		C715712F21F15DF900A1A6B4 /* Console.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C715712E21F15DF900A1A6B4 /* Console.storyboard */; };
 		C72CF609222908D100637A8B /* Templates-Zilliqa.plist in Resources */ = {isa = PBXBuildFile; fileRef = C72CF608222908D100637A8B /* Templates-Zilliqa.plist */; };
 		C72CF60C2229141000637A8B /* Zilliqa in Resources */ = {isa = PBXBuildFile; fileRef = C72CF60B2229141000637A8B /* Zilliqa */; };
@@ -388,6 +389,7 @@
 		C711F5B621DF50EB005EBC5D /* CopyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFile.swift; sourceTree = "<group>"; };
 		C711F5D221E13A45005EBC5D /* BashOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashOperation.swift; sourceTree = "<group>"; };
 		C711F5D421E1B299005EBC5D /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		C714D346223500B0004787B1 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		C715712E21F15DF900A1A6B4 /* Console.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Console.storyboard; sourceTree = "<group>"; };
 		C72CF608222908D100637A8B /* Templates-Zilliqa.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Zilliqa.plist"; sourceTree = "<group>"; };
 		C72CF60B2229141000637A8B /* Zilliqa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Zilliqa; sourceTree = "<group>"; };
@@ -1652,6 +1654,7 @@
 				C7DDD752214100D200674942 /* String.swift */,
 				C711F5D421E1B299005EBC5D /* Operation.swift */,
 				C7DCFE892224C30D00CB63DE /* NSPointerArray.swift */,
+				C714D346223500B0004787B1 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2133,6 +2136,7 @@
 				C79A6C3D21EE9AFB007FB630 /* StyledButton.swift in Sources */,
 				C7F0B9A32112945D005A8FE2 /* ProjectDocument.swift in Sources */,
 				C79A75BF21EEF070007FB630 /* FindPanelButtonViewController.swift in Sources */,
+				C714D347223500B0004787B1 /* Date.swift in Sources */,
 				C79A6C9221EE9BD6007FB630 /* Snippet.swift in Sources */,
 				C79A75C221EEF070007FB630 /* FindPanelSplitView.swift in Sources */,
 				C79A6CF521EE9C52007FB630 /* String+Additions.swift in Sources */,

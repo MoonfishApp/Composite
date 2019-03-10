@@ -1,3 +1,8 @@
+/**
+<#__project_name#>.sol
+Created by <#__user_name#> on <#__date#>.
+*/
+
 pragma solidity ^0.4.24;
 
 contract <#__project_name#> {

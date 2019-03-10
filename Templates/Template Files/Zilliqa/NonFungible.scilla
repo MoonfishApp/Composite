@@ -1,8 +1,12 @@
 scilla_version 0
 
+(* <#__project_name#>.scilla *)
+(* Created by <#__user_name#> on <#__date#>. *)
+
 (***************************************************)
 (*               Associated library                *)
 (***************************************************)
+
 import BoolUtils
 library NonfungibleToken
 

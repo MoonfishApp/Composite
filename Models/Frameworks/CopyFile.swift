@@ -47,7 +47,7 @@ extension CopyFile {
         if let projectName = projectName {
             assert(FileManager.default.fileExists(atPath: destinationURL.path))
             let content = try String(contentsOf: destinationURL)
-            let updatedContent = content.replaceOccurrencesOfProjectName(with: projectName)
+            let updatedContent = content.replaceOccurrencesOfProjectName(with: projectName).replaceOccurrencesOfUserName().replaceOccurrencesDate()
             try updatedContent.write(to: destinationURL, atomically: true, encoding: .utf8)
         }
         
