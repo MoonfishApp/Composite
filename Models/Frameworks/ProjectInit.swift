@@ -326,14 +326,14 @@ extension ProjectInit {
 //            this has to be relative, since we're storing the path in the project document on disk
 //            if importFile then substract project directory
             
-            let openFile: String?
-            if let templateFile = self.template?.openFile {
-                openFile = self.projectDirectory.appendingPathComponent(templateFile).path
-            } else if let importFile = self.importFileDestination {
-                openFile = importFile.path
-            } else {
-                openFile = nil
-            }
+//            var openFile: String? = nil
+//            if let templateFile = self.template?.openFile {
+//                openFile = self.projectDirectory.appendingPathComponent(templateFile).path
+//            } else if let importFile = self.importFileDestination {
+//                openFile = importFile.path.replacingOccurrences(of: self.projectDirectory.path, with: "")
+//            }
+            
+            let openFile = self.template?.openFile ?? self.importFileDestination?.path.replacingOccurrences(of: self.projectDirectory.path, with: "")
                 
             let project = Project(name: self.projectName, platformName: self.platform.name, frameworkName: self.framework.name, frameworkVersion: self.framework.version, defaultOpenFile: openFile)
             let document = ProjectDocument(project: project, url: self.projectFileURL)

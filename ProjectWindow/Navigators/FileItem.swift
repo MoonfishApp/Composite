@@ -52,7 +52,7 @@ final class FileItem: NSObject {
         
         var path = path
         path.append(self)
-        if self.url == url {
+        if self.url.standardizedFileURL == url.standardizedFileURL {
             return path
         } else {
             for child in children {
