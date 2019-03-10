@@ -103,9 +103,6 @@ variables:
 - beginString: "block"
 - beginString: "tx"
 - beginString: "abi"
-- beginString: "0x[a-fA-F0-9]{40}$"
-  ignoreCase: true
-  regularExpression: true
 
 values:
 - beginString: "true"
@@ -120,6 +117,10 @@ values:
 - beginString: "days"
 - beginString: "weeks"
 - beginString: "years"
+- beginString: "0x[a-fA-F0-9]{40}$"
+ignoreCase: true
+regularExpression: true
+
 
 characters:
 - beginString: ";"

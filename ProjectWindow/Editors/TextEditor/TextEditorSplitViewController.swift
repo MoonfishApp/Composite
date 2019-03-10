@@ -31,7 +31,7 @@ final class TextEditorSplitViewController: NSSplitViewController {
     // MARK: Public Properties
     
     var textView: EditorTextView? {
-        
+        assert(self.textViewController?.textView != nil)
         return self.textViewController?.textView
     }
     
@@ -140,6 +140,7 @@ final class TextEditorSplitViewController: NSSplitViewController {
         
         guard let textView = self.textView else { return assertionFailure() }
         
+        textStorage.font = textView.font // Hack to set correct font
         textView.layoutManager?.replaceTextStorage(textStorage)
         textView.didChangeText()  // notify to lineNumberView to drive initial line count
     }

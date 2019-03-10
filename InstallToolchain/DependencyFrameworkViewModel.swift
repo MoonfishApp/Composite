@@ -11,7 +11,7 @@ import Cocoa
 
 class DependencyFrameworkViewModel {
 
-    private let framework: DependencyFramework
+    let framework: DependencyFramework
     
     private (set) var name: String
     
@@ -37,6 +37,8 @@ class DependencyFrameworkViewModel {
     let documentationUrl: String
     
     var description: String { return framework.description }
+    
+    var contractDirectory: String { return framework.contractDirectory }
     
     let dependencies: [DependencyViewModel]
     

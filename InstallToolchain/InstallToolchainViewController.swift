@@ -178,7 +178,9 @@ class InstallToolchainViewController: NSViewController {
     
     @IBAction func done(_ sender: Any) {
         fileQueue.cancelAllOperations()
-        fileQueue.cancelAllOperations()
+        versionQueue.cancelAllOperations()
+//        fileQueue.qualityOfService = .background
+//        versionQueue.qualityOfService = .background
         view.window?.close()
         (DocumentController.shared as! DocumentController).newProject(self)
     }

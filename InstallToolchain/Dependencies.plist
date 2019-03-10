@@ -151,6 +151,12 @@
 				<string>https://truffleframework.com/docs/truffle/overview</string>
 				<key>defaultFramework</key>
 				<false/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
+				<key>fileExtensions</key>
+				<array>
+					<string>sol</string>
+				</array>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -238,6 +244,12 @@
 				<string>https://etherlime.readthedocs.io/en/latest/</string>
 				<key>defaultFramework</key>
 				<true/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
+				<key>fileExtensions</key>
+				<array>
+					<string>sol</string>
+				</array>
 			</dict>
 		</array>
 	</dict>
@@ -252,7 +264,7 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Zilliqa Developer Tools</string>
+				<string>Zilliqa</string>
 				<key>dependencies</key>
 				<array>
 					<dict>
@@ -434,6 +446,12 @@
 				<true/>
 				<key>iconName</key>
 				<string>Zilliqa</string>
+				<key>contractDirectory</key>
+				<string>contracts</string>
+				<key>fileExtensions</key>
+				<array>
+					<string>scilla</string>
+				</array>
 			</dict>
 		</array>
 	</dict>
@@ -560,6 +578,12 @@
 				<string>https://developers.tron.network</string>
 				<key>defaultFramework</key>
 				<true/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
+				<key>fileExtensions</key>
+				<array>
+					<string>sol</string>
+				</array>
 			</dict>
 		</array>
 	</dict>

@@ -18,11 +18,17 @@ struct CopyFile: Codable {
 extension CopyFile {
     
     /// Returns (new) filename 
-    func copy(projectName: String?, projectDirectory: URL) throws -> String {
+    func copy(projectName: String?, projectDirectory: URL, subdirectory: String) throws -> String {
         
-        guard let source = Bundle.main.url(forResource: filename, withExtension: nil) else {
+        guard let source = Bundle.main.url(forResource: filename, withExtension: nil, subdirectory: subdirectory) else {
             throw CompositeError.fileNotFound(filename)
         }
+        
+        // If we want to use aliases/symbolic links instead of copying the same contracts
+        // shared by multiple frameworks in the future
+//        if let symlink = try? FileManager.default.destinationOfSymbolicLink(atPath: source.path) {
+//            print("Found symlink at \(source.path) pointing to \(symlink)")
+//        }
         
         // Rename file to project name
         let newFilename: String
@@ -39,6 +45,7 @@ extension CopyFile {
         
         // Open file and replace all instances of <#__project_name#> with the project name
         if let projectName = projectName {
+            assert(FileManager.default.fileExists(atPath: destinationURL.path))
             let content = try String(contentsOf: destinationURL)
             let updatedContent = content.replaceOccurrencesOfProjectName(with: projectName)
             try updatedContent.write(to: destinationURL, atomically: true, encoding: .utf8)

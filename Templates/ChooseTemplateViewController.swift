@@ -42,9 +42,26 @@ class ChooseTemplateViewController: NSViewController {
         
         configureTemplateView()
         
+        // Select last used platform if present in user defaults
         loadPlatforms()
+        if let lastUsedPlatformName = UserDefaults.standard[.lastUsedPlatform], let item = platformPopup.item(withTitle: lastUsedPlatformName) {
+            platformPopup.select(item)
+        }
+        
+        // Select last used framework if present in user defaults
         setFrameworkPopup()
+        if let lastUsedFrameworkName = UserDefaults.standard[.lastUsedFramework], let item = frameworkPopup.item(withTitle: lastUsedFrameworkName) {
+            frameworkPopup.select(item)
+        }
+        
         setTemplates()
+    }
+    
+    override func viewWillDisappear() {
+        let selectedPlatform = platforms[platformPopup.indexOfSelectedItem]
+        let selectedFramework = selectedPlatform.frameworks[frameworkPopup.indexOfSelectedItem]
+        UserDefaults.standard[.lastUsedPlatform] = selectedPlatform.name
+        UserDefaults.standard[.lastUsedFramework] = selectedFramework.name
     }
     
     
@@ -63,8 +80,9 @@ class ChooseTemplateViewController: NSViewController {
         
         for platform in platforms {
             self.platformPopup.addItem(withTitle: platform.name)
-            let installedFrameworks = platform.frameworks.filter{ $0.state != .notInstalled }
-            self.platformPopup.item(withTitle: platform.name)?.isEnabled = installedFrameworks.count > 0
+            // Enable all platforms for now
+//            let installedFrameworks = platform.frameworks.filter{ $0.state != .notInstalled }
+//            self.platformPopup.item(withTitle: platform.name)?.isEnabled = installedFrameworks.count > 0
         }
     }
     
@@ -79,16 +97,15 @@ class ChooseTemplateViewController: NSViewController {
 
         for framework in selectedPlatform.frameworks {
             frameworkPopup.addItem(withTitle: framework.name)
-            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
+//            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
         }
-        frameworkPopup.selectItem(at: 0)
     }
     
     /// Popupalates templates view
     private func setTemplates() {
         
         let framework = platforms[platformPopup.indexOfSelectedItem].frameworks[frameworkPopup.indexOfSelectedItem]
-
+        
         // Load templates. categories didSet triggers reload of collectionViews
         do {
             categories = try loadTemplates(framework: framework.name)
@@ -96,6 +113,7 @@ class ChooseTemplateViewController: NSViewController {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
+        
     }
     
     /// Loads templates from disk
@@ -111,6 +129,17 @@ class ChooseTemplateViewController: NSViewController {
     
     
     @IBAction func ChooseClicked(_ sender: Any) {
+        
+        // TODO: check if platform and framework are installed. If not, present
+        // option to install
+//        for framework in selectedPlatform.frameworks {
+//            //            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
+//
+//            for dependency in framework.dependencies {
+//                guard let operation = dependency.fileLocationOperation() else { continue }
+//                fileQueue.addOperation(operation)
+//            }
+//        }
         
         guard let selection = templateCollectionView.selectionIndexPaths.first else { return }
         
@@ -188,20 +217,16 @@ class ChooseTemplateViewController: NSViewController {
             guard result == .OK, let directory = savePanel.url else { return }
             
             // Do not allow overwriting existing files or directories
-            let fileManager = FileManager.default
-            guard fileManager.fileExists(atPath: directory.path) == false else {
+            guard ProjectInit.canCreateProject(at: directory) == true else {
                 let alert = NSAlert()
-                alert.informativeText = "Cannot overwrite existing file or directory."
-                alert.messageText = "Choose another projectname."
+                alert.messageText = "Cannot overwrite existing file or directory."
+                alert.informativeText = "Choose another projectname."
                 alert.runModal()
                 return
             }
             
-            let projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
-            let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
-            
             do {
-                let projectInit = try self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template)
+                let projectInit = try self.createProjectInit(directory: directory, template: template)
                 self.projectInit = projectInit
             } catch {
                 let alert = NSAlert(error: error)
@@ -213,22 +238,13 @@ class ChooseTemplateViewController: NSViewController {
         }
     }
     
-    private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) throws -> ProjectInit {
+    private func createProjectInit(directory: URL, template: Template? = nil) throws -> ProjectInit {
         
-//        forward template here, or fetch the right project init from the plist
-//        Store templateIit
+        // Fetch selected view models
+        let platform = platforms[platformPopup.indexOfSelectedItem]
+        let framework = platform.frameworks[frameworkPopup.indexOfSelectedItem]
         
-        let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem]
-//        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform this one was commented out
-        let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].name
-        let selectedFrameworkVersion = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].version
-
-        print(selectedFrameworkName)
-        print(selectedFrameworkVersion)
-        
-        let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, frameworkName: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, platform: selectedFrameworkName)
-
-//        let projectInit = try ProjectInit(projectName: "test", baseDirectory: "~", template: template, frameworkName: "test", frameworkVersion: "1", platform: "2")
+        let projectInit = try ProjectInit(directory: directory, template: template, framework: framework, platform: platform)
         return projectInit
     }
 }

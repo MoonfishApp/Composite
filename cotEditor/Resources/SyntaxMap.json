@@ -570,6 +570,17 @@
       "tclsh"
     ]
   },
+  "Scilla": {
+    "extensions": [
+      "scilla"
+    ],
+    "filenames": [
+
+    ],
+    "interpreters": [
+
+    ]
+  },
   "Shell Script": {
     "extensions": [
       "sh",

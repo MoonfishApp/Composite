@@ -335,7 +335,9 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
             (item as? SegmentedToolbarItem)?.segmentedControl?.selectSegment(withTag: tag)
             
         case #selector(closeSplitTextView)?:
-            return (self.splitViewController?.splitViewItems.count ?? 0) > 1
+            assertionFailure()
+            return false
+//            return (self.splitViewController?.splitViewItems.count ?? 0) > 1
             
         default: break
         }
@@ -459,7 +461,8 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     /// return textView focused on
     var focusedTextView: EditorTextView? {
         
-        return self.splitViewController?.focusedSubviewController?.textView
+        return self.editorViewControllers.first?.textView
+//        return self.splitViewController?.focusedSubviewController?.textView
     }
     
     
@@ -473,6 +476,7 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     /// body font
     var font: NSFont? {
         
+        assert(self.focusedTextView?.font != nil)
         return self.focusedTextView?.font
     }
     
@@ -790,61 +794,62 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     /// split editor view
     @IBAction func openSplitTextView(_ sender: Any?) {
         
-        guard (self.splitViewController?.splitViewItems.count ?? 0) < maximumNumberOfSplitEditors else {
-            NSSound.beep()
-            return
-        }
-        
-        guard let currentEditorViewController = self.findTargetEditorViewController(for: sender) else { return }
-        
-        // end current editing
-        NSTextInputContext.current?.discardMarkedText()
-        
-        let newEditorViewController = TextEditorSplitViewController.instantiate(storyboard: "EditorView")
-        self.splitViewController?.addSubview(for: newEditorViewController, relativeTo: currentEditorViewController)
-        self.setup(editorViewController: newEditorViewController, baseViewController: currentEditorViewController)
-        
-        newEditorViewController.navigationBarController?.outlineItems = self.syntaxParser?.outlineItems ?? []
-        self.invalidateSyntaxHighlight()
-        
-        // adjust visible areas
-        newEditorViewController.textView?.selectedRange = currentEditorViewController.textView!.selectedRange
-        currentEditorViewController.textView?.centerSelectionInVisibleArea(self)
-        newEditorViewController.textView?.centerSelectionInVisibleArea(self)
-        
-        // move focus to the new editor
-        self.view.window?.makeFirstResponder(newEditorViewController.textView)
+        assertionFailure()
+//        guard (self.splitViewController?.splitViewItems.count ?? 0) < maximumNumberOfSplitEditors else {
+//            NSSound.beep()
+//            return
+//        }
+//
+//        guard let currentEditorViewController = self.findTargetEditorViewController(for: sender) else { return }
+//
+//        // end current editing
+//        NSTextInputContext.current?.discardMarkedText()
+//
+//        let newEditorViewController = TextEditorSplitViewController.instantiate(storyboard: "EditorView")
+//        self.splitViewController?.addSubview(for: newEditorViewController, relativeTo: currentEditorViewController)
+//        self.setup(editorViewController: newEditorViewController, baseViewController: currentEditorViewController)
+//
+//        newEditorViewController.navigationBarController?.outlineItems = self.syntaxParser?.outlineItems ?? []
+//        self.invalidateSyntaxHighlight()
+//
+//        // adjust visible areas
+//        newEditorViewController.textView?.selectedRange = currentEditorViewController.textView!.selectedRange
+//        currentEditorViewController.textView?.centerSelectionInVisibleArea(self)
+//        newEditorViewController.textView?.centerSelectionInVisibleArea(self)
+//
+//        // move focus to the new editor
+//        self.view.window?.makeFirstResponder(newEditorViewController.textView)
     }
     
     
     /// close one of split views
     @IBAction func closeSplitTextView(_ sender: Any?) {
         
-        guard
-            let splitViewController = self.splitViewController,
-            let currentEditorViewController = self.findTargetEditorViewController(for: sender)
-            else { return }
-        
-        // end current editing
-        NSTextInputContext.current?.discardMarkedText()
-        
-        // move focus to the next text view if the view to close has a focus
-        if splitViewController.focusedSubviewController == currentEditorViewController {
-            let childViewControllers = self.editorViewControllers
-            let deleteIndex = childViewControllers.firstIndex(of: currentEditorViewController) ?? 0
-            let newFocusEditorViewController = childViewControllers[safe: deleteIndex + 1] ?? childViewControllers.first!
-            
-            self.view.window?.makeFirstResponder(newFocusEditorViewController.textView)
-        }
-        
-        // close
-        if let splitViewItem = splitViewController.splitViewItem(for: currentEditorViewController) {
-            splitViewController.removeSplitViewItem(splitViewItem)
-            
-            if let textView = currentEditorViewController.textView {
-                NotificationCenter.default.removeObserver(self, name: NSTextView.didChangeSelectionNotification, object: textView)
-            }
-        }
+//        guard
+//            let splitViewController = self.splitViewController,
+//            let currentEditorViewController = self.findTargetEditorViewController(for: sender)
+//            else { return }
+//
+//        // end current editing
+//        NSTextInputContext.current?.discardMarkedText()
+//
+//        // move focus to the next text view if the view to close has a focus
+//        if splitViewController.focusedSubviewController == currentEditorViewController {
+//            let childViewControllers = self.editorViewControllers
+//            let deleteIndex = childViewControllers.firstIndex(of: currentEditorViewController) ?? 0
+//            let newFocusEditorViewController = childViewControllers[safe: deleteIndex + 1] ?? childViewControllers.first!
+//
+//            self.view.window?.makeFirstResponder(newFocusEditorViewController.textView)
+//        }
+//
+//        // close
+//        if let splitViewItem = splitViewController.splitViewItem(for: currentEditorViewController) {
+//            splitViewController.removeSplitViewItem(splitViewItem)
+//
+//            if let textView = currentEditorViewController.textView {
+//                NotificationCenter.default.removeObserver(self, name: NSTextView.didChangeSelectionNotification, object: textView)
+//            }
+//        }
     }
     
     
@@ -937,9 +942,9 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
         if let syntaxParser = self.syntaxParser {
             editorViewController.apply(style: syntaxParser.style)
         }
-//        baseViewController?.textView is nil
+
         // copy textView states
-        if let baseTextView = baseViewController?.textView, let textView = editorViewController.textView {        
+         if let baseTextView = baseViewController?.textView, let textView = editorViewController.textView {
             textView.font = baseTextView.font
             textView.theme = baseTextView.theme
             textView.tabWidth = baseTextView.tabWidth
@@ -954,12 +959,10 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     
     
     /// split view controller
-    private var splitViewController: SplitViewController? {
-        
-        // TODO: fix
-//        print("var splitViewController doesn't work")
-        return self.splitViewItems.first?.viewController as? SplitViewController // this is a TextEditorSplitViewController
-    }
+//    private var splitViewController: TextEditorSplitViewController? {
+//
+//        return self.splitViewItems.first?.viewController as? TextEditorSplitViewController
+//    }
     
     
     /// text storage
@@ -1005,12 +1008,14 @@ final class DocumentsSplitViewController: NSSplitViewController, SyntaxParserDel
     /// find target EditorViewController to manage split views for action sender
     private func findTargetEditorViewController(for sender: Any?) -> TextEditorSplitViewController? {
         
-        guard
-            let view = (sender is NSMenuItem) ? (self.view.window?.firstResponder as? NSView) : sender as? NSView,
-            let editorView = sequence(first: view, next: { $0.superview }).first(where: { $0.identifier == NSUserInterfaceItemIdentifier("EditorView") })
-            else { return nil }
+        return self.editorViewControllers.first
         
-        return self.splitViewController?.viewController(for: editorView)
+//        guard
+//            let view = (sender is NSMenuItem) ? (self.view.window?.firstResponder as? NSView) : sender as? NSView,
+//            let editorView = sequence(first: view, next: { $0.superview }).first(where: { $0.identifier == NSUserInterfaceItemIdentifier("EditorView") })
+//            else { return nil }
+//
+//        return self.splitViewController?.viewController(for: editorView)
     }
     
 }

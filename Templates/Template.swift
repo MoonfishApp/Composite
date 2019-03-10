@@ -55,14 +55,14 @@ enum InitType: String, Codable {
     
     case initEmpty, initTemplate, initExample
     
-    func commands(_ frameworkCommands: FrameworkCommands) -> FrameworkInit? {
+    func commands(_ frameworkCommands: FrameworkInterface) -> FrameworkInit? {
         switch self {
         case .initEmpty:
-            return frameworkCommands.commands.initEmpty
+            return frameworkCommands.initInterface.initEmpty
         case .initTemplate:
-            return frameworkCommands.commands.initTemplate
+            return frameworkCommands.initInterface.initTemplate
         case .initExample:
-            return frameworkCommands.commands.initExample
+            return frameworkCommands.initInterface.initExample
         }
     }
 }

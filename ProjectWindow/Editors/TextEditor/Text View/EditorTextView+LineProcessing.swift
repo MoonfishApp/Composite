@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2014-2018 1024jp
+//  © 2014-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ extension EditorTextView {
             else {
                 NSSound.beep()
                 return
-            }
+        }
         
         self.edit(with: editingInfo, actionName: "Move Line".localized)
     }
@@ -53,7 +53,7 @@ extension EditorTextView {
             else {
                 NSSound.beep()
                 return
-            }
+        }
         
         self.edit(with: editingInfo, actionName: "Move Line".localized)
     }
@@ -63,7 +63,7 @@ extension EditorTextView {
     @IBAction func sortLinesAscending(_ sender: Any?) {
         
         // process whole document if no text selected
-        let range = (self.selectedRange.length == 0) ? self.string.nsRange : self.selectedRange
+        let range = self.selectedRange.isEmpty ? self.string.nsRange : self.selectedRange
         
         guard let editingInfo = self.string.sortLinesAscending(in: range) else { return }
         
@@ -75,7 +75,7 @@ extension EditorTextView {
     @IBAction func reverseLines(_ sender: Any?) {
         
         // process whole document if no text selected
-        let range = (self.selectedRange.length == 0) ? self.string.nsRange : self.selectedRange
+        let range = self.selectedRange.isEmpty ? self.string.nsRange : self.selectedRange
         
         guard let editingInfo = self.string.reverseLines(in: range) else { return }
         
@@ -89,7 +89,7 @@ extension EditorTextView {
         guard let selectedRanges = self.rangesForUserTextChange as? [NSRange] else { return }
         
         // process whole document if no text selected
-        let ranges = (self.selectedRange.length == 0) ? [self.string.nsRange] : selectedRanges
+        let ranges = self.selectedRange.isEmpty ? [self.string.nsRange] : selectedRanges
         
         guard let editingInfo = self.string.deleteDuplicateLine(in: ranges) else { return }
         
@@ -168,12 +168,12 @@ extension NSTextView {
     func sortLines(pattern: SortPattern, options: SortOptions) {
         
         // process whole document if no text selected
-        let range = (self.selectedRange.length == 0) ? self.string.nsRange : self.selectedRange
+        let range = self.selectedRange.isEmpty ? self.string.nsRange : self.selectedRange
         
         let string = self.string as NSString
         let lineRange = string.lineRange(for: range, excludingLastLineEnding: true)
         
-        guard lineRange.length > 0 else { return }
+        guard !lineRange.isEmpty else { return }
         
         let newString = pattern.sort(string.substring(with: lineRange), options: options)
         
@@ -373,6 +373,7 @@ private extension String {
         let string = self as NSString
         var replacementStrings = [String]()
         var replacementRanges = [NSRange]()
+        var selectedRanges = [NSRange]()
         
         for range in ranges {
             let lineRange = string.lineRange(for: range)
@@ -384,11 +385,15 @@ private extension String {
                 lineString += "\n"
             }
             
+            let offset = (replacementStrings + [lineString]).map { ($0 as NSString).length }.reduce(0, +)
+            let selectedRange = NSRange(location: range.location + offset, length: range.length)
+            
             replacementStrings.append(lineString)
             replacementRanges.append(replacementRange)
+            selectedRanges.append(selectedRange)
         }
         
-        return (strings: replacementStrings, ranges: replacementRanges, selectedRanges: nil)
+        return (strings: replacementStrings, ranges: replacementRanges, selectedRanges: selectedRanges)
     }
     
     
@@ -397,10 +402,17 @@ private extension String {
         
         guard !ranges.isEmpty else { return nil }
         
-        let replacementRanges = (self as NSString).lineRanges(for: ranges)
-        let replacementStrings = [String](repeating: "", count: replacementRanges.count)
+        let lineRanges = (self as NSString).lineRanges(for: ranges)
+        let replacementStrings = [String](repeating: "", count: lineRanges.count)
         
-        return (strings: replacementStrings, ranges: replacementRanges, selectedRanges: nil)
+        var selectedRanges = [NSRange]()
+        var offset = 0
+        for range in lineRanges {
+            selectedRanges.append(NSRange(location: range.location + offset, length: 0))
+            offset -= range.length
+        }
+        
+        return (strings: replacementStrings, ranges: lineRanges, selectedRanges: selectedRanges)
     }
     
 }

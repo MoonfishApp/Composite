@@ -54,7 +54,8 @@ extension String {
     /// - Parameter with: project name
     /// - Returns: New string with projectname placeholders replaced with project name
     public func replaceOccurrencesOfProjectName(with name: String) -> String {
-        return replacingOccurrences(of: "<#__project_name#>", with: name.replacingOccurrences(of: " ", with: "-"))
+        let name = name.replacingOccurrences(of: " ", with: "-")
+        return replacingOccurrences(of: "<#__project_name#>", with: name).replacingOccurrences(of: "$(PROJECT_NAME)", with: name)
     }
     
     public var escapedSpaces: String {

@@ -64,8 +64,7 @@ final class EditorTextViewController: NSViewController, NSTextViewDelegate {
         
         super.viewDidLoad()
         
-//        guard let textView = textView else { return assertionFailure() }
-//        print(textView.font!)
+        guard let textView = textView else { return assertionFailure() }
         
         // observe text orientation for line number view
         self.orientationObserver = self.textView!.observe(\.layoutOrientation, options: .initial) { [unowned self] (textView, _) in
