@@ -128,7 +128,7 @@
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" id="2nx-D6-Fks" userLabel="Navigator"/>
                         <splitViewItem id="bhT-9Z-2Nv"/>
-                        <splitViewItem id="OM5-nm-wdO"/>
+                        <splitViewItem holdingPriority="260" id="OM5-nm-wdO"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="eB3-ko-loa">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
