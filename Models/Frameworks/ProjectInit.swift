@@ -158,6 +158,11 @@ class ProjectInit: NSObject {
             operationQueue.addOperation(copyFiles)
         }
         
+        // 8. Copy imported file
+        if let copyImportedFile = copyImportedFileOperation() {
+            operationQueue.addOperation(copyImportedFile)
+        }
+        
         // 8. Create new project file
         operationQueue.addOperation(createProjectFile())
         
@@ -270,6 +275,21 @@ extension ProjectInit {
         return operation
     }
     
+    private func copyImportedFileOperation() -> Operation? {
+        
+        guard let importFile = self.importFile,
+            let destination = self.importFileDestination else { return nil }
+
+        return BlockOperation {
+            do {
+                try FileManager.default.copyItem(at: importFile, to: destination)
+            } catch {
+                self.output("Error copying \(importFile) to \(destination):")
+                self.finished(0, error)
+                return
+            }
+        }
+    }
     
     /// <#Description#>
     ///
