@@ -38,6 +38,8 @@ class DependencyFrameworkViewModel {
     
     var description: String { return framework.description }
     
+    var contractDirectory: String { return framework.contractDirectory }
+    
     let dependencies: [DependencyViewModel]
     
     var state: DependencyState {

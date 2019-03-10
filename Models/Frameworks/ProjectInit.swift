@@ -48,6 +48,19 @@ class ProjectInit: NSObject {
     
     let projectFileURL: URL
     
+    /// If a new project has to be created based on an existing contract,
+    /// importFile will contain the location of the existing contract
+    let importFile: URL?
+    
+    /// URL of where importFile will be copied to
+    /// The project's default file will be set to this url
+    var importFileDestination: URL? {
+        
+        guard let importFile = importFile else { return nil }
+        let importFilename = importFile.lastPathComponent
+        return URL(fileURLWithPath: baseDirectory).appendingPathComponent(projectName).appendingPathComponent(framework.contractDirectory).appendingPathComponent(importFilename)
+    }
+    
     /// Call when project initialization finished successfully or unsuccessfully.
     /// Success: exit status = 0, error = nil.
     var finished: (Int, Error?) -> Void = {_,_ in }
@@ -56,14 +69,15 @@ class ProjectInit: NSObject {
     var output: (String)->Void = {_ in }
     
     // TODO: add env arguments
-    init(projectName: String, baseDirectory: String, template: Template? = nil, framework: DependencyFrameworkViewModel, platform: DependencyPlatformViewModel) throws {
+    init(directory: URL, template: Template? = nil, framework: DependencyFrameworkViewModel, platform: DependencyPlatformViewModel, importFile: URL? = nil) throws {
 
         // Set properties
-        self.projectName = projectName
-        self.baseDirectory = baseDirectory
+        self.projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
+        self.baseDirectory = directory.deletingLastPathComponent().path // e.g. "/~/Documents/"
         self.template = template
         self.framework = framework
         self.platform = platform
+        self.importFile = importFile
         
         projectFileURL = URL(fileURLWithPath: baseDirectory).appendingPathComponent(projectName).appendingPathComponent("\(projectName).composite")
         
@@ -151,6 +165,7 @@ class ProjectInit: NSObject {
         operationQueue.addOperation(finishedSuccessfully())
         
         // 10. Open project file
+        // Nope, that's handled by projectInitWindow
 //        operationQueue.addOperation(openProject())
     }
     
@@ -288,7 +303,7 @@ extension ProjectInit {
         
         return BlockOperation {
         
-            let project = Project(name: self.projectName, platformName: self.platform.name, frameworkName: self.framework.name, frameworkVersion: self.framework.version, defaultOpenFile: self.template?.openFile)
+            let project = Project(name: self.projectName, platformName: self.platform.name, frameworkName: self.framework.name, frameworkVersion: self.framework.version, defaultOpenFile: self.template?.openFile ?? self.importFileDestination?.path)
             let document = ProjectDocument(project: project, url: self.projectFileURL)
             
             document.save(to: self.projectFileURL, ofType: ProjectDocument.fileExtension, for: .saveToOperation, completionHandler: { error in

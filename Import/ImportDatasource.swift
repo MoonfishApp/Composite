@@ -65,19 +65,5 @@ extension ImportDatasource: NSOutlineViewDataSource {
             return ""
         }
     }
-    
-//    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any?  {
-//
-//        if let item = item as? DependencyPlatformViewModel {
-//            print(item.name)
-//            return item.name
-//        } else if let item = item as? DependencyFrameworkViewModel {
-//            print(item.displayName)
-//            return item.displayName
-//        } else {
-//            assertionFailure()
-//            return "unknown"
-//        }
-//    }
 
 }

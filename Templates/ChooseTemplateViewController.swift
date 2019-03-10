@@ -225,11 +225,11 @@ class ChooseTemplateViewController: NSViewController {
                 return
             }
             
-            let projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
-            let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
+//            let projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
+//            let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
             
             do {
-                let projectInit = try self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template)
+                let projectInit = try self.createProjectInit(directory: directory, template: template)
                 self.projectInit = projectInit
             } catch {
                 let alert = NSAlert(error: error)
@@ -241,13 +241,13 @@ class ChooseTemplateViewController: NSViewController {
         }
     }
     
-    private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) throws -> ProjectInit {
+    private func createProjectInit(directory: URL, template: Template? = nil) throws -> ProjectInit {
         
         // Fetch selected view models
         let platform = platforms[platformPopup.indexOfSelectedItem]
         let framework = platform.frameworks[frameworkPopup.indexOfSelectedItem]
         
-        let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, framework: framework, platform: platform)
+        let projectInit = try ProjectInit(directory: directory, template: template, framework: framework, platform: platform)
         return projectInit
     }
 }

@@ -31,7 +31,11 @@ struct DependencyFramework: Codable {
     let documentationUrl: String
     
     /// True if is this is the default framework for the platform
+    /// Used to pre-select framework in UI
     let defaultFramework: Bool
+    
+    /// E.g. "contracts"
+    let contractDirectory: String
     
     /// Supported file extensions of contract types, e.g. "sol" or "scilla"
     let fileExtensions: [String]?

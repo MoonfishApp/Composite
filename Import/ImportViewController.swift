@@ -13,6 +13,8 @@ final class ImportViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet weak var createNewProjectButton: NSButton!
     @IBOutlet var importDatasource: ImportDatasource!
+    
+    var projectInit: ProjectInit? = nil
 
     override var representedObject: Any? {
         didSet {
@@ -54,33 +56,37 @@ final class ImportViewController: NSViewController {
             }
             
             // Fetch selected framework
-//            guard let framework = self.outlineView.item(atRow: outlineView.selectedRow) as? DependencyFrameworkViewModel else { return assertionFailure() }
-//            
-//            // Create project init
-//            let projectInit = ProjectInit(projectName: <#T##String#>, baseDirectory: <#T##String#>, framework: <#T##DependencyFrameworkViewModel#>, platform: <#T##DependencyPlatformViewModel#>)
+            guard
+                let framework = self.outlineView.item(atRow: self.outlineView.selectedRow) as? DependencyFrameworkViewModel,
+                let platform = self.outlineView.parent(forItem: framework) as? DependencyPlatformViewModel
+                else { return assertionFailure() }
             
-            
-            // Fetch selected view models
-//            let platform = platforms[platformPopup.indexOfSelectedItem]
-//            let framework = platform.frameworks[frameworkPopup.indexOfSelectedItem]
-//
-//            let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, framework: framework, platform: platform)
-//            return projectInit
-            
-//            let projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
-//            let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
-//
-//            do {
-//                let projectInit = try self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template)
-//                self.projectInit = projectInit
-//            } catch {
-//                let alert = NSAlert(error: error)
-//                alert.runModal()
-//            }
+            // Create project init
+            do {
+                self.projectInit = try ProjectInit(directory: directory, template: nil, framework: framework, platform: platform, importFile: (self.representedObject as! NSDocument).fileURL)
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
+            (self.representedObject as! NSDocument).close()
             
             let id = NSStoryboardSegue.Identifier("ProjectInitSegue")
             self.performSegue(withIdentifier: id, sender: self)
         }
+    }
+    
+    /// Set up PreparingViewController
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        guard let projectInit = projectInit else { return }
+        
+        if let destination = segue.destinationController as? NSWindowController, let projectInitWindow = destination.contentViewController as? ProjectInitViewController {
+            projectInitWindow.projectInit = projectInit
+        } else {
+            assertionFailure()
+        }
+        self.view.window!.close()
     }
     
     @IBAction func cancel(_ sender: Any) {

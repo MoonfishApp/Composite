@@ -151,6 +151,8 @@
 				<string>https://truffleframework.com/docs/truffle/overview</string>
 				<key>defaultFramework</key>
 				<false/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
 				<key>fileExtensions</key>
 				<array>
 					<string>sol</string>
@@ -242,6 +244,8 @@
 				<string>https://etherlime.readthedocs.io/en/latest/</string>
 				<key>defaultFramework</key>
 				<true/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
 				<key>fileExtensions</key>
 				<array>
 					<string>sol</string>
@@ -442,6 +446,8 @@
 				<true/>
 				<key>iconName</key>
 				<string>Zilliqa</string>
+				<key>contractDirectory</key>
+				<string>contracts</string>
 				<key>fileExtensions</key>
 				<array>
 					<string>scilla</string>
@@ -572,6 +578,8 @@
 				<string>https://developers.tron.network</string>
 				<key>defaultFramework</key>
 				<true/>
+				<key>contractDirectory</key>
+				<string>contracts</string>
 				<key>fileExtensions</key>
 				<array>
 					<string>sol</string>
