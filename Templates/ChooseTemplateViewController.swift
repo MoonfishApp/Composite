@@ -225,9 +225,6 @@ class ChooseTemplateViewController: NSViewController {
                 return
             }
             
-//            let projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
-//            let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
-            
             do {
                 let projectInit = try self.createProjectInit(directory: directory, template: template)
                 self.projectInit = projectInit
