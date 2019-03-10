@@ -33,12 +33,15 @@ final class FileItem: NSObject {
     lazy var children: [FileItem] = {
         
         let fileManager = FileManager.default
-        guard isDirectory == true, fileManager.fileExists(atPath: url.path), let files = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: [], options: [.skipsHiddenFiles]) else {
+        let filelist = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: [], options: [.skipsHiddenFiles])
+        
+        guard isDirectory == true, fileManager.fileExists(atPath: url.path), let files = filelist else {
             return [FileItem]()
         }
         
+        let sortedFiles = files.sorted(by: { $0.path < $1.path })
         var _children = [FileItem]()
-        for file in files {
+        for file in sortedFiles {
             if let item = try? FileItem(url: file) {
                 _children.append(item)
             }
@@ -62,16 +65,6 @@ final class FileItem: NSObject {
             }
         }
         return nil
-        
-        
-//        for child in children {
-//            if child.url == url {
-//                return (path.append(child) as! [FileItem])
-//            } else {
-//                return child.findFile(url: url, path: path)
-//            }
-//        }
-//        return nil
     }
     
     static func ==(lhs: FileItem, rhs: FileItem) -> Bool {
