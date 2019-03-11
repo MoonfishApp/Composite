@@ -141,7 +141,7 @@ final class SortPatternTabViewController: NSTabViewController {
     override func tabView(_ tabView: NSTabView, willSelect tabViewItem: NSTabViewItem?) {
         
         super.tabView(tabView, willSelect: tabViewItem)
-    
+        
         // initialize viewController in representedObject
         guard
             let item = tabViewItem,
@@ -201,7 +201,7 @@ final class SortPatternViewController: NSViewController, NSTextFieldDelegate {
         
         self.delegate?.didUpdate(sortPattern: pattern)
     }
-
+    
 }
 
 
