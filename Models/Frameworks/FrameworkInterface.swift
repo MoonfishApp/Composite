@@ -82,9 +82,7 @@ struct InitInterface: Codable {
 
     let initDirectories: [String]?
     
-    let initEmpty: FrameworkInit
-    
-    let initTemplate: FrameworkInit?
+    let initTemplate: FrameworkInit
     
     let initExample: FrameworkInit?
 }

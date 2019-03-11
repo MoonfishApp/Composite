@@ -38,7 +38,7 @@ struct Template: Codable {
     /// File to open in editor by default. E.g. ["contracts", "TutorialToken.sol"]
     let openFile: String?
     
-    /// Either initEmpty, initTemplate, or initExample
+    /// Either initTemplate, or initExample
     let initType: InitType
     
     let detailViewType: String?
@@ -53,12 +53,10 @@ struct Template: Codable {
 
 enum InitType: String, Codable {
     
-    case initEmpty, initTemplate, initExample
+    case initTemplate, initExample
     
     func commands(_ frameworkCommands: FrameworkInterface) -> FrameworkInit? {
         switch self {
-        case .initEmpty:
-            return frameworkCommands.initInterface.initEmpty
         case .initTemplate:
             return frameworkCommands.initInterface.initTemplate
         case .initExample:

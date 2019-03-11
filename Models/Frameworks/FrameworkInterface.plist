@@ -19,15 +19,6 @@
 		<string>*</string>
 		<key>initInterface</key>
 		<dict>
-			<key>initEmpty</key>
-			<dict>
-				<key>commands</key>
-				<array>
-					<string>tronbox init</string>
-				</array>
-				<key>createProjectDirectory</key>
-				<true/>
-			</dict>
 			<key>initTemplate</key>
 			<dict>
 				<key>commands</key>
@@ -76,15 +67,6 @@
 		<string>*</string>
 		<key>initInterface</key>
 		<dict>
-			<key>initEmpty</key>
-			<dict>
-				<key>commands</key>
-				<array>
-					<string>etherlime init</string>
-				</array>
-				<key>createProjectDirectory</key>
-				<true/>
-			</dict>
 			<key>initTemplate</key>
 			<dict>
 				<key>commands</key>
@@ -136,15 +118,6 @@
 		<string>*</string>
 		<key>initInterface</key>
 		<dict>
-			<key>initEmpty</key>
-			<dict>
-				<key>commands</key>
-				<array>
-					<string>truffle init</string>
-				</array>
-				<key>createProjectDirectory</key>
-				<true/>
-			</dict>
 			<key>initTemplate</key>
 			<dict>
 				<key>commands</key>
@@ -216,15 +189,6 @@
 				<string>test</string>
 			</array>
 			<key>initTemplate</key>
-			<dict>
-				<key>commands</key>
-				<array>
-					<string>yarn add @zilliqa-js/zilliqa</string>
-				</array>
-				<key>createProjectDirectory</key>
-				<true/>
-			</dict>
-			<key>initEmpty</key>
 			<dict>
 				<key>commands</key>
 				<array>
