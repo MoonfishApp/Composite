@@ -25,8 +25,7 @@ final class FileNavigatorViewController: NSViewController {
                     print("file changed: \(files)")
                     try? self.showFileItems(root: url)
                 })
-            }
-            // TODO: https://github.com/gurinderhans/SwiftFSWatcher
+            }            
         }
     }
     
