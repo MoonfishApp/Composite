@@ -15,9 +15,22 @@ final class FileNavigatorViewController: NSViewController {
 
     private var rootItem: FileItem? {
         didSet {
+            
+            self.fileWatcher?.pause()
+            self.fileWatcher = nil
+            
+            if let url = rootItem?.url {
+                self.fileWatcher = SwiftFSWatcher([url.path])
+                self.fileWatcher?.watch({ files in
+                    print("file changed: \(files)")
+                    try? self.showFileItems(root: url)
+                })
+            }
             // TODO: https://github.com/gurinderhans/SwiftFSWatcher
         }
     }
+    
+    private var fileWatcher: SwiftFSWatcher? = nil
     
     /// Hack. Forces SelectionDidChange to ignore programmatically set selection
     private var ignoreSelection: Bool = false
@@ -61,15 +74,29 @@ final class FileNavigatorViewController: NSViewController {
     /// Adds file tree to view and selects selectItem
     func showFileItems(root: URL, selectItem: URL? = nil) throws {
         
-        // Create root item. Rest of tree will be created lazily
+        // 1. If the file view is being reloaded, a file must already be selected
+        //    Restore selection.
+        var urlToSelect = selectItem
+        let row = self.fileView.selectedRow
+        if row != -1, let previouslySelectedItem = self.fileView.item(atRow: row) as? FileItem {
+            urlToSelect = previouslySelectedItem.url
+        }
+        
+        // 2. If the file view is being reloaded, some directories might be expanded
+        let expandedDirectories = self.expandedURLs()
+        
+        // 3. Create root item. Rest of tree will be created lazily
         rootItem = try FileItem(url: root)
         
-        // Show files in view and expand root
+        // 4. Show files in view and expand root
         fileView.reloadData()
         fileView.expandItem(rootItem)
         
-        // Select item
-        if let selectItem = selectItem, let path = rootItem?.find(file: selectItem) {
+        // 5. Expand perviously expanded directories using the directories fetched in step 2
+        expandItems(urls: expandedDirectories)
+        
+        // 6. Select item
+        if let urlToSelect = urlToSelect, let path = rootItem?.find(file: urlToSelect) {
             
             for item in path {
                 fileView.expandItem(item)
@@ -79,6 +106,28 @@ final class FileNavigatorViewController: NSViewController {
             guard rowToSelect != -1 else { return }
             ignoreSelection = true
             fileView.selectRowIndexes([rowToSelect], byExtendingSelection: false)
+        }
+    }
+    
+    func expandedURLs() -> [URL] {
+        var urls = [URL]()
+        let numberOfItems = fileView.numberOfRows
+        for index in 0 ..< numberOfItems {
+            let item = fileView.item(atRow: index)
+            if fileView.isItemExpanded(item) {
+                urls.append((item as! FileItem).url)
+            }
+        }
+        return urls
+    }
+    
+    func expandItems(urls: [URL]) {
+        let numberOfItems = fileView.numberOfRows
+        for index in 0 ..< numberOfItems {
+            let item = fileView.item(atRow: index)
+            if urls.contains((item as! FileItem).url) {
+                fileView.expandItem(item)
+            }
         }
     }
 }
