@@ -20,11 +20,8 @@ final class FileNavigatorViewController: NSViewController {
     
     override var representedObject: Any? {
         didSet {
-            
-            if let _ = rootItem {
-                // Ignore for now
-                // When does this happen?
-            } else if let textDocument = representedObject as? TextDocument, let project = textDocument.project {
+
+            if let textDocument = representedObject as? TextDocument, let project = textDocument.project {
                 // RootItem is nil, the outlineview is currently empty.
                 // A new project was opened, with textDocument as default document
                 
@@ -37,9 +34,6 @@ final class FileNavigatorViewController: NSViewController {
             
                 try? self.showFileItems(root: project.workDirectory, selectItem: project.fileURL)
                 
-            } else {
-                // Shouldn't happen
-                assertionFailure()
             }
         }
     }

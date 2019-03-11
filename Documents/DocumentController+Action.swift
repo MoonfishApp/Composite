@@ -100,18 +100,29 @@ extension DocumentController {
 
             // Create empty document
             let document = TextDocument()
-            if let currentDocument = currentDocument as? TextDocument {
-                document.project = currentDocument.project
-            } else if let currentDocument = currentDocument as? ProjectDocument {
-                document.project = currentDocument
-            }
             
             document.save(to: location, ofType: "", for: .saveOperation, completionHandler: { error in
-                print("done")
-                savePanel.close()
-                if let windowController = currentDocument.windowControllers.first! as? ProjectWindowController {
-                    windowController.document = document
+                
+                guard error == nil else {
+                    let alert = NSAlert(error: error!)
+                    alert.runModal()
+                    return
                 }
+                
+                savePanel.close()
+                
+                if let currentDocument = currentDocument as? TextDocument {
+                    document.project = currentDocument.project
+                } else if let currentDocument = currentDocument as? ProjectDocument {
+                    document.project = currentDocument
+                }
+                assert(document.project != nil)
+                self.replace(document, inController: currentDocument.windowControllers.first!)
+                
+                
+//                if let windowController = currentDocument.windowControllers.first! as? ProjectWindowController {
+//                    windowController.document = document
+//                }
             })
             
         }
