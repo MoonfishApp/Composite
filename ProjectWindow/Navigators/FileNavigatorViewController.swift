@@ -13,7 +13,11 @@ final class FileNavigatorViewController: NSViewController {
     
     @IBOutlet weak var fileView: NSOutlineView!
 
-    private var rootItem: FileItem?
+    private var rootItem: FileItem? {
+        didSet {
+            // TODO: https://github.com/gurinderhans/SwiftFSWatcher
+        }
+    }
     
     /// Hack. Forces SelectionDidChange to ignore programmatically set selection
     private var ignoreSelection: Bool = false

@@ -92,7 +92,7 @@ struct DefaultSettings {
         .autoExpandTab: false,
         .detectsIndentStyle: true,
         .indentWithTabKey: false,
-        .wrapLines: true,
+        .wrapLines: false, //TODO: quick fix for scrollview bug
         .enablesHangingIndent: true,
         .hangingIndentWidth: 0,
         .appendsCommentSpacer: true,

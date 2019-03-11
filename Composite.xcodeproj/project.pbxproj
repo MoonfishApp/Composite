@@ -344,8 +344,8 @@
 		C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */; settings = {ASSET_TAGS = (EditWindow, ); }; };
 		C7F0B9C22113CF7E005A8FE2 /* CompositeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */; };
 		C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */; };
-		C7F18AE62217DC740026D7DC /* EditorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3F21EE9DAC007FB630 /* EditorView.storyboard */; };
 		C7F18B06221F7C030026D7DC /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = C7F18B05221F7C020026D7DC /* Themes */; };
+		C7F95995223638C5008C8F7E /* SwiftFSWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F95994223638C5008C8F7E /* SwiftFSWatcher.swift */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
@@ -715,6 +715,7 @@
 		C7F0B9B32112945F005A8FE2 /* CompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeTests.swift; sourceTree = "<group>"; };
 		C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeSplitViewController.swift; sourceTree = "<group>"; };
 		C7F18B05221F7C020026D7DC /* Themes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Themes; path = cotEditor/Resources/Themes; sourceTree = SOURCE_ROOT; };
+		C7F95994223638C5008C8F7E /* SwiftFSWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFSWatcher.swift; sourceTree = "<group>"; };
 		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Composite.release.xcconfig"; path = "Pods/Target Support Files/Pods-Composite/Pods-Composite.release.xcconfig"; sourceTree = "<group>"; };
 		F81936C3214C6F2F00C3222B /* uninstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = uninstall.command; sourceTree = "<group>"; };
@@ -938,6 +939,7 @@
 			children = (
 				C7A584E521F0F8E50097B761 /* NavigatorTabViewController.swift */,
 				C7E76462212936E300867DA4 /* FileNavigatorViewController.swift */,
+				C7F95994223638C5008C8F7E /* SwiftFSWatcher.swift */,
 				C7E76466212937F100867DA4 /* FileItem.swift */,
 				C7A584ED21F0FAE70097B761 /* Navigators.storyboard */,
 			);
@@ -1853,7 +1855,6 @@
 				C79A6D4C21EE9DEC007FB630 /* PatternSortView.storyboard in Resources */,
 				C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */,
 				C72CF610222916FE00637A8B /* Celer in Resources */,
-				C7F18AE62217DC740026D7DC /* EditorView.storyboard in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
 				C72CF615222BA85800637A8B /* Tronbox in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
@@ -2109,6 +2110,7 @@
 				C79A75CD21EEF07D007FB630 /* FindPanelTextClipView.swift in Sources */,
 				C79A6C7521EE9B82007FB630 /* OutlineItem.swift in Sources */,
 				C79A6B9621EE9962007FB630 /* Editable.swift in Sources */,
+				C7F95995223638C5008C8F7E /* SwiftFSWatcher.swift in Sources */,
 				C79A6D1321EE9C64007FB630 /* NSDocument+ErrorHandling.swift in Sources */,
 				C79A75C121EEF070007FB630 /* FindPanelResultViewController.swift in Sources */,
 				C79A6C3621EE9AFB007FB630 /* EncodingTableCellView.swift in Sources */,
