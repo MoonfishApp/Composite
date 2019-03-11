@@ -109,7 +109,7 @@ final class FileNavigatorViewController: NSViewController {
         }
     }
     
-    func expandedURLs() -> [URL] {
+    private func expandedURLs() -> [URL] {
         var urls = [URL]()
         let numberOfItems = fileView.numberOfRows
         for index in 0 ..< numberOfItems {
@@ -121,7 +121,7 @@ final class FileNavigatorViewController: NSViewController {
         return urls
     }
     
-    func expandItems(urls: [URL]) {
+    private func expandItems(urls: [URL]) {
         let numberOfItems = fileView.numberOfRows
         for index in 0 ..< numberOfItems {
             let item = fileView.item(atRow: index)
