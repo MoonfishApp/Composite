@@ -54,24 +54,32 @@ extension String {
     /// - Parameter with: project name
     /// - Returns: New string with projectname placeholders replaced by project name
     public func replaceOccurrencesOfProjectName(with name: String) -> String {
-//        let name = name.replacingOccurrences(of: " ", with: "-")
+
+        //        let name = name.replacingOccurrences(of: " ", with: "-")
         return replacingOccurrences(of: "<#__project_name#>", with: name).replacingOccurrences(of: "$(PROJECT_NAME)", with: name)
     }
     
+    public func replaceOccurrencesOfFileName(with name: String) -> String {
+        
+        return replacingOccurrences(of: "<#__file_name#>", with: name).replacingOccurrences(of: "$(FILE_NAME)", with: name)
+    }
     
     /// Replaces occurences of <#__user_name#> and ($USER_NAME) in string with the
     /// user name as returned my MacOS (e.g. "John Appleseed")
     ///
     /// - Returns: New string with placeholders replaced by the user name
     public func replaceOccurrencesOfUserName() -> String {
+        
         return replacingOccurrences(of:"<#__user_name#>", with: NSFullUserName()).replacingOccurrences(of: "$(USER_NAME)", with: NSFullUserName())
     }
     
     public func replaceOccurrencesDate() -> String {
+
         let date = Date().shortDate
         return replacingOccurrences(of:"<#__date#>", with: date).replacingOccurrences(of: "$(DATE)", with: date)
     }
     public var escapedSpaces: String {
+ 
         return replacingOccurrences(of: " ", with: "\\ ")
     }
 }

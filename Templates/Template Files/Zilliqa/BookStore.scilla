@@ -1,7 +1,6 @@
-scilla_version 0
-
-(* <#__project_name#>.scilla *)
-(* Created by <#__user_name#> on <#__date#>. *)
+(* <#__file_name#> *)
+(* <#__project_name#> *)
+(* Created by <#__user_name#> on <#__date#> *)
 
 (* Bookstore Contract *)
 (* This example contract demonstrates how a CRUD app can be built. *)
@@ -15,6 +14,8 @@ scilla_version 0
 
 (* In production deployments, you will want to implement proper access *)
 (* control logic in your smart contract *)
+
+scilla_version 0
 
 (***************************************************)
 (*               Associated library                *)

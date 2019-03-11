@@ -1,5 +1,7 @@
 /**
-<#__project_name#>.sol
+<#__file_name#>
+<#__project_name#>
+
 Created by <#__user_name#> on <#__date#>.
 */
 
