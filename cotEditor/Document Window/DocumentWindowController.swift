@@ -9,7 +9,7 @@
 //  ---------------------------------------------------------------------------
 //
 //  © 2004-2007 nakamuxu
-//  © 2013-2018 1024jp
+//  © 2013-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -61,9 +61,9 @@ final class DocumentWindowController: NSWindowController {
         (self.window as! DocumentWindow).backgroundAlpha = UserDefaults.standard[.windowAlpha]
         
         // observe opacity setting change
+        self.windowAlphaObserver?.invalidate()
         self.windowAlphaObserver = UserDefaults.standard.observe(key: .windowAlpha, options: [.new]) { [unowned self] change in
             (self.window as? DocumentWindow)?.backgroundAlpha = change.new!
-            self.contentViewController?.view.needsDisplay = true
         }
     }
     
@@ -81,6 +81,49 @@ final class DocumentWindowController: NSWindowController {
             if document.isInViewingMode, let window = self.window as? DocumentWindow {
                 window.backgroundAlpha = 1.0
             }
+        }
+    }
+    
+    
+    
+    // MARK: Actions
+    
+    /// show editor opacity slider as popover
+    @IBAction func showOpacitySlider(_ sender: Any?) {
+        
+        guard
+            let window = self.window as? DocumentWindow,
+            let origin = sender as? NSView ?? self.contentViewController?.view,
+            let sliderViewController = self.storyboard?.instantiateController(withIdentifier: "Opacity Slider") as? NSViewController,
+            let contentViewController = self.contentViewController
+            else { return assertionFailure() }
+        
+        sliderViewController.representedObject = window.backgroundAlpha
+        
+        contentViewController.present(sliderViewController, asPopoverRelativeTo: .zero, of: origin,
+                                      preferredEdge: .maxY, behavior: .transient)
+    }
+    
+    
+    /// change editor opacity via toolbar
+    @IBAction func changeOpacity(_ sender: NSSlider) {
+        
+        (self.window as! DocumentWindow).backgroundAlpha = CGFloat(sender.doubleValue)
+    }
+    
+}
+
+
+
+extension DocumentWindowController: NSUserInterfaceValidations {
+    
+    func validateUserInterfaceItem(_ item: NSValidatedUserInterfaceItem) -> Bool {
+        
+        switch item.action {
+        case #selector(showOpacitySlider)?:
+            return self.window?.styleMask.contains(.fullScreen) == false
+        default:
+            return true
         }
     }
     

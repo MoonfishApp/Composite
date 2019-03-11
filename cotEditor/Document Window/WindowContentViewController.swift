@@ -128,7 +128,7 @@ final class WindowContentViewController: NSSplitViewController, TabViewControlle
     
     /// deliver editor to outer view controllers
     var documentViewController: DocumentsSplitViewController? {
-        
+        assert(self.documentViewItem?.viewController as? DocumentsSplitViewController != nil)
         return self.documentViewItem?.viewController as? DocumentsSplitViewController
     }
     
