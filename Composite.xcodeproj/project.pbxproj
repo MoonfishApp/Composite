@@ -1581,8 +1581,8 @@
 		C79A75D021EEF08F007FB630 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C79A75D521EEF0A5007FB630 /* MultipleReplacement.Settings+Object.swift */,
 				C79A75D321EEF0A5007FB630 /* MultipleReplacement.swift */,
+				C79A75D521EEF0A5007FB630 /* MultipleReplacement.Settings+Object.swift */,
 				C79A75D421EEF0A5007FB630 /* MultipleReplacement+Codable.swift */,
 				C79A75D221EEF0A5007FB630 /* MultipleReplacement+TextView.swift */,
 			);
