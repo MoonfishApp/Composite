@@ -69,6 +69,16 @@ extension DocumentController {
 //        DocumentWindow.tabbingPreference = nil
     }
     
+    
+    @IBAction func newWindowForTab(_ sender: Any?) {
+        
+        guard let document = currentDocument else { return }
+        
+        document.makeWindowControllers()
+        guard let newTab = document.windowControllers.last?.window else { return }
+        document.windowControllers.first?.window?.addTabbedWindow(newTab, ordered: .below)
+    }
+    
     @IBAction func newProject(_ sender: Any?) {
         
         guard let delegate = NSApplication.shared.delegate as? AppDelegate else { return }
@@ -76,6 +86,35 @@ extension DocumentController {
     }
     
     @IBAction func newFile(_ sender: Any?) {
+        
+        guard let currentDocument = self.currentDocument, let currentDirectory = currentDocument.fileURL?.deletingLastPathComponent(), let window = currentDocument.windowControllers.first?.window else { return }
+        
+        let savePanel = NSSavePanel()
+        savePanel.directoryURL = currentDirectory
+        savePanel.isExtensionHidden = false
+        savePanel.allowedFileTypes = ["scilla", "sol", "js", "json"] // TODO: default extension should be first item
+        savePanel.beginSheetModal(for: window) { (result) in
+            
+            guard result == .OK, let location = savePanel.url else { return }
+            print("success: \(location)")
+
+            // Create empty document
+            let document = TextDocument()
+            if let currentDocument = currentDocument as? TextDocument {
+                document.project = currentDocument.project
+            } else if let currentDocument = currentDocument as? ProjectDocument {
+                document.project = currentDocument
+            }
+            
+            document.save(to: location, ofType: "", for: .saveOperation, completionHandler: { error in
+                print("done")
+                savePanel.close()
+                if let windowController = currentDocument.windowControllers.first! as? ProjectWindowController {
+                    windowController.document = document
+                }
+            })
+            
+        }
     }
     
 }

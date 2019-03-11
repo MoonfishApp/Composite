@@ -146,6 +146,10 @@ class DocumentController: NSDocumentController {
             return self.currentDocument != nil
         }
         
+        if item.action == #selector(newFile(_:)) {
+            return self.currentDocument != nil
+        }
+        
         return super.validateUserInterfaceItem(item)
     }
     
@@ -153,15 +157,7 @@ class DocumentController: NSDocumentController {
         assertionFailure()
         // Show new file template here
     }
-    
-    @IBAction func newWindowForTab(_ sender: Any?) {
-        
-        guard let document = currentDocument else { return }
-        
-        document.makeWindowControllers()
-        guard let newTab = document.windowControllers.last?.window else { return }
-        document.windowControllers.first?.window?.addTabbedWindow(newTab, ordered: .below)
-    }
+
     
     /// Based on TextEdit example, see https://stackoverflow.com/questions/34497218/nsdocument-opening-over-a-default-document
     func replace(_ document: NSDocument, inController controller: NSWindowController) {
