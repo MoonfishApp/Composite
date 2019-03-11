@@ -26,7 +26,7 @@
 import Cocoa
 
 final class DocumentInspectorViewController: NSViewController {
-        
+    
     // MARK: Private Properties
     
     @IBOutlet private var dateFormatter: DateFormatter?
@@ -77,7 +77,7 @@ final class DocumentInspectorViewController: NSViewController {
         
         willSet {
             guard newValue is DocumentAnalyzer else {
-                assertionFailure("representedObject of \(self.className) must be an instance of \(DocumentAnalyzer.className)")
+                assertionFailure("representedObject of \(self.className) must be an instance of \(String(describing: DocumentAnalyzer.self))")
                 return
             }
             self.analyzer?.needsUpdateEditorInfo = false
