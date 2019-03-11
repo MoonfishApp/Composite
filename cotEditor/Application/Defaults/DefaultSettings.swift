@@ -64,6 +64,7 @@ struct DefaultSettings {
         .windowAlpha: 1.0,
         
 //        .fontName: (NSFont.userFont(ofSize: 0) ?? NSFont.systemFont(ofSize: 0)).fontName,
+//        .fontSize: NSFont.systemFontSize,
         .fontName: "Menlo", //"SFMono-Regular",
         .fontSize: 12.0,
         .shouldAntialias: true,
@@ -80,7 +81,7 @@ struct DefaultSettings {
         .showInvisibleFullwidthSpace: false,
         .invisibleFullwidthSpace: 0,
         .showOtherInvisibleChars: false,
-//        .theme: "Dendrobates",  // -> The default theme is set dynamically by taking the current appearance into account.
+        //        .theme: "Dendrobates",  // -> The default theme is set dynamically by taking the current appearance into account.
         
         .smartInsertAndDelete: false,
         .balancesBrackets: false,
@@ -92,7 +93,7 @@ struct DefaultSettings {
         .autoExpandTab: false,
         .detectsIndentStyle: true,
         .indentWithTabKey: false,
-        .wrapLines: false, //TODO: quick fix for scrollview bug
+        .wrapLines: false, //TODO: quick fix for scrollview bug,
         .enablesHangingIndent: true,
         .hangingIndentWidth: 0,
         .appendsCommentSpacer: true,
@@ -176,7 +177,7 @@ struct DefaultSettings {
         .selectedInspectorPaneIndex: 0,
         
         // ------ hidden settings ------
-        .headerFooterDateFormat: "YYYY-MM-dd HH:mm",
+        .headerFooterDateFormat: "yyyy-MM-dd HH:mm",
         .headerFooterPathAbbreviatingWithTilde: true,
         .autoCompletionDelay: 0.25,
         .showColoringIndicatorTextLength: 75000,
