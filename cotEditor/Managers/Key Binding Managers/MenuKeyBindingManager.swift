@@ -142,7 +142,7 @@ final class MenuKeyBindingManager: KeyBindingManager {
     
     
     // MARK: Private Methods
-
+    
     /// return key bindings for selector
     private func shortcut(for action: Selector, defaults usesDefaults: Bool) -> Shortcut {
         
@@ -187,9 +187,9 @@ final class MenuKeyBindingManager: KeyBindingManager {
                  #selector(AppDelegate.openHelpAnchor),
                  #selector(NSWindow.makeKeyAndOrderFront),
                  #selector(NSApplication.orderFrontCharacterPalette):  // = "Emoji & Symbols"
-                 return false
+                return false
                 
-            // window tabbing actions
+                // window tabbing actions
             // -> Because they cannot be set correctly.
             case #selector(NSWindow.selectNextTab(_:)),
                  #selector(NSWindow.selectPreviousTab(_:)),
@@ -243,7 +243,7 @@ final class MenuKeyBindingManager: KeyBindingManager {
                 
                 menuItem.keyEquivalent = ""
                 menuItem.keyEquivalentModifierMask = []
-            }
+        }
     }
     
     
@@ -267,7 +267,7 @@ final class MenuKeyBindingManager: KeyBindingManager {
                 
                 menuItem.keyEquivalent = shortcut.keyEquivalent
                 menuItem.keyEquivalentModifierMask = shortcut.modifierMask
-            }
+        }
     }
     
     
@@ -297,7 +297,7 @@ final class MenuKeyBindingManager: KeyBindingManager {
                 let item = KeyBindingItem(action: action, shortcut: shortcut, defaultShortcut: defaultShortcut)
                 
                 return NamedTreeNode(name: menuItem.title, representedObject: item)
-            }
+        }
     }
     
 }
