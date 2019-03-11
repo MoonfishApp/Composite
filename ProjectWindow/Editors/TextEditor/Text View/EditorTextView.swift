@@ -1679,7 +1679,6 @@ extension EditorTextView {
         
         var candidateWords = OrderedSet<String>()
         let particalWord = (self.string as NSString).substring(with: charRange)
-        print(particalWord)
         
         // add words in document
         if UserDefaults.standard[.completesDocumentWords] {

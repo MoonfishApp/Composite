@@ -110,10 +110,18 @@ extension FileNavigatorViewController: NSOutlineViewDelegate {
         guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, let controller = view.window?.windowController else {
             return }
         
+        let oldDocument = representedObject
+        if let oldDocument = oldDocument as? NSDocument {
+            oldDocument.save(self)
+        }
+        
         DocumentController.shared.openDocument(withContentsOf: item.url, display: false) { document, isAlreadyOpen, error in
             guard error == nil, let document = document else { return }
             DispatchQueue.main.async {
                 (DocumentController.shared as! DocumentController).replace(document, inController: controller)
+                if let oldDocument = oldDocument as? NSDocument, oldDocument.fileURL != document.fileURL {
+                    oldDocument.close()
+                }
             }
         }
     }

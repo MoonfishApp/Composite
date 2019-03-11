@@ -166,6 +166,11 @@ class DocumentController: NSDocumentController {
         
         let documentToBeReplaced = currentDocument // Note: Can be nil
         
+        // Pass project
+        if let document = document as? TextDocument, document.project == nil, let documentToBeReplaced = documentToBeReplaced as? TextDocument {
+            document.project = documentToBeReplaced.project
+        }
+        
         document.addWindowController(controller) //(controller.copy() as! NSWindowController)
         controller.document = document
 
