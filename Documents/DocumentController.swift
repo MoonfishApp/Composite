@@ -139,6 +139,17 @@ class DocumentController: NSDocumentController {
         }
     }*/
     
+    override func noteNewRecentDocument(_ document: NSDocument) {
+        
+        guard document is ProjectDocument else { return }
+        super.noteNewRecentDocument(document)
+    }
+    
+    override func noteNewRecentDocumentURL(_ url: URL) {        
+        super.noteNewRecentDocumentURL(url)
+    }
+    
+    
     /// return enability of actions
     override func validateUserInterfaceItem(_ item: NSValidatedUserInterfaceItem) -> Bool {
         
