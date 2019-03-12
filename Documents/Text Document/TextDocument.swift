@@ -42,7 +42,7 @@ private let uniqueFileIDLength = 13
 
 // MARK: -
 
-final class TextDocument: NSDocument, EncodingHolder {
+final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolder {
     
     // MARK: Notification Names
     
@@ -52,7 +52,7 @@ final class TextDocument: NSDocument, EncodingHolder {
     
     // MARK: Public Properties
     
-    let isVerticalText = false
+    var isVerticalText = false
     
     @objc dynamic var project: ProjectDocument? = nil
     
@@ -167,11 +167,6 @@ final class TextDocument: NSDocument, EncodingHolder {
     }
     
     
-    /// restore last state
-//    override class var restorableStateKeyPaths: [String] {
-//
-//        return super.restorableStateKeyPaths + [#keyPath(projectReference),]
-//    }
     
     // MARK: Document Methods
     
@@ -277,6 +272,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         // -> Taking performance issue into consideration,
         //    the selection ranges will be adjusted only when the content size is enough small.
         let string = self.textStorage.string
+        let range = NSRange(..<self.textStorage.length)
         let maxLength = 50_000  // takes ca. 1.3 sec. with MacBook Pro 13-inch late 2016 (3.3 GHz)
         let considersDiff = min(lastString.count, string.count) < maxLength
         
@@ -285,7 +281,7 @@ final class TextDocument: NSDocument, EncodingHolder {
                 guard considersDiff else {
                     // just cut extra ranges off
                     return state.ranges
-                        .map { $0.intersection(string.nsRange) ?? NSRange(location: string.nsRange.upperBound, length: 0) }
+                        .map { $0.intersection(range) ?? NSRange(location: range.upperBound, length: 0) }
                         .map { $0 as NSValue }
                 }
                 
@@ -351,7 +347,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         
         // update textStorage
         assert(self.textStorage.layoutManagers.isEmpty || Thread.isMainThread)
-        self.textStorage.replaceCharacters(in: self.textStorage.string.nsRange, with: string)
+        self.textStorage.replaceCharacters(in: NSRange(..<self.textStorage.length), with: string)
         
         // determine syntax style (only on the first file open)
         if self.windowForSheet == nil {
@@ -400,7 +396,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         assert(Thread.isMainThread)
         if UserDefaults.standard[.trimsTrailingWhitespaceOnSave] {
             let trimsWhitespaceOnlyLines = UserDefaults.standard[.trimsWhitespaceOnlyLines]
-            let keepsEditingPoint = (saveOperation == .autosaveInPlaceOperation || saveOperation == .autosaveElsewhereOperation)
+            let keepsEditingPoint = saveOperation.isAutoSaving
             let textView = self.textStorage.layoutManagers.lazy
                 .compactMap { $0.textViewForBeginningOfSelection }
                 .first { !keepsEditingPoint || $0.window?.firstResponder == $0 }
@@ -454,11 +450,9 @@ final class TextDocument: NSDocument, EncodingHolder {
                 }
             }
             
-            switch saveOperation {
-            case .saveOperation, .saveAsOperation, .saveToOperation:
+            if !saveOperation.isAutoSaving {
                 self.analyzer.invalidateFileInfo()
                 ScriptManager.shared.dispatchEvent(documentSaved: self)
-            case .autosaveAsOperation, .autosaveElsewhereOperation, .autosaveInPlaceOperation: break
             }
         }
     }
@@ -471,6 +465,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         
         // store current state here, since the main thread will already be unblocked after `data(ofType:)`
         let encoding = self.encoding
+        let isVerticalText = self.isVerticalText
         
         try super.writeSafely(to: url, ofType: typeName, for: saveOperation)
         
@@ -500,7 +495,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         var attributes = try super.fileAttributesToWrite(to: url, ofType: typeName, for: saveOperation, originalContentsURL: absoluteOriginalContentsURL)
         
         // give the execute permission if user requested
-        if self.isExecutable, (saveOperation == .saveOperation || saveOperation == .saveAsOperation) {
+        if self.isExecutable, !saveOperation.isAutoSaving {
             let permissions: UInt16 = (self.fileAttributes?[.posixPermissions] as? UInt16) ?? 0o644  // ???: Is the default permission really always 644?
             attributes[FileAttributeKey.posixPermissions.rawValue] = permissions | S_IXUSR
         }
@@ -527,7 +522,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         // set default file extension in a hacky way (2018-02 on macOS 10.13 SDK for macOS 10.11 - 10.13)
         savePanel.allowedFileTypes = nil  // nil allows setting any extension
         if let fileType = self.fileType,
-           let pathExtension = self.fileNameExtension(forType: fileType, saveOperation: .saveOperation) {
+            let pathExtension = self.fileNameExtension(forType: fileType, saveOperation: .saveOperation) {
             // set once allowedFileTypes, so that initial filename selection excludes the file extension
             savePanel.allowedFileTypes = [pathExtension]
             
@@ -582,7 +577,7 @@ final class TextDocument: NSDocument, EncodingHolder {
             let method = class_getMethodImplementation(objcClass, selector)
             else {
                 return super.canClose(withDelegate: delegate, shouldClose: shouldCloseSelector, contextInfo: contextInfo)
-            }
+        }
         
         typealias Signature = @convention(c) (NSObject, Selector, NSDocument, Bool, UnsafeMutableRawPointer) -> Void
         let function = unsafeBitCast(method, to: Signature.self)
@@ -615,13 +610,9 @@ final class TextDocument: NSDocument, EncodingHolder {
         printView.baseWritingDirection = viewController.writingDirection
         
         // set font for printing
-        printView.font = {
-            if UserDefaults.standard[.setPrintFont] {  // == use printing font
-                return NSFont(name: UserDefaults.standard[.printFontName]!,
-                              size: UserDefaults.standard[.printFontSize])
-            }
-            return viewController.font
-        }()
+        printView.font = UserDefaults.standard[.setPrintFont]
+            ? NSFont(name: UserDefaults.standard[.printFontName]!, size: UserDefaults.standard[.printFontSize])
+            : viewController.font
         
         // [caution] need to set string after setting other properties
         printView.string = self.textStorage.string
@@ -662,7 +653,6 @@ final class TextDocument: NSDocument, EncodingHolder {
             super.printInfo = newValue
         }
     }
-
     
     // MARK: Protocols
     
@@ -672,7 +662,7 @@ final class TextDocument: NSDocument, EncodingHolder {
         // [caution] This method can be called from any thread.
         
         // [caution] DO NOT invoke `super.presentedItemDidChange()` that reverts document automatically if autosavesInPlace is enable.
-//        super.presentedItemDidChange()
+        //        super.presentedItemDidChange()
         
         let option = UserDefaults.standard[.documentConflictOption]
         
@@ -746,13 +736,13 @@ final class TextDocument: NSDocument, EncodingHolder {
     
     
     /// open existing document file (alternative methods for `init(contentsOf:ofType:)`)
-//    func didMakeDocumentForExisitingFile(url: URL) {
-    
+    func didMakeDocumentForExisitingFile(url: URL) {
+        
         // [caution] This method may be called from a background thread due to concurrent-opening.
         // This method won't be invoked on Resume. (2015-01-26)
         
-//        ScriptManager.shared.dispatchEvent(documentOpened: self)
-//    }
+        ScriptManager.shared.dispatchEvent(documentOpened: self)
+    }
     
     
     
@@ -790,10 +780,6 @@ final class TextDocument: NSDocument, EncodingHolder {
     
     
     /// return document window's editor wrapper
-//    var viewController: NSViewController? {
-//
-//        return self.windowControllers.first?.contentViewController
-//    }
     var viewController: DocumentsSplitViewController? {
         
         return (self.windowControllers.first?.contentViewController as? WindowContentViewController)?.documentViewController
@@ -1056,16 +1042,21 @@ final class TextDocument: NSDocument, EncodingHolder {
     /// transfer file information to UI
     private func applyContentToWindow() {
         
-        guard let windowController = windowControllers.last else { return }
-        windowController.document = self
+        guard let viewController = self.viewController else { return }
         
         // update status bar and document inspector
         self.analyzer.invalidateFileInfo()
         self.analyzer.invalidateModeInfo()
         self.analyzer.invalidateEditorInfo()
-
+        
         // update incompatible characters if pane is visible
         self.incompatibleCharacterScanner.invalidate()
+        
+        // update view
+        viewController.invalidateStyleInTextStorage()
+        if self.isVerticalText {
+            viewController.verticalLayoutOrientation = true
+        }
     }
     
     

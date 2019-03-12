@@ -172,7 +172,7 @@ final class DocumentAnalyzer: NSObject {
     
     /// update editor info (only if really needed)
     private func updateEditorInfo() {
-        /*
+        
         guard
             let document = self.document,
             let textView = document.viewController?.focusedTextView,
@@ -212,7 +212,7 @@ final class DocumentAnalyzer: NSObject {
         // cancel waiting operations to avoid stuck large operations
         self.editorInfoCountOperationQueue.cancelAllOperations()
         
-        self.editorInfoCountOperationQueue.addOperation(operation)*/
+        self.editorInfoCountOperationQueue.addOperation(operation)
     }
     
 }

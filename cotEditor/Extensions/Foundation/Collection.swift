@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2016-2018 1024jp
+//  © 2016-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ extension RangeReplaceableCollection where Element: Equatable {
     /// - Parameter element: The element to be removed.
     mutating func remove(_ element: Element) {
         
-        if let index = self.index(of: element) {
+        if let index = self.firstIndex(of: element) {
             self.remove(at: index)
         }
     }
@@ -40,7 +40,7 @@ extension RangeReplaceableCollection where Element: Equatable {
 
 
 extension Collection {
-
+    
     /// Return the element at the specified index only if it is within bounds, otherwise nil.
     ///
     /// - Parameter index: The position of the element to obtain.
@@ -78,7 +78,7 @@ extension Dictionary {
     func mapKeys<T>(transform: (Key) throws -> T) rethrows -> [T: Value] {
         
         let keysWithValues = try self.map { (key, value) -> (T, Value) in
-             (try transform(key), value)
+            (try transform(key), value)
         }
         
         return [T: Value](uniqueKeysWithValues: keysWithValues)
