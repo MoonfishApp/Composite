@@ -52,7 +52,7 @@ final class ShareMenuItem: NSMenuItem, NSMenuDelegate {
         
         menu.removeAllItems()
         
-        guard let document = DocumentController.shared.currentDocument else {
+        guard let document = NSDocumentController.shared.currentDocument else {
             let item = NSMenuItem(title: "No Document".localized, action: nil, keyEquivalent: "")
             item.isEnabled = false
             menu.addItem(item)

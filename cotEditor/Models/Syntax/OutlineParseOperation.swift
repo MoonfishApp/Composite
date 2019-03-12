@@ -82,7 +82,7 @@ final class OutlineParseOperation: Operation, ProgressReporting {
             else {
                 self.progress.completedUnitCount = self.progress.totalUnitCount
                 return
-            }
+        }
         
         for extractor in self.extractors {
             guard !self.isCancelled else { return }

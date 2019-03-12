@@ -37,7 +37,7 @@ final class FindPanelResultViewController: NSViewController, NSTableViewDataSour
     
     // MARK: Public Properties
     
-     weak var target: NSTextView? {
+    weak var target: NSTextView? {
         
         // keep LayoutManager as `weak` instaed to avoid handling unsafe_unretained TextView
         get {
@@ -87,7 +87,7 @@ final class FindPanelResultViewController: NSViewController, NSTableViewDataSour
     /// remove also find result highlights in the text view when result view disappear
     override func viewWillDisappear() {
         
-         self.unhighlight()
+        self.unhighlight()
     }
     
     

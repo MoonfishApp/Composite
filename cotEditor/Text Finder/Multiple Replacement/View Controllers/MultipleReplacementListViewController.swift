@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2017-2018 1024jp
+//  © 2017-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -68,7 +68,7 @@ final class MultipleReplacementListViewController: NSViewController, NSMenuItemV
                 else { return 0 }
             
             return row
-            }()
+        }()
         self.tableView?.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
         
         // observe replacement setting list change
@@ -146,7 +146,7 @@ final class MultipleReplacementListViewController: NSViewController, NSMenuItemV
         guard let tableView = self.tableView else { return }
         
         try? ReplacementManager.shared.createUntitledSetting { (settingName: String) in
-            let row = ReplacementManager.shared.settingNames.index(of: settingName) ?? 0
+            let row = ReplacementManager.shared.settingNames.firstIndex(of: settingName) ?? 0
             
             tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
         }
@@ -171,7 +171,7 @@ final class MultipleReplacementListViewController: NSViewController, NSMenuItemV
         
         guard
             let settingName = self.targetSettingName(for: sender),
-            let row = self.settingNames.index(of: settingName)
+            let row = self.settingNames.firstIndex(of: settingName)
             else { return }
         
         self.tableView?.editColumn(0, row: row, with: nil, select: false)
@@ -191,7 +191,7 @@ final class MultipleReplacementListViewController: NSViewController, NSMenuItemV
     @IBAction func exportSetting(_ sender: Any?) {
         
         guard let settingName = self.targetSettingName(for: sender) else { return }
-       
+        
         let savePanel = NSSavePanel()
         savePanel.canCreateDirectories = true
         savePanel.canSelectHiddenExtension = true
@@ -325,7 +325,7 @@ final class MultipleReplacementListViewController: NSViewController, NSMenuItemV
         self.tableView?.reloadData()
         
         if let settingName = settingName,
-            let row = self.settingNames.index(of: settingName)
+            let row = self.settingNames.firstIndex(of: settingName)
         {
             self.tableView?.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
         }

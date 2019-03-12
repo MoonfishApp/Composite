@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2014-2018 1024jp
+//  © 2014-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -34,20 +34,34 @@ final class DocumentWindow: NSWindow {
     
     // MARK: Public Properties
     
-    var backgroundAlpha: CGFloat = 1.0 {
+    var contentBackgroundColor: NSColor = .controlBackgroundColor {
+        
+        didSet {
+            guard !self.isOpaque, contentBackgroundColor != oldValue else { return }
+            
+            self.backgroundColor = contentBackgroundColor.withAlphaComponent(self.backgroundAlpha)
+            self.invalidateShadow()
+            self.contentView?.needsDisplay = true
+        }
+    }
+    
+    @objc var backgroundAlpha: CGFloat = 1.0 {
         
         didSet {
             backgroundAlpha = backgroundAlpha.clamped(to: 0.2...1.0)
-            self.backgroundColor = self.backgroundColor.withAlphaComponent(backgroundAlpha)
+            
             self.isOpaque = (backgroundAlpha == 1.0)
+            self.backgroundColor = self.isOpaque ? nil : self.contentBackgroundColor.withAlphaComponent(backgroundAlpha)
+            
             self.invalidateShadow()
+            self.contentView?.needsDisplay = true
         }
     }
     
     
     // MARK: Private Properties
     
-    private var storedBackgroundAlpha: CGFloat?
+    private var appearanceObserver: NSKeyValueObservation?
     
     
     
@@ -58,12 +72,22 @@ final class DocumentWindow: NSWindow {
         
         super.init(contentRect: contentRect, styleMask: style, backing: bufferingType, defer: flag)
         
-        self.titlebarView?.wantsLayer = true
-        self.invalidateTitlebarOpacity()
+        self.appearanceObserver = self.observe(\.effectiveAppearance) { [weak self] (_, _) in
+            self?.invalidateTitlebarOpacity()
+        }
+        
+        // observe toggling fullscreen mode
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterOpaqueMode), name: NSWindow.willEnterFullScreenNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(willExitOpaqueMode), name: NSWindow.willExitFullScreenNotification, object: self)
         
         // observe toggling Versions browsing
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterOpaqueMode), name: NSWindow.willEnterVersionBrowserNotification, object: self)
         NotificationCenter.default.addObserver(self, selector: #selector(willExitOpaqueMode), name: NSWindow.willExitVersionBrowserNotification, object: self)
+    }
+    
+    
+    deinit {
+        self.appearanceObserver?.invalidate()
     }
     
     
@@ -76,19 +100,30 @@ final class DocumentWindow: NSWindow {
         didSet {
             guard isOpaque != oldValue else { return }
             
+            self.invalidateTitlebarOpacity()
+            
             NotificationCenter.default.post(name: DocumentWindow.didChangeOpacityNotification, object: self)
         }
     }
     
     
-    /// apply alpha value to input background color
-    override var backgroundColor: NSColor! {
+    /// store UI state
+    override func restoreState(with coder: NSCoder) {
         
-        didSet {
-            super.backgroundColor = backgroundColor?.withAlphaComponent(self.backgroundAlpha)
-            
-            self.invalidateTitlebarOpacity()
+        super.restoreState(with: coder)
+        
+        if coder.containsValue(forKey: #keyPath(backgroundAlpha)) {
+            self.backgroundAlpha = CGFloat(coder.decodeDouble(forKey: #keyPath(backgroundAlpha)))
         }
+    }
+    
+    
+    /// resume UI state
+    override func encodeRestorableState(with coder: NSCoder) {
+        
+        super.encodeRestorableState(with: coder)
+        
+        coder.encode(Double(self.backgroundAlpha), forKey: #keyPath(backgroundAlpha))
     }
     
     
@@ -115,34 +150,28 @@ final class DocumentWindow: NSWindow {
     /// entering Versions
     @objc private func willEnterOpaqueMode(_ notification: Notification) {
         
-        if !self.isOpaque {
-            self.storedBackgroundAlpha = self.backgroundAlpha
-            self.backgroundAlpha = 1.0
-        }
+        self.isOpaque = true
     }
     
     
     /// exiting Versions
     @objc private func willExitOpaqueMode(_ notification: Notification) {
         
-        if let backgroundAlpha = self.storedBackgroundAlpha {
-            self.backgroundAlpha = backgroundAlpha
-            self.storedBackgroundAlpha = nil
-        }
+        self.isOpaque = (self.backgroundAlpha == 1)
     }
     
     
     
-    // MARK: Public Methods
+    // MARK: Private Methods
     
     /// make sure window title bar (incl. toolbar) is opaque
-    func invalidateTitlebarOpacity() {
+    private func invalidateTitlebarOpacity() {
         
-        //   -> It's actucally a bit dirty way but practically works well.
-        //      Without this tweak, the title bar will be dyed in the window background color since El Capitan. (2016-01 by 1024p)
-        self.titlebarView?.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
+        // dirty manupulation to avoid the title bar being dyed in the window background color (2016-01).
+        self.titlebarView?.wantsLayer = !self.isOpaque
+        self.titlebarView?.layer?.backgroundColor = self.isOpaque ? nil : NSColor.windowBackgroundColor.cgColor(for: self.effectiveAppearance)
     }
-
+    
 }
 
 

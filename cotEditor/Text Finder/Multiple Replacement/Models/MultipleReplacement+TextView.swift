@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2018 1024jp
+//  © 2018-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -31,9 +31,9 @@ extension MultipleReplacement {
     func highlight(inSelection: Bool, completionHandler: @escaping (_ resultMessage: String) -> Void) {
         
         guard let textView = TextFinder.shared.client else {
-                NSSound.beep()
-                return
-            }
+            NSSound.beep()
+            return
+        }
         
         let string = textView.string.immutable
         let selectedRanges = textView.selectedRanges as! [NSRange]
@@ -81,12 +81,9 @@ extension MultipleReplacement {
                     progress.localizedDescription = "Not Found".localized
                 }
                 
-                let resultMessage: String = {
-                    guard !result.isEmpty else { return "Not Found".localized }
-                    
-                    return String(format: "%@ found".localized,
-                                  String.localizedStringWithFormat("%li", result.count))
-                }()
+                let resultMessage = !result.isEmpty
+                    ? String(format: "%@ found".localized, String.localizedStringWithFormat("%li", result.count))
+                    : "Not Found".localized
                 
                 indicator.done()
                 
@@ -109,8 +106,8 @@ extension MultipleReplacement {
             else {
                 NSSound.beep()
                 return
-            }
-
+        }
+        
         let string = textView.string.immutable
         let selectedRanges = textView.selectedRanges as! [NSRange]
         
@@ -152,12 +149,9 @@ extension MultipleReplacement {
                     progress.localizedDescription = "Not Found".localized
                 }
                 
-                let resultMessage: String = {
-                    guard result.count > 0 else { return "Not Replaced".localized }
-                    
-                    return String(format: "%@ replaced".localized,
-                                  String.localizedStringWithFormat("%li", result.count))
-                }()
+                let resultMessage = (result.count > 0)
+                    ? String(format: "%@ replaced".localized, String.localizedStringWithFormat("%li", result.count))
+                    : "Not Replaced".localized
                 
                 indicator.done()
                 

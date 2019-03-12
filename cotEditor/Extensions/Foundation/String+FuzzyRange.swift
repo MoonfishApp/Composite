@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2015-2018 1024jp
+//  © 2015-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ extension String {
     ///
     ///   Likewise, a negative length can be used to select rest elements except the last one element.
     ///   e.g. `location: 3`, `length: -1` where string has 10 lines.
-    ///   -> element 3 to 9 (NSRange(3, 6)) will be retruned
+    ///   -> element 3 to 9 (NSRange(3, 6)) will be returned
     ///
     /// - Parameters:
     ///   - location: Index of the first character.
@@ -66,7 +66,7 @@ extension String {
         let regex = try! NSRegularExpression(pattern: "^.*(?:\\R|\\z)", options: .anchorsMatchLines)
         let lineRanges = regex.matches(in: self, range: self.nsRange).map { $0.range }
         let count = lineRanges.count
-
+        
         guard location != 0 else { return NSRange(location: 0, length: 0) }
         guard location <= count else { return NSRange(location: self.utf16.count, length: 0) }
         

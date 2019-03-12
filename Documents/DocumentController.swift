@@ -8,10 +8,16 @@
 
 import Cocoa
 
+protocol AdditionalDocumentPreparing: AnyObject {
+    
+    func didMakeDocumentForExisitingFile(url: URL)
+}
+
 class DocumentController: NSDocumentController {
     
     private(set) lazy var autosaveDirectoryURL: URL =  try! FileManager.default.url(for: .autosavedInformationDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     
+    private(set) var accessorySelectedEncoding: String.Encoding?
     
     // MARK: -
     // MARK: Lifecycle
@@ -53,14 +59,17 @@ class DocumentController: NSDocumentController {
             
             if let textDocument = document as? TextDocument {
                 
-                // 1. If displayDocument is false, user selected text document in the
+                // 1. invalidate encoding that was set in the open panel
+                self.accessorySelectedEncoding = nil
+                
+                // 2. If displayDocument is false, user selected text document in the
                 //    file navigator. Caller will handle displaying the document.
                 guard displayDocument == true else {
                     completionHandler(textDocument, documentWasAlreadyOpen, error)
                     return
                 }
                 
-                // 2. Show text document in a new window.
+                // 3. Show text document in a new window.
                 self.show(textDocument: textDocument, url: url) { document, error in
                     completionHandler(document, documentWasAlreadyOpen, error)
                 }
@@ -86,19 +95,6 @@ class DocumentController: NSDocumentController {
         }
     }
     
-    override func beginOpenPanel(_ openPanel: NSOpenPanel, forTypes inTypes: [String]?, completionHandler: @escaping (Int) -> Void) {
-        
-        // TODO: If inTypes is passed to super, the open dialog will allow *every*
-        // document to be opened, including PDFs and PNGs
-        // Quick fix: hardcoding supported contracts.
-        // This doesn't affect opening other files (e.g. js or json) from within
-        // project window's file navigator.
-//        inTypes?.compactMap { print($0) }
-        super.beginOpenPanel(openPanel, forTypes: ["composite", "scilla", "sol"]) { (result: Int) in
-            completionHandler(result)
-        }
-    }
-    
     /// open untitled document
     /// Not supported
     override func openUntitledDocumentAndDisplay(_ displayDocument: Bool) throws -> NSDocument {
@@ -109,12 +105,38 @@ class DocumentController: NSDocumentController {
     /// instantiates a document located by a URL, of a specified type, and returns it if successful
     override func makeDocument(withContentsOf url: URL, ofType typeName: String) throws -> NSDocument {
         
+        // [caution] This method may be called from a background thread due to concurrent-opening.
+        
+        do {
+            try self.checkOpeningSafetyOfDocument(at: url, typeName: typeName)
+            
+        } catch {
+            // ask user for opening file
+            try DispatchQueue.syncOnMain {
+                guard self.presentError(error) else { throw CocoaError(.userCancelled) }
+            }
+        }
+        
         // make document
         let document = try super.makeDocument(withContentsOf: url, ofType: typeName)
+        
+        (document as? AdditionalDocumentPreparing)?.didMakeDocumentForExisitingFile(url: url)
         
         return document
     }
 
+    override func beginOpenPanel(_ openPanel: NSOpenPanel, forTypes inTypes: [String]?, completionHandler: @escaping (Int) -> Void) {
+        
+        // TODO: If inTypes is passed to super, the open dialog will allow *every*
+        // document to be opened, including PDFs and PNGs
+        // Quick fix: hardcoding supported contracts.
+        // This doesn't affect opening other files (e.g. js or json) from within
+        // project window's file navigator.
+        //        inTypes?.compactMap { print($0) }
+        super.beginOpenPanel(openPanel, forTypes: ["composite", "scilla", "sol"]) { (result: Int) in
+            completionHandler(result)
+        }
+    }
     
     /// add encoding menu to open panel
     /*override func beginOpenPanel(_ openPanel: NSOpenPanel, forTypes inTypes: [String]?, completionHandler: @escaping (Int) -> Void) {
@@ -139,10 +161,23 @@ class DocumentController: NSDocumentController {
         }
     }*/
     
+    
+    override func noteNewRecentDocument(_ document: NSDocument) {
+
+        // Only add ProjectDocuments to the recent open menu, not individual text documents
+        guard document is ProjectDocument else { return }
+        super.noteNewRecentDocument(document)
+    }
+    
+    
     /// return enability of actions
     override func validateUserInterfaceItem(_ item: NSValidatedUserInterfaceItem) -> Bool {
         
         if item.action == #selector(newWindowForTab) {
+            return self.currentDocument != nil
+        }
+        
+        if item.action == #selector(newFile(_:)) {
             return self.currentDocument != nil
         }
         
@@ -154,14 +189,37 @@ class DocumentController: NSDocumentController {
         // Show new file template here
     }
     
-    @IBAction func newWindowForTab(_ sender: Any?) {
+    /// Check file before creating a new document instance.
+    ///
+    /// - Parameters:
+    ///   - url: The location of the new document object.
+    ///   - typeName: The type of the document.
+    /// - Throws: `DocumentReadError`
+    private func checkOpeningSafetyOfDocument(at url: URL, typeName: String) throws {
         
-        guard let document = currentDocument else { return }
+        // check if the file is possible binary
+        let cfTypeName = typeName as CFString
+        let binaryTypes = [kUTTypeImage,
+                           kUTTypeAudiovisualContent,
+                           kUTTypeGNUZipArchive,
+                           kUTTypeZipArchive,
+                           kUTTypeBzip2Archive]
+        if binaryTypes.contains(where: { UTTypeConformsTo(cfTypeName, $0) }),
+            !UTTypeEqual(cfTypeName, kUTTypeScalableVectorGraphics)  // SVG is plain-text (except SVGZ)
+        {
+            throw DocumentReadError(kind: .binaryFile(type: typeName), url: url)
+        }
         
-        document.makeWindowControllers()
-        guard let newTab = document.windowControllers.last?.window else { return }
-        document.windowControllers.first?.window?.addTabbedWindow(newTab, ordered: .below)
+        // check if the file is enorm large
+        let fileSizeThreshold = UserDefaults.standard[.largeFileAlertThreshold]
+        if fileSizeThreshold > 0,
+            let fileSize = (try? url.resourceValues(forKeys: [.fileSizeKey]))?.fileSize,
+            fileSize > fileSizeThreshold
+        {
+            throw DocumentReadError(kind: .tooLarge(size: fileSize), url: url)
+        }
     }
+
     
     /// Based on TextEdit example, see https://stackoverflow.com/questions/34497218/nsdocument-opening-over-a-default-document
     func replace(_ document: NSDocument, inController controller: NSWindowController) {
@@ -169,6 +227,11 @@ class DocumentController: NSDocumentController {
         guard Thread.isMainThread else { return assertionFailure() }
         
         let documentToBeReplaced = currentDocument // Note: Can be nil
+        
+        // Pass project
+        if let document = document as? TextDocument, document.project == nil, let documentToBeReplaced = documentToBeReplaced as? TextDocument {
+            document.project = documentToBeReplaced.project
+        }
         
         document.addWindowController(controller) //(controller.copy() as! NSWindowController)
         controller.document = document
@@ -294,4 +357,60 @@ extension DocumentController {
         textDocument.makeWindowControllers()
         textDocument.showWindows()
     }
+}
+
+
+// MARK: - Error
+
+private struct DocumentReadError: LocalizedError, RecoverableError {
+    
+    enum ErrorKind {
+        case binaryFile(type: String)
+        case tooLarge(size: Int)
+    }
+    
+    let kind: ErrorKind
+    let url: URL
+    
+    
+    var errorDescription: String? {
+        
+        switch self.kind {
+        case .binaryFile:
+            return String(format: "The file “%@” doesn’t appear to be text data.".localized,
+                          self.url.lastPathComponent)
+            
+        case .tooLarge(let size):
+            return String(format: "The file “%@” has a size of %@.".localized,
+                          self.url.lastPathComponent,
+                          ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file))
+        }
+    }
+    
+    
+    var recoverySuggestion: String? {
+        
+        switch self.kind {
+        case .binaryFile(let type):
+            let localizedTypeName = (UTTypeCopyDescription(type as CFString)?.takeRetainedValue() as String?) ?? "unknown file type"
+            return String(format: "The file is %@.\n\nDo you really want to open the file?".localized, localizedTypeName)
+            
+        case .tooLarge:
+            return "Opening such a large file can make the application slow or unresponsive.\n\nDo you really want to open the file?".localized
+        }
+    }
+    
+    
+    var recoveryOptions: [String] {
+        
+        return ["Open".localized,
+                "Cancel".localized]
+    }
+    
+    
+    func attemptRecovery(optionIndex recoveryOptionIndex: Int) -> Bool {
+        
+        return (recoveryOptionIndex == 0)
+    }
+    
 }

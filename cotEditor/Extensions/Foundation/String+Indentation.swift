@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2015-2018 1024jp
+//  © 2015-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -131,7 +131,7 @@ extension String {
         
         assert(tabWidth > 0)
         
-        let index = String.UTF16Index(encodedOffset: location).samePosition(in: self)!
+        let index = String.UTF16View.Index(encodedOffset: location).samePosition(in: self)!
         
         let lineRange = self.lineRange(at: index)
         let column = self.distance(from: lineRange.lowerBound, to: index)
@@ -172,7 +172,7 @@ extension String {
     }
     
     
-    /// Range for deleting soft-tab or nil if the character to delete is not speace.
+    /// Range for deleting soft-tab or nil if the character to delete is not a space.
     ///
     /// - Parameters:
     ///   - range: The range of selection.
@@ -183,10 +183,11 @@ extension String {
         assert(tabWidth > 0)
         assert(range.location != NSNotFound)
         
-        guard
-            range.length == 0,
-            self.rangeOfIndent(at: range.location).upperBound >= range.location
-            else { return nil }
+        guard range.isEmpty else { return nil }
+        
+        let lineRange = (self as NSString).lineRange(at: range.location)
+        let forwardRange = NSRange(lineRange.location..<range.location)
+        guard (self as NSString).range(of: "^ +$", options: .regularExpression, range: forwardRange).length > 1 else { return nil }
         
         let column = self.column(of: range.location, tabWidth: tabWidth)
         let targetLength = tabWidth - (column % tabWidth)

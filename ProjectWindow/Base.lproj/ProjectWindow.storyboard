@@ -19,20 +19,6 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Bqt-lg-4QR"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="9QW-KK-5p9"/>
-                                <toolbarItem implicitItemIdentifier="45C9326B-B089-44F8-9378-4EF61D16A03E" label="Search" paletteLabel="" id="QEL-oc-DYZ">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="96" height="22"/>
-                                    <size key="maxSize" width="96" height="22"/>
-                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="lev-GA-aFq">
-                                        <rect key="frame" x="0.0" y="14" width="96" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="q3G-zY-ZXc">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </searchFieldCell>
-                                    </searchField>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="D7747E2F-83A6-4341-B30F-008802951873" label="Run" paletteLabel="Run" image="NSTouchBarPlayTemplate" id="tYP-A1-bOR">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="38" height="32"/>
@@ -104,7 +90,6 @@
                                 <toolbarItem reference="rRd-A3-uJt"/>
                                 <toolbarItem reference="mn2-dn-q0c"/>
                                 <toolbarItem reference="9QW-KK-5p9"/>
-                                <toolbarItem reference="QEL-oc-DYZ"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -128,7 +113,7 @@
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" id="2nx-D6-Fks" userLabel="Navigator"/>
                         <splitViewItem id="bhT-9Z-2Nv"/>
-                        <splitViewItem id="OM5-nm-wdO"/>
+                        <splitViewItem holdingPriority="260" id="OM5-nm-wdO"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="eB3-ko-loa">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -170,7 +155,7 @@
                 <splitViewController id="Vqd-9f-lHK" customClass="ProjectContentSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="csM-TF-ijL"/>
-                        <splitViewItem id="vGP-Qt-cgg"/>
+                        <splitViewItem holdingPriority="260" id="vGP-Qt-cgg"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="hEQ-7J-LVy">
                         <rect key="frame" x="0.0" y="9" width="450" height="291"/>

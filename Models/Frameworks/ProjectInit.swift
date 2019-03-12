@@ -83,10 +83,11 @@ class ProjectInit: NSObject {
         
         // Fetch framework init from FrameworkInterface.plist
         frameworkInterface = try FrameworkInterface.loadCommands(for: framework.framework.name)
+
         if let template = template, let commands = template.initType.commands(frameworkInterface) {
             frameworkInit = commands
         } else {
-            frameworkInit = frameworkInterface.initInterface.initEmpty
+            frameworkInit = frameworkInterface.initInterface.initTemplate
         }
         
         // Set up queue
@@ -334,7 +335,7 @@ extension ProjectInit {
 //            }
             
             let openFile = self.template?.openFile ?? self.importFileDestination?.path.replacingOccurrences(of: self.projectDirectory.path, with: "")
-                
+            
             let project = Project(name: self.projectName, platformName: self.platform.name, frameworkName: self.framework.name, frameworkVersion: self.framework.version, defaultOpenFile: openFile)
             let document = ProjectDocument(project: project, url: self.projectFileURL)
             

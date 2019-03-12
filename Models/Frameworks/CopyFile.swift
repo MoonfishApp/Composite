@@ -43,16 +43,15 @@ extension CopyFile {
         let destinationURL = projectDirectory.appendingPathComponent(destination).appendingPathComponent(newFilename)
         try FileManager.default.copyItem(at: source, to: destinationURL)
         
-        // Open file and replace all instances of <#__project_name#> with the project name
-        if let projectName = projectName {
-            assert(FileManager.default.fileExists(atPath: destinationURL.path))
-            let content = try String(contentsOf: destinationURL)
-            let updatedContent = content.replaceOccurrencesOfProjectName(with: projectName)
-            try updatedContent.write(to: destinationURL, atomically: true, encoding: .utf8)
-        }
+        // Replace file_name, project_name, user_name and date placeholders with values
+        assert(FileManager.default.fileExists(atPath: destinationURL.path))
+        var content = try String(contentsOf: destinationURL)
+        content = content.replaceOccurrencesOfUserName().replaceOccurrencesDate().replaceOccurrencesOfFileName(with: newFilename)
+        content = content.replaceOccurrencesOfProjectName(with: (projectName ?? ""))
+        try content.write(to: destinationURL, atomically: true, encoding: .utf8)
         
         return newFilename
     }
-
+    
 }
 

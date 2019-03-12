@@ -45,8 +45,8 @@ extension NSValidatedUserInterfaceItem {
                 return item.toolTip
             case let item as NSToolbarItem:
                 return item.toolTip
-            case let item as NSCustomTouchBarItem:
-                return item.toolTip
+//            case let item as NSCustomTouchBarItem:
+//                return item.toolTip
             default:
                 // -> Only NSMenuItem and NSToolbarItem inherit NSValidatedUserInterfaceItem.
                 preconditionFailure()
@@ -59,8 +59,8 @@ extension NSValidatedUserInterfaceItem {
                 item.toolTip = newValue
             case let item as NSToolbarItem:
                 item.toolTip = newValue
-            case let item as NSCustomTouchBarItem:
-                item.toolTip = newValue
+//            case let item as NSCustomTouchBarItem:
+//                item.toolTip = newValue
             default:
                 preconditionFailure()
             }

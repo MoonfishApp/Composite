@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2016-2018 1024jp
+//  © 2016-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -33,6 +33,9 @@ extension DefaultKeys {
     static let lastUsedPlatform = DefaultKey<String>("lastUsedPlatform")
     static let lastUsedFramework = DefaultKey<String>("lastUsedFramework")
     static let lastUsedTemplateCategory = DefaultKey<String>("lastUsedTemplateCategory")
+    
+    // Install Toolchain
+    static let showInstallToolchainOnStartup = DefaultKey<Bool>("showInstallToolchainOnStartup")
     
     // General
     static let quitAlwaysKeepsWindows = DefaultKey<Bool>("NSQuitAlwaysKeepsWindows")
@@ -172,6 +175,8 @@ extension DefaultKeys {
     static let showStatusBar = DefaultKey<Bool>("showStatusArea")
     static let selectedInspectorPaneIndex = DefaultKey<Int>("selectedInspectorPaneIndex")
     static let selectedMultipleReplacementSettingName = DefaultKey<String>("selectedMultipleReplacementSettingName")
+    static let beginCustomSurroundString = DefaultKey<String>("beginCustomSurroundString")
+    static let endCustomSurroundString = DefaultKey<String>("endCustomSurroundString")
     
     // hidden settings
     static let headerFooterDateFormat = DefaultKey<String>("headerFooterDateFormat")

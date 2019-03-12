@@ -74,7 +74,7 @@ final class SyntaxStyleValidator {
                 
             case .regularExpression(let error):
                 return "Regular Expression: ".localized + error.localizedDescription
-            
+                
             case .blockComment:
                 return "Block comment needs both begin delimiter and end delimiter.".localized
             }
@@ -138,7 +138,7 @@ final class SyntaxStyleValidator {
                         let endString0 = $0.endString else { return true }
                     
                     return endString0 < endString1
-                }
+            }
             
             for definition in definitions {
                 defer {
