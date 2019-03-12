@@ -155,7 +155,7 @@
                 <splitViewController id="Vqd-9f-lHK" customClass="ProjectContentSplitViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="csM-TF-ijL"/>
-                        <splitViewItem id="vGP-Qt-cgg"/>
+                        <splitViewItem holdingPriority="260" id="vGP-Qt-cgg"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="hEQ-7J-LVy">
                         <rect key="frame" x="0.0" y="9" width="450" height="291"/>
