@@ -29,6 +29,11 @@ import AppKit.NSFont
 struct DefaultSettings {
     
     static let defaults: [DefaultKeys: Any] = [
+        
+        // --- Composite
+        .showInstallToolchainOnStartup: true,
+            
+        // --- CotEditor
         .quitAlwaysKeepsWindows: true,
         .noDocumentOnLaunchBehavior: NoDocumentOnLaunchBehavior.untitledDocument.rawValue,
         .enablesAutosaveInPlace: true,

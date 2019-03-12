@@ -34,6 +34,9 @@ extension DefaultKeys {
     static let lastUsedFramework = DefaultKey<String>("lastUsedFramework")
     static let lastUsedTemplateCategory = DefaultKey<String>("lastUsedTemplateCategory")
     
+    // Install Toolchain
+    static let showInstallToolchainOnStartup = DefaultKey<Bool>("showInstallToolchainOnStartup")
+    
     // General
     static let quitAlwaysKeepsWindows = DefaultKey<Bool>("NSQuitAlwaysKeepsWindows")
     static let noDocumentOnLaunchBehavior = DefaultKey<NoDocumentOnLaunchBehavior>("noDocumentOnLaunchBehavior")

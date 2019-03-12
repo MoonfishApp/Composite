@@ -11,7 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    private lazy var preferencesWindowController = NSWindowController.instantiate(storyboard: "Preferences")
+    private lazy var preferencesWindowController = NSWindowController.instantiate(storyboard: "PreferencesWindow")
     private lazy var toolchainWindowController = NSWindowController.instantiate(storyboard: "InstallToolchain")
     private lazy var templateWindowController = NSWindowController.instantiate(storyboard: "Template")
     
@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        if UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false {
+        if UserDefaults.standard[.showInstallToolchainOnStartup] == true {
             showInstallToolchains(self)
         } else {
             (DocumentController.shared as! DocumentController).newProject(self)
