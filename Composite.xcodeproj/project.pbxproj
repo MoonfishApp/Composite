@@ -63,7 +63,6 @@
 		C7754FF922374B750058B256 /* IntegrationPane.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7754FF022374B740058B256 /* IntegrationPane.storyboard */; };
 		C7754FFA22374B750058B256 /* AppearancePane.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7754FF122374B740058B256 /* AppearancePane.storyboard */; };
 		C7754FFC22374B750058B256 /* FileDropPane.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7754FF322374B740058B256 /* FileDropPane.storyboard */; };
-		C7754FFD22374B750058B256 /* GeneralPane2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7754FF422374B740058B256 /* GeneralPane2.storyboard */; };
 		C7754FFE22374B750058B256 /* KeyBindingsPane.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7754FF522374B740058B256 /* KeyBindingsPane.storyboard */; };
 		C7754FFF22374B750058B256 /* EditPane.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7754FF622374B750058B256 /* EditPane.storyboard */; };
 		C775500522374BE50058B256 /* SyntaxTermsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775500022374BE40058B256 /* SyntaxTermsEditViewController.swift */; };
@@ -2001,7 +2000,6 @@
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
 				C79A750421EEDD18007FB630 /* ColorCodePanelAccessory.storyboard in Resources */,
 				C711F59721DF3F91005EBC5D /* FrameworkInterface.plist in Resources */,
-				C7754FFD22374B750058B256 /* GeneralPane2.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

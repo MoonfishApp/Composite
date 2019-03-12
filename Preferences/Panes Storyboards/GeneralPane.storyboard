@@ -21,7 +21,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="updateWindowRestorationSetting:" target="JG1-NR-KT5" id="wFT-hT-Aiq"/>
                                     <binding destination="ttU-LH-46v" name="value" keyPath="values.showInstallToolchainOnStartup" id="x64-zm-6n8"/>
                                 </connections>
                             </button>

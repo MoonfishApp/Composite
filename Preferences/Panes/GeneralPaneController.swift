@@ -88,15 +88,7 @@ final class GeneralPaneController: NSViewController {
         guard UserDefaults.standard[.enablesAutosaveInPlace] != TextDocument.autosavesInPlace else { return }
         
         self.askRelaunch(for: .enablesAutosaveInPlace)
-    }
-    
-    
-    /// "Restore last windows on launch" checkbox was clicked
-    @IBAction func updateWindowRestorationSetting(_ sender: Any?) {
-        
-        self.askRelaunch(for: .quitAlwaysKeepsWindows)
-    }
-    
+    }    
     
     /// A radio button of documentConflictOption was clicked
     @IBAction func updateDocumentConflictSetting(_ sender: NSButton) {
