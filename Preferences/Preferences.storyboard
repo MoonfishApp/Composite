@@ -38,6 +38,7 @@
                         <tabViewItem label="Key Bindings" identifier="" image="NSComputer" id="MtN-da-NNS"/>
                         <tabViewItem label="Locations" image="NSInfo" id="wZj-lz-TD8"/>
                         <tabViewItem image="NSAdvanced" id="9OC-P3-mEv"/>
+                        <tabViewItem id="3gA-4Z-Cnf"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="nsW-ha-kkk">
@@ -54,11 +55,20 @@
                         <segue destination="gzD-cT-HqX" kind="relationship" relationship="tabItems" id="TaF-uI-JZq"/>
                         <segue destination="HtK-pI-eTL" kind="relationship" relationship="tabItems" id="RBd-gM-nbC"/>
                         <segue destination="Ew9-62-UtP" kind="relationship" relationship="tabItems" id="4lp-vo-cMX"/>
+                        <segue destination="NPf-jg-0un" kind="relationship" relationship="tabItems" id="GMr-vO-vcJ"/>
                     </connections>
                 </tabViewController>
                 <customObject id="NyN-PO-f2Q" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="121.5" y="597.5"/>
+        </scene>
+        <!--AppearancePane-->
+        <scene sceneID="ArC-hy-eUP">
+            <objects>
+                <controllerPlaceholder storyboardName="AppearancePane" id="NPf-jg-0un" sceneMemberID="viewController"/>
+                <customObject id="mxm-gh-MrI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-102" y="908"/>
         </scene>
         <!--General-->
         <scene sceneID="eei-3B-mFx">
