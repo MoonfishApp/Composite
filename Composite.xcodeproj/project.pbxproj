@@ -452,7 +452,6 @@
 		C7754FF122374B740058B256 /* AppearancePane.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppearancePane.storyboard; sourceTree = "<group>"; };
 		C7754FF222374B740058B256 /* FormatPane.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FormatPane.storyboard; sourceTree = "<group>"; };
 		C7754FF322374B740058B256 /* FileDropPane.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FileDropPane.storyboard; sourceTree = "<group>"; };
-		C7754FF422374B740058B256 /* GeneralPane2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GeneralPane2.storyboard; sourceTree = "<group>"; };
 		C7754FF522374B740058B256 /* KeyBindingsPane.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KeyBindingsPane.storyboard; sourceTree = "<group>"; };
 		C7754FF622374B750058B256 /* EditPane.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditPane.storyboard; sourceTree = "<group>"; };
 		C775500022374BE40058B256 /* SyntaxTermsEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntaxTermsEditViewController.swift; sourceTree = "<group>"; };
@@ -1061,7 +1060,6 @@
 			isa = PBXGroup;
 			children = (
 				C709B37A22376FCF003C7AC0 /* GeneralPane.storyboard */,
-				C7754FF422374B740058B256 /* GeneralPane2.storyboard */,
 				C7754FF122374B740058B256 /* AppearancePane.storyboard */,
 				C7754FF622374B750058B256 /* EditPane.storyboard */,
 				C7754FF322374B740058B256 /* FileDropPane.storyboard */,
