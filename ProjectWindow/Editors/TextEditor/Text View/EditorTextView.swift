@@ -217,6 +217,17 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         
         super.viewDidMoveToWindow()
         
+//        print("**** enclosing \(self.enclosingScrollView!.contentSize)")
+//        print("**** enclosing frame \(self.enclosingScrollView!.frame.size)")
+//        print("**** maxSize \(self.maxSize)")
+//        print("**** minSize \(self.minSize)")
+//        print("**** fittingSize \(self.fittingSize)")
+//        print("**** intrinsic \(self.intrinsicContentSize)")
+//        print("**** inset \(self.textContainerInset)")
+//        print("**** textcontainer \(self.textContainer!.containerSize)")
+//        print("**** self \(self.bounds.size)")
+
+        
         // textView will be removed from the window
         guard let window = self.window else {
             self.removeNotificationObservers()
@@ -252,6 +263,16 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         } else {
             assertionFailure("failed starting observing the visible rect change")
         }
+        
+//        print("**** enclosing \(self.enclosingScrollView!.contentSize)")
+//        print("**** enclosing frame \(self.enclosingScrollView!.frame.size)")
+//        print("**** maxSize \(self.maxSize)")
+//        print("**** minSize \(self.minSize)")
+//        print("**** fittingSize \(self.fittingSize)")
+//        print("**** intrinsic \(self.intrinsicContentSize)")
+//        print("**** inset \(self.textContainerInset)")
+//        print("**** textcontainer \(self.textContainer!.containerSize)")
+//        print("**** self \(self.bounds.size)")
     }
     
     
@@ -1288,10 +1309,24 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
     private func applyTheme() {
         
         assert(Thread.isMainThread)
-        
         guard let theme = self.theme else { return }
         
 //        (self.window as? DocumentWindow)?.contentBackgroundColor = theme.background.color
+        
+//        self.textContainer!.size = NSSize(width: 568, height: 665)
+//        self.bounds = NSRect(x: 0, y: 0, width: 568, height: 665)
+//        self.minSize = NSSize(width: 568, height: 665)
+//        print("--- applyTheme")
+//        print("**** enclosing content \(self.enclosingScrollView!.contentSize)")
+//        print("**** enclosing frame \(self.enclosingScrollView!.frame.size)")
+//        print("**** maxSize \(self.maxSize)")
+//        print("**** minSize \(self.minSize)")
+//        print("**** fittingSize \(self.fittingSize)")
+//        print("**** intrinsic \(self.intrinsicContentSize)")
+//        print("**** inset \(self.textContainerInset)")
+//        print("**** textcontainer \(self.textContainer!.containerSize)")
+//        print("**** self \(self.bounds.size)")
+        
         
         self.backgroundColor = theme.background.color
         self.enclosingScrollView?.backgroundColor = theme.background.color
@@ -1312,8 +1347,20 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         } else {
             self.enclosingScrollView?.scrollerKnobStyle = theme.isDarkTheme ? .light : .default
         }
-        
+//        self.frame = NSRect(x: self.frame.origin.x, y: self.frame.origin.y, width: 568, height: 665)
+//        self.minSize = self.frame.size
         self.setNeedsDisplay(self.visibleRect, avoidAdditionalLayout: true)
+//        print("--- applyTheme done")
+//        print("**** enclosing \(self.enclosingScrollView!.contentSize)")
+//        print("**** enclosing frame \(self.enclosingScrollView!.frame.size)")
+//        print("**** maxSize \(self.maxSize)")
+//        print("**** minSize \(self.minSize)")
+//        print("**** fittingSize \(self.fittingSize)")
+//        print("**** intrinsic \(self.intrinsicContentSize)")
+//        print("**** inset \(self.textContainerInset)")
+//        print("**** textcontainer \(self.textContainer!.containerSize)")
+//        print("**** self \(self.bounds.size)")
+//        print("**** self framesize \(self.frame.size)")
     }
     
     
@@ -1679,7 +1726,6 @@ extension EditorTextView {
         
         var candidateWords = OrderedSet<String>()
         let particalWord = (self.string as NSString).substring(with: charRange)
-        print(particalWord)
         
         // add words in document
         if UserDefaults.standard[.completesDocumentWords] {

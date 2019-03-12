@@ -4,9 +4,49 @@
 <array>
 	<dict>
 		<key>category</key>
+		<string>Empty</string>
+		<key>command</key>
+		<string></string>
+		<key>templates</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Empty Project</string>
+				<key>templateName</key>
+				<string>empty</string>
+				<key>imageName</key>
+				<string></string>
+				<key>standard</key>
+				<string></string>
+				<key>description</key>
+				<string>Empty Tron project</string>
+				<key>moreInfoUrl</key>
+				<string></string>
+				<key>openFile</key>
+				<string>contracts/$(PROJECT_NAME).sol</string>
+				<key>detailViewType</key>
+				<string></string>
+				<key>initType</key>
+				<string>initTemplate</string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string>Empty.sol</string>
+						<key>destination</key>
+						<string>contracts</string>
+						<key>renameFileToProjectName</key>
+						<true/>
+					</dict>
+				</array>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>category</key>
 		<string>Tokens</string>
 		<key>command</key>
-		<string>test</string>
+		<string></string>
 		<key>templates</key>
 		<array>
 			<dict>

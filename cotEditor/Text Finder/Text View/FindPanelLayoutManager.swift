@@ -8,7 +8,7 @@
 //
 //  ---------------------------------------------------------------------------
 //
-//  © 2015-2018 1024jp
+//  © 2015-2019 1024jp
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import Cocoa
 final class FindPanelLayoutManager: NSLayoutManager {
     
     // MARK: Private Properties
-
+    
     private let font = NSFont.systemFont(ofSize: 0)
     
     
@@ -86,8 +86,7 @@ final class FindPanelLayoutManager: NSLayoutManager {
             // draw invisibles glyph by glyph
             for glyphIndex in glyphsToShow.location..<glyphsToShow.upperBound {
                 let charIndex = self.characterIndexForGlyph(at: glyphIndex)
-                let utf16Index = String.UTF16Index(encodedOffset: charIndex)
-                let codeUnit = string.utf16[utf16Index]
+                let codeUnit = (string as NSString).character(at: charIndex)
                 let invisible = Invisible(codeUnit: codeUnit)
                 
                 let glyphString: NSAttributedString
@@ -129,7 +128,7 @@ final class FindPanelLayoutManager: NSLayoutManager {
                                                      .foregroundColor: color], range: charRange)
                     continue
                 }
-
+                
                 // calculate position to draw glyph
                 let lineOrigin = self.lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: nil, withoutAdditionalLayout: true).origin
                 let glyphLocation = self.location(forGlyphAt: glyphIndex)

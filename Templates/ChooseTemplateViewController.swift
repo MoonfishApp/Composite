@@ -172,11 +172,6 @@ class ChooseTemplateViewController: NSViewController {
     }
     
     
-    @IBAction func emptyProjectClicked(_ sender: Any) {
-        showSavePanel()
-    }
-    
-    
     @IBAction func platformClicked(_ sender: Any) {
         setFrameworkPopup()
         setTemplates()

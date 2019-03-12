@@ -95,7 +95,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="VwG-wV-2ZD">
-                                                            <rect key="frame" x="123" y="1" width="68" height="17"/>
+                                                            <rect key="frame" x="122.5" y="1" width="68" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gak-Jd-SZn">
@@ -128,7 +128,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="hIM-Os-FkF">
-                                                            <rect key="frame" x="194" y="1" width="111" height="17"/>
+                                                            <rect key="frame" x="193.5" y="1" width="111" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpE-aL-Pbu">
@@ -224,7 +224,7 @@ DQ
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="showOnStartup:" target="kfv-ZF-Ptq" id="KTG-QK-3lf"/>
+                                    <binding destination="aey-OA-Qhn" name="value" keyPath="values.showInstallToolchainOnStartup" id="ui0-Nm-Hsh"/>
                                 </connections>
                             </button>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-ml-m3B">
@@ -364,10 +364,10 @@ DQ
                         <outlet property="outlineView" destination="igj-mF-5Zp" id="r76-B2-hwM"/>
                         <outlet property="platformCollectionView" destination="4Fo-MX-PD6" id="BrW-tQ-MnP"/>
                         <outlet property="progressIndicator" destination="Q5D-KM-MPd" id="TZp-md-eCS"/>
-                        <outlet property="showOnStartupButton" destination="Eg1-MU-QdW" id="RrS-oM-mYh"/>
                     </connections>
                 </viewController>
                 <customObject id="jMZ-s2-mIm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="aey-OA-Qhn"/>
             </objects>
             <point key="canvasLocation" x="885.5" y="206.5"/>
         </scene>

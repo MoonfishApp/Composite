@@ -11,16 +11,18 @@ metadata:
   lastModified: "2019-03-03"
 
 outlineMenu:
-- beginString: "^([\\t ]*)(transition)([^{]*)\\{"
-  keyString: "$1$2 : $3"
+- beginString: "^([\\t ]*)(transition)\\s+(\\w+)\\s*\\([^)]*\\)"
+  keyString: "  $0"
   description: "transition"
-#- beginString: "^([\\t ]*)(constructor)([^{]*)\\{"
-#  keyString: "$1$2$3"
-#  description: "constructor"
-- beginString: "^([\\t ]*)contract +(\\w+)[\\t ]+(is[\\t ](.+?)(\\{|$))?"
+- beginString: "^([\\t ]*)contract\\s+(\\w+)"
   bold: true
   description: "contract"
-  keyString: "Contract $1$2 inherits from $4"
+  keyString: "$0"
+- beginString: "^([\\t ]*)library\\s+(\\w+)" 
+  bold: true
+  description: "library"
+  keyString: "$0"
+
 
 keywords:
 - beginString: "contract"

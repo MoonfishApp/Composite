@@ -1,6 +1,8 @@
-scilla_version 0
+(* <#__file_name#> *)
+(* <#__project_name#> *)
+(* Created by <#__user_name#> on <#__date#> *)
 
-(* HelloWorld contract *)
+scilla_version 0
 
 import ListUtils
 

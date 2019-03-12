@@ -52,7 +52,7 @@ enum RegularExpressionSyntaxType {
         .quantifier,
         .anchor,
         ]
-
+    
     
     
     // MARK: Public Methods

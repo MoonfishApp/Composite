@@ -173,7 +173,7 @@ final class SnippetKeyBindingManager: KeyBindingManager {
         
         return Int((selectorString as NSString).substring(with: numberRange))
     }
-
+    
 }
 
 
