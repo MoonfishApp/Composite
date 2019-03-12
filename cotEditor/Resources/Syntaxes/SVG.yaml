@@ -5,7 +5,7 @@ metadata:
   distributionURL: "https://coteditor.com"
   version: "1.2.3"
   description: "Based on SVG 1.1 (Second Edition)"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2019-01-13"
 outlineMenu:
 - beginString: "(?<= )id=\"(.+?)\""

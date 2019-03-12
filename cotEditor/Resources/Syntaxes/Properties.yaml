@@ -6,7 +6,7 @@ metadata:
   version: "1.0.0"
   lastModified: "2018-10-02"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   distributionURL: "https://coteditor.com"
   description: "Properties file format mainly used in Java"
 values: []

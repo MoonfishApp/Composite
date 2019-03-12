@@ -6,7 +6,7 @@ metadata:
   version: "1.0.0"
   lastModified: "2015-10-15"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   distributionURL: "https://coteditor.com"
 numbers:
 - beginString: "(?<=\\\\[a-zA-Z]{1,16})-?[0-9]+"

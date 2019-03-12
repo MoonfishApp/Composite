@@ -19,7 +19,7 @@ metadata:
   author: "1024jp"
   distributionURL: "https://coteditor.com"
   version: "1.3"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2015-09-09"
 characters:
 - beginString: "&\\S+?;"

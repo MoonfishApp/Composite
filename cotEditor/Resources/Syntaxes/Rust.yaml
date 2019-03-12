@@ -8,7 +8,7 @@ metadata:
   distributionURL: "https://coteditor.com"
   lastModified: "2015-12-25"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   description: "based on Rust 0.12\n\nCommands -> Functions\nTypes -> primitive Types,
     Type Definitions, Structs\nAttuributes -> Macros\nValues -> boolean, Constants,
     Enums"

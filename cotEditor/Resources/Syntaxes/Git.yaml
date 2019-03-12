@@ -9,7 +9,7 @@ metadata:
   distributionURL: "https://coteditor.com"
   lastModified: "2016-05-18"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   version: "1.0.0"
 numbers:
 - beginString: "\\b[0-9a-f]{6,10}\\b"

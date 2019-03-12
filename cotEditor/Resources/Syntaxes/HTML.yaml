@@ -6,7 +6,7 @@ metadata:
   author: "1024jp"
   distributionURL: "https://coteditor.com"
   version: "2.1.1"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2015-12-25"
 outlineMenu:
 - beginString: "<(h1)[^>]*>(.*)</\\1[^>]*>"

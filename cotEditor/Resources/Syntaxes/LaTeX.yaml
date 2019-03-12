@@ -6,7 +6,7 @@ extensions:
 metadata:
   distributionURL: "https://coteditor.com"
   author: "Yuhei Kuratomi"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2015-12-25"
   description: "Maintained by CotEditor Project."
   version: "2.0.1"

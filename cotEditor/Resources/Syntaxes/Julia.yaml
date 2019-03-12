@@ -7,7 +7,7 @@ metadata:
   version: "1.2.1"
   lastModified: "2018-12-31"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   description: "Based on Julia 0.4.5"
   distributionURL: "https://coteditor.com"
 comments: []

@@ -1,11 +1,11 @@
-﻿extensions:
+extensions:
 - keyString: "m"
 filenames: []
 metadata:
   distributionURL: "https://coteditor.com"
   lastModified: "2017-04-09"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   description: "Commands contain only:\n- Language Fundamentals\n- Elemantaly Math\n-
     Statics and Random Numbers\n- 2-D and 3-D Plots\n- Formatting and Annotation\n-
     Images\n- Printing and Saving\n- Workspace Variables\n- Data Import and Export

@@ -18,7 +18,7 @@ metadata:
   author: "1024jp"
   distributionURL: "https://coteditor.com"
   version: "3.2.0"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2016-02-04"
 keywords:
 - beginString: "break"

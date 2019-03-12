@@ -4,7 +4,7 @@ extensions:
 metadata:
   author: "1024jp"
   distributionURL: "https://coteditor.com"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2016-05-17"
   description: "based on C99"
   version: "1.0.0"

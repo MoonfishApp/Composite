@@ -11,7 +11,7 @@ metadata:
   version: "1.0.0"
   lastModified: "2017-05-06"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   description: "Support from Fortran 90 to Fortran 2008"
   distributionURL: "https://coteditor.com"
 commands:

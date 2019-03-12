@@ -4,7 +4,7 @@ filenames: []
 metadata:
   distributionURL: "https://coteditor.com"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2015-12-25"
   version: "1.0.1"
 outlineMenu:

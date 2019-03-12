@@ -12,7 +12,7 @@ metadata:
   distributionURL: "https://coteditor.com"
   version: "2.5.1"
   description: "Support PHP4 - PHP5.6.\n\nMaintained by 1024jp since 2013."
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2015-12-25"
 outlineMenu:
 - beginString: "^([\\t ]*)(((?:(?:final|static|public|protected|private)[\\t ]+)+)function)\\s*([^{;]*)(?=[{;])"

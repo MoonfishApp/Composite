@@ -1042,7 +1042,7 @@
                                     <binding destination="fug-yh-kPG" name="value" keyPath="selection.selection.usesSystemSetting" id="dXs-Zl-kBI"/>
                                 </connections>
                             </button>
-                            <button toolTip="Show theme file info" translatesAutoresizingMaskIntoConstraints="NO" id="8zj-4c-Hg4">
+                            <button hidden="YES" toolTip="Show theme file info" translatesAutoresizingMaskIntoConstraints="NO" id="8zj-4c-Hg4">
                                 <rect key="frame" x="314" y="6" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="HuK-AR-s3B"/>

@@ -7,7 +7,7 @@ metadata:
   author: "ronaldmannak"
   distributionURL: "https://coteditor.com"
   version: "0.5"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2019-01-11"
 
 outlineMenu:

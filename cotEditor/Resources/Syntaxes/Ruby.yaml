@@ -7,7 +7,7 @@ metadata:
   distributionURL: "https://coteditor.com"
   version: "2.2.2"
   description: "Maintained by CotEditor Project."
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2017-03-29"
 outlineMenu:
 - beginString: "(^[\\t ]*class)[\\t ]+(\\w*)"

@@ -7,7 +7,7 @@ metadata:
   lastModified: "2015-12-01"
   distributionURL: "https://coteditor.com"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
 keywords: []
 commands: []
 types: []

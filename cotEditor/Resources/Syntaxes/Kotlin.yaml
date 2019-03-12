@@ -2,7 +2,7 @@ metadata:
   distributionURL: "https://coteditor.com"
   lastModified: "2018-12-28"
   author: "1024jp"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   version: "1.0.0"
 extensions:
 - keyString: "kt"

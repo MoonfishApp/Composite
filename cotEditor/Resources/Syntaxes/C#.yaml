@@ -10,7 +10,7 @@ metadata:
   description: "C# 5.0\nkeywords: Statement,Namespace,Preprocessor\ncommands: Query(LINQ)\ntypes:
     Types\nattributes: Modifiers,MethodParameters,Operator,Conversion,Contextual\nvariables:
     Access\nvalues: Literal"
-  license: "Same as CotEditor"
+  license: "Apache License version 2.0"
   lastModified: "2015-12-25"
 completions: []
 outlineMenu:
