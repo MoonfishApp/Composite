@@ -92,7 +92,6 @@
 		C79A6BC521EE9A64007FB630 /* IncompatibleCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC121EE9A64007FB630 /* IncompatibleCharactersViewController.swift */; };
 		C79A6BC621EE9A64007FB630 /* DocumentInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC221EE9A64007FB630 /* DocumentInspectorViewController.swift */; };
 		C79A6BCB21EE9A6E007FB630 /* DocumentsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC721EE9A6E007FB630 /* DocumentsSplitViewController.swift */; };
-		C79A6BCC21EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC821EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift */; };
 		C79A6BCE21EE9A6E007FB630 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BCA21EE9A6E007FB630 /* StatusBarController.swift */; };
 		C79A6BD421EE9A8B007FB630 /* EditorTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */; };
 		C79A6BD521EE9A8B007FB630 /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */; };
@@ -111,7 +110,6 @@
 		C79A6C0621EE9AC1007FB630 /* EditorTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BEF21EE9ABF007FB630 /* EditorTextView.swift */; };
 		C79A6C0721EE9AC1007FB630 /* EditorTextView+Indenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BF021EE9ABF007FB630 /* EditorTextView+Indenting.swift */; };
 		C79A6C0821EE9AC1007FB630 /* NSTextView+LineNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BF121EE9ABF007FB630 /* NSTextView+LineNumber.swift */; };
-		C79A6C0921EE9AC1007FB630 /* EditorTextView+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BF221EE9ABF007FB630 /* EditorTextView+TouchBar.swift */; };
 		C79A6C0A21EE9AC1007FB630 /* EditorTextView+LineProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BF321EE9ABF007FB630 /* EditorTextView+LineProcessing.swift */; };
 		C79A6C0B21EE9AC1007FB630 /* EditorTextView+Commenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BF421EE9ABF007FB630 /* EditorTextView+Commenting.swift */; };
 		C79A6C0C21EE9AC1007FB630 /* NSTextView+RoundedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BF521EE9AC0007FB630 /* NSTextView+RoundedBackground.swift */; };
@@ -127,7 +125,6 @@
 		C79A6C1721EE9AC1007FB630 /* EditorTextView+SurroundSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6C0021EE9AC1007FB630 /* EditorTextView+SurroundSelection.swift */; };
 		C79A6C1821EE9AC1007FB630 /* NSTextView+Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6C0121EE9AC1007FB630 /* NSTextView+Snippet.swift */; };
 		C79A6C1921EE9AC1007FB630 /* NSTextView+BracePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6C0221EE9AC1007FB630 /* NSTextView+BracePair.swift */; };
-		C79A6C1A21EE9AC1007FB630 /* TextSizeTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6C0321EE9AC1007FB630 /* TextSizeTouchBar.swift */; };
 		C79A6C1B21EE9AC1007FB630 /* ATSTypesetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6C0421EE9AC1007FB630 /* ATSTypesetter.swift */; };
 		C79A6C1C21EE9AC1007FB630 /* NSTextView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6C0521EE9AC1007FB630 /* NSTextView+Layout.swift */; };
 		C79A6C2021EE9AF1007FB630 /* SwitcherSegmentedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6C1E21EE9AF1007FB630 /* SwitcherSegmentedCell.swift */; };
@@ -244,7 +241,6 @@
 		C79A6D1E21EE9C64007FB630 /* AudioToolbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6D0921EE9C63007FB630 /* AudioToolbox.swift */; };
 		C79A6D1F21EE9C64007FB630 /* NSImage+Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6D0A21EE9C63007FB630 /* NSImage+Template.swift */; };
 		C79A6D2021EE9C64007FB630 /* NSBezierPath+RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6D0B21EE9C63007FB630 /* NSBezierPath+RoundedCorner.swift */; };
-		C79A6D2121EE9C64007FB630 /* NSTouchBar+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6D0C21EE9C63007FB630 /* NSTouchBar+Validation.swift */; };
 		C79A6D2221EE9C64007FB630 /* NSAlert+ModalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6D0D21EE9C63007FB630 /* NSAlert+ModalSheet.swift */; };
 		C79A6D2321EE9C64007FB630 /* NSColor+NamedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6D0E21EE9C64007FB630 /* NSColor+NamedColors.swift */; };
 		C79A6D2421EE9C64007FB630 /* MutableCopying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6D0F21EE9C64007FB630 /* MutableCopying.swift */; };
@@ -2056,7 +2052,6 @@
 				C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */,
 				C79A6D1221EE9C64007FB630 /* NSCursor+Dark.swift in Sources */,
 				C79A6C7F21EE9BC9007FB630 /* RegularExpressionSyntaxType+Color.swift in Sources */,
-				C79A6BCC21EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift in Sources */,
 				C79A75DE21EEF0AF007FB630 /* MultipleReplacementListViewController.swift in Sources */,
 				C7351C0B21F94EA8000A3A5B /* DocumentController.swift in Sources */,
 				C79A6C0E21EE9AC1007FB630 /* NSTextView+Selection.swift in Sources */,
@@ -2079,7 +2074,6 @@
 				C79A6B9821EE9962007FB630 /* OpenPanelAccessoryController.swift in Sources */,
 				C79A6BE921EE9A9F007FB630 /* UnicodeInputViewController.swift in Sources */,
 				C79A75D921EEF0A6007FB630 /* MultipleReplacement.Settings+Object.swift in Sources */,
-				C79A6C0921EE9AC1007FB630 /* EditorTextView+TouchBar.swift in Sources */,
 				C79A6BBC21EE9A5A007FB630 /* ToolbarController.swift in Sources */,
 				C79A6BE321EE9A95007FB630 /* GoToLineViewController.swift in Sources */,
 				C79A6CB821EE9C10007FB630 /* HexColorTransformer.swift in Sources */,
@@ -2158,7 +2152,6 @@
 				C79A75AD21EEEE46007FB630 /* WriteToConsoleCommand.swift in Sources */,
 				C79A75CE21EEF07D007FB630 /* RegexFindPanelTextView.swift in Sources */,
 				C79A6C4421EE9AFB007FB630 /* SelectionColorWell.swift in Sources */,
-				C79A6C1A21EE9AC1007FB630 /* TextSizeTouchBar.swift in Sources */,
 				C79A6C3521EE9AFB007FB630 /* AntialiasingTextField.swift in Sources */,
 				C7050A0A215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */,
 				C70509E72155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
@@ -2218,7 +2211,6 @@
 				C7E76463212936E300867DA4 /* FileNavigatorViewController.swift in Sources */,
 				C79A6CB121EE9C10007FB630 /* DefaultKey.swift in Sources */,
 				C79A6BBB21EE9A5A007FB630 /* PopUpToolbarItem.swift in Sources */,
-				C79A6D2121EE9C64007FB630 /* NSTouchBar+Validation.swift in Sources */,
 				C79A75A721EEEE21007FB630 /* DefaultKeys.swift in Sources */,
 				C79A6D2021EE9C64007FB630 /* NSBezierPath+RoundedCorner.swift in Sources */,
 				C79A6BCB21EE9A6E007FB630 /* DocumentsSplitViewController.swift in Sources */,
