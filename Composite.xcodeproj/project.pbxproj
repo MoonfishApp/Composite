@@ -1060,6 +1060,7 @@
 			isa = PBXGroup;
 			children = (
 				C709B37A22376FCF003C7AC0 /* GeneralPane.storyboard */,
+				C7754FEF22374B740058B256 /* WindowPane.storyboard */,
 				C7754FF122374B740058B256 /* AppearancePane.storyboard */,
 				C7754FF622374B750058B256 /* EditPane.storyboard */,
 				C7754FF322374B740058B256 /* FileDropPane.storyboard */,
@@ -1067,7 +1068,6 @@
 				C7754FF022374B740058B256 /* IntegrationPane.storyboard */,
 				C7754FF522374B740058B256 /* KeyBindingsPane.storyboard */,
 				C7754FEE22374B740058B256 /* PrintPane.storyboard */,
-				C7754FEF22374B740058B256 /* WindowPane.storyboard */,
 			);
 			path = "Panes Storyboards";
 			sourceTree = "<group>";

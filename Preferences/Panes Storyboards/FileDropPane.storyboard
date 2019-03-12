@@ -9,13 +9,13 @@
         <!--File Drop-->
         <scene sceneID="HD1-eZ-pHa">
             <objects>
-                <viewController title="File Drop" showSeguePresentationStyle="single" id="UtY-fi-jOg" customClass="FileDropPaneController" customModule="CotEditor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="File Drop" showSeguePresentationStyle="single" id="UtY-fi-jOg" customClass="FileDropPaneController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" horizontalHuggingPriority="750" verticalCompressionResistancePriority="250" id="Gi6-Rx-eMY">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="384"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button identifier="pref_filedrop" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7WH-D1-7oE">
-                                <rect key="frame" x="517" y="16" width="25" height="25"/>
+                                <rect key="frame" x="517" y="17" width="25" height="25"/>
                                 <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" inset="2" id="HA6-Rk-NOw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -45,7 +45,7 @@
                                     <rect key="frame" x="1" y="1" width="518" height="58"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" smartInsertDelete="YES" id="Rdu-bG-bow" customClass="TokenTextView" customModule="CotEditor" customModuleProvider="target">
+                                        <textView importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" smartInsertDelete="YES" id="Rdu-bG-bow" customClass="TokenTextView" customModule="Composite" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="518" height="58"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -73,11 +73,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="loJ-FY-YbR"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="qiW-CZ-ex7">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="qiW-CZ-ex7">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7DS-EA-ldr">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7DS-EA-ldr">
                                     <rect key="frame" x="503" y="1" width="16" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -291,11 +291,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="Jsi-Qf-PJo"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ebT-4a-UjZ">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ebT-4a-UjZ">
                                     <rect key="frame" x="1" y="143" width="518" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="NiP-Ns-ZTe">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="NiP-Ns-ZTe">
                                     <rect key="frame" x="244" y="1" width="15" height="133"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -341,7 +341,7 @@
                     </connections>
                 </viewController>
                 <customObject id="pSS-ll-nVa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController clearsFilterPredicateOnInsertion="NO" id="pUX-ce-iNp" customClass="DraggableArrayController" customModule="CotEditor" customModuleProvider="target">
+                <arrayController clearsFilterPredicateOnInsertion="NO" id="pUX-ce-iNp" customClass="DraggableArrayController" customModule="Composite" customModuleProvider="target">
                     <declaredKeys>
                         <string>extensions</string>
                         <string>formatString</string>
