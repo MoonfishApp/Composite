@@ -8,7 +8,9 @@ metadata:
   distributionURL: "https://coteditor.com"
   version: "1.0"
   license: "Apache License version 2.0"
-  lastModified: "2019-03-03"
+  lastModified: "2019-03-13"
+
+completions: []
 
 outlineMenu:
 - beginString: "^([\\t ]*)(transition)\\s+(\\w+)\\s*\\([^)]*\\)"
@@ -157,19 +159,9 @@ strings:
 numbers:
 
 # decimalInteger
-#- beginString: "(?:(?:[1-9]\\d*)|(?:0))"
-#  regularExpression: true
+- beginString: "\\b(?:(?:[1-9]\\d*)|(?:0))"
+  regularExpression: true
 
 # hexInteger
-#- beginString: "(?:0[xX][\\dA-Fa-f]+)"
-#  regularExpression: true
-
-# integer
-#- beginString: "(?:' + decimalInteger + '|' + hexInteger + ')"
-#regularExpression: true
-
-# intPart
-#- beginString: "(?:\\d+)"
-#  regularExpression: true
-
-completions: []
+- beginString: "\\b(?:0[xX][\\dA-Fa-f]+)"
+  regularExpression: true

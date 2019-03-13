@@ -10,6 +10,8 @@ metadata:
   license: "Apache License version 2.0"
   lastModified: "2019-01-11"
 
+completions: []
+
 outlineMenu:
 - beginString: "^([\\t ]*)(function)([^{]*)\\{"
   keyString: "$1$2 : $3"
@@ -155,6 +157,4 @@ numbers:
   ignoreCase: true
   regularExpression: true
 
-completions:
-- keyString: "contract"
-- keyString: "struct"
+
