@@ -31,7 +31,7 @@ keywords:
 - beginString: "library"
 - beginString: "import"
 - beginString: "builtin"
-- beginString: "transition "
+- beginString: "transition"
 - beginString: "fun"
 - beginString: "field"
 - beginString: "tfun"
@@ -39,13 +39,10 @@ keywords:
 - beginString: "end"
 - beginString: "match"
 - beginString: "with"
-- beginString: "\\bevent\\b"
-  regularExpression: true
+- beginString: "event"
 - beginString: "send"
 - beginString: "accept"
 - beginString: "let"
-#- beginString: "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
-#regularExpression: true
 
 commands:
 - beginString: "eq"

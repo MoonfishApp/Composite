@@ -1698,26 +1698,6 @@ extension EditorTextView {
     
     // MARK: Text View Methods
     
-    /// return range for word completion
-    override var rangeForUserCompletion: NSRange {
-        
-        let range = super.rangeForUserCompletion
-        
-        let firstLetters = self.syntaxCompletionWords.compactMap { $0.unicodeScalars.first }
-        let firstLetterSet = CharacterSet(firstLetters)
-        
-        // expand range until hitting a character that isn't in the word completion candidates
-        guard
-            !firstLetterSet.isEmpty,
-            !self.string.isEmpty,
-            let characterRange = Range(range, in: self.string),
-            let index = self.string[..<characterRange.upperBound].rangeOfCharacter(from: firstLetterSet.inverted, options: .backwards)?.upperBound
-            else { return range }
-        
-        return NSRange(index..<characterRange.upperBound, in: self.string)
-    }
-    
-    
     /// build completion list
     override func completions(forPartialWordRange charRange: NSRange, indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String]? {
         
