@@ -78,4 +78,8 @@ class DependencyFrameworkViewModel {
         documentationUrl = framework.documentationUrl
         dependencies = framework.dependencies.map { DependencyViewModel($0) }
     }
+    
+    static func ==(lhs: DependencyFrameworkViewModel, rhs: DependencyFrameworkViewModel) -> Bool {
+        return lhs.name == rhs.name
+    }
 }

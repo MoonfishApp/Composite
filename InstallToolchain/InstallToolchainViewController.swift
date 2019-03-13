@@ -22,6 +22,7 @@ class InstallToolchainViewController: NSViewController {
     @IBOutlet weak var detailInfoLabel: NSTextField!
     @IBOutlet weak var detailMoreInfoButton: NSButton!
     @IBOutlet weak var detailDocumentationButton: NSButton!
+    @IBOutlet weak var detailStatusLabel: NSTextField!
     
     /// Queue used to fetch versions (which can be extremely slow)
     let versionQueue: OperationQueue = OperationQueue()
@@ -37,6 +38,8 @@ class InstallToolchainViewController: NSViewController {
     /// the progress indicator will animate
     private var installCountObserver: NSKeyValueObservation?
     private var totalInstallCount = 0
+    
+    private var itemShownInDetailView: DependencyFrameworkViewModel? = nil
     
     private var platforms = [DependencyPlatformViewModel]() {
         didSet {
@@ -181,6 +184,24 @@ class InstallToolchainViewController: NSViewController {
         detailMoreInfoButton.isHidden = false
         detailDocumentationButton.alternateTitle = item.documentationUrl
         detailDocumentationButton.isHidden = false
+        
+        switch  item.state {
+        case .uptodate, .unknown:
+            detailStatusLabel.stringValue = item.displayName + " is installed and up to date"
+                        
+        case .outdated:
+            detailStatusLabel.stringValue = item.displayName + " is outdated"
+            
+        case .notInstalled:
+            detailStatusLabel.stringValue = item.displayName + " is not installed"
+        
+        case .installing:
+            detailStatusLabel.stringValue = item.displayName + " is installing"
+            
+        case .comingSoon:
+            detailStatusLabel.stringValue = item.displayName + " will be added to Composite soon"
+        }
+        self.itemShownInDetailView = item
     }
     
     @IBAction func done(_ sender: Any) {
@@ -298,6 +319,12 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
         }
         
         if let item = item as? DependencyFrameworkViewModel {
+            
+            // If framework is selected, also update detail view.
+            // The state could have changed since the last time detail view was updated.
+            if let itemShownInDetailView = self.itemShownInDetailView, itemShownInDetailView == item {                
+                showDetailsFor(item)
+            }
             
             switch identifier {
             case "DependencyColumn":
