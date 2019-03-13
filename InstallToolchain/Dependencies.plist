@@ -273,7 +273,7 @@
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string>brew -v</string>
+						<string></string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
@@ -281,7 +281,7 @@
 						<key>installCommand-rem</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 						<key>updateCommand</key>
-						<string>brew update</string>
+						<string></string>
 						<key>outdatedCommand</key>
 						<string></string>
 						<key>comment</key>
@@ -367,11 +367,11 @@
 						<key>name</key>
 						<string>OCaml Toolchain</string>
 						<key>filename</key>
-						<string>ocaml-migrate-parsetree</string>
+						<string>ocaml</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string>opam list installed ocaml-migrate-parsetree</string>
+						<string>opam list installed ocaml</string>
 						<key>versionRegex</key>
 						<string>\s(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
 						<key>installCommand</key>

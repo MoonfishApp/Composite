@@ -264,7 +264,7 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 cellButton.isEnabled = true
                 cellButton.title = "Install \(name)"
                 
-            case .outdated, .unknown:
+            case .outdated:
                 
                 cellButton.isHidden = false
                 cellButton.isEnabled = true
@@ -274,7 +274,7 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                     cellButton.title = "Update \(name)"
                 }                
                 
-            case .uptodate:
+            case .uptodate, .unknown:
                 
                 cellButton.isHidden = true
                 
@@ -457,3 +457,11 @@ extension InstallToolchainViewController: NSCollectionViewDataSource {
         return cell
     }
 }
+
+/*
+ V All required <Truffle> dependencies are installed
+ 
+ ! Some of the <Truffle> dependencies need to be updated.
+ 
+ X Some or all of the required <Truffle> depedencies are not installed.
+ */
