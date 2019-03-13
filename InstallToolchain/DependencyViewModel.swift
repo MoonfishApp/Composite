@@ -75,14 +75,16 @@ class DependencyViewModel {
             return .notInstalled
         }
         
-        // Unable to ascertain whether version is up to date
-        if newerVersionAvailable == nil && (outdatedCommand ?? "").isEmpty {
-            return .unknown
-        }
+        // From here on, we're certain the dependency is installed
         
         // upToDate / isOutdated
         if newerVersionAvailable != nil  {
             return .outdated
+        }
+        
+        // Unable to ascertain whether version is up to date
+        if newerVersionAvailable == nil && (outdatedCommand ?? "").isEmpty {
+            return .unknown
         }
         
         return .uptodate
@@ -121,8 +123,9 @@ extension DependencyViewModel {
                 return
             }
             
-            // TODO: Regex to check it's a valid path?
-            self.path = operation.output.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            // Remove the double forward slash the 'which' command returns
+            let url = URL(fileURLWithPath: operation.output.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)).standardizedFileURL
+            self.path = url.path
         }
         
         return operation

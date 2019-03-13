@@ -273,7 +273,7 @@
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string>brew -v</string>
+						<string></string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
@@ -281,7 +281,7 @@
 						<key>installCommand-rem</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 						<key>updateCommand</key>
-						<string>brew update</string>
+						<string></string>
 						<key>outdatedCommand</key>
 						<string></string>
 						<key>comment</key>
@@ -367,11 +367,11 @@
 						<key>name</key>
 						<string>OCaml Toolchain</string>
 						<key>filename</key>
-						<string>ocaml-migrate-parsetree</string>
+						<string>ocaml</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string>opam list installed ocaml-migrate-parsetree</string>
+						<string>opam list installed ocaml</string>
 						<key>versionRegex</key>
 						<string>\s(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
 						<key>installCommand</key>
@@ -571,7 +571,7 @@
 					</dict>
 				</array>
 				<key>description</key>
-				<string>TRON is an ambitious project dedicated to the establishment of a truly decentralized Internet and its infrastructure. The TRON Protocol, one of the largest blockchain based operating systems in the world, offers base public blockchain support of high throughput, high scalability, and high availability for all decentralized applications in the TRON ecosystem.</string>
+				<string>The TRON Protocol, one of the largest blockchain based operating systems in the world, offers base public blockchain support of high throughput, high scalability, and high availability for all decentralized applications in the TRON ecosystem.</string>
 				<key>projectUrl</key>
 				<string>https://tron.network</string>
 				<key>documentationUrl</key>
