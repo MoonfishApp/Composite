@@ -722,21 +722,18 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
             menu.removeItem(fontMenuItem)
         }
         
+        // remove unwanted "Layout Orientation" menu and its submenus
+        // TODO: probably easier and better to disable vertical text to hide this menu
+        if let layoutMenuItem = menu.item(withTitle: "Layout Orientation".localized(comment: "menu item title in the context menu")) {
+            menu.removeItem(layoutMenuItem)
+        }
+        
         // add "Inspect Character" menu item if single character is selected
         if (self.string as NSString).substring(with: self.selectedRange).count == 1 {
             menu.insertItem(withTitle: "Inspect Character".localized,
                             action: #selector(showSelectionInfo(_:)),
                             keyEquivalent: "",
                             at: 1)
-        }
-        
-        // add "Copy as Rich Text" menu item
-        let copyIndex = menu.indexOfItem(withTarget: nil, andAction: #selector(copy(_:)))
-        if copyIndex >= 0 {  // -1 == not found
-            menu.insertItem(withTitle: "Copy as Rich Text".localized,
-                            action: #selector(copyWithStyle(_:)),
-                            keyEquivalent: "",
-                            at: copyIndex + 1)
         }
         
         // add "Select All" menu item
