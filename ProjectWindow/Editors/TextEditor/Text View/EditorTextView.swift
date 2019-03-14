@@ -722,10 +722,10 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
             menu.removeItem(fontMenuItem)
         }
         
-        // add "Inspect Character" menu item if single character is selected
-        if (self.string as NSString).substring(with: self.selectedRange).count == 1 {
-            menu.insertItem(withTitle: "Inspect Character".localized,
-                            action: #selector(showSelectionInfo(_:)),
+        // Add quick help menu item
+        if (self.string as NSString).substring(with: self.selectedRange).count > 0 {
+            menu.insertItem(withTitle: "Quick Help".localized,
+                            action: #selector(showQuickHelp(_:)),
                             keyEquivalent: "",
                             at: 1)
         }
@@ -1028,8 +1028,8 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         case #selector(copyWithStyle):
             return !self.selectedRange.isEmpty
             
-        case #selector(showSelectionInfo):
-            return (self.string as NSString).substring(with: self.selectedRange).count == 1
+        case #selector(showQuickHelp):
+            return (self.string as NSString).substring(with: self.selectedRange).count > 0
             
         case #selector(toggleComment):
             if let menuItem = item as? NSMenuItem {
@@ -1233,25 +1233,22 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         super.insertText("\\", replacementRange: .notFound)
     }
     
-    
-    /// display character information by popover
-    @IBAction func showSelectionInfo(_ sender: Any?) {
+    @IBAction func showQuickHelp(_ sender: Any?) {
         
         var selectedString = (self.string as NSString).substring(with: self.selectedRange)
-        
-        // apply document's line ending
-        if let documentLineEnding = self.document?.lineEnding,
-            documentLineEnding != .lf, selectedString.detectedLineEnding == .lf
-        {
-            selectedString = selectedString.replacingLineEndings(with: documentLineEnding)
+
+        let syntaxWords = self.syntaxCompletionWords.filter { $0.range(of: selectedString, options: [.caseInsensitive, .anchored]) != nil }
+        let reference: NSAttributedString
+        if syntaxWords.count == 0 {
+            reference = NSAttributedString(string: "Unknown keyword")
+        } else {
+            reference = NSAttributedString(string: "Keyword found in syntax list, but not in reference list")
         }
         
-        let popoverController = CharacterPopoverController.instantiate(storyboard: "CharacterPopover")
-        do {
-            try popoverController.setup(character: selectedString)
-        } catch {
-            return print(error)
-        }
+        let source = "https://scilla-lang.org"
+        
+        let popoverController = QuickHelpPopoverController.instantiate(storyboard: "QuickHelp")
+        popoverController.setup(keyword: selectedString, reference: reference, source: source)
         
         guard let selectedRect = self.boundingRect(for: self.selectedRange) else { return }
         
@@ -1259,9 +1256,8 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         
         popoverController.showPopover(relativeTo: positioningRect, of: self)
         self.showFindIndicator(for: self.selectedRange)
+        
     }
-    
-    
     
     // MARK: Private Methods
     
