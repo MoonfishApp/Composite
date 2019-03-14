@@ -930,26 +930,26 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
     
     
     /// change text layout orientation
-    override func setLayoutOrientation(_ orientation: NSLayoutManager.TextLayoutOrientation) {
-        
-        // -> need to send KVO notification manually on Swift (2016-09-12 on macOS 10.12 SDK)
-        self.willChangeValue(forKey: #keyPath(layoutOrientation))
-        super.setLayoutOrientation(orientation)
-        self.didChangeValue(forKey: #keyPath(layoutOrientation))
-        
-        self.invalidateNonContiguousLayout()
-        
-        // reset writing direction
-        if orientation == .vertical {
-            self.baseWritingDirection = .leftToRight
-        }
-        
-        // reset text wrapping width
-        if self.wrapsLines {
-            let keyPath = (orientation == .vertical) ? \NSSize.height : \NSSize.width
-            self.frame.size[keyPath: keyPath] = self.visibleRect.width * self.scale
-        }
-    }
+//    override func setLayoutOrientation(_ orientation: NSLayoutManager.TextLayoutOrientation) {
+//
+//        // -> need to send KVO notification manually on Swift (2016-09-12 on macOS 10.12 SDK)
+//        self.willChangeValue(forKey: #keyPath(layoutOrientation))
+//        super.setLayoutOrientation(orientation)
+//        self.didChangeValue(forKey: #keyPath(layoutOrientation))
+//
+//        self.invalidateNonContiguousLayout()
+//
+//        // reset writing direction
+//        if orientation == .vertical {
+//            self.baseWritingDirection = .leftToRight
+//        }
+//
+//        // reset text wrapping width
+//        if self.wrapsLines {
+//            let keyPath = (orientation == .vertical) ? \NSSize.height : \NSSize.width
+//            self.frame.size[keyPath: keyPath] = self.visibleRect.width * self.scale
+//        }
+//    }
     
     
     /// read pasted/dropped item from NSPaseboard (involed in `performDragOperation(_:)`)
@@ -1047,6 +1047,9 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
             
         case #selector(uncomment(_:)):
             return self.canUncomment(partly: true)
+                
+        case #selector(changeLayoutOrientation(_:)), #selector(setLayoutOrientation(_:)):
+            return false
             
         default: break
         }
