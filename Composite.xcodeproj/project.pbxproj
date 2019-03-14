@@ -20,6 +20,8 @@
 		C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A312166E4F8003DDA2B /* EditorInterface.plist */; };
 		C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A342166FBC9003DDA2B /* LanguageServer.swift */; };
 		C709B37B22376FCF003C7AC0 /* GeneralPane.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C709B37A22376FCF003C7AC0 /* GeneralPane.storyboard */; };
+		C709B37E223A3852003C7AC0 /* QuickHelp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C709B37D223A3852003C7AC0 /* QuickHelp.storyboard */; };
+		C709B381223A3870003C7AC0 /* QuickHelpPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709B37F223A3870003C7AC0 /* QuickHelpPopoverController.swift */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
 		C70F666C22128E1500EEA9D1 /* DocumentInspectorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3921EE9D93007FB630 /* DocumentInspectorView.storyboard */; };
@@ -409,6 +411,8 @@
 		C7050A312166E4F8003DDA2B /* EditorInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EditorInterface.plist; sourceTree = "<group>"; };
 		C7050A342166FBC9003DDA2B /* LanguageServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageServer.swift; sourceTree = "<group>"; };
 		C709B37A22376FCF003C7AC0 /* GeneralPane.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GeneralPane.storyboard; sourceTree = "<group>"; };
+		C709B37D223A3852003C7AC0 /* QuickHelp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuickHelp.storyboard; sourceTree = "<group>"; };
+		C709B37F223A3870003C7AC0 /* QuickHelpPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickHelpPopoverController.swift; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
 		C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Tronbox.plist"; sourceTree = "<group>"; };
@@ -842,6 +846,15 @@
 			path = Documents;
 			sourceTree = "<group>";
 		};
+		C709B37C223A381E003C7AC0 /* QuickHelp */ = {
+			isa = PBXGroup;
+			children = (
+				C709B37D223A3852003C7AC0 /* QuickHelp.storyboard */,
+				C709B37F223A3870003C7AC0 /* QuickHelpPopoverController.swift */,
+			);
+			path = QuickHelp;
+			sourceTree = "<group>";
+		};
 		C711F59321DF3A29005EBC5D /* Template Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1038,6 +1051,7 @@
 			isa = PBXGroup;
 			children = (
 				C79A6B8721EE993B007FB630 /* Text View */,
+				C709B37C223A381E003C7AC0 /* QuickHelp */,
 				C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */,
 				C79A6BD121EE9A8B007FB630 /* NavigationBarController.swift */,
 				C79A6BD021EE9A8B007FB630 /* EditorTextViewController.swift */,
@@ -1996,6 +2010,7 @@
 				C79A6D3421EE9D73007FB630 /* FindPreferencesView.storyboard in Resources */,
 				C77557DF22375D3C0058B256 /* SyntaxFileMappingEditView.storyboard in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
+				C709B37E223A3852003C7AC0 /* QuickHelp.storyboard in Resources */,
 				C79A750421EEDD18007FB630 /* ColorCodePanelAccessory.storyboard in Resources */,
 				C711F59721DF3F91005EBC5D /* FrameworkInterface.plist in Resources */,
 			);
@@ -2255,6 +2270,7 @@
 				C79A75C121EEF070007FB630 /* FindPanelResultViewController.swift in Sources */,
 				C79A6C3621EE9AFB007FB630 /* EncodingTableCellView.swift in Sources */,
 				C70509D4214D97A8003DDA2B /* DependencyFramework.swift in Sources */,
+				C709B381223A3870003C7AC0 /* QuickHelpPopoverController.swift in Sources */,
 				C7A584E621F0F8E50097B761 /* NavigatorTabViewController.swift in Sources */,
 				C79A75E221EEF230007FB630 /* PrintPanelAccessoryController.swift in Sources */,
 				C79A6B9F21EE9962007FB630 /* IncompatibleCharacter.swift in Sources */,
