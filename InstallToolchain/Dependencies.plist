@@ -80,7 +80,7 @@
 						<key>installCommand</key>
 						<string>npm install -g truffle</string>
 						<key>updateCommand</key>
-						<string>npm update --save truffle</string>
+						<string>npm -g update --save truffle</string>
 						<key>outdatedCommand</key>
 						<string>npm -g outdated truffle</string>
 						<key>comment</key>
@@ -104,7 +104,7 @@
 						<key>installCommand</key>
 						<string>npm install -g solium</string>
 						<key>updateCommand</key>
-						<string>npm update --save solium</string>
+						<string>npm -g update --save solium</string>
 						<key>outdatedCommand</key>
 						<string>npm -g outdated solium</string>
 						<key>comment</key>
@@ -367,11 +367,15 @@
 						<key>name</key>
 						<string>OCaml Toolchain</string>
 						<key>filename</key>
-						<string>ocaml</string>
+						<string></string>
+						<key>isInstalledCommand</key>
+						<string>opam list installed core</string>
+						<key>isInstalledRegex</key>
+						<string>\sv(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string>opam list installed ocaml</string>
+						<string>opam list installed core</string>
 						<key>versionRegex</key>
 						<string>\s(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
 						<key>installCommand</key>
@@ -391,7 +395,7 @@
 						<key>name</key>
 						<string>yarn</string>
 						<key>isFrameworkVersion</key>
-						<true/>
+						<false/>
 						<key>versionCommand</key>
 						<string>yarn --version</string>
 						<key>versionRegex</key>
@@ -546,12 +550,14 @@
 					<dict>
 						<key>name</key>
 						<string>Tron Docker</string>
+						<key>filename</key>
+						<string>doesnotexistplaceholder</string>
 						<key>defaultLocation</key>
 						<string></string>
 						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
-						<string>solium --version</string>
+						<string></string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
@@ -559,7 +565,7 @@
 						<key>installLink</key>
 						<string>https://developers.tron.network/docs/getting-started-1</string>
 						<key>updateCommand</key>
-						<string>npm -g update --save solium</string>
+						<string></string>
 						<key>outdatedCommand</key>
 						<string></string>
 						<key>comment</key>
