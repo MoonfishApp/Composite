@@ -1235,14 +1235,14 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
     
     @IBAction func showQuickHelp(_ sender: Any?) {
         
-        var selectedString = (self.string as NSString).substring(with: self.selectedRange)
+        let selectedString = (self.string as NSString).substring(with: self.selectedRange)
 
         let syntaxWords = self.syntaxCompletionWords.filter { $0.range(of: selectedString, options: [.caseInsensitive, .anchored]) != nil }
         let reference: NSAttributedString
         if syntaxWords.count == 0 {
             reference = NSAttributedString(string: "Unknown keyword")
         } else {
-            reference = NSAttributedString(string: "Keyword found in syntax list, but not in reference list")
+            reference = NSAttributedString(string: "(No information available)")
         }
         
         let source = "https://scilla-lang.org"
