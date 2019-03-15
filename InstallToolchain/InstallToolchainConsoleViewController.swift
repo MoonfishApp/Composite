@@ -12,15 +12,20 @@ final class InstallToolchainConsoleViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView! {
         didSet {
+            
+            assert(Thread.isMainThread)
             // View isn't loaded if console is collapsed
             // Fetch output in case it has changed since the last time
             // the console was shown.
             textView.string = output
+            textView.scrollToEndOfDocument(nil)
         }
     }
     
     var output: String = "" {
         didSet {
+            
+            assert(Thread.isMainThread)
             guard textView != nil else { return }
             textView.string = output
             textView.scrollToEndOfDocument(nil)
@@ -28,8 +33,8 @@ final class InstallToolchainConsoleViewController: NSViewController {
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        assert(textView != nil)
+        
+        super.viewDidLoad()        
         // Do view setup here.
     }
     
