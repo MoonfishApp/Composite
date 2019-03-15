@@ -288,10 +288,10 @@ class InstallToolchainViewController: NSViewController {
     }
     
     @IBAction func consoleToggle(_ sender: Any) {
-        guard let sender = sender as? NSButton, let splitItem = (parent as?NSSplitViewController)?.splitViewItems.last else { return }
-//        splitItem.isSpringLoaded = true
-        splitItem.collapseBehavior = .preferResizingSiblingsWithFixedSplitView //.preferResizingSplitViewWithFixedSiblings
-        splitItem.isCollapsed = sender.state == .off
+        guard let splitController = (parent as? NSSplitViewController), let splitItem = splitController.splitViewItems.last else { return }
+
+        splitItem.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
+        splitController.toggleSidebar(nil)
     }
 }
 

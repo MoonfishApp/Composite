@@ -455,7 +455,7 @@ DQ
                 <splitViewController id="e1A-Oz-pg3" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="J2f-YV-hGQ"/>
-                        <splitViewItem collapsed="YES" holdingPriority="400" id="pjc-20-8W0"/>
+                        <splitViewItem collapsed="YES" holdingPriority="260" behavior="sidebar" id="pjc-20-8W0"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="JpV-9E-DuC">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
