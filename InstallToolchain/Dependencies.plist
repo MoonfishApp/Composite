@@ -315,6 +315,32 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>secp256k1</string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>isInstalledCommand</key>
+						<string>npm show secp256k1 version</string>
+						<key>isInstalledRegex</key>
+						<string>\sv(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
+						<key>versionCommand</key>
+						<string>npm show secp256k1 version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g secp256k1</string>
+						<key>updateCommand</key>
+						<string>npm -g update --save secp256k1</string>
+						<key>outdatedCommand</key>
+						<string>npm -g outdated secp256k1</string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://www.npmjs.com/package/secp256k1</string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>OCaml</string>
 						<key>filename</key>
 						<string>ocaml</string>
@@ -325,7 +351,7 @@
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
-						<string>brew install ocaml</string>
+						<string>brew install ocaml pkg-config libffi openssl boost</string>
 						<key>updateCommand</key>
 						<string>brew update ocaml</string>
 						<key>outdatedCommand</key>

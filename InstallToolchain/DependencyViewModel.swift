@@ -69,11 +69,6 @@ class DependencyViewModel {
     
     var state: DependencyState {
         
-        if self.name == "OCaml Toolchain" {
-            print(name)
-            print("p: " + (path ?? "path is nil"))
-            print("v: " + (version.isEmpty ? "is empty" : version))
-        }
         // Installing
         if isInstalling() {
             return .installing
