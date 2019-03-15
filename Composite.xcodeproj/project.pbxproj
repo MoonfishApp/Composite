@@ -23,6 +23,7 @@
 		C709B37E223A3852003C7AC0 /* QuickHelp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C709B37D223A3852003C7AC0 /* QuickHelp.storyboard */; };
 		C709B381223A3870003C7AC0 /* QuickHelpPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709B37F223A3870003C7AC0 /* QuickHelpPopoverController.swift */; };
 		C709B384223B0D7E003C7AC0 /* NSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709B383223B0D7E003C7AC0 /* NSViewController.swift */; };
+		C709B386223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709B385223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
 		C70F666C22128E1500EEA9D1 /* DocumentInspectorView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79A6D3921EE9D93007FB630 /* DocumentInspectorView.storyboard */; };
@@ -415,6 +416,7 @@
 		C709B37D223A3852003C7AC0 /* QuickHelp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuickHelp.storyboard; sourceTree = "<group>"; };
 		C709B37F223A3870003C7AC0 /* QuickHelpPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickHelpPopoverController.swift; sourceTree = "<group>"; };
 		C709B383223B0D7E003C7AC0 /* NSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewController.swift; sourceTree = "<group>"; };
+		C709B385223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallToolchainConsoleViewController.swift; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
 		C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Tronbox.plist"; sourceTree = "<group>"; };
@@ -901,6 +903,7 @@
 			children = (
 				C7DDD7592141E02800674942 /* InstallToolchain.storyboard */,
 				C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */,
+				C709B385223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift */,
 				C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */,
 				C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */,
 				C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */,
@@ -2336,6 +2339,7 @@
 				C79A6B7621EE987D007FB630 /* KeyBinding.swift in Sources */,
 				C79A6CB321EE9C10007FB630 /* Debouncer.swift in Sources */,
 				C79A75BD21EEF070007FB630 /* DetachablePopoverViewController.swift in Sources */,
+				C709B386223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift in Sources */,
 				C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */,
 				C79A6D1021EE9C64007FB630 /* NSStoryboard+Instantiation.swift in Sources */,
 				C79A75D621EEF0A6007FB630 /* MultipleReplacement+TextView.swift in Sources */,
