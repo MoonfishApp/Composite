@@ -24,6 +24,10 @@ class InstallToolchainViewController: NSViewController {
     @IBOutlet weak var detailDocumentationButton: NSButton!
     @IBOutlet weak var detailStatusLabel: NSTextField!
     
+    lazy private var console: InstallToolchainConsoleViewController = {
+        return (parent as! NSSplitViewController).splitViewItems.last!.viewController as! InstallToolchainConsoleViewController
+    }()
+    
     /// Queue used to fetch versions (which can be extremely slow)
     let versionQueue: OperationQueue = OperationQueue()
     
@@ -44,7 +48,6 @@ class InstallToolchainViewController: NSViewController {
     private var platforms = [DependencyPlatformViewModel]() {
         didSet {
             
-            assert(Thread.isMainThread)
             platformCollectionView.reloadData()
             platformCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
             frameworkViewModels = platforms.first?.frameworks ?? [DependencyFrameworkViewModel]()
@@ -54,7 +57,21 @@ class InstallToolchainViewController: NSViewController {
     
     private var frameworkViewModels = [DependencyFrameworkViewModel]() {
         didSet {
+            
             assert(Thread.isMainThread)
+            
+            // Set output
+            for framework in frameworkViewModels {
+                for dependency in framework.dependencies {
+                    dependency.output = { stdout in
+                        DispatchQueue.main.async {
+                            self.console.output = self.console.output + stdout
+                            
+                        }
+                    }
+                }
+            }
+            
             outlineView.reloadData()
             if let first = frameworkViewModels.first {
                 showDetailsFor(first)
@@ -268,6 +285,13 @@ class InstallToolchainViewController: NSViewController {
     @IBAction func detailDocumentation(_ sender: Any) {
         guard let url = URL(string: (sender as! NSButton).alternateTitle) else { return }
         NSWorkspace.shared.open(url)
+    }
+    
+    @IBAction func consoleToggle(_ sender: Any) {
+        guard let splitController = (parent as? NSSplitViewController), let splitItem = splitController.splitViewItems.last else { return }
+
+        splitItem.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
+        splitController.toggleSidebar(nil)
     }
 }
 
@@ -483,12 +507,5 @@ extension InstallToolchainViewController: NSCollectionViewDataSource {
         cell.logoImageView.image = NSImage(named: NSImage.Name(platform.platform.description))
         return cell
     }
-}
 
-/*
- V All required <Truffle> dependencies are installed
- 
- ! Some of the <Truffle> dependencies need to be updated.
- 
- X Some or all of the required <Truffle> depedencies are not installed.
- */
+}

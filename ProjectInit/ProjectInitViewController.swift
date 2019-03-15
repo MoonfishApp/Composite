@@ -59,6 +59,8 @@ class ProjectInitViewController: NSViewController {
                                 let alert = NSAlert(error: error)
                                 alert.runModal()
                             }
+                            
+                            (document?.windowControllers.first as? ProjectWindowController)?.stdout = self.textView.string
                             self.view.window?.close()
                         }
                     }

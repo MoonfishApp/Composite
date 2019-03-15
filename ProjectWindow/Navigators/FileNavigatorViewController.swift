@@ -22,7 +22,6 @@ final class FileNavigatorViewController: NSViewController {
             if let url = rootItem?.url {
                 self.fileWatcher = SwiftFSWatcher([url.path])
                 self.fileWatcher?.watch({ files in
-                    print("file changed: \(files)")
                     try? self.showFileItems(root: url)
                 })
             }            

@@ -452,7 +452,7 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
             
             if !saveOperation.isAutoSaving {
                 self.analyzer.invalidateFileInfo()
-                ScriptManager.shared.dispatchEvent(documentSaved: self)
+//                ScriptManager.shared.dispatchEvent(documentSaved: self)
             }
         }
     }
@@ -741,7 +741,7 @@ final class TextDocument: NSDocument, AdditionalDocumentPreparing, EncodingHolde
         // [caution] This method may be called from a background thread due to concurrent-opening.
         // This method won't be invoked on Resume. (2015-01-26)
         
-        ScriptManager.shared.dispatchEvent(documentOpened: self)
+//        ScriptManager.shared.dispatchEvent(documentOpened: self)
     }
     
     

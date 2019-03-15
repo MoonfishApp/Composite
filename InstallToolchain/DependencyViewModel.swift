@@ -21,7 +21,7 @@ class DependencyViewModel {
     /// Includes install-state emoji
     var displayName: String { return state.display(name: name) }
     
-    let filename: String
+//    let filename: String
     
     let installLink: String?
     
@@ -37,8 +37,13 @@ class DependencyViewModel {
     
     let outdatedCommand: String?
     
-    // Find location of dependency
-    let whichCommand: String
+    /// command to locate dependency
+    private let isInstalledCommand: String?
+    
+    /// expressen to interpret isInstalledCommand
+    private let isInstalledRegex: String?
+    
+    var output: (String)->Void = {_ in }
     
     private (set) var version: String = "" {
         didSet {
@@ -93,7 +98,6 @@ class DependencyViewModel {
     init(_ dependency: Dependency) {
     
         name = dependency.name.capitalizedFirstChar().replacingOccurrences(of: ".app", with: "")
-        filename = (dependency.filename ?? "").isEmpty ? dependency.name : dependency.filename!
     
         required = dependency.required
         isFrameworkVersion = dependency.isFrameworkVersion
@@ -105,7 +109,18 @@ class DependencyViewModel {
         initCommand = dependency.initCommand
         updateCommand = dependency.updateCommand
         outdatedCommand = dependency.outdatedCommand
-        whichCommand = "which " + filename
+        
+        if let isInstalledCommand = dependency.isInstalledCommand, !isInstalledCommand.isEmpty {
+            self.isInstalledCommand = isInstalledCommand
+        } else if let filename = dependency.filename, !filename.isEmpty {
+            self.isInstalledCommand = "which " + filename
+        } else if !dependency.name.isEmpty {
+            self.isInstalledCommand = "which " + name
+        } else {
+            self.isInstalledCommand = nil
+        }
+        
+        self.isInstalledRegex = dependency.isInstalledRegex
     }
 }
 
@@ -115,18 +130,31 @@ extension DependencyViewModel {
     
     func fileLocationOperation() -> BashOperation? {
         
-        guard whichCommand.isEmpty == false, let operation = try? BashOperation(commands: [whichCommand], verbose: false)
+        guard let command = isInstalledCommand, let operation = try? BashOperation(commands: [command], verbose: false)
             else { return nil }
         
         operation.completionBlock = {
-            guard operation.output.isEmpty == false else {
+            
+            guard !operation.output.isEmpty else {
                 return
             }
             
-            // Remove the double forward slash the 'which' command returns
-            let url = URL(fileURLWithPath: operation.output.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)).standardizedFileURL
-            self.path = url.path
+            if let expression = self.isInstalledRegex {
+                guard let regex = try? NSRegularExpression(pattern: expression, options: .caseInsensitive) else {
+                    return
+                }
+                if let _ = regex.firstMatch(in: operation.output, options: [], range: NSRange(location: 0, length: operation.output.count)) {
+                    self.path = "private path"
+                }
+            } else {
+                // stdoutput will be a file URL
+                // Remove the double forward slash the 'which' command returns
+                let url = URL(fileURLWithPath: operation.output.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)).standardizedFileURL
+                self.path = url.path
+            }
         }
+        
+        operation.outputClosure = output
         
         return operation
     }
@@ -147,6 +175,8 @@ extension DependencyViewModel {
                 self.version = version.trimmingCharacters(in: .whitespaces)
             }
         }
+        
+        operation.outputClosure = output
 
         return operation
     }
@@ -162,6 +192,8 @@ extension DependencyViewModel {
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
+        operation.outputClosure = output
+        
         return operation
     }
     
@@ -176,6 +208,8 @@ extension DependencyViewModel {
         operation.completionBlock = {
             self.newerVersionAvailable = self.versionQueryParser(operation.output)?.last
         }
+        
+        operation.outputClosure = output
         
         return operation
     }
@@ -205,6 +239,7 @@ extension DependencyViewModel {
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
+        operation.outputClosure = output
         let operations = [operation, initOperation(), fileLocationOperation(), versionQueryOperation()].compactMap{ $0 }
         self.installOperations.addObjects(operations)
         return operations
@@ -222,6 +257,7 @@ extension DependencyViewModel {
         operation.completionBlock = {
             self.newerVersionAvailable = nil
         }
+        operation.outputClosure = output
         let operations = [operation, versionQueryOperation()].compactMap{ $0 }
         self.updateOperations.addObjects(operations)
         return operations

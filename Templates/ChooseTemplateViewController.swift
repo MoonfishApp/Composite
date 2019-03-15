@@ -196,7 +196,7 @@ class ChooseTemplateViewController: NSViewController {
         guard let projectInit = projectInit else { return }
         
         if let destination = segue.destinationController as? NSWindowController, let projectInitWindow = destination.contentViewController as? ProjectInitViewController {
-            projectInitWindow.projectInit = projectInit
+            projectInitWindow.projectInit = projectInit 
         } else {
             assertionFailure()
         }

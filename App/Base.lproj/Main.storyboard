@@ -27,8 +27,7 @@
                                                 <action selector="showPreferences:" target="Ady-hI-5gd" id="RiF-uc-YRo"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Toolchains" id="8gg-Yy-zGP">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Toolchains..." keyEquivalent="T" id="8gg-Yy-zGP">
                                             <connections>
                                                 <action selector="showInstallToolchains:" target="Ady-hI-5gd" id="lyA-k8-L0e"/>
                                             </connections>

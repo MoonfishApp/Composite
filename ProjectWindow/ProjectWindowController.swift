@@ -24,6 +24,18 @@ final class ProjectWindowController: NSWindowController {
         }
     }
     
+    /// ProjectInitVC and ImportVC pass their stdout here
+    var stdout: String = "" {
+        didSet {
+            
+            guard let outputcontrollers = self.contentViewController?.findViewControllers(subclassOf: OutputViewController.self) else {
+                return
+            }
+            _ = outputcontrollers.map { $0.stdout = stdout}
+            print(stdout)
+        }
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         shouldCascadeWindows = true        

@@ -722,21 +722,18 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
             menu.removeItem(fontMenuItem)
         }
         
-        // add "Inspect Character" menu item if single character is selected
-        if (self.string as NSString).substring(with: self.selectedRange).count == 1 {
-            menu.insertItem(withTitle: "Inspect Character".localized,
-                            action: #selector(showSelectionInfo(_:)),
-                            keyEquivalent: "",
-                            at: 1)
+        // remove unwanted "Layout Orientation" menu and its submenus
+        // TODO: probably easier and better to disable vertical text to hide this menu
+        if let layoutMenuItem = menu.item(withTitle: "Layout Orientation".localized(comment: "menu item title in the context menu")) {
+            menu.removeItem(layoutMenuItem)
         }
         
-        // add "Copy as Rich Text" menu item
-        let copyIndex = menu.indexOfItem(withTarget: nil, andAction: #selector(copy(_:)))
-        if copyIndex >= 0 {  // -1 == not found
-            menu.insertItem(withTitle: "Copy as Rich Text".localized,
-                            action: #selector(copyWithStyle(_:)),
+        // Add quick help menu item
+        if (self.string as NSString).substring(with: self.selectedRange).count > 0 {
+            menu.insertItem(withTitle: "Quick Help".localized,
+                            action: #selector(showQuickHelp(_:)),
                             keyEquivalent: "",
-                            at: copyIndex + 1)
+                            at: 1)
         }
         
         // add "Select All" menu item
@@ -930,26 +927,26 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
     
     
     /// change text layout orientation
-    override func setLayoutOrientation(_ orientation: NSLayoutManager.TextLayoutOrientation) {
-        
-        // -> need to send KVO notification manually on Swift (2016-09-12 on macOS 10.12 SDK)
-        self.willChangeValue(forKey: #keyPath(layoutOrientation))
-        super.setLayoutOrientation(orientation)
-        self.didChangeValue(forKey: #keyPath(layoutOrientation))
-        
-        self.invalidateNonContiguousLayout()
-        
-        // reset writing direction
-        if orientation == .vertical {
-            self.baseWritingDirection = .leftToRight
-        }
-        
-        // reset text wrapping width
-        if self.wrapsLines {
-            let keyPath = (orientation == .vertical) ? \NSSize.height : \NSSize.width
-            self.frame.size[keyPath: keyPath] = self.visibleRect.width * self.scale
-        }
-    }
+//    override func setLayoutOrientation(_ orientation: NSLayoutManager.TextLayoutOrientation) {
+//
+//        // -> need to send KVO notification manually on Swift (2016-09-12 on macOS 10.12 SDK)
+//        self.willChangeValue(forKey: #keyPath(layoutOrientation))
+//        super.setLayoutOrientation(orientation)
+//        self.didChangeValue(forKey: #keyPath(layoutOrientation))
+//
+//        self.invalidateNonContiguousLayout()
+//
+//        // reset writing direction
+//        if orientation == .vertical {
+//            self.baseWritingDirection = .leftToRight
+//        }
+//
+//        // reset text wrapping width
+//        if self.wrapsLines {
+//            let keyPath = (orientation == .vertical) ? \NSSize.height : \NSSize.width
+//            self.frame.size[keyPath: keyPath] = self.visibleRect.width * self.scale
+//        }
+//    }
     
     
     /// read pasted/dropped item from NSPaseboard (involed in `performDragOperation(_:)`)
@@ -1028,8 +1025,8 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         case #selector(copyWithStyle):
             return !self.selectedRange.isEmpty
             
-        case #selector(showSelectionInfo):
-            return (self.string as NSString).substring(with: self.selectedRange).count == 1
+        case #selector(showQuickHelp):
+            return (self.string as NSString).substring(with: self.selectedRange).count > 0
             
         case #selector(toggleComment):
             if let menuItem = item as? NSMenuItem {
@@ -1233,25 +1230,22 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         super.insertText("\\", replacementRange: .notFound)
     }
     
-    
-    /// display character information by popover
-    @IBAction func showSelectionInfo(_ sender: Any?) {
+    @IBAction func showQuickHelp(_ sender: Any?) {
         
-        var selectedString = (self.string as NSString).substring(with: self.selectedRange)
-        
-        // apply document's line ending
-        if let documentLineEnding = self.document?.lineEnding,
-            documentLineEnding != .lf, selectedString.detectedLineEnding == .lf
-        {
-            selectedString = selectedString.replacingLineEndings(with: documentLineEnding)
+        let selectedString = (self.string as NSString).substring(with: self.selectedRange)
+
+        let syntaxWords = self.syntaxCompletionWords.filter { $0.range(of: selectedString, options: [.caseInsensitive, .anchored]) != nil }
+        let reference: NSAttributedString
+        if syntaxWords.count == 0 {
+            reference = NSAttributedString(string: "Unknown keyword")
+        } else {
+            reference = NSAttributedString(string: "(No information available)")
         }
         
-        let popoverController = CharacterPopoverController.instantiate(storyboard: "CharacterPopover")
-        do {
-            try popoverController.setup(character: selectedString)
-        } catch {
-            return print(error)
-        }
+        let source = "https://scilla-lang.org"
+        
+        let popoverController = QuickHelpPopoverController.instantiate(storyboard: "QuickHelp")
+        popoverController.setup(keyword: selectedString, reference: reference, source: source)
         
         guard let selectedRect = self.boundingRect(for: self.selectedRange) else { return }
         
@@ -1259,9 +1253,8 @@ final class EditorTextView: NSTextView, Themable, CurrentLineHighlighting, Multi
         
         popoverController.showPopover(relativeTo: positioningRect, of: self)
         self.showFindIndicator(for: self.selectedRange)
+        
     }
-    
-    
     
     // MARK: Private Methods
     

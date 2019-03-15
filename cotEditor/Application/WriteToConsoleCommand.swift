@@ -27,19 +27,19 @@ import Foundation
 
 final class WriteToConsoleCommand: NSScriptCommand {
     
-    override func performDefaultImplementation() -> Any? {
+//    override func performDefaultImplementation() -> Any? {
+    
+//        guard
+//            let message = self.directParameter as? String
+//            else { return false }
         
-        guard
-            let message = self.directParameter as? String
-            else { return false }
+//        let title = ScriptManager.shared.currentScriptName
+//        let log = Console.Log(message: message, title: title)
         
-        let title = ScriptManager.shared.currentScriptName
-        let log = Console.Log(message: message, title: title)
+//        Console.shared.panelController.showWindow(self)
+//        Console.shared.append(log: log)
         
-        Console.shared.panelController.showWindow(self)
-        Console.shared.append(log: log)
-        
-        return true
-    }
+//        return true
+//    }
     
 }
