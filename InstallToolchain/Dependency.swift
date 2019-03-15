@@ -20,10 +20,12 @@ class Dependency: Codable {
     
     /// In case the filename is not the same as the dependency name, filename is set
     let filename: String?
+
+    /// Bash command
+    let isInstalledCommand: String?
     
-    /// Default location of the dependency
-    /// Unused
-//    let defaultLocation: String
+    /// Regex expression to parse isInstallCommand
+    let isInstalledRegex: String?
     
     /// Version of this dependency is forwarded to the framework
     let isFrameworkVersion: Bool
