@@ -107,13 +107,13 @@ final class EditorTextViewController: NSViewController, NSTextViewDelegate {
     func textView(_ view: NSTextView, menu: NSMenu, for event: NSEvent, at charIndex: Int) -> NSMenu? {
         
         // append Script menu
-        if let scriptMenu = ScriptManager.shared.contexualMenu {
-            let item = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-            item.image = #imageLiteral(resourceName: "ScriptTemplate")
-            item.toolTip = "Scripts".localized
-            item.submenu = scriptMenu
-            menu.addItem(item)
-        }
+//        if let scriptMenu = ScriptManager.shared.contexualMenu {
+//            let item = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+//            item.image = #imageLiteral(resourceName: "ScriptTemplate")
+//            item.toolTip = "Scripts".localized
+//            item.submenu = scriptMenu
+//            menu.addItem(item)
+//        }
         
         return menu
     }

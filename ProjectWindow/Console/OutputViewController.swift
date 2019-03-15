@@ -12,9 +12,18 @@ final class OutputViewController: NSViewController {
 
     @IBOutlet var textView: NSTextView!
     
+    /// Replaces content in textView with stdout
+    var stdout: String = "" {
+        didSet {
+            self.textView.string = stdout
+            self.textView.scrollToEndOfDocument(nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
     }
     
 }
+

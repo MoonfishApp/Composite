@@ -40,6 +40,8 @@ class DependencyViewModel {
     // Find location of dependency
     let whichCommand: String
     
+    var output: (String)->Void = {_ in }
+    
     private (set) var version: String = "" {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: self)
@@ -128,6 +130,8 @@ extension DependencyViewModel {
             self.path = url.path
         }
         
+        operation.outputClosure = output
+        
         return operation
     }
     
@@ -147,6 +151,8 @@ extension DependencyViewModel {
                 self.version = version.trimmingCharacters(in: .whitespaces)
             }
         }
+        
+        operation.outputClosure = output
 
         return operation
     }
@@ -162,6 +168,8 @@ extension DependencyViewModel {
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
+        operation.outputClosure = output
+        
         return operation
     }
     
@@ -176,6 +184,8 @@ extension DependencyViewModel {
         operation.completionBlock = {
             self.newerVersionAvailable = self.versionQueryParser(operation.output)?.last
         }
+        
+        operation.outputClosure = output
         
         return operation
     }
@@ -205,6 +215,7 @@ extension DependencyViewModel {
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
+        operation.outputClosure = output
         let operations = [operation, initOperation(), fileLocationOperation(), versionQueryOperation()].compactMap{ $0 }
         self.installOperations.addObjects(operations)
         return operations
@@ -222,6 +233,7 @@ extension DependencyViewModel {
         operation.completionBlock = {
             self.newerVersionAvailable = nil
         }
+        operation.outputClosure = output
         let operations = [operation, versionQueryOperation()].compactMap{ $0 }
         self.updateOperations.addObjects(operations)
         return operations
