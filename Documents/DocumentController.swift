@@ -52,7 +52,8 @@ class DocumentController: NSDocumentController {
             
             // If error was returned, we're done.
             guard error == nil else {
-                //assertionFailure(error!.localizedDescription)
+                print(url)
+                assertionFailure(error!.localizedDescription)
                 completionHandler(document, documentWasAlreadyOpen, error)
                 return
             }
@@ -89,7 +90,7 @@ class DocumentController: NSDocumentController {
                 }
 
             } else {
-                assertionFailure("Document type not supported")
+                assertionFailure("Document type not supported: \(url)")
                 completionHandler(document, documentWasAlreadyOpen, error)
             }
         }
@@ -271,7 +272,12 @@ extension DocumentController {
     private func show(project: ProjectDocument, openFile: String? = nil, completionHandler: @escaping (NSDocument?) -> Void) { //, documentWasAlreadyOpen: Bool, error: Error?, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
         
         // 1. If there's no other file (usually contract) to open, create a window with the project shown.
-        guard let defaultDocument = openFile ?? project.project?.defaultOpenFile, FileManager.default.fileExists(atPath: project.workDirectory.appendingPathComponent(defaultDocument).path) == true else {
+        var isDirectory: ObjCBool = false
+        guard let defaultDocument = openFile ?? project.project?.defaultOpenFile,
+            !defaultDocument.isEmpty,
+            FileManager.default.fileExists(atPath: project.workDirectory.appendingPathComponent(defaultDocument).path, isDirectory: &isDirectory) == true,
+            isDirectory.boolValue == false
+        else {
             
             project.makeWindowControllers()
             project.showWindows()
