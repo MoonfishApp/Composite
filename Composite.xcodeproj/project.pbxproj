@@ -960,12 +960,12 @@
 		C72FEB8021E7E6C4000EF3C7 /* ProjectWindow */ = {
 			isa = PBXGroup;
 			children = (
+				C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */,
 				C7E76436211EC16300867DA4 /* ProjectWindowController.swift */,
 				C79A75EB21F06413007FB630 /* ProjectContentSplitViewController.swift */,
 				C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */,
 				C79A6BC721EE9A6E007FB630 /* DocumentsSplitViewController.swift */,
 				C79A6BC821EE9A6E007FB630 /* DocumentsSplitViewController+TouchBar.swift */,
-				C7F0B9A62112945F005A8FE2 /* ProjectWindow.storyboard */,
 				C715712B21F14F5800A1A6B4 /* Toolbar */,
 				C72FEB8621E9400A000EF3C7 /* Editors */,
 				C72FEB8521E94005000EF3C7 /* Navigators */,

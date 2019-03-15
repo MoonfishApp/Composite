@@ -350,7 +350,7 @@ extension ProjectInit {
     private func finishedSuccessfully() -> Operation {
         
         return BlockOperation{
-            self.output("Initialization successful")
+            self.output("Initialization successful\n https://www.apple.com/ \n")
             self.finished(0, nil)
         }
     }

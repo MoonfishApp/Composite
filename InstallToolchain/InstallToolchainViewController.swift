@@ -283,11 +283,13 @@ class InstallToolchainViewController: NSViewController {
     }
     
     @IBAction func detailDocumentation(_ sender: Any) {
+        
         guard let url = URL(string: (sender as! NSButton).alternateTitle) else { return }
         NSWorkspace.shared.open(url)
     }
     
     @IBAction func consoleToggle(_ sender: Any) {
+        
         guard let splitController = (parent as? NSSplitViewController), let splitItem = splitController.splitViewItems.last else { return }
 
         splitItem.collapseBehavior = .preferResizingSplitViewWithFixedSiblings

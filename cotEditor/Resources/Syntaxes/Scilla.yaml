@@ -25,7 +25,6 @@ outlineMenu:
   description: "library"
   keyString: "$0"
 
-
 keywords:
 - beginString: "contract"
 - beginString: "library"

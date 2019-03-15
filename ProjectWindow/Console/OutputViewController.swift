@@ -17,6 +17,11 @@ final class OutputViewController: NSViewController {
         didSet {
             self.textView.string = stdout
             self.textView.scrollToEndOfDocument(nil)
+            
+            // Hack to make URLs clickable
+            self.textView.isEditable = true
+            self.textView.checkTextInDocument(nil)
+            self.textView.isEditable = false
         }
     }
     

@@ -19,6 +19,11 @@ final class InstallToolchainConsoleViewController: NSViewController {
             // the console was shown.
             textView.string = output
             textView.scrollToEndOfDocument(nil)
+            
+            // Hack to make URLs clickable
+            self.textView.isEditable = true
+            self.textView.checkTextInDocument(nil)
+            self.textView.isEditable = false
         }
     }
     
@@ -29,6 +34,11 @@ final class InstallToolchainConsoleViewController: NSViewController {
             guard textView != nil else { return }
             textView.string = output
             textView.scrollToEndOfDocument(nil)
+            
+            // Hack to make URLs clickable
+            self.textView.isEditable = true
+            self.textView.checkTextInDocument(nil)
+            self.textView.isEditable = false
         }
     }
 

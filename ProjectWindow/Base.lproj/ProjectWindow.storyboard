@@ -10,7 +10,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="EditWindow" id="jGA-0Y-lOj" customClass="ProjectWindowController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Document Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
+                    <window key="window" title="Document Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="307"/>
@@ -19,8 +19,7 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Bqt-lg-4QR"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="9QW-KK-5p9"/>
-                                <toolbarItem implicitItemIdentifier="D7747E2F-83A6-4341-B30F-008802951873" label="Run" paletteLabel="Run" image="NSTouchBarPlayTemplate" id="tYP-A1-bOR">
-                                    <nil key="toolTip"/>
+                                <toolbarItem implicitItemIdentifier="D7747E2F-83A6-4341-B30F-008802951873" label="Run" paletteLabel="Run" toolTip="Deploy contracts" image="NSTouchBarPlayTemplate" id="tYP-A1-bOR">
                                     <size key="minSize" width="38" height="32"/>
                                     <size key="maxSize" width="38" height="32"/>
                                     <button key="view" verticalHuggingPriority="750" id="Roe-cR-kSm">

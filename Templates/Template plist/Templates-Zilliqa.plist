@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>category</key>
-		<string>Empty</string>
+		<string>Empty Project</string>
 		<key>command</key>
 		<string></string>
 		<key>templates</key>
@@ -181,7 +181,7 @@
 				<key>imageName</key>
 				<string></string>
 				<key>standard</key>
-				<string></string>
+				<string>ERC20</string>
 				<key>description</key>
 				<string>Based on the ERC-20 standard, a technical standard used for smart contracts for implementing tokens.</string>
 				<key>moreInfoUrl</key>
@@ -212,7 +212,7 @@
 				<key>imageName</key>
 				<string></string>
 				<key>standard</key>
-				<string>ERC-721</string>
+				<string>ERC721</string>
 				<key>description</key>
 				<string>A special type of cryptographic token which represents something unique; non-fungible tokens are thus not interchangeable.</string>
 				<key>moreInfoUrl</key>

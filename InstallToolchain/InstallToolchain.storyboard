@@ -425,16 +425,18 @@ DQ
                                     <rect key="frame" x="0.0" y="0.0" width="743" height="100"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="uxF-Ls-RyX">
+                                        <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" allowsNonContiguousLayout="YES" linkDetection="YES" smartInsertDelete="YES" id="uxF-Ls-RyX">
                                             <rect key="frame" x="0.0" y="0.0" width="743" height="100"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="743" height="100"/>
                                             <size key="maxSize" width="750" height="145"/>
                                             <attributedString key="textStorage">
                                                 <fragment content="Ready.">
                                                     <attributes>
-                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="10" name="Menlo-Bold"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -470,7 +472,7 @@ DQ
                 <splitViewController id="e1A-Oz-pg3" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="J2f-YV-hGQ"/>
-                        <splitViewItem collapsed="YES" holdingPriority="260" behavior="sidebar" id="pjc-20-8W0"/>
+                        <splitViewItem canCollapse="YES" collapsed="YES" holdingPriority="260" behavior="sidebar" id="pjc-20-8W0"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="JpV-9E-DuC">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>

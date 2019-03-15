@@ -52,7 +52,7 @@ class DocumentController: NSDocumentController {
             
             // If error was returned, we're done.
             guard error == nil else {
-                assertionFailure(error!.localizedDescription)
+                //assertionFailure(error!.localizedDescription)
                 completionHandler(document, documentWasAlreadyOpen, error)
                 return
             }
