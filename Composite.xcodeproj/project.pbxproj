@@ -380,6 +380,9 @@
 		C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */; };
 		C7F18B06221F7C030026D7DC /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = C7F18B05221F7C020026D7DC /* Themes */; };
 		C7F95995223638C5008C8F7E /* SwiftFSWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F95994223638C5008C8F7E /* SwiftFSWatcher.swift */; };
+		C7FA4D93223CA1F7000954FA /* Node.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4D92223CA1F7000954FA /* Node.storyboard */; };
+		C7FA4D96223CA358000954FA /* NodeStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */; };
+		C7FA4D99223CA36C000954FA /* NodeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
@@ -788,6 +791,9 @@
 		C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeSplitViewController.swift; sourceTree = "<group>"; };
 		C7F18B05221F7C020026D7DC /* Themes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Themes; path = cotEditor/Resources/Themes; sourceTree = SOURCE_ROOT; };
 		C7F95994223638C5008C8F7E /* SwiftFSWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFSWatcher.swift; sourceTree = "<group>"; };
+		C7FA4D92223CA1F7000954FA /* Node.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Node.storyboard; sourceTree = "<group>"; };
+		C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeStatusViewController.swift; sourceTree = "<group>"; };
+		C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeLogViewController.swift; sourceTree = "<group>"; };
 		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Composite.release.xcconfig"; path = "Pods/Target Support Files/Pods-Composite/Pods-Composite.release.xcconfig"; sourceTree = "<group>"; };
 		F81936C3214C6F2F00C3222B /* uninstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = uninstall.command; sourceTree = "<group>"; };
@@ -1814,6 +1820,7 @@
 				C7DB1670223243A20021C222 /* Import */,
 				C72CF6072228DF3400637A8B /* ProjectInit */,
 				C72FEB8021E7E6C4000EF3C7 /* ProjectWindow */,
+				C7FA4D91223CA1D3000954FA /* NodeWindow */,
 				C70509D521541C6F003DDA2B /* Documents */,
 				C79A6ACF21EE75A3007FB630 /* cotEditor */,
 				C72FEB8221E7E945000EF3C7 /* Models */,
@@ -1842,6 +1849,16 @@
 				C72FEB7B21E7E5BC000EF3C7 /* EditorTests.swift */,
 			);
 			path = CompositeTests;
+			sourceTree = "<group>";
+		};
+		C7FA4D91223CA1D3000954FA /* NodeWindow */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4D92223CA1F7000954FA /* Node.storyboard */,
+				C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */,
+				C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */,
+			);
+			path = NodeWindow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2008,6 +2025,7 @@
 				C72CF615222BA85800637A8B /* Tronbox in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
+				C7FA4D93223CA1F7000954FA /* Node.storyboard in Resources */,
 				C775540522375D1A0058B256 /* SyntaxOutlineEditView.storyboard in Resources */,
 				C7754FFC22374B750058B256 /* FileDropPane.storyboard in Resources */,
 				C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */,
@@ -2341,6 +2359,7 @@
 				C79A75BD21EEF070007FB630 /* DetachablePopoverViewController.swift in Sources */,
 				C709B386223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift in Sources */,
 				C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */,
+				C7FA4D96223CA358000954FA /* NodeStatusViewController.swift in Sources */,
 				C79A6D1021EE9C64007FB630 /* NSStoryboard+Instantiation.swift in Sources */,
 				C79A75D621EEF0A6007FB630 /* MultipleReplacement+TextView.swift in Sources */,
 				C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */,
@@ -2387,6 +2406,7 @@
 				C79A6D2021EE9C64007FB630 /* NSBezierPath+RoundedCorner.swift in Sources */,
 				C79A6BCB21EE9A6E007FB630 /* DocumentsSplitViewController.swift in Sources */,
 				C79A6CDC21EE9C52007FB630 /* UserDefaults.swift in Sources */,
+				C7FA4D99223CA36C000954FA /* NodeLogViewController.swift in Sources */,
 				C7DDD74A2140A65700674942 /* Dependency.swift in Sources */,
 				C79A6CB421EE9C10007FB630 /* DraggableArrayController.swift in Sources */,
 				C79A6C9E21EE9BEC007FB630 /* UnicodeScalar+Information.swift in Sources */,

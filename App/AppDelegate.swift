@@ -15,8 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var toolchainWindowController = NSWindowController.instantiate(storyboard: "InstallToolchain")
     private lazy var templateWindowController = NSWindowController.instantiate(storyboard: "Template")
     
-//    let installToolchainStoryboard = NSStoryboard(name: NSStoryboard.Name("InstallToolchain"), bundle: nil)
-//    let installWizard = installToolchainStoryboard.instantiateInitialController() as? NSWindowController
     
 //    @IBOutlet private weak var encodingsMenu: NSMenu?
     @IBOutlet private weak var syntaxStylesMenu: NSMenu?
@@ -101,6 +99,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func showProjectTemplates(_ sender: AnyObject) {
         self.templateWindowController.showWindow(sender)
+    }
+    
+    // temp
+    @IBAction func showNodeWindow(_ sender: AnyObject) {
+        let preferencesWindowController = NSWindowController.instantiate(storyboard: "Node")
+        preferencesWindowController.showWindow(sender)
     }
     
     /// build syntax style menu in the main menu
