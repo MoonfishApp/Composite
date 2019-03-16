@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Data</string>
+		<key>description</key>
+		<string>Relative path where state data will be stored. Creates directory if path does not exists</string>
+		<key>flag</key>
+		<string>-d</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Fixtures</string>
+		<key>description</key>
+		<string>Load fixed account addresses and keys (fixtures) from a JSON-file</string>
+		<key>flag</key>
+		<string>-f</string>
+		<key>OpenFileFilter</key>
+		<string>json</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Data files</string>
+		<key>description</key>
+		<string>Load data files from a JSON file</string>
+		<key>flag</key>
+		<string>-l</string>
+		<key>OpenFileFilter</key>
+		<string>json</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Number of accounts</string>
+		<key>description</key>
+		<string>Number of accounts to load at start up. Only used if fixtures file is not defined.</string>
+		<key>flag</key>
+		<string>-d</string>
+		<key>defaultString</key>
+		<string>10</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Port</string>
+		<key>description</key>
+		<string>Port number to listen to (Default: 4200)</string>
+		<key>flag</key>
+		<string>-p</string>
+		<key>defaultString</key>
+		<string>4200</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Remote interpreter</string>
+		<key>description</key>
+		<string>Option to use remote interpreter or local interpreter. Remote if True</string>
+		<key>flag</key>
+		<string>-r</string>
+		<key>defaultBool</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Verbose</string>
+		<key>description</key>
+		<string>Log all requests and responses to stdout</string>
+		<key>flag</key>
+		<string>-v</string>
+		<key>defaultBool</key>
+		<true/>
+	</dict>
+</array>
+</plist>

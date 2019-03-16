@@ -62,6 +62,7 @@
                         <tabViewItem label="Transactions" identifier="" id="Qms-ca-VFC"/>
                         <tabViewItem label="Blocks" identifier="" id="kdD-kh-wcn"/>
                         <tabViewItem label="Accounts" id="GMn-XF-Xpr"/>
+                        <tabViewItem label="Settings" id="RUR-AW-waK" userLabel="Settings"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="CV7-0v-ncA">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -76,6 +77,7 @@
                         <segue destination="p5v-7r-RmH" kind="relationship" relationship="tabItems" id="AK9-oD-bKE"/>
                         <segue destination="ttk-kc-JcL" kind="relationship" relationship="tabItems" id="RrZ-Hq-Xh4"/>
                         <segue destination="9HT-PD-NAA" kind="relationship" relationship="tabItems" id="ogj-cu-Yyx"/>
+                        <segue destination="KGz-Dw-gjL" kind="relationship" relationship="tabItems" id="dUm-Gv-snC"/>
                     </connections>
                 </tabViewController>
                 <customObject id="ZDT-cA-ETq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -108,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="2011" y="94"/>
         </scene>
-        <!--Node Log View Controller-->
+        <!--Node Status View Controller-->
         <scene sceneID="500-XM-Nf0">
             <objects>
-                <viewController id="Tda-aq-bbR" customClass="NodeLogViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Tda-aq-bbR" customClass="NodeStatusViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="SMc-Af-imM">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -150,7 +152,42 @@
                     <view key="view" id="Syn-pn-JEe">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="86"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TB3-Fv-fAV">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="86"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="rR8-A4-dFo">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="86"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" linkDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ZcW-F7-OiT">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="86"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <size key="minSize" width="450" height="86"/>
+                                            <size key="maxSize" width="450" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="oLJ-pr-fW0" id="sLV-1e-fi6"/>
+                                            </connections>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="3O8-Rj-SUt">
+                                    <rect key="frame" x="434" y="0.0" width="16" height="86"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="TB3-Fv-fAV" firstAttribute="top" secondItem="Syn-pn-JEe" secondAttribute="top" id="Dlo-vX-747"/>
+                            <constraint firstItem="TB3-Fv-fAV" firstAttribute="leading" secondItem="Syn-pn-JEe" secondAttribute="leading" id="Lyb-bW-Skw"/>
+                            <constraint firstAttribute="trailing" secondItem="TB3-Fv-fAV" secondAttribute="trailing" id="Y0O-PX-oip"/>
+                            <constraint firstAttribute="bottom" secondItem="TB3-Fv-fAV" secondAttribute="bottom" id="lGv-o5-WWF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="ZcW-F7-OiT" id="lLl-v1-mpi"/>
+                    </connections>
                 </viewController>
                 <customObject id="VS5-Lc-xb8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,6 +205,42 @@
                 <customObject id="iXG-eS-PQp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2011" y="482"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2cK-l1-7w3">
+            <objects>
+                <viewController id="KGz-Dw-gjL" sceneMemberID="viewController">
+                    <view key="view" id="egw-77-KJf">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JQC-l4-IOe">
+                                <rect key="frame" x="319" y="13" width="118" height="32"/>
+                                <buttonCell key="cell" type="push" title="Restart node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sz4-cR-zFC">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-4P-RpM">
+                                <rect key="frame" x="18" y="20" width="209" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="⚠️ Restart node to apply settings" id="M9s-hd-dDI">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Jfd-4P-RpM" secondAttribute="bottom" constant="20" id="EWK-iG-T5g"/>
+                            <constraint firstAttribute="trailing" secondItem="JQC-l4-IOe" secondAttribute="trailing" constant="19" id="JaH-aY-8r9"/>
+                            <constraint firstAttribute="bottom" secondItem="JQC-l4-IOe" secondAttribute="bottom" constant="20" id="bvC-93-TdL"/>
+                            <constraint firstItem="Jfd-4P-RpM" firstAttribute="leading" secondItem="egw-77-KJf" secondAttribute="leading" constant="20" id="psm-lE-9LK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="M26-tX-7bo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2011" y="868"/>
         </scene>
     </scenes>
 </document>

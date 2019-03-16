@@ -15,4 +15,13 @@ class NodeStatusViewController: NSViewController {
         // Do view setup here.
     }
     
+    @IBAction func disclosureButton(_ sender: Any) {
+        
+        guard let splitController = (parent as? NSSplitViewController), let splitItem = splitController.splitViewItems.last else { return }
+        
+        splitItem.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
+        splitController.toggleSidebar(nil)
+        
+    }
+
 }

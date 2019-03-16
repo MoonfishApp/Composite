@@ -383,6 +383,15 @@
 		C7FA4D93223CA1F7000954FA /* Node.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4D92223CA1F7000954FA /* Node.storyboard */; };
 		C7FA4D96223CA358000954FA /* NodeStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */; };
 		C7FA4D99223CA36C000954FA /* NodeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */; };
+		C7FA4D9C223CB7F7000954FA /* NodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9B223CB7F7000954FA /* NodeController.swift */; };
+		C7FA4D9E223CB88B000954FA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9D223CB88B000954FA /* Node.swift */; };
+		C7FA4DA0223CB8CF000954FA /* RPCServerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9F223CB8CF000954FA /* RPCServerInterface.swift */; };
+		C7FA4DA3223CB922000954FA /* Zilliqa-KayaInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA2223CB922000954FA /* Zilliqa-KayaInterface.plist */; };
+		C7FA4DA5223CB930000954FA /* Ethereum-Ganache.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA4223CB930000954FA /* Ethereum-Ganache.plist */; };
+		C7FA4DA7223CBA34000954FA /* RPCServerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */; };
+		C7FA4DAA223CBD18000954FA /* Zilliqa-KayaOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA9223CBD18000954FA /* Zilliqa-KayaOptions.plist */; };
+		C7FA4DAC223CBF7B000954FA /* RPCServerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */; };
+		C7FA4DAE223CC7D6000954FA /* NodeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
@@ -794,6 +803,15 @@
 		C7FA4D92223CA1F7000954FA /* Node.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Node.storyboard; sourceTree = "<group>"; };
 		C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeStatusViewController.swift; sourceTree = "<group>"; };
 		C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeLogViewController.swift; sourceTree = "<group>"; };
+		C7FA4D9B223CB7F7000954FA /* NodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeController.swift; sourceTree = "<group>"; };
+		C7FA4D9D223CB88B000954FA /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		C7FA4D9F223CB8CF000954FA /* RPCServerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerInterface.swift; sourceTree = "<group>"; };
+		C7FA4DA2223CB922000954FA /* Zilliqa-KayaInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Zilliqa-KayaInterface.plist"; sourceTree = "<group>"; };
+		C7FA4DA4223CB930000954FA /* Ethereum-Ganache.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ethereum-Ganache.plist"; sourceTree = "<group>"; };
+		C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerSettings.swift; sourceTree = "<group>"; };
+		C7FA4DA9223CBD18000954FA /* Zilliqa-KayaOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Zilliqa-KayaOptions.plist"; sourceTree = "<group>"; };
+		C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerOptions.swift; sourceTree = "<group>"; };
+		C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NodeSelector.storyboard; sourceTree = "<group>"; };
 		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Composite.release.xcconfig"; path = "Pods/Target Support Files/Pods-Composite/Pods-Composite.release.xcconfig"; sourceTree = "<group>"; };
 		F81936C3214C6F2F00C3222B /* uninstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = uninstall.command; sourceTree = "<group>"; };
@@ -1854,11 +1872,44 @@
 		C7FA4D91223CA1D3000954FA /* NodeWindow */ = {
 			isa = PBXGroup;
 			children = (
+				C7FA4D9A223CB7E2000954FA /* NodeController */,
 				C7FA4D92223CA1F7000954FA /* Node.storyboard */,
+				C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */,
 				C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */,
 				C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */,
 			);
 			path = NodeWindow;
+			sourceTree = "<group>";
+		};
+		C7FA4D9A223CB7E2000954FA /* NodeController */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4D9B223CB7F7000954FA /* NodeController.swift */,
+				C7FA4D9D223CB88B000954FA /* Node.swift */,
+				C7FA4D9F223CB8CF000954FA /* RPCServerInterface.swift */,
+				C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */,
+				C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */,
+				C7FA4DA1223CB8EA000954FA /* RPCServerInterface */,
+				C7FA4DA8223CBCEA000954FA /* RPCServerOptions */,
+			);
+			path = NodeController;
+			sourceTree = "<group>";
+		};
+		C7FA4DA1223CB8EA000954FA /* RPCServerInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4DA2223CB922000954FA /* Zilliqa-KayaInterface.plist */,
+				C7FA4DA4223CB930000954FA /* Ethereum-Ganache.plist */,
+			);
+			path = RPCServerInterface;
+			sourceTree = "<group>";
+		};
+		C7FA4DA8223CBCEA000954FA /* RPCServerOptions */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4DA9223CBD18000954FA /* Zilliqa-KayaOptions.plist */,
+			);
+			path = RPCServerOptions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1965,6 +2016,7 @@
 				C7F18B06221F7C030026D7DC /* Themes in Resources */,
 				C775540122375D080058B256 /* SyntaxTermsEditView.storyboard in Resources */,
 				C77557E322375D4D0058B256 /* SyntaxValidationView.storyboard in Resources */,
+				C7FA4DA3223CB922000954FA /* Zilliqa-KayaInterface.plist in Resources */,
 				C79A6D4821EE9DDC007FB630 /* ProgressView.storyboard in Resources */,
 				C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */,
 				C7754FF722374B750058B256 /* PrintPane.storyboard in Resources */,
@@ -1974,6 +2026,7 @@
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
+				C7FA4DAA223CBD18000954FA /* Zilliqa-KayaOptions.plist in Resources */,
 				C79A6D4621EE9DD3007FB630 /* PrintPanelAccessory.storyboard in Resources */,
 				C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */,
 				C72CF612222916FE00637A8B /* Truffle in Resources */,
@@ -1996,6 +2049,7 @@
 				C79A759E21EEE532007FB630 /* makeSyntaxMap.rb in Resources */,
 				C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */,
 				C79A6D4221EE9DC0007FB630 /* OpenDocumentAccessory.storyboard in Resources */,
+				C7FA4DAE223CC7D6000954FA /* NodeSelector.storyboard in Resources */,
 				C77557EC2237601B0058B256 /* PreferencesWindow.storyboard in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C709B37B22376FCF003C7AC0 /* GeneralPane.storyboard in Resources */,
@@ -2021,6 +2075,7 @@
 				C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */,
 				C72CF610222916FE00637A8B /* Celer in Resources */,
 				C775502922375CBE0058B256 /* SyntaxEditView.storyboard in Resources */,
+				C7FA4DA5223CB930000954FA /* Ethereum-Ganache.plist in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
 				C72CF615222BA85800637A8B /* Tronbox in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
@@ -2208,6 +2263,7 @@
 				C79A6C4321EE9AFB007FB630 /* DotView.swift in Sources */,
 				C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */,
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
+				C7FA4D9E223CB88B000954FA /* Node.swift in Sources */,
 				C79A6C0C21EE9AC1007FB630 /* NSTextView+RoundedBackground.swift in Sources */,
 				C79A6B7421EE987D007FB630 /* MenuKeyBindingManager.swift in Sources */,
 				C79A6BD421EE9A8B007FB630 /* EditorTextViewController.swift in Sources */,
@@ -2332,6 +2388,7 @@
 				C7754FEC22374B570058B256 /* WindowPaneController.swift in Sources */,
 				C79A6C1821EE9AC1007FB630 /* NSTextView+Snippet.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
+				C7FA4D9C223CB7F7000954FA /* NodeController.swift in Sources */,
 				C79A6C8F21EE9BD6007FB630 /* Pair.swift in Sources */,
 				C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */,
 				C79A75AC21EEEE46007FB630 /* AppInfo.swift in Sources */,
@@ -2376,6 +2433,7 @@
 				C79A6CF821EE9C52007FB630 /* Data.swift in Sources */,
 				C7DDD753214100D200674942 /* String.swift in Sources */,
 				C79A6C3B21EE9AFB007FB630 /* CenteringTextFieldCell.swift in Sources */,
+				C7FA4DA7223CBA34000954FA /* RPCServerSettings.swift in Sources */,
 				C79A6CE021EE9C52007FB630 /* String+Localization.swift in Sources */,
 				C79A6C4521EE9AFB007FB630 /* SeparatorTextField.swift in Sources */,
 				C79A6C1721EE9AC1007FB630 /* EditorTextView+SurroundSelection.swift in Sources */,
@@ -2399,6 +2457,7 @@
 				C79A6CF421EE9C52007FB630 /* String+Sandboxing.swift in Sources */,
 				C72FEA9621E433BA000EF3C7 /* PlatformCollectionViewItem.swift in Sources */,
 				C79A6BB921EE9A5A007FB630 /* DocumentToolbar.swift in Sources */,
+				C7FA4DA0223CB8CF000954FA /* RPCServerInterface.swift in Sources */,
 				C7E76463212936E300867DA4 /* FileNavigatorViewController.swift in Sources */,
 				C79A6CB121EE9C10007FB630 /* DefaultKey.swift in Sources */,
 				C79A6BBB21EE9A5A007FB630 /* PopUpToolbarItem.swift in Sources */,
@@ -2441,6 +2500,7 @@
 				C79A6C7721EE9B82007FB630 /* SyntaxParser.swift in Sources */,
 				C79A6C9C21EE9BEC007FB630 /* CharacterInfo.swift in Sources */,
 				C79A6C4221EE9AFB007FB630 /* TokenTextView.swift in Sources */,
+				C7FA4DAC223CBF7B000954FA /* RPCServerOptions.swift in Sources */,
 				C79A6C0721EE9AC1007FB630 /* EditorTextView+Indenting.swift in Sources */,
 				C79A6C7921EE9B82007FB630 /* SyntaxStyleValidator.swift in Sources */,
 				C79A75C021EEF070007FB630 /* FindPanelController.swift in Sources */,
