@@ -107,6 +107,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         preferencesWindowController.showWindow(sender)
     }
     
+    @IBAction func showNodeSelector(_ sender: Any?) {
+        let nodeSelectorWindowController = NSWindowController.instantiate(storyboard: "NodeSelector")
+        nodeSelectorWindowController.showWindow(sender)
+        
+        let nodeSelector = (nodeSelectorWindowController.contentViewController as! NodeSelectorViewController)
+    }
+    
     /// build syntax style menu in the main menu
     @objc private func buildSyntaxMenu() {
         

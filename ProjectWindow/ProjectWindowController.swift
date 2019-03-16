@@ -155,6 +155,13 @@ final class ProjectWindowController: NSWindowController {
 //        }
 //    }
     
-    
+    // AppDelegate has generic implementation. This implementation selects current platform.
+    @IBAction func showNodeSelector(_ sender: Any?) {
+        let nodeSelectorWindowController = NSWindowController.instantiate(storyboard: "NodeSelector")
+        nodeSelectorWindowController.showWindow(sender)
+        
+        let nodeSelector = (nodeSelectorWindowController.contentViewController as! NodeSelectorViewController)
+        nodeSelector.selectPlatform = "Zilliqa"
+    }
     
 }

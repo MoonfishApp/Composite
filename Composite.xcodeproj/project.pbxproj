@@ -349,6 +349,7 @@
 		C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
+		C7AE8A3A223CCB94001EC64A /* NodeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A39223CCB94001EC64A /* NodeSelectorViewController.swift */; };
 		C7DB1672223243B60021C222 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DB1671223243B60021C222 /* Import.storyboard */; };
 		C7DB1674223246860021C222 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1673223246860021C222 /* ImportViewController.swift */; };
 		C7DB1676223246DE0021C222 /* ImportDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1675223246DE0021C222 /* ImportDatasource.swift */; };
@@ -764,6 +765,7 @@
 		C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inspectors.storyboard; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C7AE8A39223CCB94001EC64A /* NodeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSelectorViewController.swift; sourceTree = "<group>"; };
 		C7DB1671223243B60021C222 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
 		C7DB1673223246860021C222 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		C7DB1675223246DE0021C222 /* ImportDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDatasource.swift; sourceTree = "<group>"; };
@@ -1797,6 +1799,15 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		C7AE8A3B223CCBA1001EC64A /* NodeSelector */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */,
+				C7AE8A39223CCB94001EC64A /* NodeSelectorViewController.swift */,
+			);
+			path = NodeSelector;
+			sourceTree = "<group>";
+		};
 		C7DB1670223243A20021C222 /* Import */ = {
 			isa = PBXGroup;
 			children = (
@@ -1872,9 +1883,9 @@
 		C7FA4D91223CA1D3000954FA /* NodeWindow */ = {
 			isa = PBXGroup;
 			children = (
+				C7AE8A3B223CCBA1001EC64A /* NodeSelector */,
 				C7FA4D9A223CB7E2000954FA /* NodeController */,
 				C7FA4D92223CA1F7000954FA /* Node.storyboard */,
-				C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */,
 				C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */,
 				C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */,
 			);
@@ -2406,6 +2417,7 @@
 				C7E7643A21214D4600867DA4 /* ChooseTemplateViewController.swift in Sources */,
 				C79A6BA121EE9962007FB630 /* TextDocumentFile.swift in Sources */,
 				C7754FE822374B570058B256 /* AppearancePaneController.swift in Sources */,
+				C7AE8A3A223CCB94001EC64A /* NodeSelectorViewController.swift in Sources */,
 				C775501222374BF80058B256 /* EncodingListViewController.swift in Sources */,
 				C79A6B6321EE9865007FB630 /* SettingManaging.swift in Sources */,
 				C79A6CEE21EE9C52007FB630 /* Data+Authopen.swift in Sources */,
