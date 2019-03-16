@@ -35,9 +35,11 @@ class Dependency: Codable {
     
     /// Optional regular expression pattern to parse version
     let versionRegex: String?
-        
-    /// Command to install depedency
+    
     let installCommand: String?
+    
+    /// Commands to install dependency
+    let installCommands: [String]?
     
     /// Command to initialize dependency
     let initCommand: String?

@@ -87,7 +87,9 @@ class BashOperation: Operation {
         arguments.append("-d")
         arguments.append(expandedDirectory)
         
-        for command in commands {
+        for var command in commands {
+            command = command.replacingOccurrences(of: "$HOME", with: FileManager.default.homeDirectoryForCurrentUser.path)
+            command = command.replacingOccurrences(of: "$TMPDIR", with: FileManager.default.temporaryDirectory.path)
             arguments.append(command)
         }
 
@@ -108,10 +110,8 @@ class BashOperation: Operation {
         task.standardInput = self.inputPipe
         task.launchPath = self.launchpath
         task.arguments = self.arguments
-        task.environment = [
-            "PATH": "/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin",
-            "HOME": FileManager.default.homeDirectoryForCurrentUser.path
-        ]
+        task.environment = ProcessInfo().environment
+        task.environment?.updateValue("/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin", forKey: "PATH")
         
         // Handle termination
         self.task.terminationHandler = { task in

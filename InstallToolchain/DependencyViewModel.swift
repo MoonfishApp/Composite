@@ -29,7 +29,7 @@ class DependencyViewModel {
     
     let versionRegex: String
     
-    let installCommand: String?
+    let installCommands: [String]?
     
     let initCommand: String?
     
@@ -105,7 +105,8 @@ class DependencyViewModel {
         
         versionCommand = dependency.versionCommand
         versionRegex = (dependency.versionRegex ?? "").isEmpty ? "(\\d+)\\.(\\d+)\\.(\\d+)\\-?(\\w+)?" : dependency.versionRegex!
-        installCommand = dependency.installCommand
+//        installCommand = dependency.installCommand
+        installCommands = dependency.installCommands
         initCommand = dependency.initCommand
         updateCommand = dependency.updateCommand
         outdatedCommand = dependency.outdatedCommand
@@ -234,9 +235,9 @@ extension DependencyViewModel {
         
         // If there's no installCommand, do nothing
         guard
-            let command = installCommand,
-            command.isEmpty == false,
-            let operation = try? BashOperation(directory: "~", commands: [command])
+            let commands = installCommands,
+            commands.isEmpty == false,
+            let operation = try? BashOperation(directory: "~", commands: commands)
             else { return nil }
         
         operation.outputClosure = output

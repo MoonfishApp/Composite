@@ -27,8 +27,6 @@
 						<string>brew -v</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string></string>
 						<key>installCommand-rem</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 						<key>updateCommand</key>
@@ -53,8 +51,10 @@
 						<string>node -v</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>brew install node</string>
+						<key>installCommands</key>
+						<array>
+							<string>brew install node</string>
+						</array>
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
@@ -77,8 +77,10 @@
 						<string>truffle version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g truffle</string>
+						<key>installCommands</key>
+						<array>
+							<string>npm install -g truffle</string>
+						</array>
 						<key>updateCommand</key>
 						<string>npm -g update --save truffle</string>
 						<key>outdatedCommand</key>
@@ -101,8 +103,10 @@
 						<string>solium -V</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g solium</string>
+						<key>installCommands</key>
+						<array>
+							<string>npm install -g solium</string>
+						</array>
 						<key>updateCommand</key>
 						<string>npm -g update --save solium</string>
 						<key>outdatedCommand</key>
@@ -129,8 +133,10 @@
 						<string>ganache-cli --version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g ganache-cli</string>
+						<key>installCommands</key>
+						<array>
+							<string>npm install -g ganache-cli</string>
+						</array>
 						<key>updateCommand</key>
 						<string>npm update -g ganache-cli</string>
 						<key>outdatedCommand</key>
@@ -174,8 +180,6 @@
 						<string>brew -v</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string></string>
 						<key>installCommand-rem</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 						<key>updateCommand</key>
@@ -200,8 +204,10 @@
 						<string>node -v</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>brew install node</string>
+						<key>installCommands</key>
+						<array>
+							<string>brew install node</string>
+						</array>
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
@@ -224,8 +230,10 @@
 						<string>etherlime --version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>npm i -g etherlime</string>
+						<key>installCommands</key>
+						<array>
+							<string>npm i -g etherlime</string>
+						</array>
 						<key>updateCommand</key>
 						<string>npm -g update --save etherlime</string>
 						<key>outdatedCommand</key>
@@ -276,8 +284,8 @@
 						<string></string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string></string>
+						<key>installCommands</key>
+						<array/>
 						<key>installCommand-rem</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 						<key>updateCommand</key>
@@ -300,8 +308,10 @@
 						<string>node -v</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>brew install node</string>
+						<key>installCommands</key>
+						<array>
+							<string>brew install node</string>
+						</array>
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
@@ -326,8 +336,10 @@
 						<string>npm show secp256k1 version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g secp256k1</string>
+						<key>installCommands</key>
+						<array>
+							<string>npm install -g secp256k1</string>
+						</array>
 						<key>updateCommand</key>
 						<string>npm -g update --save secp256k1</string>
 						<key>outdatedCommand</key>
@@ -350,8 +362,10 @@
 						<string>ocaml -version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>brew install ocaml pkg-config libffi openssl boost</string>
+						<key>installCommands</key>
+						<array>
+							<string>brew install ocaml pkg-config libffi openssl boost pcre</string>
+						</array>
 						<key>updateCommand</key>
 						<string>brew update ocaml</string>
 						<key>outdatedCommand</key>
@@ -374,8 +388,10 @@
 						<string>opam --version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>brew install gpatch opam</string>
+						<key>installCommands</key>
+						<array>
+							<string>brew install gpatch opam</string>
+						</array>
 						<key>updateCommand</key>
 						<string>brew update gpatch opam</string>
 						<key>initCommand</key>
@@ -404,11 +420,9 @@
 						<string>opam list installed core</string>
 						<key>versionRegex</key>
 						<string>\s(\d+)\.(\d+)\.(\d+)\-?(\w+)?</string>
-						<key>installCommand</key>
-						<string>opam install ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 user-setup --yes</string>
 						<key>installCommands</key>
 						<array>
-							<string>opam install ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 user-setup --yes</string>
+							<string>opam install ocaml-migrate-parsetree core cryptokit ppx_sexp_conv yojson batteries angstrom hex ppx_deriving menhir oUnit dune stdint fileutils ctypes ctypes-foreign bisect_ppx secp256k1 patdiff user-setup --yes</string>
 							<string>eval $(opam env)</string>
 						</array>
 						<key>updateCommand</key>
@@ -431,8 +445,10 @@
 						<string>yarn --version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>brew install yarn</string>
+						<key>installCommands</key>
+						<array>
+							<string>brew install yarn</string>
+						</array>
 						<key>updateCommand</key>
 						<string>brew upgrade yarn</string>
 						<key>outdatedCommand</key>
@@ -455,8 +471,10 @@
 						<string>kaya-cli --version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g tslib kaya-cli</string>
+						<key>installCommands</key>
+						<array>
+							<string>npm install -g tslib kaya-cli</string>
+						</array>
 						<key>installLink</key>
 						<string></string>
 						<key>updateCommand</key>
@@ -467,6 +485,40 @@
 						<string></string>
 						<key>url</key>
 						<string>https://github.com/Zilliqa/kaya</string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Scilla</string>
+						<key>filename</key>
+						<string></string>
+						<key>isFrameworkVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string></string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommands</key>
+						<array>
+							<string>cd $TMPDIR</string>
+							<string>eval $(opam env)</string>
+							<string>curl -LOk https://github.com/Zilliqa/scilla/archive/master.zip</string>
+							<string>unzip -o master.zip</string>
+							<string>cd scilla-master</string>
+							<string>make clean</string>
+							<string>make</string>
+						</array>
+						<key>installLink</key>
+						<string></string>
+						<key>updateCommand</key>
+						<string></string>
+						<key>outdatedCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://github.com/Zilliqa/scilla</string>
 						<key>required</key>
 						<true/>
 					</dict>
@@ -515,8 +567,8 @@
 						<string>brew -v</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string></string>
+						<key>installCommands</key>
+						<array/>
 						<key>installCommand-rem</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 						<key>updateCommand</key>
@@ -541,8 +593,10 @@
 						<string>node -v</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>brew install node</string>
+						<key>installCommands</key>
+						<array>
+							<string>brew install node</string>
+						</array>
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>outdatedCommand</key>
@@ -565,8 +619,10 @@
 						<string>tronbox version</string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g tronbox</string>
+						<key>installCommands</key>
+						<array>
+							<string>npm install -g tronbox</string>
+						</array>
 						<key>updateCommand</key>
 						<string>npm -g update --save tronbox</string>
 						<key>outdatedCommand</key>
@@ -591,8 +647,8 @@
 						<string></string>
 						<key>versionRegex</key>
 						<string></string>
-						<key>installCommand</key>
-						<string></string>
+						<key>installCommands</key>
+						<array/>
 						<key>installLink</key>
 						<string>https://developers.tron.network/docs/getting-started-1</string>
 						<key>updateCommand</key>

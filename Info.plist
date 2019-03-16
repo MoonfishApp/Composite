@@ -17,10 +17,6 @@
 			<array/>
 			<key>CFBundleTypeName</key>
 			<string>Composite project file</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>????</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
@@ -455,12 +451,12 @@
 			<string></string>
 			<key>UTTypeIdentifier</key>
 			<string></string>
+			<key>UTTypeReferenceURL</key>
+			<string></string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
-				<array>
-					<string>sol</string>
-				</array>
+				<array/>
 				<key>public.mime-type</key>
 				<array/>
 			</dict>
