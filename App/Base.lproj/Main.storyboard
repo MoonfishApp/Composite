@@ -510,9 +510,9 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Node" id="bfw-Os-09E" userLabel="Node">
+                            <menuItem title="Local Node" id="bfw-Os-09E" userLabel="Node">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Node" id="GaP-Le-8c7">
+                                <menu key="submenu" title="Local Node" id="GaP-Le-8c7">
                                     <items>
                                         <menuItem title="New Local Node" id="Cx9-Zk-pOA">
                                             <modifierMask key="keyEquivalentModifierMask"/>

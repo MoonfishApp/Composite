@@ -159,12 +159,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="86"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" linkDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ZcW-F7-OiT">
+                                        <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" linkDetection="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ZcW-F7-OiT">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="86"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <size key="minSize" width="450" height="86"/>
                                             <size key="maxSize" width="450" height="10000000"/>
+                                            <attributedString key="textStorage">
+                                                <fragment content=" ">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="10" name="Menlo-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
                                                 <outlet property="delegate" destination="oLJ-pr-fW0" id="sLV-1e-fi6"/>

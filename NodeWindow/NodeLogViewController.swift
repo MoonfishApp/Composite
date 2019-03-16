@@ -48,7 +48,7 @@ class NodeLogViewController: NSViewController {
         (8) ab5713ae5fe4f35bff40a44bfbd2e6221d37c6db1289b1eab25ca7012fe2634b
         (9) 65249b088307dfadbc477099149cd7e198b174cb9e6f58e9b1da90a2156bce03
         (10) 44aec78fae6e543eaf9a3d2a6a32eab630687c10190df2c4d10cbcc324d29086
-        """.replacingOccurrences(of: " 127.0.0.1", with: "http://127.0.0.1")
+        """.replacingOccurrences(of: " 127.0.0.1", with: " http://127.0.0.1")
         textView.isEditable = true
         textView.checkTextInDocument(nil)
         textView.isEditable = false
