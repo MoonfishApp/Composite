@@ -11,11 +11,21 @@ import Cocoa
 enum NodeType: String {
     
     case kaya, ganache
+    
+    var command: String {
+        
+        switch self {
+        case .kaya:
+            return "kaya-cli"
+        case .ganache:
+            return "ganache-cli"
+        }
+    }
 }
 
 final class Node: NSObject {
     
-    let type: NodeType
+    let nodeType: NodeType
     
     /// Change takes effect next time server is restarted
     var server: String
@@ -23,6 +33,9 @@ final class Node: NSObject {
     /// Change takes effect next time server is restarted
     var port: String
     
+    var command: String { return self.nodeType.command + " " + self.options.arguments }
+    
+    // Log viewcontroller uses KVO to update its content
     @objc dynamic var output: String = ""
     
 //    /// True if ganache, Kaya, etc. is installed
@@ -50,7 +63,7 @@ final class Node: NSObject {
     /// Use NodeController.createNode() instead
     init(type: NodeType) {
         
-        self.type = type
+        self.nodeType = type
 //        self.interface = RPCServerInterface.load(type)
         self.options = RPCServerOptions.load(type)
         self.server = "127.0.0.1"
@@ -107,7 +120,10 @@ final class Node: NSObject {
     
     func nodeOperation() throws -> BashOperation {
 //        let operation = try BashOperation(commands: ["ganache-cli"])
-        let operation = try BashOperation(directory: "/Users/ronalddanger/tt", commands: ["kaya-cli"])
+        
+        // Note: Kaya cannot run in ~ because it needs to create a directory: ../data
+        
+        let operation = try BashOperation(directory: "/Users/ronalddanger/tt", commands: [self.command])
         operation.completionBlock = {
             
             self.output += "\nNode stopped"

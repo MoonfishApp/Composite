@@ -221,11 +221,11 @@
             <objects>
                 <viewController id="KGz-Dw-gjL" customClass="NodeSettingsViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="egw-77-KJf">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="394"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="512"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JQC-l4-IOe">
-                                <rect key="frame" x="318" y="75" width="118" height="32"/>
+                                <rect key="frame" x="318" y="71" width="118" height="32"/>
                                 <buttonCell key="cell" type="push" title="Restart node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sz4-cR-zFC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -245,16 +245,16 @@
                                 </connections>
                             </button>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="8NQ-bQ-675">
-                                <rect key="frame" x="20" y="59" width="405" height="5"/>
+                                <rect key="frame" x="20" y="47" width="405" height="5"/>
                             </box>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t65-9u-DmN">
-                                <rect key="frame" x="20" y="107" width="410" height="267"/>
+                                <rect key="frame" x="20" y="105" width="410" height="387"/>
                                 <clipView key="contentView" id="T1l-GD-UMU">
-                                    <rect key="frame" x="1" y="1" width="408" height="265"/>
+                                    <rect key="frame" x="1" y="1" width="408" height="385"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="pEt-KW-FTf">
-                                            <rect key="frame" x="0.0" y="0.0" width="408" height="265"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="408" height="385"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -372,9 +372,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Fr-h7-1lb">
+                                <rect key="frame" x="218" y="56" width="209" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="⚠️ Restart node to apply settings" id="qDG-uN-heP">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-4P-RpM">
-                                <rect key="frame" x="18" y="82" width="209" height="17"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="⚠️ Restart node to apply settings" id="M9s-hd-dDI">
+                                <rect key="frame" x="18" y="80" width="300" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="flags" id="M9s-hd-dDI">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -382,30 +390,35 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Jfd-4P-RpM" secondAttribute="trailing" constant="134" id="2gG-K8-dKu"/>
                             <constraint firstAttribute="trailing" secondItem="csw-jG-NP0" secondAttribute="trailing" constant="20" id="2mv-gW-1XC"/>
-                            <constraint firstItem="csw-jG-NP0" firstAttribute="top" secondItem="8NQ-bQ-675" secondAttribute="bottom" constant="20" id="9dt-TV-ze0"/>
-                            <constraint firstItem="JQC-l4-IOe" firstAttribute="top" secondItem="t65-9u-DmN" secondAttribute="bottom" constant="4" id="CWY-t2-LIu"/>
-                            <constraint firstItem="8NQ-bQ-675" firstAttribute="top" secondItem="Jfd-4P-RpM" secondAttribute="bottom" constant="20" id="GuL-sD-UYf"/>
+                            <constraint firstItem="csw-jG-NP0" firstAttribute="top" secondItem="8NQ-bQ-675" secondAttribute="bottom" constant="8" id="9dt-TV-ze0"/>
+                            <constraint firstItem="csw-jG-NP0" firstAttribute="width" secondItem="JQC-l4-IOe" secondAttribute="width" id="A8w-2o-v1M"/>
                             <constraint firstItem="t65-9u-DmN" firstAttribute="leading" secondItem="egw-77-KJf" secondAttribute="leading" constant="20" id="JEq-a6-Ct6"/>
+                            <constraint firstItem="8NQ-bQ-675" firstAttribute="top" secondItem="2Fr-h7-1lb" secondAttribute="bottom" constant="6" id="LST-8M-zl8"/>
+                            <constraint firstAttribute="bottom" secondItem="8NQ-bQ-675" secondAttribute="bottom" constant="49" id="MDJ-X0-wab"/>
                             <constraint firstAttribute="trailing" secondItem="8NQ-bQ-675" secondAttribute="trailing" constant="25" id="RAe-gs-cpc"/>
                             <constraint firstAttribute="trailing" secondItem="JQC-l4-IOe" secondAttribute="trailing" constant="20" id="RRN-38-yN1"/>
-                            <constraint firstAttribute="bottom" secondItem="csw-jG-NP0" secondAttribute="bottom" constant="20" id="RxH-1f-eDX"/>
+                            <constraint firstAttribute="bottom" secondItem="t65-9u-DmN" secondAttribute="bottom" constant="105" id="X7C-NL-Gh9"/>
+                            <constraint firstItem="8NQ-bQ-675" firstAttribute="top" secondItem="JQC-l4-IOe" secondAttribute="bottom" constant="28" id="b8t-ll-2Mv"/>
                             <constraint firstAttribute="trailing" secondItem="t65-9u-DmN" secondAttribute="trailing" constant="20" id="d5n-Zw-kCt"/>
-                            <constraint firstItem="8NQ-bQ-675" firstAttribute="top" secondItem="JQC-l4-IOe" secondAttribute="bottom" constant="20" id="dNy-50-vWA"/>
+                            <constraint firstAttribute="trailing" secondItem="2Fr-h7-1lb" secondAttribute="trailing" constant="25" id="piE-NN-mOu"/>
                             <constraint firstItem="Jfd-4P-RpM" firstAttribute="leading" secondItem="egw-77-KJf" secondAttribute="leading" constant="20" id="psm-lE-9LK"/>
+                            <constraint firstItem="8NQ-bQ-675" firstAttribute="top" secondItem="Jfd-4P-RpM" secondAttribute="bottom" constant="30" id="q6d-gL-J8R"/>
                             <constraint firstItem="t65-9u-DmN" firstAttribute="top" secondItem="egw-77-KJf" secondAttribute="top" constant="20" id="rQR-B0-Zcf"/>
                             <constraint firstItem="8NQ-bQ-675" firstAttribute="leading" secondItem="egw-77-KJf" secondAttribute="leading" constant="20" id="ypb-k1-gGO"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="flagsLabel" destination="Jfd-4P-RpM" id="jzz-TL-StX"/>
                         <outlet property="restartButton" destination="JQC-l4-IOe" id="FRl-Mb-Pb2"/>
-                        <outlet property="restartLabel" destination="Jfd-4P-RpM" id="kJC-XK-CrU"/>
+                        <outlet property="restartLabel" destination="2Fr-h7-1lb" id="JIM-rI-FJI"/>
                         <outlet property="stopNodeButton" destination="csw-jG-NP0" id="83b-Da-HQa"/>
                     </connections>
                 </viewController>
                 <customObject id="M26-tX-7bo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2011" y="915"/>
+            <point key="canvasLocation" x="2011" y="1294"/>
         </scene>
     </scenes>
 </document>

@@ -26,6 +26,8 @@ class NodeWindowController: NSWindowController {
             } catch {
                 print(error)
             }
+            
+            self.window!.title = node?.nodeType.rawValue.capitalizedFirstChar() ?? ""
         }
     }
     

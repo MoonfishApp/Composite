@@ -12,11 +12,18 @@ final class RPCServerOptions: Codable {
     
     var options: [RPCServerOptionField] = []
     
-    var arguments: [String] {
+    var argumentsArray: [String] {
         return self.options.filter({ $0.enabled == true }).compactMap{
             guard let value = $0.userValue ?? $0.defaultString ?? $0.defaultBool?.description else { return nil }
             return "\($0.flag) \(value)"
         }
+    }
+    
+    var arguments: String {
+        
+        var string = ""
+        _ = argumentsArray.map{ string += $0 + " " }
+        return string
     }
     
     init(options: [RPCServerOptionField]) {
