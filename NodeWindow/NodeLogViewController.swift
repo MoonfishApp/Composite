@@ -9,15 +9,44 @@
 import Cocoa
 
 class NodeLogViewController: NSViewController {
+    
+    @IBOutlet private var textView: NSTextView!
 
-    @IBOutlet var textView: NSTextView!
+    var output: String = "" {
+        didSet {
+            DispatchQueue.main.async {
+                self.textView.string = self.output
+                self.textView.isEditable = true
+                self.textView.checkTextInDocument(nil)
+                self.textView.isEditable = false
+                self.textView.scrollToEndOfDocument(nil)
+            }
+        }
+    }
+    
+    weak var node: Node? {
+        didSet {
+            guard let node = node else { return }
+            
+            self.output = node.output
+            
+            // KVO output
+            self.logObserver = node.observe(\Node.output, options: .new) { node, change in
+                self.output = node.output
+            }
+        }
+    }
+    
+    private var logObserver: NSKeyValueObservation?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         
         // Test text
-        textView.string =
+/*        textView.string =
         """
         ZILLIQA KAYA RPC SERVER (ver: 0.2.6)
         Server listening on 127.0.0.1:4200
@@ -48,10 +77,8 @@ class NodeLogViewController: NSViewController {
         (8) ab5713ae5fe4f35bff40a44bfbd2e6221d37c6db1289b1eab25ca7012fe2634b
         (9) 65249b088307dfadbc477099149cd7e198b174cb9e6f58e9b1da90a2156bce03
         (10) 44aec78fae6e543eaf9a3d2a6a32eab630687c10190df2c4d10cbcc324d29086
-        """.replacingOccurrences(of: " 127.0.0.1", with: " http://127.0.0.1")
-        textView.isEditable = true
-        textView.checkTextInDocument(nil)
-        textView.isEditable = false
+        """.replacingOccurrences(of: " 127.0.0.1", with: " http://127.0.0.1") */
+        
     }
     
 }

@@ -1,7 +1,7 @@
 PODS:
   - Differ (1.3.0)
   - LibYAML (0.1.4)
-  - Sparkle (1.21.2)
+  - Sparkle (1.21.3)
   - WFColorCode (2.3.0)
   - YAML-Framework (0.0.2):
     - LibYAML (~> 0.1.4)
@@ -37,10 +37,10 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Differ: 9fcee7602542d7c6484ce05a0faec1c11258ed63
   LibYAML: 3af2c5adf3a40dff936d087aa6a77edc10036bc5
-  Sparkle: 1678d4707e7665960c7d1b43aca125e6392d11c4
+  Sparkle: 3f75576db8b0265adef36c43249d747f22d0b708
   WFColorCode: 74d00d799586e8881b8f6a1a437439f35d0a60bf
   YAML-Framework: 114604d626d89d33e3a35abaabdd2567601a02ee
 
-PODFILE CHECKSUM: 125995ab35b2c52e6cbea4948ae2d2826d4fa2eb
+PODFILE CHECKSUM: bae0fce06b3198c6a6e744b69935258240b40fa9
 
 COCOAPODS: 1.5.3

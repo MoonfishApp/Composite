@@ -52,6 +52,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        let controller = NodeController.shared
+        
         if UserDefaults.standard[.showInstallToolchainOnStartup] == true {
             showInstallToolchains(self)
         } else {

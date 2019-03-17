@@ -4,7 +4,7 @@ use_frameworks!
 target 'Composite' do
   platform :osx, '10.13'
 
-  pod 'Sparkle' # TODO: https://gist.github.com/huangyq23/668e6d6fcccf714e802a  
+  pod 'Sparkle' # TODO: https://gist.github.com/huangyq23/668e6d6fcccf714e802a
   #pod 'SwiftFSWatcher'
   
   # CotEditor dependencies

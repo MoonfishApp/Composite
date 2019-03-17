@@ -16,6 +16,9 @@ final class NodeController: NSObject {
     
     private override init() {
         
+        let zilliqa = Node(type: .kaya)
+        nodes.append(zilliqa)
+        zilliqa.showWindow(nil)
     }
     
     

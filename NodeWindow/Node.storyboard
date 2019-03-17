@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="hea-fH-1sN">
             <objects>
-                <windowController id="6nH-9o-7Hx" sceneMemberID="viewController">
+                <windowController id="6nH-9o-7Hx" customClass="NodeWindowController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Zilliqa Kaya" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="pa9-P9-6AM">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -33,7 +33,7 @@
                 <splitViewController id="IbJ-rU-WXd" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="Rta-L5-Gnl"/>
-                        <splitViewItem id="DAS-XJ-Gbm"/>
+                        <splitViewItem holdingPriority="700" id="DAS-XJ-Gbm"/>
                         <splitViewItem canCollapse="YES" collapsed="YES" holdingPriority="260" behavior="sidebar" id="wMI-I9-hiQ"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="qY5-zH-UsF">
@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="1341" y="-92"/>
         </scene>
-        <!--View Controller-->
+        <!--Node Transactions View Controller-->
         <scene sceneID="fDF-FX-52x">
             <objects>
-                <viewController id="p5v-7r-RmH" sceneMemberID="viewController">
+                <viewController id="p5v-7r-RmH" customClass="NodeTransactionsViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="UG5-uI-jQS">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="2011" y="-278"/>
         </scene>
-        <!--View Controller-->
+        <!--Node Blocks View Controller-->
         <scene sceneID="2IT-03-MjG">
             <objects>
-                <viewController id="ttk-kc-JcL" sceneMemberID="viewController">
+                <viewController id="ttk-kc-JcL" customClass="NodeBlocksViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9i2-z9-frG">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -203,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="1339" y="375"/>
         </scene>
-        <!--View Controller-->
+        <!--Node Accounts View Controller-->
         <scene sceneID="231-Qb-Vw2">
             <objects>
-                <viewController id="9HT-PD-NAA" sceneMemberID="viewController">
+                <viewController id="9HT-PD-NAA" customClass="NodeAccountsViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9St-Sq-hPu">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -216,10 +216,10 @@
             </objects>
             <point key="canvasLocation" x="2011" y="482"/>
         </scene>
-        <!--View Controller-->
+        <!--Node Settings View Controller-->
         <scene sceneID="2cK-l1-7w3">
             <objects>
-                <viewController id="KGz-Dw-gjL" sceneMemberID="viewController">
+                <viewController id="KGz-Dw-gjL" customClass="NodeSettingsViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="egw-77-KJf">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -230,6 +230,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="restartNode:" target="KGz-Dw-gjL" id="EUX-wh-iMv"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-4P-RpM">
                                 <rect key="frame" x="18" y="20" width="209" height="17"/>
@@ -239,10 +242,22 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csw-jG-NP0">
+                                <rect key="frame" x="319" y="46" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Stop node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KoA-wm-v0A">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopNode:" target="KGz-Dw-gjL" id="MGt-5q-zP0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="csw-jG-NP0" secondAttribute="trailing" constant="20" id="2mv-gW-1XC"/>
                             <constraint firstAttribute="bottom" secondItem="Jfd-4P-RpM" secondAttribute="bottom" constant="20" id="EWK-iG-T5g"/>
                             <constraint firstAttribute="trailing" secondItem="JQC-l4-IOe" secondAttribute="trailing" constant="19" id="JaH-aY-8r9"/>
+                            <constraint firstItem="JQC-l4-IOe" firstAttribute="top" secondItem="csw-jG-NP0" secondAttribute="bottom" constant="12" id="QTa-wM-ayF"/>
                             <constraint firstAttribute="bottom" secondItem="JQC-l4-IOe" secondAttribute="bottom" constant="20" id="bvC-93-TdL"/>
                             <constraint firstItem="Jfd-4P-RpM" firstAttribute="leading" secondItem="egw-77-KJf" secondAttribute="leading" constant="20" id="psm-lE-9LK"/>
                         </constraints>

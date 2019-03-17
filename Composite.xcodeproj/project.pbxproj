@@ -350,6 +350,13 @@
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
 		C7AE8A3A223CCB94001EC64A /* NodeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A39223CCB94001EC64A /* NodeSelectorViewController.swift */; };
+		C7AE8A3D223E28C4001EC64A /* NodeWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A3C223E28C4001EC64A /* NodeWindowController.swift */; };
+		C7AE8A40223E305E001EC64A /* NodeTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A3F223E305E001EC64A /* NodeTransactionsViewController.swift */; };
+		C7AE8A42223E306F001EC64A /* NodeBlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A41223E306F001EC64A /* NodeBlocksViewController.swift */; };
+		C7AE8A44223E3095001EC64A /* NodeAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A43223E3095001EC64A /* NodeAccountsViewController.swift */; };
+		C7AE8A46223E30A1001EC64A /* NodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A45223E30A1001EC64A /* NodeSettingsViewController.swift */; };
+		C7AE8A49223E30B2001EC64A /* NodeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */; };
+		C7AE8A4D223E30F3001EC64A /* NodeGenericTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */; };
 		C7DB1672223243B60021C222 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DB1671223243B60021C222 /* Import.storyboard */; };
 		C7DB1674223246860021C222 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1673223246860021C222 /* ImportViewController.swift */; };
 		C7DB1676223246DE0021C222 /* ImportDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1675223246DE0021C222 /* ImportDatasource.swift */; };
@@ -766,6 +773,13 @@
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7AE8A39223CCB94001EC64A /* NodeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSelectorViewController.swift; sourceTree = "<group>"; };
+		C7AE8A3C223E28C4001EC64A /* NodeWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeWindowController.swift; sourceTree = "<group>"; };
+		C7AE8A3F223E305E001EC64A /* NodeTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTransactionsViewController.swift; sourceTree = "<group>"; };
+		C7AE8A41223E306F001EC64A /* NodeBlocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBlocksViewController.swift; sourceTree = "<group>"; };
+		C7AE8A43223E3095001EC64A /* NodeAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAccountsViewController.swift; sourceTree = "<group>"; };
+		C7AE8A45223E30A1001EC64A /* NodeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewController.swift; sourceTree = "<group>"; };
+		C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTabViewController.swift; sourceTree = "<group>"; };
+		C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGenericTabViewController.swift; sourceTree = "<group>"; };
 		C7DB1671223243B60021C222 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
 		C7DB1673223246860021C222 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		C7DB1675223246DE0021C222 /* ImportDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDatasource.swift; sourceTree = "<group>"; };
@@ -1808,6 +1822,19 @@
 			path = NodeSelector;
 			sourceTree = "<group>";
 		};
+		C7AE8A3E223E303A001EC64A /* NodeTabs */ = {
+			isa = PBXGroup;
+			children = (
+				C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */,
+				C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */,
+				C7AE8A3F223E305E001EC64A /* NodeTransactionsViewController.swift */,
+				C7AE8A41223E306F001EC64A /* NodeBlocksViewController.swift */,
+				C7AE8A43223E3095001EC64A /* NodeAccountsViewController.swift */,
+				C7AE8A45223E30A1001EC64A /* NodeSettingsViewController.swift */,
+			);
+			path = NodeTabs;
+			sourceTree = "<group>";
+		};
 		C7DB1670223243A20021C222 /* Import */ = {
 			isa = PBXGroup;
 			children = (
@@ -1886,8 +1913,10 @@
 				C7AE8A3B223CCBA1001EC64A /* NodeSelector */,
 				C7FA4D9A223CB7E2000954FA /* NodeController */,
 				C7FA4D92223CA1F7000954FA /* Node.storyboard */,
+				C7AE8A3C223E28C4001EC64A /* NodeWindowController.swift */,
 				C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */,
 				C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */,
+				C7AE8A3E223E303A001EC64A /* NodeTabs */,
 			);
 			path = NodeWindow;
 			sourceTree = "<group>";
@@ -1930,9 +1959,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7F0B9B62112945F005A8FE2 /* Build configuration list for PBXNativeTarget "Composite" */;
 			buildPhases = (
+				957588822D883CDCEFC461CF /* [CP] Check Pods Manifest.lock */,
 				C79A759A21EEDFFD007FB630 /* Lint Swift Code */,
 				C79A759921EEDF1C007FB630 /* Build Syntax Map */,
-				957588822D883CDCEFC461CF /* [CP] Check Pods Manifest.lock */,
 				C7F0B9982112945C005A8FE2 /* Sources */,
 				C7F0B9992112945C005A8FE2 /* Frameworks */,
 				C7F0B99A2112945C005A8FE2 /* Resources */,
@@ -2242,6 +2271,7 @@
 				C79A6C9021EE9BD6007FB630 /* Theme.swift in Sources */,
 				C79A6CA421EE9C08007FB630 /* FilePermissionsFormatter.swift in Sources */,
 				C79A6C9D21EE9BEC007FB630 /* UTF32Char+BlockName.swift in Sources */,
+				C7AE8A4D223E30F3001EC64A /* NodeGenericTabViewController.swift in Sources */,
 				C79A6C7D21EE9BC9007FB630 /* RegularExpressionSyntaxType.swift in Sources */,
 				C79A6C6221EE9B45007FB630 /* AppleScript.swift in Sources */,
 				C775500C22374BEE0058B256 /* KeyBindingsViewController.swift in Sources */,
@@ -2351,12 +2381,14 @@
 				C79A6CF721EE9C52007FB630 /* String+Encoding.swift in Sources */,
 				C79A6BE121EE9A95007FB630 /* PatternSortViewController.swift in Sources */,
 				C7050A07215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
+				C7AE8A44223E3095001EC64A /* NodeAccountsViewController.swift in Sources */,
 				C79A6CDF21EE9C52007FB630 /* Selector+Codable.swift in Sources */,
 				C79A75DF21EEF0AF007FB630 /* MultipleReplacementSplitViewController.swift in Sources */,
 				C79A6C9121EE9BD6007FB630 /* DictionaryKey.swift in Sources */,
 				C79A75CD21EEF07D007FB630 /* FindPanelTextClipView.swift in Sources */,
 				C79A6C7521EE9B82007FB630 /* OutlineItem.swift in Sources */,
 				C79A6B9621EE9962007FB630 /* Editable.swift in Sources */,
+				C7AE8A3D223E28C4001EC64A /* NodeWindowController.swift in Sources */,
 				C7F95995223638C5008C8F7E /* SwiftFSWatcher.swift in Sources */,
 				C79A6D1321EE9C64007FB630 /* NSDocument+ErrorHandling.swift in Sources */,
 				C79A75C121EEF070007FB630 /* FindPanelResultViewController.swift in Sources */,
@@ -2372,12 +2404,14 @@
 				C79A6C3F21EE9AFB007FB630 /* ImageRadioButton.swift in Sources */,
 				C79A6C9521EE9BD6007FB630 /* Metadata.swift in Sources */,
 				C79A6B9D21EE9962007FB630 /* IncompatibleCharacterScanner.swift in Sources */,
+				C7AE8A46223E30A1001EC64A /* NodeSettingsViewController.swift in Sources */,
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
 				C79A6BD521EE9A8B007FB630 /* NavigationBarController.swift in Sources */,
 				C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */,
 				C79A6CE321EE9C52007FB630 /* NSString.swift in Sources */,
 				C79A6C9F21EE9BEC007FB630 /* UnicodeScalar+ControlCharacter.swift in Sources */,
 				C79A6BC321EE9A64007FB630 /* SidebarViewController.swift in Sources */,
+				C7AE8A49223E30B2001EC64A /* NodeTabViewController.swift in Sources */,
 				C79A6C7E21EE9BC9007FB630 /* NSTextView+RegexParse.swift in Sources */,
 				C79A6C3A21EE9AFB007FB630 /* OutlineMenuButtonCell.swift in Sources */,
 				C79A6CED21EE9C52007FB630 /* Bundle+AppInfo.swift in Sources */,
@@ -2395,6 +2429,7 @@
 				C79A6BCE21EE9A6E007FB630 /* StatusBarController.swift in Sources */,
 				C79A6CE821EE9C52007FB630 /* Geometry.swift in Sources */,
 				C79A6C2121EE9AF1007FB630 /* InspectorTabView.swift in Sources */,
+				C7AE8A40223E305E001EC64A /* NodeTransactionsViewController.swift in Sources */,
 				C79A6CEC21EE9C52007FB630 /* NSRegularExpression+Additions.swift in Sources */,
 				C7754FEC22374B570058B256 /* WindowPaneController.swift in Sources */,
 				C79A6C1821EE9AC1007FB630 /* NSTextView+Snippet.swift in Sources */,
@@ -2404,6 +2439,7 @@
 				C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */,
 				C79A75AC21EEEE46007FB630 /* AppInfo.swift in Sources */,
 				C79A6CB021EE9C10007FB630 /* OrderedSet.swift in Sources */,
+				C7AE8A42223E306F001EC64A /* NodeBlocksViewController.swift in Sources */,
 				C7DB1674223246860021C222 /* ImportViewController.swift in Sources */,
 				C79A75AD21EEEE46007FB630 /* WriteToConsoleCommand.swift in Sources */,
 				C79A75CE21EEF07D007FB630 /* RegexFindPanelTextView.swift in Sources */,

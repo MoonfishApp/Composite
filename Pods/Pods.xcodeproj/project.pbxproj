@@ -885,10 +885,11 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		004D64184B5E34920D57BCA0913F069B /* Debug */ = {
+		075B9ED864BB4EEED2CB124F64130CA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 583A8D3AC5E0E4FC2EB2391825933131 /* WFColorCode.xcconfig */;
+			baseConfigurationReference = 34EE09A35F33E59E1449C720344ECECA /* LibYAML.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -900,22 +901,22 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/WFColorCode/WFColorCode-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/WFColorCode/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/LibYAML/LibYAML-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/LibYAML/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/WFColorCode/WFColorCode.modulemap";
-				PRODUCT_MODULE_NAME = ColorCode;
-				PRODUCT_NAME = ColorCode;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MODULEMAP_FILE = "Target Support Files/LibYAML/LibYAML.modulemap";
+				PRODUCT_MODULE_NAME = LibYAML;
+				PRODUCT_NAME = LibYAML;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -958,44 +959,7 @@
 			};
 			name = Debug;
 		};
-		13B79655C4669C1B315860BB1CF037F0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34EE09A35F33E59E1449C720344ECECA /* LibYAML.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/LibYAML/LibYAML-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/LibYAML/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/LibYAML/LibYAML.modulemap";
-				PRODUCT_MODULE_NAME = LibYAML;
-				PRODUCT_NAME = LibYAML;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		1CCA31724C069FE52A1FEC3FFEBB981F /* Release */ = {
+		46C007763729BA69EB18FE7F5484C810 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AEA789E6DDD91F6D2ACAEBE3F9D4310B /* YAML-Framework.xcconfig */;
 			buildSettings = {
@@ -1026,7 +990,44 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		545FFE67F35B481289416705108AEC42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEA789E6DDD91F6D2ACAEBE3F9D4310B /* YAML-Framework.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/YAML-Framework/YAML-Framework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YAML-Framework/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MODULEMAP_FILE = "Target Support Files/YAML-Framework/YAML-Framework.modulemap";
+				PRODUCT_MODULE_NAME = YAML_Framework;
+				PRODUCT_NAME = YAML_Framework;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1174,42 +1175,6 @@
 			};
 			name = Debug;
 		};
-		7E8670ED1C1DF530A69850031693BF7F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 583A8D3AC5E0E4FC2EB2391825933131 /* WFColorCode.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/WFColorCode/WFColorCode-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/WFColorCode/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/WFColorCode/WFColorCode.modulemap";
-				PRODUCT_MODULE_NAME = ColorCode;
-				PRODUCT_NAME = ColorCode;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		8DDE14DEEB7EB9A7073F23E60263C32F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DA068304504B6FC28309328AAED112A6 /* Pods-CompositeTests.debug.xcconfig */;
@@ -1244,6 +1209,42 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8DF3C5CED4F150880069AB2A9081C83C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 583A8D3AC5E0E4FC2EB2391825933131 /* WFColorCode.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/WFColorCode/WFColorCode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WFColorCode/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/WFColorCode/WFColorCode.modulemap";
+				PRODUCT_MODULE_NAME = ColorCode;
+				PRODUCT_NAME = ColorCode;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1389,11 +1390,10 @@
 			};
 			name = Release;
 		};
-		D25FC9954A05B13DE9022B80B0B02E6F /* Debug */ = {
+		D4C210A08D1C38948F78ED324481F850 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEA789E6DDD91F6D2ACAEBE3F9D4310B /* YAML-Framework.xcconfig */;
+			baseConfigurationReference = 583A8D3AC5E0E4FC2EB2391825933131 /* WFColorCode.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1405,28 +1405,28 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/YAML-Framework/YAML-Framework-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/YAML-Framework/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/WFColorCode/WFColorCode-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WFColorCode/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/YAML-Framework/YAML-Framework.modulemap";
-				PRODUCT_MODULE_NAME = YAML_Framework;
-				PRODUCT_NAME = YAML_Framework;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/WFColorCode/WFColorCode.modulemap";
+				PRODUCT_MODULE_NAME = ColorCode;
+				PRODUCT_NAME = ColorCode;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		EC57EE756A68F668B6B5728F4FA8ECA4 /* Debug */ = {
+		E909ED50618B6FF825720491162023A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 34EE09A35F33E59E1449C720344ECECA /* LibYAML.xcconfig */;
 			buildSettings = {
@@ -1457,11 +1457,11 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1469,8 +1469,8 @@
 		1EA5E5590026F5596F9AD31A027FB972 /* Build configuration list for PBXNativeTarget "LibYAML" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EC57EE756A68F668B6B5728F4FA8ECA4 /* Debug */,
-				13B79655C4669C1B315860BB1CF037F0 /* Release */,
+				075B9ED864BB4EEED2CB124F64130CA8 /* Debug */,
+				E909ED50618B6FF825720491162023A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1496,8 +1496,8 @@
 		4DC097D1F023E4A985ACCAED7859C506 /* Build configuration list for PBXNativeTarget "YAML-Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D25FC9954A05B13DE9022B80B0B02E6F /* Debug */,
-				1CCA31724C069FE52A1FEC3FFEBB981F /* Release */,
+				46C007763729BA69EB18FE7F5484C810 /* Debug */,
+				545FFE67F35B481289416705108AEC42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1514,8 +1514,8 @@
 		AEFCF5075A4DFF3994D1A4E387B26BCA /* Build configuration list for PBXNativeTarget "WFColorCode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				004D64184B5E34920D57BCA0913F069B /* Debug */,
-				7E8670ED1C1DF530A69850031693BF7F /* Release */,
+				8DF3C5CED4F150880069AB2A9081C83C /* Debug */,
+				D4C210A08D1C38948F78ED324481F850 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

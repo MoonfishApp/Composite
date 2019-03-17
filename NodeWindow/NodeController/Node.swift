@@ -6,33 +6,56 @@
 //  Copyright © 2019 A Puzzle A Day. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 enum NodeType: String {
     
     case kaya, ganache
 }
 
-final class Node {
+final class Node: NSObject {
     
     let type: NodeType
     
-    var isInstalled: Bool = true
+    /// Change takes effect next time server is restarted
+    var server: String
     
-    let interface: RPCServerInterface
-    var options: RPCServerOptions
-    let operationQueue = OperationQueue()
+    /// Change takes effect next time server is restarted
+    var port: String
+    
+    @objc dynamic var output: String = ""
+    
+//    /// True if ganache, Kaya, etc. is installed
+//    /// If not installed, localohost co
+//    var isInstalled: Bool = true
+    
+//    let interface: RPCServerInterface
+//    var options: RPCServerOptions
+    let nodeQueue = OperationQueue()
+    let pingQueue = OperationQueue()
     
     /// Do not call directly.
     /// Use NodeController.createNode() instead
     init(type: NodeType) {
         
         self.type = type
-        self.interface = RPCServerInterface.load(type)
-        self.options = RPCServerOptions.load(type)
+//        self.interface = RPCServerInterface.load(type)
+//        self.options = RPCServerOptions.load(type)
+        self.server = "127.0.0.1"
+        self.port = "4200"
         
-        operationQueue.maxConcurrentOperationCount = 1
-        operationQueue.qualityOfService = .userInteractive
+        super.init()
+        
+        nodeQueue.maxConcurrentOperationCount = 1
+        nodeQueue.qualityOfService = .userInteractive
+        pingQueue.maxConcurrentOperationCount = 1
+        pingQueue.qualityOfService = .userInitiated
+    }
+    
+    @IBAction func showWindow(_ sender: Any?) {
+        let nodeWindowController = NSWindowController.instantiate(storyboard: "Node") as! NodeWindowController
+        nodeWindowController.showWindow(sender)
+        nodeWindowController.node = self
     }
     
     
@@ -42,7 +65,21 @@ final class Node {
 //    func isServerRunning() -> Bool {
 //        let port = options["Port"]?.defaultString
 //    }
-//    
+//
+    
+    func startNode() throws {
+        try nodeQueue.addOperation(nodeOperation())
+    }
+    
+    func stopNode() {
+        nodeQueue.cancelAllOperations()
+    }
+    
+    func relaunch() throws {
+        stopNode()
+        try startNode()
+    }
+    
     func bindToServer() {
         
         // 1. check if server is already running. If so, connect.
@@ -50,8 +87,33 @@ final class Node {
         // 2. Run server
     }
     
-    func relaunch() {
-        
+    func nodeOperation() throws -> BashOperation {
+//        let operation = try BashOperation(commands: ["ganache-cli"])
+        let operation = try BashOperation(directory: "/Users/ronalddanger/tt", commands: ["kaya-cli"])
+        operation.completionBlock = {
+            guard operation.exitStatus == 0 else {
+                print("ERROR: Exit status \(operation.exitStatus)")
+                return
+            }
+            print("NodeOperation finished")
+            print(operation.exitStatus ?? "no exitStatus")
+        }
+        operation.outputClosure = { stdout in
+            self.output += stdout
+        }
+        return operation
     }
+    
+    // This is probably not the best solution.
+    // NSPort might be a better solution (?) in the future
+    func pingServer() {
+//        nc -z 127.0.0.1 8541
+    }
+    
+    private func pingOperation() {
+//        let command = "nc -z \(self.server) \(self.port)"
+//        let operation = try BashOperation(commands: <#T##[String]#>)
+    }
+
 }
 
