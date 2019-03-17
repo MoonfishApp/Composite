@@ -10,7 +10,11 @@ import Cocoa
 
 class NodeSettingsViewController: NodeGenericTabViewController {
 
-//    weak var node: Node? {
+    @IBOutlet weak var restartButton: NSButton!
+    @IBOutlet weak var stopNodeButton: NSButton!
+    @IBOutlet weak var restartLabel: NSTextField!
+    
+    //    weak var node: Node? {
 //        didSet {
         
 //            statusViewController.node = node

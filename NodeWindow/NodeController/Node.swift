@@ -29,6 +29,17 @@ final class Node: NSObject {
 //    /// If not installed, localohost co
 //    var isInstalled: Bool = true
     
+    /// Node is running within Composite. Composite can restart
+    var isRunning: Bool {
+        return self.nodeQueue.operations.count > 0
+    }
+    
+    /// If isRunning == false, and isBound == true, then Composite is
+    /// connected to a node, but is not running the node.
+    /// Settings cannot be changed if isBound == false
+    private (set) var isBound: Bool = true
+    
+    
 //    let interface: RPCServerInterface
 //    var options: RPCServerOptions
     let nodeQueue = OperationQueue()
@@ -94,8 +105,8 @@ final class Node: NSObject {
     }
     
     func nodeOperation() throws -> BashOperation {
-        let operation = try BashOperation(commands: ["ganache-cli"])
-//        let operation = try BashOperation(directory: "/Users/ronalddanger/tt", commands: ["kaya-cli -p 3345"])
+//        let operation = try BashOperation(commands: ["ganache-cli"])
+        let operation = try BashOperation(directory: "/Users/ronalddanger/tt", commands: ["kaya-cli"])
         operation.completionBlock = {
             
             self.output += "\nNode stopped"

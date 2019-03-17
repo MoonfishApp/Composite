@@ -41,6 +41,9 @@ struct RPCServerOption: Codable {
     /// Default value, Bool
     let defaultBool: Bool?
     
-    /// If true, option is passed to node
+    /// If true, option is passed as argument to node
     let enabled: Bool
+    
+    /// Value set by user
+    var userValue: String?
 }
