@@ -147,8 +147,7 @@ class BashOperation: Operation {
     }
     
     override func cancel() {
-//        task.terminate()
-        task.interrupt()
+        if task.isRunning { task.interrupt() }
         super.cancel()
     }
 }
