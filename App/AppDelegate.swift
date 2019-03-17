@@ -64,6 +64,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
         
+        // If nodes are not stopped programmatically, the processes will continue to run in the background
+        // Limitation: force quitting the app, will not
+        // https://stackoverflow.com/questions/49132097/how-to-detect-force-close-on-mac-os-x-app
         NodeController.shared.stopNodes()
     }
     

@@ -15,7 +15,8 @@ class NodeLogViewController: NSViewController {
     var output: String = "" {
         didSet {
             DispatchQueue.main.async {
-                self.textView.string = self.output
+                let smartLinkedString = self.output.replacingOccurrences(of: " 127.0.0.1", with: " http://127.0.0.1")
+                self.textView.string = smartLinkedString
                 self.textView.isEditable = true
                 self.textView.checkTextInDocument(nil)
                 self.textView.isEditable = false
