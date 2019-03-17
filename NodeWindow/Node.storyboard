@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="671" y="121"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Node Tab View Controller-->
         <scene sceneID="qMU-Kg-8O7">
             <objects>
-                <tabViewController id="czh-iI-DLY" sceneMemberID="viewController">
+                <tabViewController id="czh-iI-DLY" customClass="NodeTabViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Transactions" identifier="" id="Qms-ca-VFC"/>
                         <tabViewItem label="Blocks" identifier="" id="kdD-kh-wcn"/>

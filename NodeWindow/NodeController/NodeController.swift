@@ -21,5 +21,18 @@ final class NodeController: NSObject {
         zilliqa.showWindow(nil)
     }
     
+    func stopNodes(nodes: [Node]? = nil) {
+        
+        if nodes == nil {
+            for node in self.nodes {
+                node.stopNode()
+            }
+            self.nodes = [Node]()
+        } else {
+            assertionFailure()
+        }
+        
+    }
+    
     
 }

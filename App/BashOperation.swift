@@ -145,4 +145,10 @@ class BashOperation: Operation {
         }
         self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
     }
+    
+    override func cancel() {
+//        task.terminate()
+        task.interrupt()
+        super.cancel()
+    }
 }

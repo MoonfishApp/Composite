@@ -20,6 +20,7 @@ class NodeWindowController: NSWindowController {
             
             statusViewController.node = node
             logViewController?.node = node
+            tabViewController?.node = node
             do {
                 try node?.startNode()
             } catch {
@@ -34,6 +35,10 @@ class NodeWindowController: NSWindowController {
     
     var logViewController: NodeLogViewController? {
         return (contentViewController as! NSSplitViewController).splitViewItems.last?.viewController as? NodeLogViewController
+    }
+    
+    var tabViewController: NodeTabViewController? {
+        return (contentViewController as! NSSplitViewController).splitViewItems.first?.viewController as? NodeTabViewController
     }
 
     override func windowDidLoad() {

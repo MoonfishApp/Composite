@@ -52,6 +52,11 @@ final class Node: NSObject {
         pingQueue.qualityOfService = .userInitiated
     }
     
+    deinit {
+        print("DEINIT")
+        nodeQueue.cancelAllOperations()
+    }
+    
     @IBAction func showWindow(_ sender: Any?) {
         let nodeWindowController = NSWindowController.instantiate(storyboard: "Node") as! NodeWindowController
         nodeWindowController.showWindow(sender)
@@ -73,6 +78,7 @@ final class Node: NSObject {
     
     func stopNode() {
         nodeQueue.cancelAllOperations()
+        nodeQueue.operations.first?.cancel()
     }
     
     func relaunch() throws {
@@ -88,18 +94,20 @@ final class Node: NSObject {
     }
     
     func nodeOperation() throws -> BashOperation {
-//        let operation = try BashOperation(commands: ["ganache-cli"])
-        let operation = try BashOperation(directory: "/Users/ronalddanger/tt", commands: ["kaya-cli"])
+        let operation = try BashOperation(commands: ["ganache-cli"])
+//        let operation = try BashOperation(directory: "/Users/ronalddanger/tt", commands: ["kaya-cli -p 3345"])
         operation.completionBlock = {
-            guard operation.exitStatus == 0 else {
-                print("ERROR: Exit status \(operation.exitStatus)")
-                return
+            
+            self.output += "\nNode stopped"
+            if let exitStatus = operation.exitStatus {
+                self.output += "\nExit status \(exitStatus)"
             }
-            print("NodeOperation finished")
-            print(operation.exitStatus ?? "no exitStatus")
         }
         operation.outputClosure = { stdout in
             self.output += stdout
+        }
+        operation.errClosure = { stderr in
+            self.output += stderr // TODO: change color?
         }
         return operation
     }
