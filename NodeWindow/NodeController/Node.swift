@@ -41,7 +41,8 @@ final class Node: NSObject {
     
     
 //    let interface: RPCServerInterface
-//    var options: RPCServerOptions
+    var options: RPCServerOptions
+    
     let nodeQueue = OperationQueue()
     let pingQueue = OperationQueue()
     
@@ -51,7 +52,7 @@ final class Node: NSObject {
         
         self.type = type
 //        self.interface = RPCServerInterface.load(type)
-//        self.options = RPCServerOptions.load(type)
+        self.options = RPCServerOptions.load(type)
         self.server = "127.0.0.1"
         self.port = "4200"
         

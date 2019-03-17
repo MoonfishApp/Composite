@@ -10,21 +10,33 @@ import Foundation
 
 final class RPCServerOptions: Codable {
     
-    var options: [RPCServerOption] = []
+    var options: [RPCServerOptionField] = []
     
-    static func load(_ type: NodeType) -> RPCServerOptions {
-        let url = Bundle.main.url(forResource: type.rawValue.capitalizedFirstChar() + "Interface", withExtension: "plist")!
-        let data = try! Data(contentsOf: url)
-        let decoder = PropertyListDecoder()
-        return try! decoder.decode(RPCServerOptions.self, from: data)
+    var arguments: [String] {
+        return self.options.filter({ $0.enabled == true }).compactMap{
+            guard let value = $0.userValue ?? $0.defaultString ?? $0.defaultBool?.description else { return nil }
+            return "\($0.flag) \(value)"
+        }
     }
     
-    subscript(name: String) -> RPCServerOption? {
+    init(options: [RPCServerOptionField]) {
+        self.options = options
+    }
+    
+    static func load(_ type: NodeType) -> RPCServerOptions {
+        let url = Bundle.main.url(forResource: type.rawValue.capitalizedFirstChar() + "Options", withExtension: "plist")!
+        let data = try! Data(contentsOf: url)
+        let decoder = PropertyListDecoder()
+        let options = try! decoder.decode([RPCServerOptionField].self, from: data)
+        return RPCServerOptions(options: options)
+    }
+    
+    subscript(name: String) -> RPCServerOptionField? {
         return options.filter{ $0.name.uppercased() == name.uppercased() }.first        
     }
 }
 
-struct RPCServerOption: Codable {
+struct RPCServerOptionField: Codable {
     
     /// Name shown in GUI
     let name: String
@@ -41,9 +53,15 @@ struct RPCServerOption: Codable {
     /// Default value, Bool
     let defaultBool: Bool?
     
+    // User values not stored in plist
+    
     /// If true, option is passed as argument to node
-    let enabled: Bool
+    var enabled: Bool = false
     
     /// Value set by user
     var userValue: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case name, description, flag, defaultString, defaultBool
+    }
 }

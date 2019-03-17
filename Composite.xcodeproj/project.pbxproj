@@ -357,6 +357,7 @@
 		C7AE8A46223E30A1001EC64A /* NodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A45223E30A1001EC64A /* NodeSettingsViewController.swift */; };
 		C7AE8A49223E30B2001EC64A /* NodeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */; };
 		C7AE8A4D223E30F3001EC64A /* NodeGenericTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */; };
+		C7AE8A50223EEEC7001EC64A /* GanacheOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7AE8A4F223EEEC7001EC64A /* GanacheOptions.plist */; };
 		C7DB1672223243B60021C222 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DB1671223243B60021C222 /* Import.storyboard */; };
 		C7DB1674223246860021C222 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1673223246860021C222 /* ImportViewController.swift */; };
 		C7DB1676223246DE0021C222 /* ImportDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1675223246DE0021C222 /* ImportDatasource.swift */; };
@@ -397,7 +398,7 @@
 		C7FA4DA3223CB922000954FA /* KayaInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA2223CB922000954FA /* KayaInterface.plist */; };
 		C7FA4DA5223CB930000954FA /* GanacheInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA4223CB930000954FA /* GanacheInterface.plist */; };
 		C7FA4DA7223CBA34000954FA /* RPCServerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */; };
-		C7FA4DAA223CBD18000954FA /* kayaOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA9223CBD18000954FA /* kayaOptions.plist */; };
+		C7FA4DAA223CBD18000954FA /* KayaOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA9223CBD18000954FA /* KayaOptions.plist */; };
 		C7FA4DAC223CBF7B000954FA /* RPCServerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */; };
 		C7FA4DAE223CC7D6000954FA /* NodeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
@@ -780,6 +781,7 @@
 		C7AE8A45223E30A1001EC64A /* NodeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewController.swift; sourceTree = "<group>"; };
 		C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTabViewController.swift; sourceTree = "<group>"; };
 		C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGenericTabViewController.swift; sourceTree = "<group>"; };
+		C7AE8A4F223EEEC7001EC64A /* GanacheOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GanacheOptions.plist; sourceTree = "<group>"; };
 		C7DB1671223243B60021C222 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
 		C7DB1673223246860021C222 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		C7DB1675223246DE0021C222 /* ImportDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDatasource.swift; sourceTree = "<group>"; };
@@ -825,7 +827,7 @@
 		C7FA4DA2223CB922000954FA /* KayaInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KayaInterface.plist; sourceTree = "<group>"; };
 		C7FA4DA4223CB930000954FA /* GanacheInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GanacheInterface.plist; sourceTree = "<group>"; };
 		C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerSettings.swift; sourceTree = "<group>"; };
-		C7FA4DA9223CBD18000954FA /* kayaOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = kayaOptions.plist; sourceTree = "<group>"; };
+		C7FA4DA9223CBD18000954FA /* KayaOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KayaOptions.plist; sourceTree = "<group>"; };
 		C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerOptions.swift; sourceTree = "<group>"; };
 		C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NodeSelector.storyboard; sourceTree = "<group>"; };
 		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1947,7 +1949,8 @@
 		C7FA4DA8223CBCEA000954FA /* RPCServerOptions */ = {
 			isa = PBXGroup;
 			children = (
-				C7FA4DA9223CBD18000954FA /* kayaOptions.plist */,
+				C7FA4DA9223CBD18000954FA /* KayaOptions.plist */,
+				C7AE8A4F223EEEC7001EC64A /* GanacheOptions.plist */,
 			);
 			path = RPCServerOptions;
 			sourceTree = "<group>";
@@ -2066,7 +2069,7 @@
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
-				C7FA4DAA223CBD18000954FA /* kayaOptions.plist in Resources */,
+				C7FA4DAA223CBD18000954FA /* KayaOptions.plist in Resources */,
 				C79A6D4621EE9DD3007FB630 /* PrintPanelAccessory.storyboard in Resources */,
 				C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */,
 				C72CF612222916FE00637A8B /* Truffle in Resources */,
@@ -2086,6 +2089,7 @@
 				C72CF60C2229141000637A8B /* Zilliqa in Resources */,
 				C79A74FC21EEDC8D007FB630 /* CharacterPopover.storyboard in Resources */,
 				C79A6D4421EE9DC9007FB630 /* SaveDocumentAccessory.storyboard in Resources */,
+				C7AE8A50223EEEC7001EC64A /* GanacheOptions.plist in Resources */,
 				C79A759E21EEE532007FB630 /* makeSyntaxMap.rb in Resources */,
 				C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */,
 				C79A6D4221EE9DC0007FB630 /* OpenDocumentAccessory.storyboard in Resources */,

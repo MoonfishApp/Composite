@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Port</string>
+		<key>description</key>
+		<string>Port number to listen to (Default: 8545)</string>
+		<key>flag</key>
+		<string>-p</string>
+		<key>defaultString</key>
+		<string>8545</string>
+	</dict>
+</array>
+</plist>
