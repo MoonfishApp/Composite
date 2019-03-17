@@ -65,7 +65,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
         
         // If nodes are not stopped programmatically, the processes will continue to run in the background
-        // Limitation: force quitting the app, will not
+        // Limitation: this callback will not be called when force quitting the app, including using the stop
+        // button in Xcode.
+        // In these cases, you will have to kill running nodes (e.g. "ps -ax | grep ganache-cli")
         // https://stackoverflow.com/questions/49132097/how-to-detect-force-close-on-mac-os-x-app
         NodeController.shared.stopNodes()
     }
