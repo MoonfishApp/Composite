@@ -387,10 +387,10 @@
 		C7FA4D9C223CB7F7000954FA /* NodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9B223CB7F7000954FA /* NodeController.swift */; };
 		C7FA4D9E223CB88B000954FA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9D223CB88B000954FA /* Node.swift */; };
 		C7FA4DA0223CB8CF000954FA /* RPCServerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9F223CB8CF000954FA /* RPCServerInterface.swift */; };
-		C7FA4DA3223CB922000954FA /* Zilliqa-KayaInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA2223CB922000954FA /* Zilliqa-KayaInterface.plist */; };
-		C7FA4DA5223CB930000954FA /* Ethereum-Ganache.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA4223CB930000954FA /* Ethereum-Ganache.plist */; };
+		C7FA4DA3223CB922000954FA /* KayaInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA2223CB922000954FA /* KayaInterface.plist */; };
+		C7FA4DA5223CB930000954FA /* GanacheInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA4223CB930000954FA /* GanacheInterface.plist */; };
 		C7FA4DA7223CBA34000954FA /* RPCServerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */; };
-		C7FA4DAA223CBD18000954FA /* Zilliqa-KayaOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA9223CBD18000954FA /* Zilliqa-KayaOptions.plist */; };
+		C7FA4DAA223CBD18000954FA /* kayaOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA9223CBD18000954FA /* kayaOptions.plist */; };
 		C7FA4DAC223CBF7B000954FA /* RPCServerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */; };
 		C7FA4DAE223CC7D6000954FA /* NodeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
@@ -808,10 +808,10 @@
 		C7FA4D9B223CB7F7000954FA /* NodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeController.swift; sourceTree = "<group>"; };
 		C7FA4D9D223CB88B000954FA /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		C7FA4D9F223CB8CF000954FA /* RPCServerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerInterface.swift; sourceTree = "<group>"; };
-		C7FA4DA2223CB922000954FA /* Zilliqa-KayaInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Zilliqa-KayaInterface.plist"; sourceTree = "<group>"; };
-		C7FA4DA4223CB930000954FA /* Ethereum-Ganache.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ethereum-Ganache.plist"; sourceTree = "<group>"; };
+		C7FA4DA2223CB922000954FA /* KayaInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KayaInterface.plist; sourceTree = "<group>"; };
+		C7FA4DA4223CB930000954FA /* GanacheInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GanacheInterface.plist; sourceTree = "<group>"; };
 		C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerSettings.swift; sourceTree = "<group>"; };
-		C7FA4DA9223CBD18000954FA /* Zilliqa-KayaOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Zilliqa-KayaOptions.plist"; sourceTree = "<group>"; };
+		C7FA4DA9223CBD18000954FA /* kayaOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = kayaOptions.plist; sourceTree = "<group>"; };
 		C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerOptions.swift; sourceTree = "<group>"; };
 		C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NodeSelector.storyboard; sourceTree = "<group>"; };
 		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1909,8 +1909,8 @@
 		C7FA4DA1223CB8EA000954FA /* RPCServerInterface */ = {
 			isa = PBXGroup;
 			children = (
-				C7FA4DA2223CB922000954FA /* Zilliqa-KayaInterface.plist */,
-				C7FA4DA4223CB930000954FA /* Ethereum-Ganache.plist */,
+				C7FA4DA2223CB922000954FA /* KayaInterface.plist */,
+				C7FA4DA4223CB930000954FA /* GanacheInterface.plist */,
 			);
 			path = RPCServerInterface;
 			sourceTree = "<group>";
@@ -1918,7 +1918,7 @@
 		C7FA4DA8223CBCEA000954FA /* RPCServerOptions */ = {
 			isa = PBXGroup;
 			children = (
-				C7FA4DA9223CBD18000954FA /* Zilliqa-KayaOptions.plist */,
+				C7FA4DA9223CBD18000954FA /* kayaOptions.plist */,
 			);
 			path = RPCServerOptions;
 			sourceTree = "<group>";
@@ -2027,7 +2027,7 @@
 				C7F18B06221F7C030026D7DC /* Themes in Resources */,
 				C775540122375D080058B256 /* SyntaxTermsEditView.storyboard in Resources */,
 				C77557E322375D4D0058B256 /* SyntaxValidationView.storyboard in Resources */,
-				C7FA4DA3223CB922000954FA /* Zilliqa-KayaInterface.plist in Resources */,
+				C7FA4DA3223CB922000954FA /* KayaInterface.plist in Resources */,
 				C79A6D4821EE9DDC007FB630 /* ProgressView.storyboard in Resources */,
 				C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */,
 				C7754FF722374B750058B256 /* PrintPane.storyboard in Resources */,
@@ -2037,7 +2037,7 @@
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
-				C7FA4DAA223CBD18000954FA /* Zilliqa-KayaOptions.plist in Resources */,
+				C7FA4DAA223CBD18000954FA /* kayaOptions.plist in Resources */,
 				C79A6D4621EE9DD3007FB630 /* PrintPanelAccessory.storyboard in Resources */,
 				C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */,
 				C72CF612222916FE00637A8B /* Truffle in Resources */,
@@ -2086,7 +2086,7 @@
 				C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */,
 				C72CF610222916FE00637A8B /* Celer in Resources */,
 				C775502922375CBE0058B256 /* SyntaxEditView.storyboard in Resources */,
-				C7FA4DA5223CB930000954FA /* Ethereum-Ganache.plist in Resources */,
+				C7FA4DA5223CB930000954FA /* GanacheInterface.plist in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
 				C72CF615222BA85800637A8B /* Tronbox in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,

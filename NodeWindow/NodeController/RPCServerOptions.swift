@@ -10,18 +10,21 @@ import Foundation
 
 final class RPCServerOptions: Codable {
     
-    private (set) var nodeNeedsRestart = false
+    var options: [RPCServerOption] = []
     
-    
-    
-    init(platform: String, framework: String) {
-        
+    static func load(_ type: NodeType) -> RPCServerOptions {
+        let url = Bundle.main.url(forResource: type.rawValue.capitalizedFirstChar() + "Interface", withExtension: "plist")!
+        let data = try! Data(contentsOf: url)
+        let decoder = PropertyListDecoder()
+        return try! decoder.decode(RPCServerOptions.self, from: data)
     }
     
-    
+    subscript(name: String) -> RPCServerOption? {
+        return options.filter{ $0.name.uppercased() == name.uppercased() }.first        
+    }
 }
 
-struct RPCServerOption {
+struct RPCServerOption: Codable {
     
     /// Name shown in GUI
     let name: String
@@ -37,4 +40,7 @@ struct RPCServerOption {
     
     /// Default value, Bool
     let defaultBool: Bool?
+    
+    /// If true, option is passed to node
+    let enabled: Bool
 }

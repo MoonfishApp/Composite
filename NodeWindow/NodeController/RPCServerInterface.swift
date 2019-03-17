@@ -8,9 +8,16 @@
 
 import Foundation
 
-struct RPCServerInterface {
+struct RPCServerInterface: Decodable {
     
-    var isInstalled: Bool = true
+    let launchCommand: String
+    
+    static func load(_ type: NodeType) -> RPCServerInterface {
+        let url = Bundle.main.url(forResource: type.rawValue.capitalizedFirstChar() + "Interface", withExtension: "plist")!
+        let data = try! Data(contentsOf: url)
+        let decoder = PropertyListDecoder()
+        return try! decoder.decode(RPCServerInterface.self, from: data)
+    }
     
     
     
