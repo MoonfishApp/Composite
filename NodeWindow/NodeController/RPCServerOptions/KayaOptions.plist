@@ -22,7 +22,7 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>Data files</string>
+		<string>Load data files</string>
 		<key>description</key>
 		<string>Load data files from a JSON file</string>
 		<key>flag</key>
@@ -36,7 +36,7 @@
 		<key>description</key>
 		<string>Number of accounts to load at start up. Only used if fixtures file is not defined.</string>
 		<key>flag</key>
-		<string>-d</string>
+		<string>-n</string>
 		<key>defaultString</key>
 		<string>10</string>
 	</dict>
@@ -57,6 +57,16 @@
 		<string>Option to use remote interpreter or local interpreter. Remote if True</string>
 		<key>flag</key>
 		<string>-r</string>
+		<key>defaultBool</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Save</string>
+		<key>description</key>
+		<string>Saves data files to saved directory by the end of the session</string>
+		<key>flag</key>
+		<string>-s</string>
 		<key>defaultBool</key>
 		<true/>
 	</dict>

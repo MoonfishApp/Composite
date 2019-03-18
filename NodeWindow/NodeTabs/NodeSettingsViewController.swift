@@ -131,6 +131,7 @@ extension NodeSettingsViewController: NSTableViewDelegate {
             view.textField?.stringValue = option.userValue ?? option.defaultString ?? ""
             view.textField?.delegate = self
             view.textField?.tag = row
+            view.textField?.isEnabled = option.defaultBool == nil
             
         } else {
             
