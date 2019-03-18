@@ -19,6 +19,10 @@ final class NodeController: NSObject {
         let zilliqa = Node(type: .kaya)
         nodes.append(zilliqa)
         zilliqa.showWindow(nil)
+        
+        let ethereum = Node(type: .ganache)
+        nodes.append(ethereum)
+        ethereum.showWindow(nil)
     }
     
     func stopNodes(nodes: [Node]? = nil) {

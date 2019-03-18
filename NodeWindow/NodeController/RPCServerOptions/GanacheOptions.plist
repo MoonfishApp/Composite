@@ -4,6 +4,66 @@
 <array>
 	<dict>
 		<key>name</key>
+		<string>Accounts</string>
+		<key>description</key>
+		<string>Specify the number of accounts to generate at startup.</string>
+		<key>flag</key>
+		<string>-a</string>
+		<key>defaultString</key>
+		<string>10</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Amount of Ether</string>
+		<key>description</key>
+		<string>Amount of ether to assign each test account. Default is 100.</string>
+		<key>flag</key>
+		<string>-e</string>
+		<key>defaultString</key>
+		<string>100</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Block time</string>
+		<key>description</key>
+		<string>Specify blockTime in seconds for automatic mining. If you don&apos;t specify this flag, ganache will instantly mine a new block for every transaction. Using the --blockTime flag is discouraged unless you have tests which require a specific mining interval.</string>
+		<key>flag</key>
+		<string>-b</string>
+		<key>defaultString</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Deterministic</string>
+		<key>description</key>
+		<string>Generate deterministic addresses based on a pre-defined mnemonic.</string>
+		<key>flag</key>
+		<string>-d</string>
+		<key>defaultString</key>
+		<string>8545</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Secure</string>
+		<key>description</key>
+		<string>Lock available accounts by default (good for third party transaction signing)</string>
+		<key>flag</key>
+		<string>-n</string>
+		<key>defaultBool</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Mnemonic</string>
+		<key>description</key>
+		<string>Use a bip39 mnemonic phrase for generating a PRNG seed, which is in turn used for hierarchical deterministic (HD) account generation.</string>
+		<key>flag</key>
+		<string>-m</string>
+		<key>defaultString</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
 		<string>Port</string>
 		<key>description</key>
 		<string>Port number to listen to (Default: 8545)</string>
@@ -11,6 +71,212 @@
 		<string>-p</string>
 		<key>defaultString</key>
 		<string>8545</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Hostname</string>
+		<key>description</key>
+		<string>Hostname to listen on. Defaults to 127.0.0.1 (defaults to 0.0.0.0 for Docker instances of ganache-cli).</string>
+		<key>flag</key>
+		<string>-h</string>
+		<key>defaultString</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Seed</string>
+		<key>description</key>
+		<string>Use arbitrary data to generate the HD wallet mnemonic to be used.</string>
+		<key>flag</key>
+		<string>-s</string>
+		<key>defaultString</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Gas price</string>
+		<key>description</key>
+		<string>The price of gas in wei (defaults to 20000000000)</string>
+		<key>flag</key>
+		<string>-g</string>
+		<key>defaultString</key>
+		<string>20000000000</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Gas limit</string>
+		<key>description</key>
+		<string>The block gas limit (defaults to 0x6691b7)</string>
+		<key>flag</key>
+		<string>-l</string>
+		<key>defaultString</key>
+		<string>0x6691b7</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Hardfork</string>
+		<key>description</key>
+		<string>Allows users to specify which hardfork should be used. Supported hardforks are byzantium, constantinople, and petersburg (default)</string>
+		<key>flag</key>
+		<string>-k</string>
+		<key>defaultString</key>
+		<string>petersburg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Fork</string>
+		<key>description</key>
+		<string>Fork from another currently running Ethereum client at a given block. Input should be the HTTP location and port of the other client, e.g. http://localhost:8545. You can optionally specify the block to fork from using an @ sign: http:////localhost:8545@1599200</string>
+		<key>flag</key>
+		<string>-f</string>
+		<key>defaultString</key>
+		<string>http://localhost:8545@1599200</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Network ID</string>
+		<key>description</key>
+		<string>Specify the network id ganache-cli will use to identify itself (defaults to the current time or the network id of the forked blockchain if configured)</string>
+		<key>flag</key>
+		<string>-i</string>
+		<key>defaultString</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Database path</string>
+		<key>description</key>
+		<string>Specify a path to a directory to save the chain database. If a database already exists, ganache-cli will initialize that chain instead of creating a new one.</string>
+		<key>flag</key>
+		<string>--db</string>
+		<key>defaultString</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Debug</string>
+		<key>description</key>
+		<string>Output VM opcodes for debugging</string>
+		<key>flag</key>
+		<string>--debug</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Memory usage</string>
+		<key>description</key>
+		<string>Output ganache-cli memory usage statistics. This replaces normal output.</string>
+		<key>flag</key>
+		<string>--mem</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Quiet</string>
+		<key>description</key>
+		<string>Run ganache-cli without any logs</string>
+		<key>flag</key>
+		<string>-q</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Verbose</string>
+		<key>description</key>
+		<string>Log all requests and responses to stdout</string>
+		<key>flag</key>
+		<string>-v</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Help</string>
+		<key>description</key>
+		<string>Display help information</string>
+		<key>flag</key>
+		<string>-?</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Version</string>
+		<key>description</key>
+		<string>Display the version of ganache-cli</string>
+		<key>flag</key>
+		<string>--version</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Transaction Failures</string>
+		<key>description</key>
+		<string>Do not transmit transaction failures as RPC errors. Enable this flag for error reporting behaviour which is compatible with other clients such as geth and Parity.</string>
+		<key>flag</key>
+		<string>--noVMErrorsOnRPCResponse</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Unlimited contract size</string>
+		<key>description</key>
+		<string>Allows unlimited contract sizes while debugging. By enabling this flag, the check within the EVM for contract size limit of 24KB (see EIP-170) is bypassed. Enabling this flag will cause ganache-cli to behave differently than production environments.</string>
+		<key>flag</key>
+		<string>--allowUnlimitedContractSize</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Keep-alive timeout</string>
+		<key>description</key>
+		<string>Sets the HTTP server&apos;s keepAliveTimeout in milliseconds. See the NodeJS HTTP docs for details. 5000 by default.</string>
+		<key>flag</key>
+		<string>--keepAliveTimeout</string>
+		<key>defaultString</key>
+		<string>5000</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Date</string>
+		<key>description</key>
+		<string>Date (ISO 8601) that the first block should start. Use this feature, along with the evm_increaseTime method to test time-dependent code.</string>
+		<key>flag</key>
+		<string>-t</string>
+		<key>defaultString</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Account (Special option)</string>
+		<key>description</key>
+		<string>Specify --account=... (no &apos;s&apos;) any number of times passing arbitrary private keys and their associated balances to generate initial addresses:
+$ ganache-cli --account=&quot;&lt;privatekey&gt;,balance&quot; [--account=&quot;&lt;privatekey&gt;,balance&quot;]
+Note that private keys are 64 characters long, and must be input as a 0x-prefixed hex string. Balance can either be input as an integer or 0x-prefixed hex value specifying the amount of wei in that account. An HD wallet will not be created for you when using --account.</string>
+		<key>flag</key>
+		<string>--account</string>
+		<key>defaultString</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Unlock (Special option)</string>
+		<key>description</key>
+		<string>any number of times passing either an address or an account index to unlock specific accounts. When used in conjunction with --secure, --unlock will override the locked state of specified accounts.
+$ ganache-cli --secure --unlock &quot;0x1234...&quot; --unlock &quot;0xabcd...&quot;
+You can also specify a number, unlocking accounts by their index:
+$ ganache-cli --secure -u 0 -u 1
+This feature can also be used to impersonate accounts and unlock addresses you wouldn&apos;t otherwise have access to. When used with the --fork feature, you can use ganache-cli to make transactions as any address on the blockchain, which is very useful for testing and dynamic analysis.</string>
+		<key>flag</key>
+		<string>-u</string>
+		<key>defaultString</key>
+		<string></string>
 	</dict>
 </array>
 </plist>
