@@ -145,7 +145,7 @@ final class Node: NSObject {
             self.output += "\nNode stopped"
             if let exitStatus = operation.exitStatus {
              
-                self.output += "\nExit status \(exitStatus)"
+                self.output += "\nExit status \(exitStatus)\n\n"
                 if exitStatus != 0 {
                     self.state = .error(exitStatus)
                 }
