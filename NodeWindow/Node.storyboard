@@ -231,7 +231,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JQC-l4-IOe">
-                                <rect key="frame" x="318" y="71" width="118" height="32"/>
+                                <rect key="frame" x="318" y="13" width="118" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="106" id="bLD-II-xAy"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Restart node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sz4-cR-zFC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -240,27 +243,14 @@
                                     <action selector="restartNode:" target="KGz-Dw-gjL" id="EUX-wh-iMv"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csw-jG-NP0">
-                                <rect key="frame" x="319" y="13" width="117" height="32"/>
-                                <buttonCell key="cell" type="push" title="Stop node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KoA-wm-v0A">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="stopNode:" target="KGz-Dw-gjL" id="MGt-5q-zP0"/>
-                                </connections>
-                            </button>
-                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="8NQ-bQ-675">
-                                <rect key="frame" x="20" y="47" width="405" height="5"/>
-                            </box>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t65-9u-DmN">
-                                <rect key="frame" x="20" y="105" width="410" height="387"/>
+                                <rect key="frame" x="20" y="72" width="410" height="420"/>
                                 <clipView key="contentView" id="T1l-GD-UMU">
-                                    <rect key="frame" x="1" y="1" width="408" height="385"/>
+                                    <rect key="frame" x="1" y="1" width="408" height="418"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="pEt-KW-FTf">
-                                            <rect key="frame" x="0.0" y="0.0" width="408" height="385"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="408" height="418"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -379,15 +369,25 @@
                                 </scroller>
                             </scrollView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Fr-h7-1lb">
-                                <rect key="frame" x="218" y="56" width="209" height="17"/>
+                                <rect key="frame" x="223" y="49" width="209" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="⚠️ Restart node to apply settings" id="qDG-uN-heP">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-4P-RpM">
-                                <rect key="frame" x="18" y="80" width="300" height="17"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="csw-jG-NP0">
+                                <rect key="frame" x="200" y="13" width="118" height="32"/>
+                                <buttonCell key="cell" type="push" title="Stop node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KoA-wm-v0A">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopNode:" target="KGz-Dw-gjL" id="MGt-5q-zP0"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-4P-RpM">
+                                <rect key="frame" x="18" y="22" width="300" height="14"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="flags" id="M9s-hd-dDI">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -397,22 +397,19 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Jfd-4P-RpM" secondAttribute="trailing" constant="134" id="2gG-K8-dKu"/>
-                            <constraint firstAttribute="trailing" secondItem="csw-jG-NP0" secondAttribute="trailing" constant="20" id="2mv-gW-1XC"/>
-                            <constraint firstItem="csw-jG-NP0" firstAttribute="top" secondItem="8NQ-bQ-675" secondAttribute="bottom" constant="8" id="9dt-TV-ze0"/>
                             <constraint firstItem="csw-jG-NP0" firstAttribute="width" secondItem="JQC-l4-IOe" secondAttribute="width" id="A8w-2o-v1M"/>
+                            <constraint firstItem="JQC-l4-IOe" firstAttribute="top" secondItem="2Fr-h7-1lb" secondAttribute="bottom" constant="8" id="CVk-AI-lm4"/>
+                            <constraint firstAttribute="bottom" secondItem="JQC-l4-IOe" secondAttribute="bottom" constant="20" id="EuJ-4s-hAt"/>
                             <constraint firstItem="t65-9u-DmN" firstAttribute="leading" secondItem="egw-77-KJf" secondAttribute="leading" constant="20" id="JEq-a6-Ct6"/>
-                            <constraint firstItem="8NQ-bQ-675" firstAttribute="top" secondItem="2Fr-h7-1lb" secondAttribute="bottom" constant="6" id="LST-8M-zl8"/>
-                            <constraint firstAttribute="bottom" secondItem="8NQ-bQ-675" secondAttribute="bottom" constant="49" id="MDJ-X0-wab"/>
-                            <constraint firstAttribute="trailing" secondItem="8NQ-bQ-675" secondAttribute="trailing" constant="25" id="RAe-gs-cpc"/>
                             <constraint firstAttribute="trailing" secondItem="JQC-l4-IOe" secondAttribute="trailing" constant="20" id="RRN-38-yN1"/>
-                            <constraint firstAttribute="bottom" secondItem="t65-9u-DmN" secondAttribute="bottom" constant="105" id="X7C-NL-Gh9"/>
-                            <constraint firstItem="8NQ-bQ-675" firstAttribute="top" secondItem="JQC-l4-IOe" secondAttribute="bottom" constant="28" id="b8t-ll-2Mv"/>
+                            <constraint firstAttribute="bottom" secondItem="t65-9u-DmN" secondAttribute="bottom" constant="72" id="X7C-NL-Gh9"/>
                             <constraint firstAttribute="trailing" secondItem="t65-9u-DmN" secondAttribute="trailing" constant="20" id="d5n-Zw-kCt"/>
-                            <constraint firstAttribute="trailing" secondItem="2Fr-h7-1lb" secondAttribute="trailing" constant="25" id="piE-NN-mOu"/>
+                            <constraint firstAttribute="bottom" secondItem="csw-jG-NP0" secondAttribute="bottom" constant="20" id="jNZ-oR-WeS"/>
+                            <constraint firstAttribute="bottom" secondItem="Jfd-4P-RpM" secondAttribute="bottom" constant="22" id="lRr-DG-Icy"/>
+                            <constraint firstAttribute="trailing" secondItem="2Fr-h7-1lb" secondAttribute="trailing" constant="20" id="piE-NN-mOu"/>
                             <constraint firstItem="Jfd-4P-RpM" firstAttribute="leading" secondItem="egw-77-KJf" secondAttribute="leading" constant="20" id="psm-lE-9LK"/>
-                            <constraint firstItem="8NQ-bQ-675" firstAttribute="top" secondItem="Jfd-4P-RpM" secondAttribute="bottom" constant="30" id="q6d-gL-J8R"/>
                             <constraint firstItem="t65-9u-DmN" firstAttribute="top" secondItem="egw-77-KJf" secondAttribute="top" constant="20" id="rQR-B0-Zcf"/>
-                            <constraint firstItem="8NQ-bQ-675" firstAttribute="leading" secondItem="egw-77-KJf" secondAttribute="leading" constant="20" id="ypb-k1-gGO"/>
+                            <constraint firstItem="JQC-l4-IOe" firstAttribute="leading" secondItem="csw-jG-NP0" secondAttribute="trailing" constant="12" id="uEd-D0-Sr1"/>
                         </constraints>
                     </view>
                     <connections>
