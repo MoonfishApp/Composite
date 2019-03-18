@@ -10,7 +10,7 @@ import Foundation
 
 final class RPCServerOptions: Codable {
     
-    var options: [RPCServerOptionField] = []
+    private (set) var options: [RPCServerOptionField] = []
     
     var argumentsArray: [String] {
         return self.options.filter({ $0.enabled == true }).compactMap{
@@ -40,6 +40,20 @@ final class RPCServerOptions: Codable {
     
     subscript(name: String) -> RPCServerOptionField? {
         return options.filter{ $0.name.uppercased() == name.uppercased() }.first        
+    }
+    
+    subscript(index: Int) -> RPCServerOptionField {
+        get {
+            return self.options[index]
+        }
+    }
+    
+    func enableOption(enabled: Bool, at index: Int) {
+        options[index].enabled = enabled
+    }
+    
+    func setUserValue(value: String?, at index: Int) {
+        options[index].userValue = value
     }
 }
 

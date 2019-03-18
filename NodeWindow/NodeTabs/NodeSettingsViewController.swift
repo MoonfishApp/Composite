@@ -10,6 +10,7 @@ import Cocoa
 
 class NodeSettingsViewController: NodeGenericTabViewController {
 
+    @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var restartButton: NSButton!
     @IBOutlet weak var stopNodeButton: NSButton!
     @IBOutlet weak var restartLabel: NSTextField!
@@ -20,6 +21,7 @@ class NodeSettingsViewController: NodeGenericTabViewController {
             self.stateObserver = node?.observe(\Node.stateChange, options: .new) { node, change in
                 self.updateState()
             }
+            self.tableView.reloadData()
         }
     }
     
@@ -89,5 +91,79 @@ class NodeSettingsViewController: NodeGenericTabViewController {
                 
             }
         }
+    }
+}
+
+extension NodeSettingsViewController: NSTableViewDataSource {
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        
+        return self.node?.options.options.count ?? 0
+    }
+}
+
+extension NodeSettingsViewController: NSTableViewDelegate {
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        
+        guard let tableColumn = tableColumn, let node = node else { return nil }
+        let option = node.options[row]
+        
+        let view: NSTableCellView!
+        
+        if tableColumn.identifier == NSUserInterfaceItemIdentifier("CheckboxColumn") {
+            
+            let checkbox = NSButton(checkboxWithTitle: " ", target: self, action: #selector(self.checkboxClicked))
+            checkbox.tag = row
+            checkbox.state = option.enabled == true ? .on : .off
+            return checkbox
+            
+        } else if tableColumn.identifier == NSUserInterfaceItemIdentifier("KeyColumn") {
+            
+            view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "KeyCell"), owner: self) as? NSTableCellView
+            view.textField?.stringValue = option.name
+            view.toolTip = option.description
+            view.textField?.textColor = NSColor.black
+            
+        } else if tableColumn.identifier == NSUserInterfaceItemIdentifier("ValueColumn") {
+            
+            view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ValueCell"), owner: self) as? NSTableCellView
+            view.textField?.stringValue = option.userValue ?? option.defaultString ?? ""
+            view.textField?.delegate = self
+            view.textField?.tag = row
+            
+        } else {
+            
+            view = nil
+            assertionFailure()
+        }
+        
+        return view
+    }
+    
+//    func selectionShouldChange(in tableView: NSTableView) -> Bool {
+//        return false
+//    }
+    
+    @IBAction func checkboxClicked(_ sender: Any?) {
+        
+        guard let checkbox = sender as? NSButton, let node = node else { return assertionFailure() }
+        
+        let row = checkbox.tag
+        node.options.enableOption(enabled: checkbox.state == .on, at: row)
+    }
+}
+
+extension NodeSettingsViewController: NSTextFieldDelegate {
+    
+    func controlTextDidEndEditing(_ obj: Notification) {
+        
+        guard let textField = obj.object as? NSTextField, let node = node else { return assertionFailure() }
+        
+        let row = textField.tag
+        let value = textField.stringValue
+        
+        node.options.setUserValue(value: value.isEmpty ? nil : value, at: row)
+        self.tableView.reloadData()
     }
 }
