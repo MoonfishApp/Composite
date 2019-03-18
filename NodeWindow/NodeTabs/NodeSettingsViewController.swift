@@ -141,9 +141,11 @@ extension NodeSettingsViewController: NSTableViewDelegate {
         return view
     }
     
-//    func selectionShouldChange(in tableView: NSTableView) -> Bool {
-//        return false
-//    }
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        
+        tableView.editColumn(2, row: row, with: nil, select: true)
+        return false
+    }
     
     @IBAction func checkboxClicked(_ sender: Any?) {
         
@@ -151,6 +153,9 @@ extension NodeSettingsViewController: NSTableViewDelegate {
         
         let row = checkbox.tag
         node.options.enableOption(enabled: checkbox.state == .on, at: row)
+        
+        if checkbox.state == .on { tableView.editColumn(2, row: row, with: nil, select: true) }
+        self.flagsLabel.stringValue = node.command
     }
 }
 
@@ -165,5 +170,6 @@ extension NodeSettingsViewController: NSTextFieldDelegate {
         
         node.options.setUserValue(value: value.isEmpty ? nil : value, at: row)
         self.tableView.reloadData()
+        self.flagsLabel.stringValue = node.command
     }
 }
