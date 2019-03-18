@@ -782,6 +782,7 @@
 		C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTabViewController.swift; sourceTree = "<group>"; };
 		C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGenericTabViewController.swift; sourceTree = "<group>"; };
 		C7AE8A4F223EEEC7001EC64A /* GanacheOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GanacheOptions.plist; sourceTree = "<group>"; };
+		C7AE8A51223F876D001EC64A /* InstallToolchain-new.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "InstallToolchain-new.storyboard"; sourceTree = "<group>"; };
 		C7DB1671223243B60021C222 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
 		C7DB1673223246860021C222 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		C7DB1675223246DE0021C222 /* ImportDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDatasource.swift; sourceTree = "<group>"; };
@@ -944,6 +945,7 @@
 			isa = PBXGroup;
 			children = (
 				C7DDD7592141E02800674942 /* InstallToolchain.storyboard */,
+				C7AE8A51223F876D001EC64A /* InstallToolchain-new.storyboard */,
 				C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */,
 				C709B385223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift */,
 				C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */,
