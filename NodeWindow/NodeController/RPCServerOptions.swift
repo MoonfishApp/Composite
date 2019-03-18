@@ -63,7 +63,7 @@ struct RPCServerOptionField: Codable {
     let name: String
     
     /// Description shown in GUI
-    let description: String
+    let description: String? = nil
     
     /// Command line flag E.g. -d
     let flag: String
@@ -83,6 +83,6 @@ struct RPCServerOptionField: Codable {
     var userValue: String?
     
     private enum CodingKeys: String, CodingKey {
-        case name, description, flag, defaultString, defaultBool
+        case name, flag, defaultString, defaultBool
     }
 }
