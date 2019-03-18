@@ -15,8 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private lazy var toolchainWindowController = NSWindowController.instantiate(storyboard: "InstallToolchain")
     private lazy var templateWindowController = NSWindowController.instantiate(storyboard: "Template")
     
-//    let installToolchainStoryboard = NSStoryboard(name: NSStoryboard.Name("InstallToolchain"), bundle: nil)
-//    let installWizard = installToolchainStoryboard.instantiateInitialController() as? NSWindowController
     
 //    @IBOutlet private weak var encodingsMenu: NSMenu?
     @IBOutlet private weak var syntaxStylesMenu: NSMenu?
@@ -54,6 +52,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        let controller = NodeController.shared
+        
         if UserDefaults.standard[.showInstallToolchainOnStartup] == true {
             showInstallToolchains(self)
         } else {
@@ -63,6 +63,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        
+        // If nodes are not stopped programmatically, the processes will continue to run in the background
+        // Limitation: this callback will not be called when force quitting the app, including using the stop
+        // button in Xcode.
+        // In these cases, you will have to kill running nodes (e.g. "ps -ax | grep ganache-cli")
+        // https://stackoverflow.com/questions/49132097/how-to-detect-force-close-on-mac-os-x-app
+        NodeController.shared.stopNodes()
     }
     
     override init() {
@@ -101,6 +108,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func showProjectTemplates(_ sender: AnyObject) {
         self.templateWindowController.showWindow(sender)
+    }
+    
+    // temp
+    @IBAction func showNodeWindow(_ sender: AnyObject) {
+        let preferencesWindowController = NSWindowController.instantiate(storyboard: "Node")
+        preferencesWindowController.showWindow(sender)
+    }
+    
+    @IBAction func showNodeSelector(_ sender: Any?) {
+        let nodeSelectorWindowController = NSWindowController.instantiate(storyboard: "NodeSelector")
+        nodeSelectorWindowController.showWindow(sender)
+        
+        let nodeSelector = (nodeSelectorWindowController.contentViewController as! NodeSelectorViewController)
     }
     
     /// build syntax style menu in the main menu

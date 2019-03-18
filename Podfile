@@ -11,7 +11,7 @@ target 'Composite' do
   pod 'Differ', '~> 1.3.0'
   pod 'YAML-Framework', :git => 'https://github.com/coteditor/YAML.framework.git', :branch => 'coteditor-mod'
   pod 'WFColorCode', :git => 'https://github.com/1024jp/WFColorCode.git', :branch => 'master'
-
+  
   target 'CompositeTests' do
     inherit! :search_paths
     # Pods for testing

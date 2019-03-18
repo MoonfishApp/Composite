@@ -349,6 +349,15 @@
 		C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
+		C7AE8A3A223CCB94001EC64A /* NodeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A39223CCB94001EC64A /* NodeSelectorViewController.swift */; };
+		C7AE8A3D223E28C4001EC64A /* NodeWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A3C223E28C4001EC64A /* NodeWindowController.swift */; };
+		C7AE8A40223E305E001EC64A /* NodeTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A3F223E305E001EC64A /* NodeTransactionsViewController.swift */; };
+		C7AE8A42223E306F001EC64A /* NodeBlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A41223E306F001EC64A /* NodeBlocksViewController.swift */; };
+		C7AE8A44223E3095001EC64A /* NodeAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A43223E3095001EC64A /* NodeAccountsViewController.swift */; };
+		C7AE8A46223E30A1001EC64A /* NodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A45223E30A1001EC64A /* NodeSettingsViewController.swift */; };
+		C7AE8A49223E30B2001EC64A /* NodeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */; };
+		C7AE8A4D223E30F3001EC64A /* NodeGenericTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */; };
+		C7AE8A50223EEEC7001EC64A /* GanacheOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7AE8A4F223EEEC7001EC64A /* GanacheOptions.plist */; };
 		C7DB1672223243B60021C222 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DB1671223243B60021C222 /* Import.storyboard */; };
 		C7DB1674223246860021C222 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1673223246860021C222 /* ImportViewController.swift */; };
 		C7DB1676223246DE0021C222 /* ImportDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB1675223246DE0021C222 /* ImportDatasource.swift */; };
@@ -380,6 +389,18 @@
 		C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BC921EE9A6E007FB630 /* SplitViewController.swift */; };
 		C7F18B06221F7C030026D7DC /* Themes in Resources */ = {isa = PBXBuildFile; fileRef = C7F18B05221F7C020026D7DC /* Themes */; };
 		C7F95995223638C5008C8F7E /* SwiftFSWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F95994223638C5008C8F7E /* SwiftFSWatcher.swift */; };
+		C7FA4D93223CA1F7000954FA /* Node.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4D92223CA1F7000954FA /* Node.storyboard */; };
+		C7FA4D96223CA358000954FA /* NodeStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */; };
+		C7FA4D99223CA36C000954FA /* NodeLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */; };
+		C7FA4D9C223CB7F7000954FA /* NodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9B223CB7F7000954FA /* NodeController.swift */; };
+		C7FA4D9E223CB88B000954FA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9D223CB88B000954FA /* Node.swift */; };
+		C7FA4DA0223CB8CF000954FA /* RPCServerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4D9F223CB8CF000954FA /* RPCServerInterface.swift */; };
+		C7FA4DA3223CB922000954FA /* KayaInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA2223CB922000954FA /* KayaInterface.plist */; };
+		C7FA4DA5223CB930000954FA /* GanacheInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA4223CB930000954FA /* GanacheInterface.plist */; };
+		C7FA4DA7223CBA34000954FA /* RPCServerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */; };
+		C7FA4DAA223CBD18000954FA /* KayaOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DA9223CBD18000954FA /* KayaOptions.plist */; };
+		C7FA4DAC223CBF7B000954FA /* RPCServerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */; };
+		C7FA4DAE223CC7D6000954FA /* NodeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
@@ -752,6 +773,15 @@
 		C7A584EF21F0FAEE0097B761 /* Inspectors.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inspectors.storyboard; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C7AE8A39223CCB94001EC64A /* NodeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSelectorViewController.swift; sourceTree = "<group>"; };
+		C7AE8A3C223E28C4001EC64A /* NodeWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeWindowController.swift; sourceTree = "<group>"; };
+		C7AE8A3F223E305E001EC64A /* NodeTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTransactionsViewController.swift; sourceTree = "<group>"; };
+		C7AE8A41223E306F001EC64A /* NodeBlocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBlocksViewController.swift; sourceTree = "<group>"; };
+		C7AE8A43223E3095001EC64A /* NodeAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeAccountsViewController.swift; sourceTree = "<group>"; };
+		C7AE8A45223E30A1001EC64A /* NodeSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewController.swift; sourceTree = "<group>"; };
+		C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTabViewController.swift; sourceTree = "<group>"; };
+		C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGenericTabViewController.swift; sourceTree = "<group>"; };
+		C7AE8A4F223EEEC7001EC64A /* GanacheOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GanacheOptions.plist; sourceTree = "<group>"; };
 		C7DB1671223243B60021C222 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
 		C7DB1673223246860021C222 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		C7DB1675223246DE0021C222 /* ImportDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDatasource.swift; sourceTree = "<group>"; };
@@ -788,6 +818,18 @@
 		C7F0B9C12113CF7E005A8FE2 /* CompositeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeSplitViewController.swift; sourceTree = "<group>"; };
 		C7F18B05221F7C020026D7DC /* Themes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Themes; path = cotEditor/Resources/Themes; sourceTree = SOURCE_ROOT; };
 		C7F95994223638C5008C8F7E /* SwiftFSWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFSWatcher.swift; sourceTree = "<group>"; };
+		C7FA4D92223CA1F7000954FA /* Node.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Node.storyboard; sourceTree = "<group>"; };
+		C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeStatusViewController.swift; sourceTree = "<group>"; };
+		C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeLogViewController.swift; sourceTree = "<group>"; };
+		C7FA4D9B223CB7F7000954FA /* NodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeController.swift; sourceTree = "<group>"; };
+		C7FA4D9D223CB88B000954FA /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		C7FA4D9F223CB8CF000954FA /* RPCServerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerInterface.swift; sourceTree = "<group>"; };
+		C7FA4DA2223CB922000954FA /* KayaInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KayaInterface.plist; sourceTree = "<group>"; };
+		C7FA4DA4223CB930000954FA /* GanacheInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GanacheInterface.plist; sourceTree = "<group>"; };
+		C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerSettings.swift; sourceTree = "<group>"; };
+		C7FA4DA9223CBD18000954FA /* KayaOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KayaOptions.plist; sourceTree = "<group>"; };
+		C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCServerOptions.swift; sourceTree = "<group>"; };
+		C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NodeSelector.storyboard; sourceTree = "<group>"; };
 		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Composite.release.xcconfig"; path = "Pods/Target Support Files/Pods-Composite/Pods-Composite.release.xcconfig"; sourceTree = "<group>"; };
 		F81936C3214C6F2F00C3222B /* uninstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = uninstall.command; sourceTree = "<group>"; };
@@ -1773,6 +1815,28 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		C7AE8A3B223CCBA1001EC64A /* NodeSelector */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4DAD223CC7D6000954FA /* NodeSelector.storyboard */,
+				C7AE8A39223CCB94001EC64A /* NodeSelectorViewController.swift */,
+			);
+			path = NodeSelector;
+			sourceTree = "<group>";
+		};
+		C7AE8A3E223E303A001EC64A /* NodeTabs */ = {
+			isa = PBXGroup;
+			children = (
+				C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */,
+				C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */,
+				C7AE8A3F223E305E001EC64A /* NodeTransactionsViewController.swift */,
+				C7AE8A41223E306F001EC64A /* NodeBlocksViewController.swift */,
+				C7AE8A43223E3095001EC64A /* NodeAccountsViewController.swift */,
+				C7AE8A45223E30A1001EC64A /* NodeSettingsViewController.swift */,
+			);
+			path = NodeTabs;
+			sourceTree = "<group>";
+		};
 		C7DB1670223243A20021C222 /* Import */ = {
 			isa = PBXGroup;
 			children = (
@@ -1814,6 +1878,7 @@
 				C7DB1670223243A20021C222 /* Import */,
 				C72CF6072228DF3400637A8B /* ProjectInit */,
 				C72FEB8021E7E6C4000EF3C7 /* ProjectWindow */,
+				C7FA4D91223CA1D3000954FA /* NodeWindow */,
 				C70509D521541C6F003DDA2B /* Documents */,
 				C79A6ACF21EE75A3007FB630 /* cotEditor */,
 				C72FEB8221E7E945000EF3C7 /* Models */,
@@ -1844,6 +1909,52 @@
 			path = CompositeTests;
 			sourceTree = "<group>";
 		};
+		C7FA4D91223CA1D3000954FA /* NodeWindow */ = {
+			isa = PBXGroup;
+			children = (
+				C7AE8A3B223CCBA1001EC64A /* NodeSelector */,
+				C7FA4D9A223CB7E2000954FA /* NodeController */,
+				C7FA4D92223CA1F7000954FA /* Node.storyboard */,
+				C7AE8A3C223E28C4001EC64A /* NodeWindowController.swift */,
+				C7FA4D94223CA358000954FA /* NodeStatusViewController.swift */,
+				C7FA4D98223CA36C000954FA /* NodeLogViewController.swift */,
+				C7AE8A3E223E303A001EC64A /* NodeTabs */,
+			);
+			path = NodeWindow;
+			sourceTree = "<group>";
+		};
+		C7FA4D9A223CB7E2000954FA /* NodeController */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4D9B223CB7F7000954FA /* NodeController.swift */,
+				C7FA4D9D223CB88B000954FA /* Node.swift */,
+				C7FA4D9F223CB8CF000954FA /* RPCServerInterface.swift */,
+				C7FA4DA6223CBA34000954FA /* RPCServerSettings.swift */,
+				C7FA4DAB223CBF7B000954FA /* RPCServerOptions.swift */,
+				C7FA4DA1223CB8EA000954FA /* RPCServerInterface */,
+				C7FA4DA8223CBCEA000954FA /* RPCServerOptions */,
+			);
+			path = NodeController;
+			sourceTree = "<group>";
+		};
+		C7FA4DA1223CB8EA000954FA /* RPCServerInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4DA2223CB922000954FA /* KayaInterface.plist */,
+				C7FA4DA4223CB930000954FA /* GanacheInterface.plist */,
+			);
+			path = RPCServerInterface;
+			sourceTree = "<group>";
+		};
+		C7FA4DA8223CBCEA000954FA /* RPCServerOptions */ = {
+			isa = PBXGroup;
+			children = (
+				C7FA4DA9223CBD18000954FA /* KayaOptions.plist */,
+				C7AE8A4F223EEEC7001EC64A /* GanacheOptions.plist */,
+			);
+			path = RPCServerOptions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1851,9 +1962,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7F0B9B62112945F005A8FE2 /* Build configuration list for PBXNativeTarget "Composite" */;
 			buildPhases = (
+				957588822D883CDCEFC461CF /* [CP] Check Pods Manifest.lock */,
 				C79A759A21EEDFFD007FB630 /* Lint Swift Code */,
 				C79A759921EEDF1C007FB630 /* Build Syntax Map */,
-				957588822D883CDCEFC461CF /* [CP] Check Pods Manifest.lock */,
 				C7F0B9982112945C005A8FE2 /* Sources */,
 				C7F0B9992112945C005A8FE2 /* Frameworks */,
 				C7F0B99A2112945C005A8FE2 /* Resources */,
@@ -1948,6 +2059,7 @@
 				C7F18B06221F7C030026D7DC /* Themes in Resources */,
 				C775540122375D080058B256 /* SyntaxTermsEditView.storyboard in Resources */,
 				C77557E322375D4D0058B256 /* SyntaxValidationView.storyboard in Resources */,
+				C7FA4DA3223CB922000954FA /* KayaInterface.plist in Resources */,
 				C79A6D4821EE9DDC007FB630 /* ProgressView.storyboard in Resources */,
 				C7351C0921F91CAF000A3A5B /* NoEditor.storyboard in Resources */,
 				C7754FF722374B750058B256 /* PrintPane.storyboard in Resources */,
@@ -1957,6 +2069,7 @@
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7A584EC21F0FADC0097B761 /* TextEditor.storyboard in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
+				C7FA4DAA223CBD18000954FA /* KayaOptions.plist in Resources */,
 				C79A6D4621EE9DD3007FB630 /* PrintPanelAccessory.storyboard in Resources */,
 				C7A584F021F0FAEE0097B761 /* Inspectors.storyboard in Resources */,
 				C72CF612222916FE00637A8B /* Truffle in Resources */,
@@ -1976,9 +2089,11 @@
 				C72CF60C2229141000637A8B /* Zilliqa in Resources */,
 				C79A74FC21EEDC8D007FB630 /* CharacterPopover.storyboard in Resources */,
 				C79A6D4421EE9DC9007FB630 /* SaveDocumentAccessory.storyboard in Resources */,
+				C7AE8A50223EEEC7001EC64A /* GanacheOptions.plist in Resources */,
 				C79A759E21EEE532007FB630 /* makeSyntaxMap.rb in Resources */,
 				C7A584EE21F0FAE70097B761 /* Navigators.storyboard in Resources */,
 				C79A6D4221EE9DC0007FB630 /* OpenDocumentAccessory.storyboard in Resources */,
+				C7FA4DAE223CC7D6000954FA /* NodeSelector.storyboard in Resources */,
 				C77557EC2237601B0058B256 /* PreferencesWindow.storyboard in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C709B37B22376FCF003C7AC0 /* GeneralPane.storyboard in Resources */,
@@ -2004,10 +2119,12 @@
 				C79A75E821EEF943007FB630 /* SyntaxMap.json in Resources */,
 				C72CF610222916FE00637A8B /* Celer in Resources */,
 				C775502922375CBE0058B256 /* SyntaxEditView.storyboard in Resources */,
+				C7FA4DA5223CB930000954FA /* GanacheInterface.plist in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
 				C72CF615222BA85800637A8B /* Tronbox in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
+				C7FA4D93223CA1F7000954FA /* Node.storyboard in Resources */,
 				C775540522375D1A0058B256 /* SyntaxOutlineEditView.storyboard in Resources */,
 				C7754FFC22374B750058B256 /* FileDropPane.storyboard in Resources */,
 				C7F0B9A82112945F005A8FE2 /* ProjectWindow.storyboard in Resources */,
@@ -2158,6 +2275,7 @@
 				C79A6C9021EE9BD6007FB630 /* Theme.swift in Sources */,
 				C79A6CA421EE9C08007FB630 /* FilePermissionsFormatter.swift in Sources */,
 				C79A6C9D21EE9BEC007FB630 /* UTF32Char+BlockName.swift in Sources */,
+				C7AE8A4D223E30F3001EC64A /* NodeGenericTabViewController.swift in Sources */,
 				C79A6C7D21EE9BC9007FB630 /* RegularExpressionSyntaxType.swift in Sources */,
 				C79A6C6221EE9B45007FB630 /* AppleScript.swift in Sources */,
 				C775500C22374BEE0058B256 /* KeyBindingsViewController.swift in Sources */,
@@ -2190,6 +2308,7 @@
 				C79A6C4321EE9AFB007FB630 /* DotView.swift in Sources */,
 				C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */,
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
+				C7FA4D9E223CB88B000954FA /* Node.swift in Sources */,
 				C79A6C0C21EE9AC1007FB630 /* NSTextView+RoundedBackground.swift in Sources */,
 				C79A6B7421EE987D007FB630 /* MenuKeyBindingManager.swift in Sources */,
 				C79A6BD421EE9A8B007FB630 /* EditorTextViewController.swift in Sources */,
@@ -2266,12 +2385,14 @@
 				C79A6CF721EE9C52007FB630 /* String+Encoding.swift in Sources */,
 				C79A6BE121EE9A95007FB630 /* PatternSortViewController.swift in Sources */,
 				C7050A07215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
+				C7AE8A44223E3095001EC64A /* NodeAccountsViewController.swift in Sources */,
 				C79A6CDF21EE9C52007FB630 /* Selector+Codable.swift in Sources */,
 				C79A75DF21EEF0AF007FB630 /* MultipleReplacementSplitViewController.swift in Sources */,
 				C79A6C9121EE9BD6007FB630 /* DictionaryKey.swift in Sources */,
 				C79A75CD21EEF07D007FB630 /* FindPanelTextClipView.swift in Sources */,
 				C79A6C7521EE9B82007FB630 /* OutlineItem.swift in Sources */,
 				C79A6B9621EE9962007FB630 /* Editable.swift in Sources */,
+				C7AE8A3D223E28C4001EC64A /* NodeWindowController.swift in Sources */,
 				C7F95995223638C5008C8F7E /* SwiftFSWatcher.swift in Sources */,
 				C79A6D1321EE9C64007FB630 /* NSDocument+ErrorHandling.swift in Sources */,
 				C79A75C121EEF070007FB630 /* FindPanelResultViewController.swift in Sources */,
@@ -2287,12 +2408,14 @@
 				C79A6C3F21EE9AFB007FB630 /* ImageRadioButton.swift in Sources */,
 				C79A6C9521EE9BD6007FB630 /* Metadata.swift in Sources */,
 				C79A6B9D21EE9962007FB630 /* IncompatibleCharacterScanner.swift in Sources */,
+				C7AE8A46223E30A1001EC64A /* NodeSettingsViewController.swift in Sources */,
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
 				C79A6BD521EE9A8B007FB630 /* NavigationBarController.swift in Sources */,
 				C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */,
 				C79A6CE321EE9C52007FB630 /* NSString.swift in Sources */,
 				C79A6C9F21EE9BEC007FB630 /* UnicodeScalar+ControlCharacter.swift in Sources */,
 				C79A6BC321EE9A64007FB630 /* SidebarViewController.swift in Sources */,
+				C7AE8A49223E30B2001EC64A /* NodeTabViewController.swift in Sources */,
 				C79A6C7E21EE9BC9007FB630 /* NSTextView+RegexParse.swift in Sources */,
 				C79A6C3A21EE9AFB007FB630 /* OutlineMenuButtonCell.swift in Sources */,
 				C79A6CED21EE9C52007FB630 /* Bundle+AppInfo.swift in Sources */,
@@ -2310,14 +2433,17 @@
 				C79A6BCE21EE9A6E007FB630 /* StatusBarController.swift in Sources */,
 				C79A6CE821EE9C52007FB630 /* Geometry.swift in Sources */,
 				C79A6C2121EE9AF1007FB630 /* InspectorTabView.swift in Sources */,
+				C7AE8A40223E305E001EC64A /* NodeTransactionsViewController.swift in Sources */,
 				C79A6CEC21EE9C52007FB630 /* NSRegularExpression+Additions.swift in Sources */,
 				C7754FEC22374B570058B256 /* WindowPaneController.swift in Sources */,
 				C79A6C1821EE9AC1007FB630 /* NSTextView+Snippet.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
+				C7FA4D9C223CB7F7000954FA /* NodeController.swift in Sources */,
 				C79A6C8F21EE9BD6007FB630 /* Pair.swift in Sources */,
 				C79A75EA21F01517007FB630 /* ProjectToolbarController.swift in Sources */,
 				C79A75AC21EEEE46007FB630 /* AppInfo.swift in Sources */,
 				C79A6CB021EE9C10007FB630 /* OrderedSet.swift in Sources */,
+				C7AE8A42223E306F001EC64A /* NodeBlocksViewController.swift in Sources */,
 				C7DB1674223246860021C222 /* ImportViewController.swift in Sources */,
 				C79A75AD21EEEE46007FB630 /* WriteToConsoleCommand.swift in Sources */,
 				C79A75CE21EEF07D007FB630 /* RegexFindPanelTextView.swift in Sources */,
@@ -2331,6 +2457,7 @@
 				C7E7643A21214D4600867DA4 /* ChooseTemplateViewController.swift in Sources */,
 				C79A6BA121EE9962007FB630 /* TextDocumentFile.swift in Sources */,
 				C7754FE822374B570058B256 /* AppearancePaneController.swift in Sources */,
+				C7AE8A3A223CCB94001EC64A /* NodeSelectorViewController.swift in Sources */,
 				C775501222374BF80058B256 /* EncodingListViewController.swift in Sources */,
 				C79A6B6321EE9865007FB630 /* SettingManaging.swift in Sources */,
 				C79A6CEE21EE9C52007FB630 /* Data+Authopen.swift in Sources */,
@@ -2341,6 +2468,7 @@
 				C79A75BD21EEF070007FB630 /* DetachablePopoverViewController.swift in Sources */,
 				C709B386223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift in Sources */,
 				C79A75E421EEF5C1007FB630 /* MainMenu.swift in Sources */,
+				C7FA4D96223CA358000954FA /* NodeStatusViewController.swift in Sources */,
 				C79A6D1021EE9C64007FB630 /* NSStoryboard+Instantiation.swift in Sources */,
 				C79A75D621EEF0A6007FB630 /* MultipleReplacement+TextView.swift in Sources */,
 				C7F18AE52214EE010026D7DC /* SplitViewController.swift in Sources */,
@@ -2357,6 +2485,7 @@
 				C79A6CF821EE9C52007FB630 /* Data.swift in Sources */,
 				C7DDD753214100D200674942 /* String.swift in Sources */,
 				C79A6C3B21EE9AFB007FB630 /* CenteringTextFieldCell.swift in Sources */,
+				C7FA4DA7223CBA34000954FA /* RPCServerSettings.swift in Sources */,
 				C79A6CE021EE9C52007FB630 /* String+Localization.swift in Sources */,
 				C79A6C4521EE9AFB007FB630 /* SeparatorTextField.swift in Sources */,
 				C79A6C1721EE9AC1007FB630 /* EditorTextView+SurroundSelection.swift in Sources */,
@@ -2380,6 +2509,7 @@
 				C79A6CF421EE9C52007FB630 /* String+Sandboxing.swift in Sources */,
 				C72FEA9621E433BA000EF3C7 /* PlatformCollectionViewItem.swift in Sources */,
 				C79A6BB921EE9A5A007FB630 /* DocumentToolbar.swift in Sources */,
+				C7FA4DA0223CB8CF000954FA /* RPCServerInterface.swift in Sources */,
 				C7E76463212936E300867DA4 /* FileNavigatorViewController.swift in Sources */,
 				C79A6CB121EE9C10007FB630 /* DefaultKey.swift in Sources */,
 				C79A6BBB21EE9A5A007FB630 /* PopUpToolbarItem.swift in Sources */,
@@ -2387,6 +2517,7 @@
 				C79A6D2021EE9C64007FB630 /* NSBezierPath+RoundedCorner.swift in Sources */,
 				C79A6BCB21EE9A6E007FB630 /* DocumentsSplitViewController.swift in Sources */,
 				C79A6CDC21EE9C52007FB630 /* UserDefaults.swift in Sources */,
+				C7FA4D99223CA36C000954FA /* NodeLogViewController.swift in Sources */,
 				C7DDD74A2140A65700674942 /* Dependency.swift in Sources */,
 				C79A6CB421EE9C10007FB630 /* DraggableArrayController.swift in Sources */,
 				C79A6C9E21EE9BEC007FB630 /* UnicodeScalar+Information.swift in Sources */,
@@ -2421,6 +2552,7 @@
 				C79A6C7721EE9B82007FB630 /* SyntaxParser.swift in Sources */,
 				C79A6C9C21EE9BEC007FB630 /* CharacterInfo.swift in Sources */,
 				C79A6C4221EE9AFB007FB630 /* TokenTextView.swift in Sources */,
+				C7FA4DAC223CBF7B000954FA /* RPCServerOptions.swift in Sources */,
 				C79A6C0721EE9AC1007FB630 /* EditorTextView+Indenting.swift in Sources */,
 				C79A6C7921EE9B82007FB630 /* SyntaxStyleValidator.swift in Sources */,
 				C79A75C021EEF070007FB630 /* FindPanelController.swift in Sources */,

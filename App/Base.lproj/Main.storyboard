@@ -510,6 +510,43 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Local Node" id="bfw-Os-09E" userLabel="Node">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Local Node" id="GaP-Le-8c7">
+                                    <items>
+                                        <menuItem title="New Local Node" id="Cx9-Zk-pOA">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showNodeSelector:" target="Ady-hI-5gd" id="Ehj-UR-plk"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="G1I-qo-Sec"/>
+                                        <menuItem title="Show Kaya" id="Pc5-Cv-7OB">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showNodeWindow:" target="Ady-hI-5gd" id="Q8C-AV-9XW"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Nodes" id="8v6-Wa-WJA">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Nodes" id="o38-BJ-iK0">
+                                                <items>
+                                                    <menuItem title="Ethereum" id="Ke1-eh-mje">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Zilliqa" id="Ler-0K-pbY">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kIK-Xo-Fvc"/>
+                                        <menuItem title="Item" id="X8k-Js-hbM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Debug" id="NYE-sG-pZO" userLabel="Debug">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Debug" id="u4q-ly-7bS">
