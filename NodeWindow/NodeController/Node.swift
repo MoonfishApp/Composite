@@ -23,12 +23,16 @@ enum NodeType: String {
     }
 }
 
+enum NodeState {
+    case notInstalled, stopped, internalNode, externalBound, error(Int)
+}
+
 final class Node: NSObject {
     
     let nodeType: NodeType
     
     /// Change takes effect next time server is restarted
-    var server: String
+    var address: String
     
     /// Change takes effect next time server is restarted
     var port: String
@@ -38,20 +42,19 @@ final class Node: NSObject {
     // Log viewcontroller uses KVO to update its content
     @objc dynamic var output: String = ""
     
-//    /// True if ganache, Kaya, etc. is installed
-//    /// If not installed, localohost co
-//    var isInstalled: Bool = true
+    private (set) weak var windowController: NSWindowController?
     
-    /// Node is running within Composite. Composite can restart
-    var isRunning: Bool {
-        return self.nodeQueue.operations.count > 0
+    private var stateObserver: NSKeyValueObservation?
+    
+    private (set) var state: NodeState = .stopped {
+        didSet {
+            stateChange = UUID().uuidString
+        }
     }
     
-    /// If isRunning == false, and isBound == true, then Composite is
-    /// connected to a node, but is not running the node.
-    /// Settings cannot be changed if isBound == false
-    private (set) var isBound: Bool = true
-    
+    /// Workaround to make state enum KVO compliant
+    /// Set stateChange to random new value to trigger KVO
+    @objc dynamic private (set) var stateChange: String?
     
 //    let interface: RPCServerInterface
     var options: RPCServerOptions
@@ -61,13 +64,17 @@ final class Node: NSObject {
     
     /// Do not call directly.
     /// Use NodeController.createNode() instead
-    init(type: NodeType) {
+    init(type: NodeType, address: String = "127.0.0.1", port: String? = nil) {
         
         self.nodeType = type
 //        self.interface = RPCServerInterface.load(type)
         self.options = RPCServerOptions.load(type)
-        self.server = "127.0.0.1"
-        self.port = "4200"
+        self.address = address
+        if let port = port {
+            self.port = port
+        } else {
+            self.port = self.options["Port"]?.defaultString ?? "80"
+        }
         
         super.init()
         
@@ -75,6 +82,14 @@ final class Node: NSObject {
         nodeQueue.qualityOfService = .userInteractive
         pingQueue.maxConcurrentOperationCount = 1
         pingQueue.qualityOfService = .userInitiated
+        
+        self.stateObserver = self.nodeQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
+            if queue.operationCount > 0 {
+                self.state = .internalNode
+            } else {
+                self.state = .stopped
+            }
+        }
     }
     
     deinit {
@@ -86,6 +101,7 @@ final class Node: NSObject {
         let nodeWindowController = NSWindowController.instantiate(storyboard: "Node") as! NodeWindowController
         nodeWindowController.showWindow(sender)
         nodeWindowController.node = self
+        self.windowController = nodeWindowController
     }
     
     
@@ -118,7 +134,7 @@ final class Node: NSObject {
         // 2. Run server
     }
     
-    func nodeOperation() throws -> BashOperation {
+    private func nodeOperation() throws -> BashOperation {
 //        let operation = try BashOperation(commands: ["ganache-cli"])
         
         // Note: Kaya cannot run in ~ because it needs to create a directory: ../data
@@ -128,8 +144,11 @@ final class Node: NSObject {
             
             self.output += "\nNode stopped"
             if let exitStatus = operation.exitStatus {
+             
                 self.output += "\nExit status \(exitStatus)"
+                self.state = .error(exitStatus)
             }
+            
         }
         operation.outputClosure = { stdout in
             self.output += stdout

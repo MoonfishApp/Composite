@@ -17,14 +17,17 @@ class NodeSettingsViewController: NodeGenericTabViewController {
 
     override var node: Node? {
         didSet {
-            self.updateState()
+            self.stateObserver = node?.observe(\Node.stateChange, options: .new) { node, change in
+                self.updateState()
+            }
         }
     }
+    
+    private var stateObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        self.updateState()
     }
     
     @IBAction func stopNode(_ sender: Any) {
@@ -41,36 +44,50 @@ class NodeSettingsViewController: NodeGenericTabViewController {
     
     private func updateState() {
         
-        guard let node = node else {
-            flagsLabel.stringValue = ""
-            return
+        DispatchQueue.main.async {
+            guard let node = self.node else {
+                self.restartLabel.stringValue = ""
+                self.restartButton.title = "Restart node"
+                self.flagsLabel.stringValue = ""
+                self.restartButton.isEnabled = false
+                self.stopNodeButton.isEnabled = false
+                return
+            }
+            
+            // Show command and flags
+            self.flagsLabel.stringValue = node.command
+            
+            switch node.state {
+            case .notInstalled:
+                
+                self.restartLabel.stringValue = ""
+                self.restartButton.title = "Restart node"
+                self.restartButton.isEnabled = false
+                self.stopNodeButton.isEnabled = false
+                
+            case .stopped, .error(_):
+                
+                self.restartLabel.stringValue = ""
+                self.restartButton.title = "Start node"
+                self.restartButton.isEnabled = true
+                self.stopNodeButton.isEnabled = false
+                
+            case .internalNode:
+                
+                // if changes were made:
+                self.restartLabel.stringValue = "⚠️ Restart node to apply changes"
+                self.restartButton.title = "Restart node"
+                self.restartButton.isEnabled = true
+                self.stopNodeButton.isEnabled = true
+                
+            case .externalBound:
+                
+                self.restartLabel.stringValue = "⚠️ External node running"
+                self.restartButton.title = "Start node"
+                self.restartButton.isEnabled = false
+                self.stopNodeButton.isEnabled = false
+                
+            }
         }
-        
-        // Show command and flags
-        flagsLabel.stringValue = node.command
-        
-        // Update warning label and restart button
-        if node.isRunning == true { // & options have changed
-            
-            restartLabel.stringValue = "⚠️ Restart node to apply changes"
-            restartButton.title = "Restart node"
-            restartButton.isEnabled = true
-            stopNodeButton.isEnabled = true
-            
-        } else if node.isRunning == false && node.isBound == false {
-            
-            restartLabel.stringValue = "⚠️ No node running"
-            restartButton.title = "Start node"
-            restartButton.isEnabled = true
-            stopNodeButton.isEnabled = false
-            
-        } else if node.isRunning == false && node.isBound == true {
-            
-            restartLabel.stringValue = "⚠️ External node running"
-            restartButton.title = "Start node"
-            restartButton.isEnabled = false
-            stopNodeButton.isEnabled = false
-        }
-
     }
 }

@@ -41,7 +41,6 @@ class NodeLogViewController: NSViewController {
     private var logObserver: NSKeyValueObservation?
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

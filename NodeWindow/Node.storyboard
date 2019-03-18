@@ -129,17 +129,23 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Orv-BI-Cxl">
-                                <rect key="frame" x="389" y="3" width="43" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Status" id="Twg-l5-kbn">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdI-V6-0L2">
+                                <rect key="frame" x="393" y="3" width="37" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="2Zp-Ak-kBp">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hdI-V6-0L2" secondAttribute="trailing" constant="22" id="NJ0-fF-SoO"/>
+                            <constraint firstItem="hdI-V6-0L2" firstAttribute="centerY" secondItem="SMc-Af-imM" secondAttribute="centerY" id="ZMR-DD-QuT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="statusLabel" destination="hdI-V6-0L2" id="ieR-eu-Og8"/>
+                    </connections>
                 </viewController>
                 <customObject id="tDu-aO-CzF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

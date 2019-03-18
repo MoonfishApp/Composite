@@ -10,16 +10,17 @@ import Cocoa
 
 class NodeStatusViewController: NSViewController {
 
-    weak var node: Node? {
+    @IBOutlet weak var statusLabel: NSTextField!
+    
+    var node: Node? {
         didSet {
-            guard let node = node else { return }
-            
-            // KVO output
-//            self.logObserver = node.observe(\Node.output, options: .new) { node, change in
-//                self.logViewController?.output = node.output
-//            }
+            self.stateObserver = node?.observe(\Node.stateChange, options: .new) { node, change in
+                self.updateState()
+            }
         }
     }
+    
+    private var stateObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,38 @@ class NodeStatusViewController: NSViewController {
         splitItem.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
         splitController.toggleSidebar(nil)
         
+    }
+    
+    private func updateState() {
+        
+        DispatchQueue.main.async {
+            guard let node = self.node else {
+                self.statusLabel.stringValue = "🛑 No node available"
+                return
+            }
+            
+            switch node.state {
+            case .notInstalled:
+                
+                self.statusLabel.stringValue = "⚠️ \(node.nodeType.rawValue.capitalizedFirstChar()) not installed"
+                
+            case .stopped:
+                
+                self.statusLabel.stringValue = "⚠️ No node running"
+                
+            case .internalNode:
+                
+                self.statusLabel.stringValue = "✅ Running internal node"
+                
+            case .externalBound:
+                
+                self.statusLabel.stringValue = "✅ Bound to external node"
+                
+            case .error(_):
+                
+                self.statusLabel.stringValue = "🛑 Node error"
+            }
+        }
     }
 
 }
