@@ -159,7 +159,7 @@
 		<string>Output VM opcodes for debugging</string>
 		<key>flag</key>
 		<string>--debug</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
@@ -169,7 +169,7 @@
 		<string>Output ganache-cli memory usage statistics. This replaces normal output.</string>
 		<key>flag</key>
 		<string>--mem</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
@@ -179,7 +179,7 @@
 		<string>Run ganache-cli without any logs</string>
 		<key>flag</key>
 		<string>-q</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
@@ -189,7 +189,7 @@
 		<string>Log all requests and responses to stdout</string>
 		<key>flag</key>
 		<string>-v</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
@@ -199,7 +199,7 @@
 		<string>Display help information</string>
 		<key>flag</key>
 		<string>-?</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
@@ -209,7 +209,7 @@
 		<string>Display the version of ganache-cli</string>
 		<key>flag</key>
 		<string>--version</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
@@ -219,7 +219,7 @@
 		<string>Do not transmit transaction failures as RPC errors. Enable this flag for error reporting behaviour which is compatible with other clients such as geth and Parity.</string>
 		<key>flag</key>
 		<string>--noVMErrorsOnRPCResponse</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
@@ -229,7 +229,7 @@
 		<string>Allows unlimited contract sizes while debugging. By enabling this flag, the check within the EVM for contract size limit of 24KB (see EIP-170) is bypassed. Enabling this flag will cause ganache-cli to behave differently than production environments.</string>
 		<key>flag</key>
 		<string>--allowUnlimitedContractSize</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
@@ -249,7 +249,7 @@
 		<string>Date (ISO 8601) that the first block should start. Use this feature, along with the evm_increaseTime method to test time-dependent code.</string>
 		<key>flag</key>
 		<string>-t</string>
-		<key>defaultString</key>
+		<key>defaultBool</key>
 		<true/>
 	</dict>
 	<dict>
