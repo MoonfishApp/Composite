@@ -124,10 +124,10 @@
                                 <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eYf-hv-uAN">
                                     <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <connections>
-                                        <action selector="disclosureButton:" target="Tda-aq-bbR" id="bN6-2G-Q5Z"/>
-                                    </connections>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="disclosureButtonClicked:" target="Tda-aq-bbR" id="sXz-sr-Jfa"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdI-V6-0L2">
                                 <rect key="frame" x="393" y="3" width="37" height="17"/>
@@ -144,6 +144,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="disclosureButton" destination="uuZ-TK-waE" id="UAq-rK-9AT"/>
                         <outlet property="statusLabel" destination="hdI-V6-0L2" id="ieR-eu-Og8"/>
                     </connections>
                 </viewController>

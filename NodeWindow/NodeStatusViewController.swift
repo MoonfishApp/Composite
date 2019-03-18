@@ -10,6 +10,7 @@ import Cocoa
 
 class NodeStatusViewController: NSViewController {
 
+    @IBOutlet weak var disclosureButton: NSButton!
     @IBOutlet weak var statusLabel: NSTextField!
     
     var node: Node? {
@@ -27,7 +28,7 @@ class NodeStatusViewController: NSViewController {
         // Do view setup here.
     }
     
-    @IBAction func disclosureButton(_ sender: Any) {
+    @IBAction func disclosureButtonClicked(_ sender: Any) {
         
         guard let splitController = (parent as? NSSplitViewController), let splitItem = splitController.splitViewItems.last else { return }
         
@@ -64,6 +65,13 @@ class NodeStatusViewController: NSViewController {
             case .error(_):
                 
                 self.statusLabel.stringValue = "🛑 Node error"
+                
+                // Open log pane
+                guard let splitController = (self.parent as? NSSplitViewController), let splitItem = splitController.splitViewItems.last else { return }
+                if splitItem.isCollapsed && self.disclosureButton.state == .off {
+                    self.disclosureButtonClicked(self)
+                    self.disclosureButton.state = .on
+                }
             }
         }
     }
