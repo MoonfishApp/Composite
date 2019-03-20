@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="4gR-ya-o9n">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -126,12 +125,60 @@ DQ
                                             </constraints>
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Lbx-IL-Gbe"/>
                                         </imageView>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7ox-TD-rWz">
+                                            <rect key="frame" x="537" y="40" width="98" height="17"/>
+                                            <buttonCell key="cell" type="inline" title="More Info" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="P7w-Bg-rYj">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystemBold"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lvp-0o-M6j">
+                                            <rect key="frame" x="537" y="7" width="98" height="17"/>
+                                            <buttonCell key="cell" type="inline" title="Documentation" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="MKP-YU-YXr">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystemBold"/>
+                                            </buttonCell>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TuQ-cD-3hc">
+                                            <rect key="frame" x="140" y="74" width="37" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Oc2-z8-a5Q">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H5o-Ys-luA">
+                                            <rect key="frame" x="168" y="42" width="92" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="UI5-ze-oU7">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xlm-ah-sGn">
+                                            <rect key="frame" x="105" y="26" width="37" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="49w-RX-aIY">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="7ox-TD-rWz" firstAttribute="width" secondItem="lvp-0o-M6j" secondAttribute="width" id="acL-b8-Mzs"/>
+                                    </constraints>
                                 </view>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7ox-TD-rWz" secondAttribute="bottom" constant="39" id="4jM-Mb-xZp"/>
+                                    <constraint firstAttribute="trailing" secondItem="7ox-TD-rWz" secondAttribute="trailing" constant="7" id="Aub-VP-kRp"/>
+                                    <constraint firstAttribute="bottom" secondItem="lvp-0o-M6j" secondAttribute="bottom" constant="6" id="N9u-Zf-j9x"/>
                                     <constraint firstItem="wKE-4U-Ps5" firstAttribute="top" secondItem="Im4-oe-4Je" secondAttribute="top" constant="21" id="Sfu-UD-bDO"/>
                                     <constraint firstItem="wKE-4U-Ps5" firstAttribute="leading" secondItem="Im4-oe-4Je" secondAttribute="leading" constant="7" id="ck3-yb-ayd"/>
                                     <constraint firstAttribute="height" constant="110" id="qHh-29-AVw"/>
+                                    <constraint firstAttribute="trailing" secondItem="lvp-0o-M6j" secondAttribute="trailing" constant="7" id="rzp-cZ-G7T"/>
                                 </constraints>
                             </box>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjX-9b-9Rb">
