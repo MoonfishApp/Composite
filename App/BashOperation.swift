@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol BashOutputProtocol {
+protocol BashOutputProtocol: class {
     
     /// Operation received stdOut output from shell
     /// Will always be called from the main thread
@@ -22,7 +22,7 @@ protocol BashOutputProtocol {
 class BashOperation: Operation {
     
     /// Alternative to using
-    var delegate: BashOutputProtocol?
+    weak var delegate: BashOutputProtocol?
     
     /// Closure to forward stdout
     var outputClosure: ((String) -> Void)?
@@ -126,7 +126,7 @@ class BashOperation: Operation {
     }
     
     /// For now, both stdout and stderr are sent to the same pipe.
-    func captureStandardOutput() {
+    private func captureStandardOutput() {
         
         task.standardOutput = outputPipe
         task.standardError = outputPipe
