@@ -53,7 +53,7 @@
 		C7351C0D21FD4ED7000A3A5B /* DocumentController+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7351C0C21FD4ED7000A3A5B /* DocumentController+Action.swift */; };
 		C7351C0E2201251E000A3A5B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
 		C7351C10220130A8000A3A5B /* TextEditorSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79A6BCF21EE9A8B007FB630 /* TextEditorSplitViewController.swift */; };
-		C7476C9C2280BC0300CD295B /* InstallToolchain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7AE8A51223F876D001EC64A /* InstallToolchain.storyboard */; };
+		C7476C9C2280BC0300CD295B /* InstallToolchain-new.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7AE8A51223F876D001EC64A /* InstallToolchain-new.storyboard */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C7754FE622374B570058B256 /* FormatPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7754FDE22374B560058B256 /* FormatPaneController.swift */; };
 		C7754FE722374B570058B256 /* PrintPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7754FDF22374B570058B256 /* PrintPaneController.swift */; };
@@ -368,7 +368,7 @@
 		C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */; };
 		C7DDD7502140B68C00674942 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74F2140B68C00674942 /* Platform.swift */; };
 		C7DDD753214100D200674942 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD752214100D200674942 /* String.swift */; };
-		C7DDD75A2141E02800674942 /* InstallToolchain-old.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallToolchain-old.storyboard */; };
+		C7DDD75A2141E02800674942 /* InstallToolchain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallToolchain.storyboard */; };
 		C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
 		C7E4AFB42175BA4800D5716B /* EditorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFB22175BA4800D5716B /* EditorInterface.swift */; };
 		C7E76437211EC16300867DA4 /* ProjectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76436211EC16300867DA4 /* ProjectWindowController.swift */; };
@@ -783,7 +783,7 @@
 		C7AE8A47223E30B2001EC64A /* NodeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTabViewController.swift; sourceTree = "<group>"; };
 		C7AE8A4B223E30F3001EC64A /* NodeGenericTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGenericTabViewController.swift; sourceTree = "<group>"; };
 		C7AE8A4F223EEEC7001EC64A /* GanacheOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GanacheOptions.plist; sourceTree = "<group>"; };
-		C7AE8A51223F876D001EC64A /* InstallToolchain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallToolchain.storyboard; sourceTree = "<group>"; };
+		C7AE8A51223F876D001EC64A /* InstallToolchain-new.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "InstallToolchain-new.storyboard"; sourceTree = "<group>"; };
 		C7DB1671223243B60021C222 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
 		C7DB1673223246860021C222 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		C7DB1675223246DE0021C222 /* ImportDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDatasource.swift; sourceTree = "<group>"; };
@@ -794,7 +794,7 @@
 		C7DDD74F2140B68C00674942 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		C7DDD752214100D200674942 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C7DDD756214113CB00674942 /* Which.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Which.command; sourceTree = "<group>"; };
-		C7DDD7592141E02800674942 /* InstallToolchain-old.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "InstallToolchain-old.storyboard"; sourceTree = "<group>"; };
+		C7DDD7592141E02800674942 /* InstallToolchain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallToolchain.storyboard; sourceTree = "<group>"; };
 		C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowRestoration.swift; sourceTree = "<group>"; };
 		C7E4AFB22175BA4800D5716B /* EditorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorInterface.swift; sourceTree = "<group>"; };
 		C7E76436211EC16300867DA4 /* ProjectWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWindowController.swift; sourceTree = "<group>"; };
@@ -945,8 +945,8 @@
 		C72FEB7D21E7E6A1000EF3C7 /* InstallToolchain */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDD7592141E02800674942 /* InstallToolchain-old.storyboard */,
-				C7AE8A51223F876D001EC64A /* InstallToolchain.storyboard */,
+				C7DDD7592141E02800674942 /* InstallToolchain.storyboard */,
+				C7AE8A51223F876D001EC64A /* InstallToolchain-new.storyboard */,
 				C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */,
 				C709B385223B17CB003C7AC0 /* InstallToolchainConsoleViewController.swift */,
 				C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */,
@@ -2087,7 +2087,7 @@
 				C7754FFF22374B750058B256 /* EditPane.storyboard in Resources */,
 				C79A750021EEDD04007FB630 /* ConsolePanel.storyboard in Resources */,
 				C79A6D5021EE9E03007FB630 /* CustomTabWidthView.storyboard in Resources */,
-				C7DDD75A2141E02800674942 /* InstallToolchain-old.storyboard in Resources */,
+				C7DDD75A2141E02800674942 /* InstallToolchain.storyboard in Resources */,
 				C72CF609222908D100637A8B /* Templates-Zilliqa.plist in Resources */,
 				C72CF60C2229141000637A8B /* Zilliqa in Resources */,
 				C79A74FC21EEDC8D007FB630 /* CharacterPopover.storyboard in Resources */,
@@ -2124,7 +2124,7 @@
 				C775502922375CBE0058B256 /* SyntaxEditView.storyboard in Resources */,
 				C7FA4DA5223CB930000954FA /* GanacheInterface.plist in Resources */,
 				C79A6D3E21EE9DA3007FB630 /* IncompatibleCharactersView.storyboard in Resources */,
-				C7476C9C2280BC0300CD295B /* InstallToolchain.storyboard in Resources */,
+				C7476C9C2280BC0300CD295B /* InstallToolchain-new.storyboard in Resources */,
 				C72CF615222BA85800637A8B /* Tronbox in Resources */,
 				C79A759821EEDDD8007FB630 /* updateHelpindex.sh in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
